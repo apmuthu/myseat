@@ -27,7 +27,7 @@ define ( '_add_seats', 'Ajouter siéges' );
 define ( '_add_tables', 'Ajouter tables' );
 
 //original text: "Capacity"
-define ( '_capacity', 'CapacitÃ©' );
+define ( '_capacity', 'Capacité' );
 
 //original text: "Save"
 define ( '_save', 'sauvegarder' );
@@ -441,7 +441,7 @@ define ( '_property', 'Propriété' );
 define ( '_M_', 'Monsieur' );
 
 //original text: "Mrs."
-define ( '_W_', 'Madame' );
+define ( '_W_', 'Madame/Mademoiselle' );
 
 //original text: "Fam."
 define ( '_F_', 'Famille' );
@@ -533,7 +533,7 @@ define ( '_email_confirmation_en', 'Thank you very much for your reservation in 
 define ( '_email_subject_en', 'Reservation confirmée pour ' );
 
 //original text: "Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s. If you want cancel your reservation please use your booking number \'%s\' at the homepage. We wish you an enjoyable stay at our restaurant and are looking forward to your visit! Yours %s"
-define ( '_email_confirmation', 'Nous vous remercions vivement pour la réservation %s. C´est avec plaisir que nous confirmons la réservation de %s person(s) le %s à %s.<br/>Si vous annulez, merci d´utiliser votre numéro de réservation \'%s\' sur la page d´accueil.<br/>Nous vous souhaitons un agréable moment dans notre restaurant et à très bientôt!<br/><br/>vSincerement<br/>%s' );
+define ( '_email_confirmation', 'Nous vous remercions vivement pour la réservation %s. C´est avec plaisir que nous confirmons la réservation de %s person(s) le %s à %s.<br/>Si vous annulez, merci d´utiliser votre numéro de réservation \'%s\' sur la page d´accueil.<br/>Nous vous souhaitons un agréable moment dans notre restaurant et à très bientôt!<br/><br/>Cordialement<br/>%s' );
 
 
 //original text: "before"
@@ -556,7 +556,7 @@ define ( '_dear_sirs_and_madams_en', 'Dear Sirs and Madams' );
 define ( '_dear_family_en', 'Dear Family' );
 
 //original text: "The username"
-define ( '_already_user_1', 'le nom d´utilisateur' );
+define ( '_already_user_1', 'Le nom d´utilisateur' );
 
 //original text: "does already exist."
 define ( '_already_user_2', 'existe deja' );
@@ -564,8 +564,8 @@ define ( '_already_user_2', 'existe deja' );
 //original text: "Dear %s, Thank you for registering at mySeat! Your username is %s . Your password is %s . Your email address is set to %s . Follow us on Twitter, Facebook, and more here: http://www.openmyseat.com All the best, The mySeat Team "
 define ( '_user_email_confirmation', 'Cher %s, Nous vous remercions pour votre enregistrement sur mySeat! Votre nom d´utilisateur est %s . Votre mot de passe est %s . Votre adresse email est indiquée %s . Suivez nous sur Twitter, Facebook, et plus encore sur : http://www.openmyseat.com Cordialement, L´équipe mySeat ' );
 
-//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
-define ( '_user_activation_email', 'Hello %s,<br/><br/>Vous venez de souscrire à mySeat. Svp cliquez sur ce lien pour confirmer votre adresse email:<br/><br/><a title="Confirmer le compte" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Merci,<br/><br/>L´équipe mySeat' );
+//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
+define ( '_user_activation_email', 'Hello %s,<br/><br/>Vous venez de souscrire à mySeat. Svp cliquez sur ce lien pour confirmer votre adresse email:<br/><br/><a title="Confirmer le compte" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Merci,<br/><br/>L´équipe mySeat' );
 
 //original text: "You have already confirmed this email address."
 define ( '_errorMessage_all', 'Vous avez deja confirmé cette adresse.' );
@@ -609,4 +609,6 @@ define ( '_top', 'Top' );
 //original text: "Traffic sources"
 define ( '_trsources', 'Sources de trafic' );
 
+//original text: "Website"
+define ( '_website', 'Site Web' );
 ?>

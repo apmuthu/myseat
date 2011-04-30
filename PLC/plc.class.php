@@ -239,9 +239,11 @@ var $tbTrans = array(
     }
  /**
   * page to redirect after login
-  * var char
+  * var string
   */
- $_SESSION['forwardPage'] = "../web/main_page.php?p=2";
+	if ($_SESSION['forwardPage'] =='') {
+		$_SESSION['forwardPage'] = "../web/main_page.php?p=1";
+	}
 
  }
  
@@ -996,10 +998,18 @@ function login_form(){
 			    </label>
             <input type="password" name="token" id="token" class="textfield pass" maxlength="12"/>
 			
-            <button  type="submit" id="sbmt">Log-in</button><br/><br/>
-	    <br/>
-          </form>
-			 </div>';
+            <button  type="submit" id="sbmt">Log-in</button><br/><br/>';
+		if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off'
+		    || $_SERVER['SERVER_PORT'] == 443) {
+		echo'<p style="text-align:right;">
+			<img src="img/lock.png" alt="SSL" style="vertical-align:middle;"/>
+			<small style="vertical-align:middle;">&nbsp;256-bit SSL security</small></p>';
+		}else{
+			echo'<p style="text-align:right;">
+				<img src="img/lock-unlock.png" alt="unsecure" style="vertical-align:middle;"/>
+				</p>';
+		}
+	echo '</form></div>';
 }
 
   /**

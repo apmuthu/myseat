@@ -432,7 +432,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 
 	    <br class="cl" />
 	    <br class="cl" />		
-		</div><!-- page content end -->
+		</div></div><!-- page content end -->
 			
   <!-- Footer Start -->
   <footer>
@@ -442,7 +442,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
   </footer>
   <!-- footer end -->
 </div></div><!-- page container end -->
-</div><!-- main close -->
+</div></div><!-- main close -->
 
   <!-- Javascript at the bottom for fast page loading --> 
 <script>

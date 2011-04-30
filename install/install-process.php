@@ -1,5 +1,5 @@
 <ul style="margin-left:40px; font-size:1.1em;" class="global">
-<?
+<?php
 // TABLES -------------------------------------------------
 
 $sql = query("CREATE TABLE IF NOT EXISTS `capabilities` (
@@ -188,6 +188,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `properties` (
   `phone` varchar(50) COLLATE utf8_bin NOT NULL,
   `fax` varchar(50) COLLATE utf8_bin NOT NULL,
   `email` varchar(100) COLLATE utf8_bin NOT NULL,
+  `website` varchar(200) COLLATE utf8_bin NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `img_filename` varchar(255) COLLATE utf8_bin NOT NULL,
   `logo_filename` varchar(255) COLLATE utf8_bin NOT NULL,

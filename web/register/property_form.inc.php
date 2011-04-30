@@ -39,6 +39,10 @@ if ($p == 2 || $_SESSION['page'] == 2){
 	<p>
 		<input type="text" name="email" id="email" class="required email" title=' ' value="<?= $row['email'];?>"/>
 	</p>
+	<label><?= _website;?></label>
+	<p>
+		<input type="text" name="website" id="website" class="required" title=' ' value="<?= $row['website'];?>"/>
+	</p>
 	<label><?= _phone;?></label>
 	<p>		 	 	 	 	 	 	
 		<input type="text" name="phone" id="phone" class="required" title=' ' value="<?= $row['phone'];?>"/>

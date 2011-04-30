@@ -123,6 +123,9 @@ $labelpie = array();
 						<?
 						 $pax_outlet = querySQL('statistic_guest_year');
 						 $pax_prpty = querySQL('statistic_all_guest_year');
+						//prevent division by zero 
+						$pax_prpty = ($pax_prpty==0) ? 1 :$pax_prpty;
+						 $pax_outlet = ($pax_outlet==0) ? 1 :$pax_outlet;
 						?>
 						<span class="bigger_number"><?= $pax_outlet;?></span>&nbsp;<span class='stats_small_text'>(<?= round((100/$pax_prpty*$pax_outlet),1);?>%)</span>
 					 </div>

@@ -76,3 +76,7 @@ INSERT INTO `l16n` (`id`, `needle`, `en`, `de`, `fr`, `es`, `nl`, `dk`, `se`, `i
 /* Update the database from XT 0.178 to > XT 0.1782 */
 /* ------------------------------------------------- */
 ALTER TABLE `reservations` ADD `reservation_referer` TEXT NOT NULL ;
+
+/* Update the database from XT 0.1782 to > XT 0.179 */
+/* ------------------------------------------------- */
+ALTER TABLE `properties` ADD `website` VARCHAR( 200 ) NOT NULL;

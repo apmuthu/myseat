@@ -17,31 +17,35 @@
 				<br class="cl" />
 				<br/><br/>
 				<label><?= _contact;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $row['contactperson'];?>
 				</p></strong>
 				<label><?= _adress;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $row['street'];?>
 				</p></strong>
 				<label><?= _zip;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $row['zip'];?>
 				</p></strong>
 				<label><?= _city;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $row['city'];?>
 				</p></strong>
 				<label><?= _country;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $countries[$row['country']];?>
 				</p></strong>
 				<label><?= _email;?></label>
-				<p><span class='bold'>
+				<p><strong>
 					<?= $row['email'];?>
 				</p></strong>
+				<label><?= _website;?></label>
+				<p><strong>
+					<?= $row['website'];?>
+				</p></strong>
 				<label><?= _phone;?></label>
-				<p><span class='bold'>		 	 	 	 	 	 	
+				<p><strong>		 	 	 	 	 	 	
 					<?= $row['phone'];?>
 				</p></strong>
 				<label><?= _fax;?></label>	

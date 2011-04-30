@@ -563,8 +563,8 @@ define ( '_already_user_2', 'does already exist.' );
 //original text: "Dear %s, Thank you for registering at mySeat! Your username is %s . Your password is %s . Your email address is set to %s . Follow us on Twitter, Facebook, and more here: http://www.openmyseat.com All the best, The mySeat Team "
 define ( '_user_email_confirmation', 'Dear %s, Thank you for registering at mySeat! Your username is %s . Your password is %s . Your email address is set to %s . Follow us on Twitter, Facebook, and more here: http://www.openmyseat.com All the best, The mySeat Team ' );
 
-//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
-define ( '_user_activation_email', 'Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Cheers,<br/><br/>The mySeat Team' );
+//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
+define ( '_user_activation_email', 'Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Cheers,<br/><br/>The mySeat Team' );
 
 //original text: "You have already confirmed this email address."
 define ( '_errorMessage_all', 'You have already confirmed this email address.' );
@@ -608,4 +608,6 @@ define ( '_top', 'Top' );
 //original text: "Traffic sources"
 define ( '_trsources', 'Trafikkällor' );
 
+//original text: "Website"
+define ( '_website', 'Webbplats' );
 ?>

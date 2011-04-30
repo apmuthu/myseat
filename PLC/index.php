@@ -126,7 +126,6 @@ $("#nButton").click(function(){
 				
 				<div id="err"></div><br>
 				<div id="wrapper2"></div>
-	
 	</div>
 	<!-- End control panel wrapper -->
 	

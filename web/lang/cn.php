@@ -563,8 +563,8 @@ define ( '_already_user_2', '不存在.' );
 //original text: "Dear %s, Thank you for registering at mySeat! Your username is %s . Your password is %s . Your email address is set to %s . Follow us on Twitter, Facebook, and more here: http://www.openmyseat.com All the best, The mySeat Team "
 define ( '_user_email_confirmation', 'Dear %s, 感谢您注册 mySeat! 您的使用者名称是 %s . 密码 %s . 邮箱 %s . 请在Twitter, Facebook查询我们的更新, 我们的网站: http://www.openmyseat.com 祝您顺利。 The mySeat Team ' );
 
-//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
-define ( '_user_activation_email', '您好 %s,<br/><br/>您已经成功注册 mySeat. 请点击以下链接确认注册:<br/><br/><a title="确认注册" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>感谢您的注册,<br/><br/>The mySeat Team' );
+//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
+define ( '_user_activation_email', '您好 %s,<br/><br/>您已经成功注册 mySeat. 请点击以下链接确认注册:<br/><br/><a title="确认注册" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>感谢您的注册,<br/><br/>The mySeat Team' );
 
 //original text: "You have already confirmed this email address."
 define ( '_errorMessage_all', '您已经确认了这个邮箱号.' );
@@ -601,4 +601,7 @@ define ( '_top', '前' );
 
 //original text: "Traffic sources"
 define ( '_trsources', '流量来源' );
+
+//original text: "Website"
+define ( '_website', '网站' );
 ?>

@@ -564,8 +564,8 @@ define ( '_already_user_2', 'ya existe.' );
 //original text: "Dear %s, Thank you for registering at mySeat! Your username is %s . Your password is %s . Your email address is set to %s . Follow us on Twitter, Facebook, and more here: http://www.openmyseat.com All the best, The mySeat Team "
 define ( '_user_email_confirmation', 'Estimado(a) %s, ¡Gracias por registrarse en mySeat! Su nombre de usuario es %s . Su contraseña es %s . Su dirección de e-mail es %s . Síganos en Twitter, Facebook, y más aquí: http://www.openmyseat.com All the best, The mySeat Team ' );
 
-//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
-define ( '_user_activation_email', 'Hola %s,<br/><br/>Acaba de registrarse en nuestro sistema de reservas. Por favor, siga el siguiente enlace para confirmar que esta es su direcciónd de e-mail:<br/><br/><a title="Confirmar Cuenta" href="http://%s/mySeat/web/confirm.php?c=%s">http://%s/mySeat/web/confirm.php?c=%s</a><br/><br/>Muchas gracias,<br/><br/>El equipo de mySeat' );
+//original text: "Hello %s,<br/><br/>You just signed up for mySeat. Please follow this link to confirm that this is your e-mail address:<br/><br/><a title="Confirm Account" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Thank you,<br/><br/>The mySeat Team"
+define ( '_user_activation_email', 'Hola %s,<br/><br/>Acaba de registrarse en nuestro sistema de reservas. Por favor, siga el siguiente enlace para confirmar que esta es su direcciónd de e-mail:<br/><br/><a title="Confirmar Cuenta" href="%sweb/confirm.php?c=%s">%sweb/confirm.php?c=%s</a><br/><br/>Muchas gracias,<br/><br/>El equipo de mySeat' );
 
 //original text: "You have already confirmed this email address."
 define ( '_errorMessage_all', 'Ud. ya confirmó esta dirección de e-mail.' );
@@ -609,4 +609,6 @@ define ( '_top', 'Top' );
 //original text: "Traffic sources"
 define ( '_trsources', 'Fuentes de tráfico' );
 
+//original text: "Website"
+define ( '_website', 'Sitio Web' );
 ?>
