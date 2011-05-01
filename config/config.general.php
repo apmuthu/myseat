@@ -37,19 +37,13 @@ $settings['dbtime'] = "H:i:s";
 $settings['currency'] = "Euro";
 
 // array consists of: PHP country code, language name
- /* $langTrans = array(
-		'en_EN' => 'English',
-		'de_DE' => 'Deutsch',
-		'fr_FR' => 'Français',
-		'es_ES' => 'Español',
-		'nl_NL' => 'Nederlands',
-		'dk_DK' => 'Danske',
-		'se_SE' => 'Svenska',
-		'it_IT' => 'Italia'); */
+// http://www.all-acronyms.com/special/countries_acronyms_and_abbreviations
+// Make sure you are using the ones listed in the coloumn with the name of TLD (Top Level Domain)
  $langTrans = array(
 		'en_EN' => 'English',
 		'de_DE' => 'Deutsch',
 		'es_ES' => 'Español',
+		'fr_FR' => 'Français',
 		'nl_NL' => 'Nederlands',
 		'se_SE' => 'Svenska',
 		'it_IT' => 'Italia',
@@ -67,7 +61,6 @@ $settings['currency'] = "Euro";
 	
 // Advertise start ranges
 // in days
-$adv_range = array( 3,7,14,30,60,90);
-
+$adv_range = array( 0,3,7,14,30,60,90);
 
 ?>
