@@ -1,4 +1,7 @@
 <?php
+session_start();
+// clear all old session variables
+$_SESSION = array();
 
 require_once 'plc.class.php';
 $user = new flexibleAccess();
