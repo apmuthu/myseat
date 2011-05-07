@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.179                        =-= 
-=-= Date:    30.04.2011                   =-= 
-=-= Time:    19:30 GMT                    =-= 
+=-= Version: 0.1791                       =-= 
+=-= Date:    07.05.2011                   =-= 
+=-= Time:    110:22 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,16 +16,14 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.179
+LAST CHANGES in 0.1791
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- New layout for html emails
-- Few adaptions on french translation
-- Bugfix on timecontrol with close time after 24:00
+- New function to move reservations on other dates
+- Bugfix on dayoff settings in outlet form
 
-DATABASE ADD in 0.179
+DATABASE ADD in 0.1791
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-See documentation/database_update.sql for a small database addition
-for table 'properties'.
+No database changes.
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
