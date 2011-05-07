@@ -15,7 +15,7 @@ function array_isearch($value, $array)
 }
 
 // calculate and print select list with intervall times
-function getTimeList($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
+function getTimeList($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0,$required='') 
 { 
 		GLOBAL $availability, $tbl_availability;
 		// calculate after midnight
@@ -49,7 +49,7 @@ function getTimeList($format,$intervall,$field='',$select,$open_time='00:00:00',
 		
 		//echo $value."/".$endtime."/".date('H:i',$endtime)."//"; // error reporting
 		
-		echo"<select name='$field' id='$field' size='1' title=' ' >\n";
+		echo"<select name='".$field."' id='".$field."' size='1' title=' ' ".$required.">\n";
 		echo "<option value='' ";
 		if ($select=='') {
 			echo "selected='selected'";

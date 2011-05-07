@@ -25,7 +25,7 @@
 			<br/><br/>
 			<label><?= _time; ?></label>
 			<p>
-				<? getTimeList($general['timeformat'], $general['timeintervall'],'reservation_time',$row->reservation_time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time']);?>
+				<? getTimeList($general['timeformat'], $general['timeintervall'],'reservation_time',$row->reservation_time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0,'class="required"');?>
 			</p>
 			<label><?= _title; ?></label>
 			<p>
