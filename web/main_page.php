@@ -70,6 +70,13 @@ This file is part of mySeat.
 // ** set todays date
 $today_date = date('Y-m-d');
 
+// check outletID for security
+// prevent GET injection
+$security = querySQL('security_outlet');
+if ( $security < 1 ){
+	header("Location: ../PLC/index.php");
+	exit; //To ensure security
+}
 
 // ** begin page content
 echo "<body>

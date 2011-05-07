@@ -4,6 +4,9 @@
 		$pdate = date($general['dateformat'],strtotime($_SESSION['selectedDate']));
 		$sdate = "";
 		
+		// background color for email
+		$bgcolor = ($general['contactform_color_scheme'] == '') ? "#545454" : $general['contactform_color_scheme'];
+		
 		// Get property details
 		$property = querySQL('property_info');
 		
@@ -104,7 +107,7 @@
 
 
 
-		</head><body style="font-size: 12px; margin: 0; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #555555; width: 100%;" bgcolor="#545454">
+		</head><body style="font-size: 12px; margin: 0; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #555555; width: 100%;" bgcolor="'.$bgcolor.'">
 
 		<!-- WRAPPER TABLE --> 
 		<table cellspacing="0" style="font-size: 12px; line-height: 22px; font-family: Arial, sans-serif; color: #555555; table-layout: fixed;" width="100%" cellpadding="0"><tr><td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" bgcolor="#545454"> 	

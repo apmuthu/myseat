@@ -4,20 +4,25 @@
   <div class="content detailbig content-height">
   <form method="post" action="ajax/process_reservation.php" id="new_reservation_form">
 	<br/>
-	<label><?= _booknum;?></label>
-	<p><span class='bold'><?= $row->reservation_bookingnumber; ?></strong></p>
-	<br/>
-	<label><?= _outlets;?></label>
-	<p><?= $row->outlet_name; ?></p>
-	<label><?= _move_reservation_to;?></label>
-	<p>
-				<? outletList($_SESSION['outletID'],'enabled','reservation_outlet_id'); ?>
-	</p>
-	<br/>
-	<label><?= _date;?></label>
-	<p>
-		<?= date($general['dateformat'],strtotime($row->reservation_date));?>
-	</p>
+			<label><?= _booknum;?></label>
+			<p><span class='bold'><?= $row->reservation_bookingnumber; ?></strong></p>
+			<br/>
+			<label><?= _outlets;?></label>
+			<p><?= $row->outlet_name; ?></p>
+			<label><?= _move_reservation_to;?></label>
+			<p>
+						<? outletList($_SESSION['outletID'],'enabled','reservation_outlet_id'); ?>
+			</p>
+			<br/>
+			<label><?= _date;?></label>
+			<p>
+				<div class="date dategroup">
+					<div class="text" id="datetext"><?= date($general['datepickerformat'],strtotime($row->reservation_date));?></div>
+					<input type="text" id="ev_datepicker"/>
+					<input type="hidden" name="reservation_date" id="event_date" value="<?= date('Y-m-d',strtotime($row->reservation_date));?>"/>
+			    </div>
+			</p>
+			<br/><br/>
 			<label><?= _time; ?></label>
 			<p>
 				<? getTimeList($general['timeformat'], $general['timeintervall'],'reservation_time',$row->reservation_time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time']);?>
@@ -113,7 +118,7 @@
 			</small></p>
 			<br/>
 			<input type="hidden" name="reservation_id" value="<?= $_SESSION['resID'];?>">
-			<input type="hidden" name="reservation_date" value="<?= $row->reservation_date;?>">
+			<!-- <input type="hidden" name="reservation_date" value="<?= $row->reservation_date;?>"> -->
 			<input type="hidden" name="old_outlet_id" value="<?= $row->reservation_outlet_id;?>">
 			<input type="hidden" name="reservation_outlet_id" value="<?= $_SESSION['outletID'];?>">
 			<input type="hidden" name="reservation_bookingnumber" value="<?= $row->reservation_bookingnumber;?>">
@@ -124,10 +129,14 @@
 			<input type="hidden" name="action" value="save_res">
 			</form><!-- end form -->
 		</div></div></div> <!-- end right column -->
+
 <script type="text/javascript" charset="utf-8">
-jQuery(document).ready(function($) {
-	$("#reservation_outlet_id").change(function(){
-	    window.location.href='?resedit=1&outletID=' + this.value;
-	  });
-});
+
+	jQuery(document).ready(function($) {
+		$("#reservation_outlet_id").change(function(){
+		    window.location.href='?resedit=1&outletID=' + this.value;
+		  });
+	});
+
 </script>
+

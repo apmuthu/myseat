@@ -146,10 +146,11 @@ function writeForm($table =''){
 				}
 				if($dayoffs !=''){
 					$dayoffs = substr($dayoffs,0,-1);
+				}
 					$keys[$i] = 'outlet_closeday';
 					$values[$i] = "'".$dayoffs."'";
 					$i++;
-				}
+				
 			}
 		
 		// prepare arrays for database query

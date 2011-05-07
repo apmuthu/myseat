@@ -26,6 +26,8 @@ if($rows){
 		$_SESSION['selOutlet'][$key] = $value;
 	}
 }
+
+
 // get outlet maximum capacity; maybe moved reservation
 $maxC = maxCapacity();
 
@@ -259,7 +261,7 @@ $token = md5(uniqid(rand(), true));
 $_SESSION['token'] = $token;
 
 // after processing reservation, redirect to main page
-header("Location: ../main_page.php?q=1");
+header("Location: ../main_page.php?p=2&selectedDate=".$_SESSION['reservation_date']." ");
 
 exit;
 
