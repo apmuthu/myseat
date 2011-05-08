@@ -69,6 +69,10 @@
 
 					//make each outlet a timeline
 					echo"<h5><a href='main_page.php?p=2&outletID=".$row->outlet_id."'>".$row->outlet_name."</a></h5>";
+					
+					// get outlet maximum capacity
+					$maxC = maxCapacity();
+					
 					include('includes/timeline.inc.php');
 					
 					echo"<br class='cl' /><br/>\n</div>";
