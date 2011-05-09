@@ -21,7 +21,7 @@
 			<!--
 			<li>
 				<a href="#" title="Message">
-					<img src="images/icon_message.png" alt="" class="middle"/>
+					<img src="images/icon_message.png" id="message" alt="message" class="middle tipsy" original-title="New message"/>
 				</a>
 			</li>
 			<li>

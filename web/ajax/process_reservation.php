@@ -247,14 +247,14 @@ if ($_SESSION['token'] == $_POST['token']) {
 			$res_dat = mktime(0,0,0,$m1,$d1,$y1);
 			
 		 } // end while: reservation to store
+			
+			// set back selected date
+			$_SESSION['selectedDate'] = $selectedDate;
 		
 			// *** send confirmation email
 			if ( $_POST['email_type'] != 'no' && $new_id != $_POST['reservation_id']) {
 				include('../classes/email.class.php');
 			}
-			
-			// set back selected date
-			$_SESSION['selectedDate'] = $selectedDate;
 }
 // CSRF - Secure forms with token
 $token = md5(uniqid(rand(), true)); 

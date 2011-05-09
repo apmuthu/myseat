@@ -540,6 +540,18 @@ function querySQL($statement){
 							);
 			return getRowList($result);
 		break;
+		case 'notifications':
+			$result = query("SELECT outlet_name,reservation_guest_name,reservation_time FROM `reservations` 
+							INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
+							WHERE `reservation_hidden` = '0' 
+							AND `property_id` ='%d'
+							AND `reservation_date` = '%s'
+							AND DATE_SUB(NOW(),INTERVAL 1 minute) <= `reservation_timestamp`
+							ORDER BY `reservation_timestamp` ASC
+							LIMIT 3",
+							$_SESSION['property'],date('Y-m-d') );
+			return getRowList($result);
+		break;
 		case 'all_properties':
 			$result = query("SELECT * FROM `properties` ORDER BY name ASC");
 			return getRowList($result);

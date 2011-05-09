@@ -6,7 +6,7 @@ $passbyTime = reservationsByTime('pass');
 
 // Maitre day comment
 if (trim($maitre['maitre_comment_day']) != "" && $_SESSION['page'] == 2 ) {
-	echo "<div class='alert_error'>
+	echo "<div class='alert_tip'>
 	<p class='center margin-bottom-10'><img src='images/icon_info.png' alt='error' class='middle'/>";
 		// maitre comment
 		echo $maitre['maitre_comment_day']."<br>";

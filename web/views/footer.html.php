@@ -17,11 +17,28 @@
 	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
 	<script type="text/javascript" src="js/jquery.tipsy.js"></script>
+	<script type="text/javascript" src="js/jquery.jgrowl-min.js"></script>
 	<script type="text/javascript" src="js/browser.js"></script>
 	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
 	
+	
 	<script type="text/javascript">
+	
+	function callNotifications() {
+      $.ajax({
+               method: 'get',
+                  url : 'ajax/notify.php',
+                  dataType : 'text',
+                  success: 
+					function (text) { 
+						if(text.length > 1){
+							$.jGrowl(text, { sticky: true, theme: 'manilla' });
+						} 
+						}
+             });
+	}
+	
 	$(document).ready(function(){
 		
 		// Preload images
@@ -103,6 +120,10 @@
 			dateFormat: '<?= $general['datepickerformat'];?>',
 			regional: '<?= substr($_SESSION['language'],0,2);?>'
 		});
+		
+		// NOTIFICATION: Check periodically for new reservations
+		// and notify every 1 minute
+		var holdTheInterval = setInterval(callNotifications, 35000);
 		
 		<?php if($_SESSION['page']=='3'):?>
 			/* Data Graph */

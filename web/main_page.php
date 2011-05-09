@@ -1,4 +1,4 @@
-<?
+<?php
 session_start();
 //error_reporting(E_ALL & ~E_NOTICE);
 //ini_set("display_errors", 1);
@@ -77,7 +77,7 @@ if ( $security < 1 ){
 	header("Location: ../PLC/index.php");
 	exit; //To ensure security
 }
-
+//echo "<pre>".print_r($_SESSION)."</pre>";
 // ** begin page content
 echo "<body>
 	<!-- Begin control panel wrapper -->

@@ -2,7 +2,8 @@
 		
 		// Initiate dates
 		$pdate = date($general['dateformat'],strtotime($_SESSION['selectedDate']));
-		$sdate = "";
+		$sdate = '';
+		$txt_date = $pdate;
 		
 		// background color for email
 		$bgcolor = ($general['contactform_color_scheme'] == '') ? "#545454" : $general['contactform_color_scheme'];
@@ -10,8 +11,9 @@
 		// Get property details
 		$property = querySQL('property_info');
 		
-	if ( $_POST['recurring_dbdate']!="" && $_POST['recurring_dbdate']>$_SESSION['selectedDate'] ) {
+	if ( $_POST['recurring_dbdate']!="" && strtotime($_POST['recurring_dbdate'])>strtotime($_SESSION['selectedDate']) ) {
 		$sdate = date($general['dateformat'],strtotime($_POST['recurring_dbdate']));
+		$txt_date .= " - ".$sdate;
 	}
 
 	// Email sender & receiver
@@ -63,12 +65,6 @@
 				$salut = _dear_mr." ".$_POST['reservation_guest_name'];	
 		}
 	}
-	
-	// prepare date/datespan
-		$txt_date = $pdate;
-	if ($sdate!='' && $pdate!=$sdate) {
-		$txt_date = $pdate." - ".$sdate;
-	}
 
 	// prepate subject of email
         if ( $_POST['email_type'] == 'en' ) {
@@ -115,7 +111,7 @@
 
 			<br>	
 
-			<p align="center" style="font-size: 12px; margin: 0 0 12px; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #999999; text-align: center;">Email not displaying correctly? <a href="#" style="text-decoration: underline; color: #999999;">View it in your browser.</a></p>
+			<p align="center" style="font-size: 12px; margin: 0 0 12px; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #999999; text-align: center;"></p>
 
 		<!-- ////////////////////////////////// START MAIN CONTENT WRAP ////////////////////////////////// -->	
 
