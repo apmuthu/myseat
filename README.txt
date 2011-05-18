@@ -16,10 +16,10 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.1791
+LAST CHANGES in 0.1793
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- New function to move reservations on other dates
-- Bugfix on dayoff settings in outlet form
+- Spanish language at contact form
+- Small bugfixes
 
 DATABASE ADD in 0.1791
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
