@@ -200,6 +200,7 @@ function writeForm($table =''){
 				 && $key != "propertyID"
 				 && $key != "token"
 				 && $key != "verify"
+				 && $key != "PHPSESSID"
 				 && substr($key,0,15) != "outlet_closeday"){
 					
 					// all other 'normal fields'

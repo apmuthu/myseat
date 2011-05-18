@@ -490,7 +490,7 @@ function yearDropdown($name='year', $selected=0, $start_year = FALSE, $end_year 
             $dd .= 'selected="selected" ';
     }
 	
-	$dd .= '>--</option>';
+	$dd .= '>&infin;</option>';
 
     for ($i = $end_year; $i > $start_year; $i -= 1) {
 	
