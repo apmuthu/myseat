@@ -427,7 +427,7 @@ blockquote cite {
 }
 /*//   Language Navigation   //*/
 .langnav {
-	float:right; font-size: 0.7em; margin-top:8px;	
+	float:right; font-size: 8px !important; margin-top:8px;	
 }
 
 /*////   General Styling   ////*/
