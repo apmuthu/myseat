@@ -54,7 +54,7 @@ if ($_SESSION['page'] == 7){
 				// only allow to create roles smaller than your own
 				foreach($roles as $key => $value) {
 						//build dropdown
-						if($key>$_SESSION['role']){
+						if($key>=$_SESSION['role']){
 							echo "<option value='".$key."' ";
 							echo ($key==$role) ? "selected='selected'" : "";
 							echo ">".$value."</option>\n";

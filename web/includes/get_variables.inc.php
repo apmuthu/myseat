@@ -42,11 +42,20 @@ $token = md5(uniqid(rand(), true));
 $_SESSION['token'] = $token;
 
 // id of outlet
+if (isset($_GET['outletID'])) {
+	$_SESSION['outletID'] = (int)$_GET['outletID'];
+}else if ( !$_SESSION['outletID'] ){
+	$_SESSION['outletID'] = querySQL('web_standard_outlet');
+}
+
+/*
 if (!$_SESSION['outletID']) {
 	$_SESSION['outletID'] = ($_GET['outletID']) ? (int)$_GET['outletID'] : querySQL('standard_outlet');
 }else if ($_GET['outletID']) {
 	$_SESSION['outletID'] = (int)$_GET['outletID'];
 }
+*/
+
 if ($_POST['reservation_outlet_id']) {
 	$_SESSION['outletID'] = $_POST['reservation_outlet_id'];
 }
@@ -119,24 +128,26 @@ $_SESSION['selectedDate_user']   = buildDate($general['dateformat'],$sd,$sm,$sj)
 $_SESSION['selectedDate_saison'] = $sm.$sd;
 $_SESSION['selectedDate_year']	 = $sj;
 
-// Check if selected date is within open times of outlet
-if ( !( 
-	($_SESSION['selOutlet']['saison_start']<=$_SESSION['selOutlet']['saison_end'] 
-	 && $_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
-	 && $_SESSION['selectedDate_saison']<=$_SESSION['selOutlet']['saison_end']) 
-	 )) {
-		// if not, go to standard outlet
-		if(	$_SESSION['page'] == 2){
-		$_SESSION['outletID'] = querySQL('standard_outlet');
-		}
-	}
 
 // +++ memorize selected outlet details +++
 // ++++++++++++++++++++++++++++++++++++++++
-$rows = querySQL('db_outlet_info');
-if($rows){
-	foreach ($rows as $key => $value) {
-		$_SESSION['selOutlet'][$key] = $value;
+// only load when outlet is changed
+if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet']['outlet_id'] ) {
+	$rows = querySQL('db_outlet_info');
+	if($rows){
+		foreach ($rows as $key => $value) {
+			$_SESSION['selOutlet'][$key] = $value;
+		}
+}
+
+// Check if selected date is within open times of outlet
+if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
+	 && $_SESSION['selectedDate_saison']<=$_SESSION['selOutlet']['saison_end'])
+	) {
+		// if not, go to standard outlet
+		if(	$_SESSION['page'] == 2){
+		  $_SESSION['outletID'] = querySQL('standard_outlet');
+		}
 	}
 	
 		// Set daily outlet open/close time
@@ -209,11 +220,13 @@ if ($_GET['resedit']==1) {
 	$resedit = 'OFF';
 }
 
+// package code
+$_SESSION['pk_code'] = ( isset($_GET['pk']) ) ? $_GET['pk'] : 'CXL';
+
 // searchquery
 $searchquery = '';
 if($_POST['searchquery']){
 	$searchquery = $_POST['searchquery']."%";
 	$q = 4;
 }
-
 ?>

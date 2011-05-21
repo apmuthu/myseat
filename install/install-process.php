@@ -74,6 +74,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `outlets` (
   `outlet_id` int(11) NOT NULL AUTO_INCREMENT,
   `outlet_name` varchar(50) DEFAULT NULL,
   `outlet_description` text,
+  `outlet_description_en` text,
   `cuisine_style` varchar(255) NOT NULL,
   `property_id` tinyint(12) DEFAULT NULL,
   `outlet_max_capacity` int(5) DEFAULT '0',

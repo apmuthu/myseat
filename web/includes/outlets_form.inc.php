@@ -21,6 +21,11 @@ if ($_SESSION['button']==2) {
 	<label><?= _description;?></label>
 	<p>
 		<textarea name="outlet_description" id="outlet_description" rows="5" cols="35" class="required width-97" title=' '><?= trim($row->outlet_description);?></textarea>
+	</p>
+	<br/>
+	<label><?= _description." "._international;?></label>
+	<p>
+		<textarea name="outlet_description_en" id="outlet_description_en" rows="5" cols="35" class="required width-97" title=' '><?= trim($row->outlet_description_en);?></textarea>
 	</p>	
 	<label><?= _confirmation_email;?></label>
 	<p>

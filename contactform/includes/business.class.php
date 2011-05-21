@@ -155,7 +155,6 @@ function defineOffDays(){
 		}else{
 			$date_string .= "'".date('Y-m-d',$day)."',";
 		}
-		
 		//add 1 day
 		$day = $day + 86400;
 	}

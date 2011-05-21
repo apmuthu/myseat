@@ -31,14 +31,18 @@
 	//----------------------------
 
 	// The page title -- "Select your prefered restaurant"
-	$lang["title"] = '<strong>Online</strong> Reservation';
+	$lang["title"] = 'Table reservation';
 
 	// A line of text before the contact form -- "<h3>Make an instant reservation now!</h3>"
-	$lang["contact_form_intro"] = '<p>Make an instant reservation now!
-	<br/>For private parties, large bookings or all other queries please call us.</p>';
+	$lang["contact_form_intro"] = '<p>Dear Guest,<br/><br/> 
+	Here you have the possibility to make a table reservation online.
+	After completing the process, you will receive a confirmation Email promptly.  
+	If the reservation is for an event or for more than %s people is wished, please contact us
+	directly.
+	</p>';
 
 	// Default text of the contact form -- "Name or Group Name"
-	$lang["contact_form_name"] = 'Name or Group Name';
+	$lang["contact_form_name"] = 'First Name, Name';
 
 	// Default text of the contact form -- "E-mail address"
 	$lang["contact_form_email"] = 'E-mail address';
@@ -50,19 +54,19 @@
 	$lang["contact_form_advertise"] = 'I would like to receive informations by email.';
 
 	// Default text of the contact form -- "Notes"
-	$lang["contact_form_notes"] = 'Reservation notes';
+	$lang["contact_form_notes"] = 'Important details (allergies, wishes)';
 
 	// Default text of the contact form -- "Restaurant"
-	$lang["contact_form_restaurant"] = 'Restaurant';
+	$lang["contact_form_restaurant"] = 'Please choose your Restaurant:';
 
 	// Default text of the contact form -- "Time"
 	$lang["contact_form_time"] = 'Time';
 
 	// Default text of the contact form -- "Phone"
-	$lang["contact_form_phone"] = 'Phone';
+	$lang["contact_form_phone"] = 'Telephone';
 
 	// Default text of the contact form -- "Number of persons"
-	$lang["contact_form_pax"] = 'Number of persons';
+	$lang["contact_form_pax"] = 'Number of people';
 
 	// Default text of the contact form -- "Title"
 	$lang["contact_form_title"] = 'Title';
@@ -71,7 +75,7 @@
 	$lang["contact_form_captcha"] = 'Security question';
 
 	// The 'Send' button -- "Book"
-	$lang["contact_form_send"] = 'Book';
+	$lang["contact_form_send"] = 'Reserve table';
 
 	// The 'Back' button -- "Back"
 	$lang["contact_form_back"] = 'Back';
@@ -114,7 +118,7 @@
 	$lang["email_subject"] = 'Reservation confirmation for';
 
 	// The page title -- "Reservation</strong> Process"
-	$lang["conf_title"] = '<strong>Reservation</strong> Process';
+	$lang["conf_title"] = 'Table reservation';
 
 	// The page title -- "Storno</strong> Cancel your reservation"
 	$lang["cxl_title"] = '<strong>Cancel</strong> your reservation';
@@ -135,17 +139,9 @@
 	// FOOTER
 	//----------------------------
 
-	// The content on the first footer column
-	$lang["footer_one"] =  '<h3><a href="index.php">Place Reservation</a></h3>
-	<p></p>';
+	// The content on the first footer 
+	$lang["footer_one"] =  '<p><small>If there are any further questions or special requests, please do not hesitate to contact us<br/>under telephone number %s or via Email to <a href="mailto:%s">%s</a>.</small></p>';
 
-	// The content on the second footer column
-	$lang["footer_two"] =  '<h3><a href="cancel.php">Cancel your reservation</a></h3>
-	<p></p>';
-
-	// The content on the third footer column
-	$lang["footer_three"] = '<h3><a href="'.$_SERVER['DOCUMENT_ROOT'].'">Back to Homepage</a></h3>
-	<p></p>';
 
 	//----------------------------
 	// MINI-FOOTER

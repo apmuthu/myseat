@@ -29,7 +29,7 @@
 	//---------------------------- 
  
 	// The page title -- "Select your preferred restaurant"
-	$lang["title"] = '<strong>Online</strong> Réservation'; 
+	$lang["title"] = 'Online Réservation'; 
  
 	// A line of text before the contact form -- "<h3>Make an instant reservation now!</h3>"
 	$lang["contact_form_intro"] = '<p>Effectuez une reservation instantanée 
@@ -132,19 +132,12 @@
 	// Day off error message 
 	$lang["error_dayoff"] = 'Le restaurant ne peut pas être réservé ce jour-là.'; 
 	
-	
-	//---------------------------- 
-	// FOOTER 
-	//---------------------------- 
- 
-	// The content on the first footer column 
-	$lang["footer_one"] =  '<h3><a href="index.php">Effectuer Réservation</a></h3><p></p>'; 
- 
-	// The content on the second footer column 
-	$lang["footer_two"] =  '<h3><a href="cancel.php">Annulez votre réservation</a></h3><p></p>'; 
- 
-	// The content on the third footer column 
-	$lang["footer_three"] = '<h3><a href="'.$_SERVER['DOCUMENT_ROOT'].'">Retour à la page d’accueil</a></h3><p></p>'; 
+	//----------------------------
+	// FOOTER
+	//----------------------------
+
+	// The content on the first footer 
+	$lang["footer_one"] =  "<p><small>S'il ya d'autres questions ou demandes spéciales, s'il vous plaît n'hésitez pas à<br/>nous contacter au numéro de téléphone %s ou par courriel à <a href='mailto:%s'>%s</a>.</small></p>";
 
  
 	//---------------------------- 

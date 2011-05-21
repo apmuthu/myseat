@@ -72,12 +72,15 @@ $today_date = date('Y-m-d');
 
 // check outletID for security
 // prevent GET injection
+/*
 $security = querySQL('security_outlet');
 if ( $security < 1 ){
 	header("Location: ../PLC/index.php");
 	exit; //To ensure security
 }
+*/
 //echo "<pre>".print_r($_SESSION)."</pre>";
+
 // ** begin page content
 echo "<body>
 	<!-- Begin control panel wrapper -->
@@ -88,6 +91,9 @@ echo "<body>
 	
 	// ** main menu
 	include('views/mainmenu.part.php');
+	
+	// ** debugging
+	//echo "<pre>".print_r($_SESSION)."</pre>";
 	
 	// ** content
 	switch($_SESSION['page']){

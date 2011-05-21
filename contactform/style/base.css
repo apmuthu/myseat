@@ -22,7 +22,8 @@ h1#logo {
 	display:inline;
 	height:92px;
 	text-indent:-4000px;
-	width:260px;
+	margin-left: 338px;
+	width:290px;
 }
 h1#logo a {
 	display:block;
@@ -190,6 +191,9 @@ img.fr {
 .txt-big {
 	font-size:120%
 }
+.txt-xxlbig {
+	font-size:160%
+}
 .txt-light {
 	color:#4d4d4d;
 }
@@ -211,6 +215,10 @@ img.fr {
 	z-index:100;
 	margin-left:11px;
 	padding-bottom:5px;
+}
+.nav li {
+	list-style: none;
+	z-index:100;
 }
 /* main level link */
 #nav a {
@@ -347,7 +355,7 @@ footer li a:hover {
 }
 #page {
 	background: #fff;
-	color:#191919;
+	color:#474646;
 	border:1px solid #d9d9d9;
 	padding:40px;
 	position:relative;
@@ -427,7 +435,10 @@ blockquote cite {
 }
 /*//   Language Navigation   //*/
 .langnav {
-	float:right; font-size: 8px !important; margin-top:8px;	
+	float:right;
+	text-align:right; 
+	font-size: 0.8em !important; 
+	margin-top:8px;	
 }
 
 /*////   General Styling   ////*/

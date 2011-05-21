@@ -79,6 +79,12 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	
 	// get property info for logo path
 	$prp_info = querySQL('property_info');
+	
+	if (strtolower(substr($prp_info['website'],0,4)) =="http") {
+		$website = $prp_info['website'];
+	}else{
+		$website = "http://".$prp_info['website'];
+	}
 
 	// selected date
     if ($_GET['selectedDate']) {
@@ -174,39 +180,36 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	<div id="wrapper"> 
 	    <!-- logo -->
 	    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
-		<a href="index.php?p=2">mySeat</a>
+		<a href="<? echo $website; ?>">mySeat</a>
 		</h1>
 	    <nav>
-			<div class='langnav'>
-				<div><strong><?php lang("change_language"); ?></strong></div>		
+			<div class='langnav'>		
 				<ul class="nav">
-					<?php language_navigation(); ?>
+					<?php language_navigation(substr($general['language'],0,2)); ?>
 				</ul>
 			</div>
-	      <ul id="nav">
-	        <li><a href="<?= $home_link;?>">Home</a></li>
-	        <li <? if($p == 2){echo'class="current"';} ?> ><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a>
-	      </ul>
-	      <br class="cl" />
+			<div class='langnav'>
+				<?= strtoupper($prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone']);?>
+				<br/><br/><strong><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
+			</div>
 	    </nav>
+
 	    <br class="cl" />
 	  </header>
 	<!-- end header -->
 	<!-- page container -->
 	  <div id="page"> 
 	    <!-- page title -->
-	    <h2 class="ribbon full"><?= $lang["conf_title"];?><span></span> </h2>
-	    <div class="triangle-ribbon"></div>
+	    <h2><?= $lang["conf_title"];?><span></span> </h2>
 	    <br class="cl" />
 	    
 	    <div id="page-content" class="container_12">
 		
 		<!-- page content goes here -->	
 
-
-			<?php lang("contact_form_intro"); ?>
+			<br/> 
+			<?php echo sprintf($lang["contact_form_intro"],$general['max_menu']); ?>
 			<br/>
-			<h3><?= $outlet_name." - ".date($general['dateformat'],strtotime($_SESSION['selectedDate'])); ?></h3>
 			
 			<?php
 				// Generate captcha fields
@@ -217,114 +220,49 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 			?>
 
 		<form action="process_booking.php" method="post" id="contactForm">
-		    
-		    <!-- Datepicker -->
-		    <label> </label><div id="bookingpicker"></div>
-		    <input type="hidden" name="dbdate" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
-      
-		    <input type="hidden" name="reservation_date" value="<?= $_SESSION['selectedDate'];?>">
-		    <input type="hidden" name="recurring_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
-            
-		    <!-- END datepicker -->
-		    <div><br/>
-			<?php
-			
-			// MESSAGES
-			//Day off error message
-			$day_off = getDayoff();
-            if ($outlet_result == 1) {
-				echo "<div class='alert_error'><p><img src='../web/images/icon_error.png' alt='error' class='middle'/>&nbsp;&nbsp;";
-				echo lang('error_dayoff')."<br>";
-				echo "</p></div>";
-			}
-
-			// Special event advertise
-			$events_advertise = '';
-			$events_advertise = querySQL('event_advertise');
-			// Special event of the day and outlet
-			$special_events = '';
-			$special_events = querySQL('event_data_day');
-			
-			if ( $events_advertise || $special_events ) {
-				if ( $special_events ) {
-					echo "<div class='alert_info'>";
-					$advertise = $special_events;
-					// special events today at outlet
-							//echo "<div class='ads'>"._ads."</div>";
-								// special events
-								foreach($advertise as $row) {
-									echo "
-									<img src='../web/images/icon_cutlery.png' alt='special' class='middle'/>
-									<span class='bold'>
-									<a href='".$_SERVER['SCRIPT_NAME']."?outletID=".$row->outlet_id."&selectedDate=".$row->event_date."'>".
-									_today.": ".$row->subject."</a></span>
-									<p>".$row->description."<br/><cite><span class='bold'>
-									".date($general['dateformat'],strtotime($row->event_date)).
-									"</span> ".formatTime($row->start_time,$general['timeformat']).
-									" - ".formatTime($row->end_time,$general['timeformat'])." | ".
-									_ticket_price.": ".number_format($row->price,2).
-									"</cite></p>";
-									if( key($row) != count($events_advertise)-1 ) {
-										echo"<br/>";
-									} 
-								}
-							echo "</div>";
-				}else{
-					echo "<div class='alert_ads'>";
-					$advertise = $events_advertise;
-					// special events advertisement
-							echo "<div class='ads'>"._ads."</div>";
-								// special events
-								foreach($advertise as $row) {
-									echo "
-									<img src='../web/images/icon_cutlery.png' alt='special' class='middle'/>
-									<span class='bold'>
-									<a href='".$_SERVER['SCRIPT_NAME']."?outletID=".$row->outlet_id."&selectedDate=".$row->event_date."'>".
-									_sp_events.": ".date($general['dateformat'],strtotime($row->event_date))." ".
-									$row->subject."</a> | ".$row->outlet_name."</span>
-									<p>".$row->description."<br/><cite><span class='bold'>
-									".date($general['dateformat'],strtotime($row->event_date)).
-									"</span> ".formatTime($row->start_time,$general['timeformat']).
-									" - ".formatTime($row->end_time,$general['timeformat'])." | ".
-									_ticket_price.": ".number_format($row->price,2).
-									"</cite></p>";
-									if( key($row) != count($events_advertise)-1 ) {
-										echo"<br/>";
-									} 
-								}
-							echo "</div>";
-				}
-					
-			}
-?>
-			<br/><br/>	
-<?			
+		  <div>
+<?php	
 			// Restaurant dropdown
 			$num_outlets = 0;
 			if ($_SESSION['single_outlet'] == 'OFF') {
 				$num_outlets = querySQL('num_outlets');
 			}
-			
+				echo"<p>".lang("contact_form_restaurant")."</p><br/><h3><div>";
 				if ($num_outlets>1) {
-					echo"<label>RESTAURANT</label><br/><div class='txt-big'>";
-					$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
 					echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
+					$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
 				} else{
-					echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'><br/><br/>";
+					echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>".$outlet_name;
 				}
 			
+				echo " - ".date($general['dateformat'],strtotime($_SESSION['selectedDate']))."</h3>";
+		    // Outlet description
+			if ($language == 'en') {
+				echo $_SESSION['selOutlet']['outlet_description_en']."<br/>";
+			}else{
+				echo $_SESSION['selOutlet']['outlet_description']."<br/>";
+			}
 			?>
-			
-		    </div>
+		</div>
+		<br/><br/><br/>
+			 <!-- Datepicker -->
+			    <div id="bookingpicker"></div>
+			    <input type="hidden" name="dbdate" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+
+			    <input type="hidden" name="reservation_date" value="<?= $_SESSION['selectedDate'];?>">
+			    <input type="hidden" name="recurring_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+
+			    <!-- END datepicker -->
+			<br/>
 		    <div>
-			<label><?php lang("contact_form_time"); ?>*</label><br/>
+			<label><?php lang("contact_form_time"); ?>*</label>
 			<?php
 			    timeList($general['timeformat'], $general['timeintervall'],'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
 			?>
 		    </div>
 		  	<br/>
 		    <div>
-			<label><?php lang("contact_form_pax"); ?>*</label><br/>
+			<label><?php lang("contact_form_pax"); ?>*</label>
                         <?php
 							//personsList(max pax before menu , standard selected pax);
 						    personsList($general['max_menu'],2);
@@ -350,7 +288,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 			<br/>
 			<br/>
 		    <div>
-			<label><?php lang("contact_form_title"); ?></label><br/>
+			<label><?php lang("contact_form_title"); ?></label>
 			<?php
 				$title = '';
 				 if ($me) {
@@ -365,12 +303,12 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 		    </div>
 		    <br/>
 		    <div>
-			<label><?php lang("contact_form_name"); ?>*</label><br/>
+			<label><?php lang("contact_form_name"); ?>*</label>
                <input type="text" name="reservation_guest_name" class="form required" id="reservation_guest_name" value="<?php if($me['last_name']){echo $me['last_name'].", ".$me['first_name'];} ?>" />
                     </div>
 		    <br/>
             <div>
-			<label><?php lang("contact_form_email"); ?>*</label><br/>
+			<label><?php lang("contact_form_email"); ?>*</label>
               <input type="text" name="reservation_guest_email" class="form required email" id="reservation_guest_email" value="<?php echo $me['email']; ?>" />
             </div>
 		    <br/>
@@ -380,19 +318,21 @@ $_SESSION['propertyID'] = $_SESSION['property'];
                     </div>
 		    <br/>
 		    <div>
-			<label><?php lang("contact_form_phone"); ?></label><br/>
-                        <input type="text" name="reservation_guest_phone" class="form" id="reservation_guest_phone" value="" />
+			<label><?php lang("contact_form_phone"); ?></label>
+                        <input type="text" name="reservation_guest_phone" class="form required" id="reservation_guest_phone" value="" />
                     </div>
 		    <br/>
                     <div>
-			<label><?php lang("contact_form_notes"); ?></label><br/>
+			<label><?php lang("contact_form_notes"); ?></label>
                 	<textarea cols="50" rows="10" name="reservation_notes" class="form" id="reservation_notes" ></textarea>
                     </div>
 		    <br/>
-			<?php lang("security_question"); ?>
+			
 		    <div class="side">
                 	<div class="captchaContainer">
                 		<label for="captcha">
+							<?php lang("security_question"); ?>
+							<br class="cl" />
 		            		<span id="captchaField1" class="captchaField"><?php echo $captchaField1; ?></span>
 		            		<input type="hidden" name="captchaField1" value="<?php echo $captchaField1; ?>"/>
 
@@ -429,9 +369,12 @@ $_SESSION['propertyID'] = $_SESSION['property'];
                 ?>	
                 </div>
 		</form>
-
+		<br/>
+		<br class="cl" />
 	    <br class="cl" />
-	    <br class="cl" />		
+			<div class='tc'>
+				<?php echo sprintf($lang["footer_one"],$prp_info['phone'],$prp_info['email'],$prp_info['email']); ?>
+			</div>		
 		</div></div><!-- page content end -->
 			
   <!-- Footer Start -->

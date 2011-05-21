@@ -12,8 +12,13 @@
 	<div class="account">
 		<div class="detail">
 			<?
+			if (!$_SESSION['prp_name']) {
+				$_SESSION['prp_name'] = querySQL('db_property');
+			}
+			
+			
 			if($this_page != "property"){
-				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href=''><span class='bold'> ".$_SESSION['u_name']."</span></a>, ".$roles[$_SESSION['role']]." - ".querySQL('db_property');
+				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href=''><span class='bold'> ".$_SESSION['u_name']."</span></a>, ".$roles[$_SESSION['role']]." - ".$_SESSION['prp_name'];
 			}
 			?>
 		</div>

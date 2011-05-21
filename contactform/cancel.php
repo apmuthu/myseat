@@ -82,28 +82,30 @@ $prp_info = querySQL('property_info');
 </head>
 <body>
 	<!-- start header -->
+	<br/>
 	<div id="wrapper"> 
-	  <header> 
-	     <!-- logo -->
-		    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
-			<a href="index.php?p=2">mySeat</a>
-			</h1>
-	    <!-- nav -->
+	    <!-- logo -->
+	    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
+		<a href="<? echo $website; ?>">mySeat</a>
+		</h1>
 	    <nav>
-	      <ul id="nav">
-	        <li><a href="index.php"><?= $lang["contact_form_back"];?></a></li>
-	        <li <? if($p == 2){echo'class="current"';} ?> ><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a>
-	      </ul>
-	      <br class="cl" />
+			<div class='langnav'>		
+				<ul class="nav">
+					<?php language_navigation(substr($general['language'],0,2)); ?>
+				</ul>
+			</div>
+			<div class='langnav'>
+				<?= strtoupper($prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone']);?>
+				<br/><br/><strong><a href="index.php"><?= $lang["contact_form_back"];?></a> | <a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
+			</div>
 	    </nav>
+
 	    <br class="cl" />
 	  </header>
 	<!-- end header -->
 	<!-- page container -->
 	  <div id="page"> 
 	    <!-- page title -->
-	    <h2 class="ribbon full"><?= $lang["cxl_title"];?> <span></span> </h2>
-	    <div class="triangle-ribbon"></div>
 	    <br class="cl" />
 	    
 	    <div id="page-content" class="container_12">

@@ -109,7 +109,7 @@ $labelpie = array();
 	</div>
 	<div class="content">
 		<h1 class="stats_header_text">
-			<?= _statistics." "._for_." ".strftime("%B",strtotime($_SESSION['selectedDate']))." "._for_." ".querySQL('db_outlet');?>
+			<?= _statistics." "._for_." ".strftime("%B",strtotime($_SESSION['selectedDate']))." "._for_." ".$_SESSION['selOutlet']['outlet_name'];?>
 		</h1>
 		<table id="numbers" class="data center" cellpadding="0" cellspacing="20">
 			<tbody>

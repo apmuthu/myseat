@@ -43,7 +43,7 @@
 			<div class="dategroup_name">
 				<a href="?selectedDate=<?= buildDate($settings['dbdate']); ?>">
 					<? 
-					echo querySQL('db_outlet').
+					echo $_SESSION['selOutlet']['outlet_name'].
 					" - ".strftime("%A",strtotime($_SESSION['selectedDate'])).
 					" , ".date($general['dateformat'],strtotime($_SESSION['selectedDate'])); 
 					?>

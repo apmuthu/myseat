@@ -31,7 +31,7 @@
 	//----------------------------
 	
 	// The page title -- "Select your prefered restaurant"
-	$lang["title"] = '<strong>Online</strong> Reservering';
+	$lang["title"] = 'Online Reservering';
 	
 	// A line of text before the contact form -- "<h3>Get your table.Make an instant reservation now!</h3>"
 	$lang["contact_form_intro"] = '<p>Boek nu uw tafel en reserveer nu direct!<br/>
@@ -134,18 +134,11 @@
 	//----------------------------
 	// FOOTER
 	//----------------------------
-	
-	// The content on the first footer column
-	$lang["footer_one"] =  '<h3><a href="index.php">Plaats uw reservering</a></h3>
-	<p></p>';
-							
-	// The content on the second footer column
-	$lang["footer_two"] =  '<h3><a href="cancel.php">Annuleer uw reservering</a></h3>
-	<p></p>';
-							
-	// The content on the third footer column
-	$lang["footer_three"] = '<h3><a href="'.$_SERVER['DOCUMENT_ROOT'].'">Terug naar de beginpagina</a></h3>
-	<p></p>';
+
+	// The content on the first footer 
+	$lang["footer_one"] =  '<p><small>Als er nog vragen of speciale wensen, aarzel dan niet om contact met ons<br/>op onder telefoonnummer %s of via E-mail <a href="mailto:%s">%s</a>.</small></p>';
+
+
 	
 	//----------------------------
 	// MINI-FOOTER

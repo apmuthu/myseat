@@ -15,6 +15,10 @@
 	<label><?= _description;?></label>
 	<p>	 	 	 	 	 	 	 
 		<?= trim(utf8_encode($row->outlet_description));?>
+	</p>
+	<label><?= _description." "._international;?></label>
+	<p>	 	 	 	 	 	 	 
+		<?= trim(utf8_encode($row->outlet_description_en));?>
 	</p>	
 	<label><?= _confirmation_email;?></label>
 	<p>

@@ -1,5 +1,4 @@
 <!-- Begin reservation table data -->
-
 <table class="global resv-table" cellpadding="0" cellspacing="0">
 	<thead>
 	    <tr <? if($waitlist){echo"class='waitlist-header'";} ?>>
@@ -31,6 +30,9 @@
 	</thead>
 	<tbody>
 		<?
+		// Clear reservation variable
+		$reservations ='';
+		
 		if ($_SESSION['page'] == 1) {
 			$reservations =	querySQL('all_reservations');
 		}else{

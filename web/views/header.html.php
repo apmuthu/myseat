@@ -1,23 +1,19 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="cache-control" content="no-cache">
-<meta http-equiv="pragma" content="no-cache"> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
-<meta http-equiv="X-UA-Compatible" content="IE=8" />
- 
+<head> 
 <!-- Website Title --> 
 <title><?= $general['app_name'];?></title>
 
 <!-- Meta data for SEO -->
-<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
-<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
-<meta name="robots" content="all,follow" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+<meta http-equiv="X-UA-Compatible" content="IE=8" />
+<meta name="robots" content="follow,index,no-cache" />
 <meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
 <meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
 <meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management, table planner, restaurant table planner, table management, hotel" />
-
+<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
+<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
 
 <!-- Template stylesheet -->
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>

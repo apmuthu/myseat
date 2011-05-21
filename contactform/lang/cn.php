@@ -31,7 +31,7 @@
 	//----------------------------
 
 	// The page title -- "Select your prefered restaurant"
-	$lang["title"] = '<strong>线上</strong> 预约';
+	$lang["title"] = '线上 预约';
 
 	// A line of text before the contact form -- "<h3>Make an instant reservation now!</h3>"
 	$lang["contact_form_intro"] = '<p><strong>线上即时预约!
@@ -135,17 +135,9 @@
 	// FOOTER
 	//----------------------------
 
-	// The content on the first footer column
-	$lang["footer_one"] =  '<h3><a href="index.php">提交预约</a></h3>
-	<p></p>';
+	// The content on the first footer 
+	$lang["footer_one"] =  '<p><small>If there are any further questions or special requests, please do not hesitate to contact us<br/>under telephone number %s or via Email to <a href="mailto:%s">%s</a>.</small></p>';
 
-	// The content on the second footer column
-	$lang["footer_two"] =  '<h3><a href="cancel.php">取消预约</a></h3>
-	<p></p>';
-
-	// The content on the third footer column
-	$lang["footer_three"] = '<h3><a href="'.$_SERVER['DOCUMENT_ROOT'].'">返回首页</a></h3>
-	<p></p>';
 
 	//----------------------------
 	// MINI-FOOTER

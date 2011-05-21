@@ -63,9 +63,11 @@ function querySQL($statement){
 		break;
 		case 'standard_outlet':
 			$result = query("SELECT outlet_id FROM `outlets` 
-							WHERE `property_id` ='%d' 
-							AND `saison_year` = 0
-							ORDER BY outlet_id LIMIT 1",$_SESSION['property']);
+							WHERE `property_id` = '%d' 
+							AND ( `saison_year` = 0 OR `saison_year` = YEAR(NOW()) )
+							AND saison_start > '%d' 
+							AND saison_end > '%d' 
+							ORDER BY outlet_id LIMIT 1",$_SESSION['property'],$_SESSION['selectedDate_saison'],$_SESSION['selectedDate_saison']);
 			return getResult($result);
 		break;
 		case 'web_standard_outlet':
@@ -111,7 +113,8 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'db_outlets_web':
-			$result = query("SELECT * FROM `outlets` 
+			$result = query("SELECT outlet_id, outlet_name, outlet_description, cuisine_style, saison_start, saison_end 
+							FROM `outlets` 
 							WHERE ( `saison_year` = 0 OR `saison_year` = '%d' )
 							AND `property_id` ='%d'
 							AND `webform` = '1'
@@ -119,14 +122,20 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'db_all_outlets':
-			$result = query("SELECT * FROM `outlets` 
+			$result = query("SELECT outlet_id, outlet_name, outlet_description, cuisine_style, 
+							outlet_max_capacity, outlet_max_tables, outlet_open_time, outlet_close_time, 
+							saison_start, saison_end, saison_year, webform, avg_duration 
+							FROM `outlets` 
 							WHERE `property_id` ='%d' 
 							AND ( `saison_year` = 0 OR `saison_year` = '%d' )
 							ORDER BY saison_year ASC, outlet_name ASC",$_SESSION['property'], $_SESSION['selectedDate_year']);
 			return getRowList($result);
 		break;
 		case 'db_all_outlets_old':
-			$result = query("SELECT * FROM `outlets` 
+			$result = query("SELECT  outlet_id, outlet_name, outlet_description, cuisine_style, 
+							outlet_max_capacity, outlet_max_tables, outlet_open_time, outlet_close_time, 
+							saison_start, saison_end, saison_year, webform, avg_duration 
+							FROM `outlets` 
 							WHERE `property_id` ='%d' 
 							AND `saison_year` < '%d'
 							AND `saison_year` != 0
@@ -134,13 +143,35 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'db_outlet_info':
-			$result = query("SELECT * FROM `outlets` 
+			$result = query("SELECT outlet_id, outlet_name, outlet_description, outlet_description_en,	 
+						cuisine_style, property_id, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
+						outlet_close_time, outlet_timestamp, outlet_closeday, saison_start, saison_end,  	  	 
+						saison_year, webform, confirmation_email, passerby_max_pax, avg_duration,	 
+						1_open_time,1_close_time, 2_open_time,2_close_time, 	 
+						3_open_time,3_close_time, 4_open_time,4_close_time, 	 
+						5_open_time, 5_close_time, 6_open_time, 6_close_time, 	 
+						0_open_time, 0_close_time, 1_open_break, 1_close_break, 	 
+						2_open_break, 2_close_break, 3_open_break, 3_close_break, 	 
+						4_open_break, 4_close_break, 5_open_break, 5_close_break, 	 
+						6_open_break, 6_close_break, 0_open_break, 0_close_break
+							FROM `outlets` 
 							WHERE `outlet_id` ='%d' 
 							AND `property_id` ='%d' ",$_SESSION['outletID'],$_SESSION['property']);
 			return getRowListarray($result);
 		break;
 		case 'outlet_info':
-			$result = query("SELECT * FROM `outlets` 
+			$result = query("SELECT outlet_id, outlet_name, outlet_description, outlet_description_en,	 
+						cuisine_style, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
+						outlet_close_time, outlet_closeday, saison_start, saison_end,  	  	 
+						saison_year, webform, confirmation_email, passerby_max_pax, avg_duration,	 
+						1_open_time,1_close_time, 2_open_time,2_close_time, 	 
+						3_open_time,3_close_time, 4_open_time,4_close_time, 	 
+						5_open_time, 5_close_time, 6_open_time, 6_close_time, 	 
+						0_open_time, 0_close_time, 1_open_break, 1_close_break, 	 
+						2_open_break, 2_close_break, 3_open_break, 3_close_break, 	 
+						4_open_break, 4_close_break, 5_open_break, 5_close_break, 	 
+						6_open_break, 6_close_break, 0_open_break, 0_close_break 
+							FROM `outlets` 
 							LEFT JOIN `properties` on outlets.property_id = properties.id 
 							WHERE `outlet_id` ='%d'
 							AND `property_id` ='%d' 
@@ -148,23 +179,36 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'db_propery_events':
-			$result = query("SELECT * FROM `events` 
+			$result = query("SELECT id, outlet_id, subject,
+			description, event_date, start_time, end_time,
+			advertise_start, price 
+							FROM `events` 
 							WHERE `property_id` ='%d' 
 							ORDER BY `event_date` DESC",$_SESSION['property']);
 			return getRowList($result);
 		break;
 		case 'db_outlet_events':
-			$result = query("SELECT * FROM `events` 
+			$result = query("SELECT id, outlet_id, subject,
+			description, event_date, start_time, end_time,
+			advertise_start, price 
+							FROM `events` 
 							WHERE `outlet_id` ='%d' 
 							ORDER BY `event_date` DESC",$_SESSION['outletID']);
 			return getRowList($result);
 		break;
 		case 'event_data_single':
-			$result = query("SELECT * FROM `events` WHERE `id` ='%d' LIMIT 1",$_SESSION['eventID']);
+			$result = query("SELECT id, outlet_id, property_id, subject,
+			description, event_date, start_time, end_time,
+			advertise_start, price 
+							FROM `events` 
+							WHERE `id` ='%d' 
+							LIMIT 1",$_SESSION['eventID']);
 			return getRowListarray($result);
 		break;
 		case 'event_advertise':
-			$result = query("SELECT events.*,outlets.outlet_name FROM `events`
+			$result = query("SELECT events.id, events.outlet_id, events.property_id, events.subject, 
+			events.description, events.event_date, events.start_time, events.end_time,
+			events.advertise_start, events.price, outlets.outlet_name FROM `events`
 						LEFT JOIN `outlets` ON events.outlet_id = outlets.outlet_id
 						WHERE DATE_SUB(`event_date`,INTERVAL `advertise_start` DAY) <= '%s'
 						AND `event_date` > '%s'
@@ -173,7 +217,9 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'event_advertise_web':
-			$result = query("SELECT events.*,outlets.outlet_name FROM `events`
+			$result = query("SELECT events.id, events.outlet_id, events.property_id, events.subject,
+			events.description, events.event_date, events.start_time, events.end_time,
+			events.advertise_start, events.price, outlets.outlet_name FROM `events`
 						LEFT JOIN `outlets` ON events.outlet_id = outlets.outlet_id
 						WHERE id >= (SELECT FLOOR( MAX(id) * RAND()) FROM `events` ) 
 						AND DATE_SUB(`event_date`,INTERVAL `advertise_start` DAY) <= CURDATE()
@@ -185,7 +231,10 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'event_data_day':
-			$result = query("SELECT * FROM `events` 
+			$result = query("SELECT id, outlet_id, property_id, subject,
+						description, event_date, start_time, end_time,
+						advertise_start, price 
+						FROM `events` 
 						WHERE `event_date` ='%s' 
 						AND `outlet_id` ='%d' 
 						AND `property_id` ='%d'",
@@ -193,7 +242,11 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'user_data':
-			$result = query("SELECT * FROM `plc_users` WHERE `userID` ='%d' LIMIT 1",$_SESSION['userID']);
+			$result = query("SELECT userID,username,password,email,role,
+		  					property_id,active,confirm_code,last_ip,last_login,created,modified 
+							FROM `plc_users` 
+							WHERE `userID` ='%d' 
+							LIMIT 1",$_SESSION['userID']);
 			return getRowListarray($result);
 		break;
 		case 'user_confirm_code':
@@ -211,7 +264,14 @@ function querySQL($statement){
 			return $result;
 		break;
 		case 'maitre_info':
-			$result = query("SELECT * FROM `maitre` 
+			$result = query("SELECT maitre_id, maitre_outlet_id,
+							maitre_date, maitre_comment_day,
+							maitre_comment_day_timestamp, maitre_comment_day_name,
+							maitre_timestamp, maitre_ip,
+							maitre_author, outlet_child_tables,
+							outlet_child_capacity, outlet_capacity_timestamp,
+							outlet_child_passer_max_pax, outlet_child_dayoff 
+							FROM `maitre` 
 							WHERE `maitre_outlet_id` ='%d' 
 							AND `maitre_date`='%s' 
 							LIMIT 1",$_SESSION['outletID'],$_SESSION['selectedDate']);
@@ -220,8 +280,9 @@ function querySQL($statement){
 		case 'maitre_dayoffs':
 			$result = query("SELECT `maitre_date` FROM `maitre` 
 							WHERE `outlet_child_dayoff` = 'ON'
-							AND YEAR(maitre_date) = '%s' 
-							ORDER BY `maitre_date` ASC",date('Y'));
+							AND YEAR(maitre_date) = '%s'
+							AND `maitre_outlet_id` ='%d' 
+							ORDER BY `maitre_date` ASC",date('Y'),$_SESSION['outletID']);
 			return getRowList($result);
 		break;
 		case 'outlet_closedays':
@@ -231,18 +292,33 @@ function querySQL($statement){
 			return getResult($result);
 		break;
 		case 'db_all_users':
-			$result = query("SELECT * FROM `plc_users` ORDER BY username");
+			$result = query("SELECT userID,username,password,email,role,
+		  					property_id,active,confirm_code,last_ip,last_login,created,modified
+							FROM `plc_users` ORDER BY `username`");
 			return getRowList($result);
 		break;
 		case 'db_prp_users':
-			$result = query("SELECT * FROM `plc_users`
-				WHERE `property_id` ='%d'
-				ORDER BY username
-				",$_SESSION['property']);
+			$result = query("SELECT userID,username,password,email,role,
+		  					property_id,active,confirm_code,last_ip,last_login,created,modified 
+							FROM `plc_users`
+							WHERE `property_id` ='%d'
+							ORDER BY `username`",$_SESSION['property']);
 			return getRowList($result);
 		break;
 		case 'recent':
-			$result = query("SELECT * FROM `reservations` WHERE reservation_outlet_id='%d' ORDER BY reservation_timestamp DESC LIMIT 0,4",$_SESSION['outletID']);
+			$result = query("SELECT reservation_id, reservation_bookingnumber, reservation_outlet_id,
+			reservation_date, reservation_time, reservation_title,
+			reservation_guest_name, reservation_guest_adress, reservation_guest_city,
+			reservation_guest_email, reservation_guest_phone, reservation_pax,
+			reservation_hotelguest_yn, reservation_notes, reservation_booker_name,
+			reservation_timestamp, reservation_ip, reservation_hidden,
+			reservation_wait, repeat_id, reservation_bill,
+			reservation_discount, reservation_bill_paid, reservation_billet_sent,
+			reservation_parkticket, reservation_table, reservation_status,
+			reservation_advertise,reservation_referer 
+						FROM `reservations` 
+						WHERE reservation_outlet_id='%d' 
+						ORDER BY reservation_timestamp DESC LIMIT 0,4",$_SESSION['outletID']);
 			return getRowList($result);
 		break;
 		case 'tautologous':
@@ -259,14 +335,35 @@ function querySQL($statement){
 			return $result;
 		break;
 		case 'reservation_info':
-			$result = query("SELECT reservations.*, outlets.outlet_name,res_repeat.* FROM `reservations`
+			$result = query("SELECT reservation_id, reservation_bookingnumber, reservation_outlet_id,
+			reservation_date, reservation_time, reservation_title,
+			reservation_guest_name, reservation_guest_adress, reservation_guest_city,
+			reservation_guest_email, reservation_guest_phone, reservation_pax,
+			reservation_hotelguest_yn, reservation_notes, reservation_booker_name,
+			reservation_timestamp, reservation_ip, reservation_hidden,
+			reservation_wait, repeat_id, reservation_bill,
+			reservation_discount, reservation_bill_paid, reservation_billet_sent,
+			reservation_parkticket, reservation_table, reservation_status,
+			reservation_advertise,reservation_referer,
+			outlets.outlet_name,res_repeat.id,res_repeat.start_date,res_repeat.end_date 
+					FROM `reservations`
 					LEFT JOIN `outlets` ON outlet_id = reservation_outlet_id
 					LEFT JOIN `res_repeat` ON res_repeat.id = reservations.repeat_id  
 					WHERE reservations.reservation_id = '%d' LIMIT 1",$_SESSION['resID']);
 			return getRowList($result);
 		break;
 		case 'reservations':
-			$result = query("SELECT * FROM `reservations` 
+			$result = query("SELECT reservation_id, reservation_bookingnumber, reservation_outlet_id,
+			reservation_date, reservation_time, reservation_title,
+			reservation_guest_name, reservation_guest_adress, reservation_guest_city,
+			reservation_guest_email, reservation_guest_phone, reservation_pax,
+			reservation_hotelguest_yn, reservation_notes, reservation_booker_name,
+			reservation_timestamp, reservation_ip, reservation_hidden,
+			reservation_wait, repeat_id, reservation_bill,
+			reservation_discount, reservation_bill_paid, reservation_billet_sent,
+			reservation_parkticket, reservation_table, reservation_status,
+			reservation_advertise,reservation_referer
+							FROM `reservations` 
 							INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
 							WHERE `reservation_hidden` = '%d' 
 							AND `reservation_wait` = '%d' 
@@ -278,7 +375,17 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'all_reservations':
-			$result = query("SELECT * FROM `reservations` 
+			$result = query("SELECT reservation_id, reservation_bookingnumber, reservation_outlet_id,
+			reservation_date, reservation_time, reservation_title,
+			reservation_guest_name, reservation_guest_adress, reservation_guest_city,
+			reservation_guest_email, reservation_guest_phone, reservation_pax,
+			reservation_hotelguest_yn, reservation_notes, reservation_booker_name,
+			reservation_timestamp, reservation_ip, reservation_hidden,
+			reservation_wait, repeat_id, reservation_bill,
+			reservation_discount, reservation_bill_paid, reservation_billet_sent,
+			reservation_parkticket, reservation_table, reservation_status,
+			reservation_advertise,reservation_referer
+							FROM `reservations` 
 							INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
 							WHERE `reservation_hidden` = '0' 
 							AND `reservation_wait` = '%d' 
@@ -290,12 +397,24 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'search':
-			$result = query("SELECT * FROM `reservations` INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
-				WHERE `reservation_hidden` = '0' 
+			$result = query("SELECT reservation_id, reservation_bookingnumber, reservation_outlet_id,
+			reservation_date, reservation_time, reservation_title,
+			reservation_guest_name, reservation_guest_adress, reservation_guest_city,
+			reservation_guest_email, reservation_guest_phone, reservation_pax,
+			reservation_hotelguest_yn, reservation_notes, reservation_booker_name,
+			reservation_timestamp, reservation_ip, reservation_hidden,
+			reservation_wait, repeat_id, reservation_bill,
+			reservation_discount, reservation_bill_paid, reservation_billet_sent,
+			reservation_parkticket, reservation_table, reservation_status,
+			reservation_advertise,reservation_referer, outlet_name 
+				FROM `reservations` 
+				INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
+				WHERE `reservation_hidden` = '0'
+				AND `property_id` = '%d' 
 				AND (`reservation_guest_name` LIKE '%s' 
 					OR `reservation_bookingnumber` LIKE '%s' 
 					OR `reservation_guest_phone` LIKE '%s') 
-				ORDER BY reservation_guest_name ASC",$searchquery,$searchquery,$searchquery);
+				ORDER BY reservation_guest_name ASC",$_SESSION['propertyID'],$searchquery,$searchquery,$searchquery);
 			return getRowList($result);
 		break;
 		case 'reservation_visits':		
@@ -318,13 +437,20 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'res_history':
-			$result = query("SELECT * FROM `res_history` 
+			$result = query("SELECT id, reservation_id, author, timestamp
+							FROM `res_history` 
 							WHERE `reservation_id`='%d' 
 							ORDER BY id DESC", $_SESSION['resID']);
 			return getRowList($result);
 		break;
 		case 'settings_inc':
-			$result = query("SELECT * FROM `settings` WHERE `property_id` = '%d'", $_SESSION['property']);
+			$result = query("SELECT id, property_id, language,
+			timezone, timeformat, timeintervall,
+			dateformat, dateformat_short, datepickerformat,
+			app_name, max_menu, old_days,
+			manual_lines, contactform_color_scheme, contactform_background
+							FROM `settings` 
+							WHERE `property_id` = '%d'", $_SESSION['property']);
 			return getRowListarray($result);
 		break;
 		case 'timecontrol':
@@ -553,18 +679,33 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'all_properties':
-			$result = query("SELECT * FROM `properties` ORDER BY name ASC");
+			$result = query("SELECT id, name, street,
+							zip, city, country,
+							contactperson, phone, fax,
+							email, website, created,
+							img_filename, logo_filename, status 
+							FROM `properties` ORDER BY name ASC");
 			return getRowList($result);
 		break;
 		case 'select_properties':
-			$result = query("SELECT * FROM `properties`
+			$result = query("SELECT id, name, street,
+					zip, city, country,
+					contactperson, phone, fax,
+					email, website, created,
+					img_filename, logo_filename, status 
+					FROM `properties`
 					WHERE `country` LIKE '%s'
 					AND `city` LIKE '%s'
 					ORDER BY name ASC",$_SESSION['countryID'],$_SESSION['city']);
 			return getRowList($result);
 		break;
 		case 'property_info':
-			$result = query("SELECT * FROM `properties` 
+			$result = query("SELECT id, name, street,
+					zip, city, country,
+					contactperson, phone, fax,
+					email, website, created,
+					img_filename, logo_filename, status 
+					FROM `properties` 
 					WHERE `id` ='%d'
                     LIMIT 1",$_SESSION['propertyID']);
 			return getRowListarray($result);
@@ -598,7 +739,18 @@ function querySQL($statement){
 			return getResult($result);
 		break;
 		case 'featured_outlet':
-			$result = query("SELECT * FROM `outlets`
+			$result = query("SELECT outlet_id, outlet_name, outlet_description, outlet_description_en,	 
+						cuisine_style, property_id, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
+						outlet_close_time, outlet_timestamp, outlet_closeday, saison_start, saison_end,  	  	 
+						saison_year, webform, confirmation_email, passerby_max_pax, avg_duration,	 
+						1_open_time,1_close_time, 2_open_time,2_close_time, 	 
+						3_open_time,3_close_time, 4_open_time,4_close_time, 	 
+						5_open_time, 5_close_time, 6_open_time, 6_close_time, 	 
+						0_open_time, 0_close_time, 1_open_break, 1_close_break, 	 
+						2_open_break, 2_close_break, 3_open_break, 3_close_break, 	 
+						4_open_break, 4_close_break, 5_open_break, 5_close_break, 	 
+						6_open_break, 6_close_break, 0_open_break, 0_close_break 
+					FROM `outlets`
 					WHERE outlet_id >= (SELECT FLOOR( MAX(outlet_id) * RAND()) FROM `outlets` ) 
 					AND ( `saison_year` = 0 OR `saison_year` = '%d' )
 					AND `webform` = '1'

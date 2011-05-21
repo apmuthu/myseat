@@ -31,17 +31,16 @@
 	//----------------------------
 	
 	// The page title -- "Select your prefered restaurant"
-	$lang["title"] = 'Online Reservierung';
+	$lang["title"] = 'Tischreservierung vornehmen';
 	
 	// A line of text before the contact form -- "<h3>Get your table.Make an instant reservation now!</h3>"
-	$lang["contact_form_intro"] = '<p>Buchen Sie sich Ihren Tisch. Mit sofort best&auml;tigter Reservierung!<br/>
-	F&uuml;r Ad-Hoc Reservierungen, private Feiern, gro&szlig;en Buchungen oder allen anderen Fragen rufen Sie uns bitte an.</p>';
+	$lang["contact_form_intro"] = '<p>Sehr verehrter Gast,<br/><br/>hier haben Sie die Möglichkeit, Ihren Tisch online zu reservieren. Nach getätigter Reservierung erhalten Sie umgehend eine Bestätigung via Email. Bei Tischreservierungen für mehr als %s Personen oder auch bei Festlichkeiten, wenden Sie sich bitte direkt an uns.</p>';
 	
 	// Default text of the contact form -- "Name or Company"
 	$lang["contact_form_name"] = 'Name oder Firma';
 	
 	// Default text of the contact form -- "E-mail address"
-	$lang["contact_form_email"] = 'E-mail Adresse';
+	$lang["contact_form_email"] = 'Email Adresse';
 
 	// Default text of the contact form -- "Security question"
 	$lang["security_question"] = 'Sicherheits-Frage';	
@@ -50,28 +49,28 @@
 	$lang["contact_form_advertise"] = 'Ich m&ouml;chte in Zukunft Informationen per Email erhalten.';
 	
 	// Default text of the contact form -- "Notes"	
-	$lang["contact_form_notes"] = 'Ihre Notizen';
+	$lang["contact_form_notes"] = 'Wichtige Notizen (Allergien, Wünsche)';
 	
 	// Default text of the contact form -- "Restaurant"
-	$lang["contact_form_restaurant"] = 'Restaurant';
+	$lang["contact_form_restaurant"] = 'Bitte wählen Sie Ihr Restaurant:';
 	
 	// Default text of the contact form -- "Time"
 	$lang["contact_form_time"] = 'Zeit';
 	
 	// Default text of the contact form -- "Phone"
-	$lang["contact_form_phone"] = 'Telefon';
+	$lang["contact_form_phone"] = 'Telefon*';
 	
 	// Default text of the contact form -- "Number of persons"
 	$lang["contact_form_pax"] = 'Personenzahl';
 	
 	// Default text of the contact form -- "Title"
-	$lang["contact_form_title"] = 'Titel';
+	$lang["contact_form_title"] = 'Anrede';
 
 	// Default text for the 'captcha' field of the contact form -- "Are you human?"
 	$lang["contact_form_captcha"] = 'Sind Sie ein Mensch?';
 	
 	// The 'Send' button -- "Book"
-	$lang["contact_form_send"] = 'Buchen';
+	$lang["contact_form_send"] = 'Tisch reservieren';
         
         // The 'Back' button -- "Back"
 	$lang["contact_form_back"] = 'Zur&uuml;ck';
@@ -114,7 +113,7 @@
 	$lang["email_subject"] = 'Reservierungsbest&auml;tigung f&uuml;r';
 	
 	// The page title -- "Reservation Process"
-	$lang["conf_title"] = 'Reservierung t&auml;tigen';
+	$lang["conf_title"] = 'Tischreservierung';
 	
 	// The page title -- "Storno Cancel your reservation"
 	$lang["cxl_title"] = 'Reservierung stornieren';
@@ -130,6 +129,14 @@
 	
 	// Day off error message
 	$lang["error_dayoff"] = 'Das Restaurant kann an diesem Tag nicht gebucht werden.';
+	
+	//----------------------------
+	// FOOTER
+	//----------------------------
+
+	// The content on the first footer
+	$lang["footer_one"] =  '<p><small>Für weitere Fragen oder bei besonderen Wünschen stehen wir Ihnen jederzeit gerne<br/>unter der Telefonnummer %s oder via Email an <a href="mailto:%s">%s</a> zur Verfügung.</small></p>';
+
 	
 	//----------------------------
 	// MINI-FOOTER

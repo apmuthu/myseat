@@ -107,7 +107,7 @@
 		echo $lang[$key];
 	}
 	
-	function language_navigation()
+	function language_navigation_original()
 	{
 		global $lang;
 		$languages = $lang["available_language"];
@@ -117,4 +117,14 @@
 			next($languages);
 		}
 	}
+	
+	function language_navigation($language)
+	{
+			echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang=en"><img src="img/flag_en.png"/></a></li>';
+			if($language!='en'){
+				echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'"><img src="img/flag_'.$language.'.png"/></a></li>';
+			}
+	}
+	
+	
 ?>
