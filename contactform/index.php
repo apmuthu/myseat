@@ -1,6 +1,8 @@
 <?php session_start();
 //error_reporting(E_ALL & ~E_NOTICE);
 //ini_set("display_errors", 1);
+ 
+// END Mobile Browser detection
 
 $_SESSION['role'] = 6;
 $_SESSION['language'] = 'en_EN';
@@ -24,6 +26,16 @@ $_SESSION['outletID'] = '';
 // ** all database queries
 	include('../web/classes/db_queries.db.php');
 
+// Mobile Browser detection
+	$mobile_browser = checkMobile();
+	if ($mobile_browser > 0) {
+		$fwd_lnk = "../mobile/index.php?";
+		foreach ($_GET as $key => $value) {
+			$fwd_lnk .= $key."=".$value."&"; 
+		}
+		$fwd_lnk = substr($fwd_lnk,0,-1);
+		header("Location: ".$fwd_lnk);
+	}
 // get and define referer
 	$ref = getHost($_SERVER['HTTP_REFERER']);
 	$_SESSION['referer'] = ($_SESSION['referer']!='') ? $_SESSION['referer'] : $ref;
@@ -130,8 +142,6 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 <html xmlns="http://www.w3.org/1999/xhtml">
 <html lang="<?php echo $language; ?>">
 <head>
-	<meta http-equiv=pragma content=no-cache/>
-	<meta http-equiv=cache-control content=no-cache/> 
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
 	<meta http-equiv="X-UA-Compatible" content="IE=8" />
 	<!-- Meta data for SEO -->

@@ -60,6 +60,9 @@
 	
 	// The relative path to the lang folder
 	$lang_folder = "lang";	
+	if ( strpos($_SERVER['PHP_SELF'],'mobile') > 0 ){
+		$lang_folder = "../contactform/lang";
+	}
 	
 	//Get the language used by the browser
 	$browser_lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
@@ -124,6 +127,14 @@
 			if($language!='en'){
 				echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'"><img src="img/flag_'.$language.'.png"/></a></li>';
 			}
+	}
+	
+	function language_navigation_mobile($language)
+	{
+			if($language!='en'){
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'" style="margin-right:9px;"><img src="../contactform/img/flag_'.$language.'.png"/></a>&nbsp;';
+			}
+		echo '<a href="'.$_SERVER['PHP_SELF'].'?lang=en" style="margin-right:13px;"><img src="../contactform/img/flag_en.png"/></a>';
 	}
 	
 	

@@ -60,9 +60,6 @@ $prp_info = querySQL('property_info');
 			background: <?= $general['contactform_background'];?>;
 		}
 	</style>
-	
-	<!-- CSS - Datepicker -->
-	<link href="style/datepicker.css" rel="stylesheet" type="text/css" />
 
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
@@ -135,7 +132,7 @@ $prp_info = querySQL('property_info');
 			  ?>
                         
                 	</span>
-                             <form method="post" action="cancel.php" name="contactForm" id="contactForm"">
+                             <form method="post" action="cancel.php" name="contactForm" id="contactForm">
                                     <br/>
                                         <div>
                                         <label><?php lang("book_num"); ?></label><br/>

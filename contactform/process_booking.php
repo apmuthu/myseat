@@ -88,8 +88,6 @@ $prp_info = querySQL('property_info');
 	<!-- CSS - Theme -->
 	<link id="theme" href="style/themes/<?= $default_style;?>.css" rel="stylesheet" type="text/css" />
 	<link id="color" href="style/themes/<?= $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
-	<!-- CSS - Datepicker -->
-	<link href="style/datepicker.css" rel="stylesheet" type="text/css" />
 
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
@@ -163,8 +161,8 @@ $prp_info = querySQL('property_info');
 			    if($_POST['captcha'] == $correct){
 			      // CSRF - Secure forms with token
 			      if ($_SESSION['barrier'] == $_POST['barrier']) {
-				// <Do booking>
-				$waitlist = processBooking();
+					// <Do booking>
+					$waitlist = processBooking();
 			      }
 			      // CSRF - Secure forms with token
 			      $barrier = md5(uniqid(rand(), true)); 
