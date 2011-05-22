@@ -7,7 +7,7 @@ function getHost($Address) {
 // calculate and print select list with interval times
 function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
 { 
-		GLOBAL $availability, $tbl_availability;
+		GLOBAL $general,$availability, $tbl_availability;
 		// calculate after midnight
 		$day    = date("d");
 		$endday = ($open_time < $close_time) ? date("d") : date("d")+1;
@@ -24,6 +24,15 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 		$week_day = date('w', strtotime($_SESSION['selectedDate']) );
 		$breaktime_open = ($_SESSION['selOutlet'][$week_day.'_open_break'] != '00:00:00') ? $_SESSION['selOutlet'][$week_day.'_open_break'] : $_SESSION['selOutlet']['outlet_open_break'];
 		$breaktime_close = ($_SESSION['selOutlet'][$week_day.'_close_break'] != '00:00:00') ? $_SESSION['selOutlet'][$week_day.'_close_break'] : $_SESSION['selOutlet']['outlet_close_break'];
+		
+		// limit booking time at actual day
+		// not to book past times
+		if ($_SESSION['selectedDate'] == date('Y-m-d') && date('H:i:s') > $open_time) {
+				//Set opentime to rounded actual time
+				$minutes = ceil(date('i')/$general['timeintervall'])*$general['timeintervall'];
+				$open_time = date('H').":".$minutes;
+		}
+		// floor($min/60*4)/4*60
 
 		// calculate dates & times
 		list($h1,$m1)		= explode(":",$open_time);
