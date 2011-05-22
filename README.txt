@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1791                       =-= 
-=-= Date:    07.05.2011                   =-= 
-=-= Time:    110:22 GMT                    =-= 
+=-= Version: 0.1795                       =-= 
+=-= Date:    22.05.2011                   =-= 
+=-= Time:    14:12 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,14 +16,15 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.1793
+LAST CHANGES in 0.1795
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Spanish language at contact form
+- Mobile version for customer form with automatic redirect
 - Small bugfixes
 
-DATABASE ADD in 0.1791
+DATABASE ADD in 0.1795
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-No database changes.
+See documentation/database_update.sql:
+In tabel outlets one field added
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
