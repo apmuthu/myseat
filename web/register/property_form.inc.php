@@ -10,7 +10,7 @@ if ($p == 2 || $_SESSION['page'] == 2){
 ?>
 
 <form method="post" action="<?= $link; ?>" id="property_form" enctype="multipart/form-data">
-	<input type="hidden" name="MAX_FILE_SIZE" value="1000000">
+	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
 	<label><?= _name;?></label>
 	<p>
 		<input type="text" name="name" id="name" class="required" minlength="4" title=' ' value="<?= $row['name'];?>"/>
@@ -53,12 +53,12 @@ if ($p == 2 || $_SESSION['page'] == 2){
 	</p>
 	<label><?= _img;?></label>	
 	<p>	 	 	 	 	 	 	
-		<input type="file" name="img" id="img" value=""/>
+		<input type="file" name="img[]" value=""/>
 		<br/><small>best 350x250px | .gif .jpg .png</small>
 	</p>
 	<label>Logo</label>	
 	<p>	 	 	 	 	 	 	
-		<input type="file" name="img_logo" id="img" value=""/>
+		<input type="file" name="img[]" value=""/>
 		<br/><small>best 250x80px | .gif .jpg .png</small>
 	</p>
 			<input type="hidden" name="created" value="<?= date('Y-m-d H:i:s');?>">

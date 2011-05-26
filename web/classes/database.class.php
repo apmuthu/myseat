@@ -225,41 +225,41 @@ function writeForm($table =''){
 		// =-=-=-=-=-=
 		
 		// img upload
-			if ($_FILES['img']['error'] > 0){
+			if ($_FILES['img']['error'][0] > 0){
 			  $_SESSION['errors'][] = _sorry;
 			}else{
-				if ( ($_FILES['img']["type"] == "image/gif"
-				  || $_FILES['img']["type"] == "image/jpeg"
-				  || $_FILES['img']["type"] == "image/png" )
-				  && $_FILES['img']["size"] < 1000000 )
+				if ( ($_FILES['img']["type"][0] == "image/gif"
+				  || $_FILES['img']["type"][0] == "image/jpeg"
+				  || $_FILES['img']["type"][0] == "image/png" )
+				  && $_FILES['img']["size"][0] < 2000000 )
 				  {
 				  //$imgName 	  = $_FILES['img_logo']['name'];
-				  $img_type   = substr($_FILES['img']["type"],6);
+				  $img_type   = substr($_FILES['img']["type"][0],6);
 				  $imgName 	  = randomPassword(24, true, true, false).".".$img_type;
 				  
 				  $uploadpath = substr(dirname(__FILE__),0,-7);
-				  $result     = move_uploaded_file($_FILES['img']["tmp_name"],"../uploads/img/".$imgName);
-					$keys[$i] = 'img_filename';
-					$values[$i] = "'".$imgName."'";
+				  $result     = move_uploaded_file($_FILES['img']["tmp_name"][0],"../uploads/img/".$imgName);
+					$keys[] = 'img_filename';
+					$values[] = "'".$imgName."'";
 				  }
 			}
 		// logo upload
-			if ($_FILES['img_logo']['error'] > 0){
+			if ($_FILES['img']['error'][1] > 0){
 			  $_SESSION['errors'][] = _sorry;
 			}else{
-				if (($_FILES['img_logo']["type"] == "image/gif"
-				  || $_FILES['img_logo']["type"] == "image/jpeg"
-				  || $_FILES['img_logo']["type"] == "image/png")
-				  && $_FILES['img_logo']["size"] < 1000000)
+				if (($_FILES['img']["type"][1] == "image/gif"
+				  || $_FILES['img']["type"][1] == "image/jpeg"
+				  || $_FILES['img']["type"][1] == "image/png")
+				  && $_FILES['img']["size"][1] < 2000000)
 				  {
 				  //$imgName 	  = $_FILES['img_logo']['name'];
-				  $img_type   = substr($_FILES['img_logo']["type"],6);
+				  $img_type   = substr($_FILES['img']["type"][1],6);
 				  $imgName 	  = randomPassword(24, true, true, false).".".$img_type;
 				
 				  $uploadpath = substr(dirname(__FILE__),0,-7);
-				  $result     = move_uploaded_file($_FILES['img_logo']["tmp_name"],"../uploads/logo/".$imgName);
-					$keys[$i] = 'logo_filename';
-					$values[$i] = "'".$imgName."'";
+				  $result     = move_uploaded_file($_FILES['img']["tmp_name"][1],"../uploads/logo/".$imgName);
+					$keys[] = 'logo_filename';
+					$values[] = "'".$imgName."'";
 				  }
 			}
 			

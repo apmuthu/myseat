@@ -39,30 +39,30 @@
 	if ( $_POST['email_type'] == 'en' ) {
 		switch ($_POST['reservation_title']) {
 			case 'W':
-				$salut = _dear_mrs_en." ".$_POST['reservation_guest_name'];
+				$salut = _dear_mrs_en." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;	
 			case 'F':
-				$salut = _dear_family_en." ".$_POST['reservation_guest_name'];
+				$salut = _dear_family_en." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;
 			case 'C':
-				$salut = _dear_sirs_and_madams_en." ".$_POST['reservation_guest_name'];
+				$salut = _dear_sirs_and_madams_en." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;
 			default:
-				$salut = _dear_mr_en." ".$_POST['reservation_guest_name'];	
+				$salut = _dear_mr_en." ".html_entity_decode($_POST['reservation_guest_name']);	
 		}
 	}else{
 		switch ($_POST['reservation_title']) {
 			case 'W':
-				$salut = _dear_mrs." ".$_POST['reservation_guest_name'];
+				$salut = _dear_mrs." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;	
 			case 'F':
-				$salut = _dear_family." ".$_POST['reservation_guest_name'];
+				$salut = _dear_family." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;
 			case 'C':
-				$salut = _dear_sirs_and_madams." ".$_POST['reservation_guest_name'];
+				$salut = _dear_sirs_and_madams." ".html_entity_decode($_POST['reservation_guest_name']);
 				break;
 			default:
-				$salut = _dear_mr." ".$_POST['reservation_guest_name'];	
+				$salut = _dear_mr." ".html_entity_decode($_POST['reservation_guest_name']);	
 		}
 	}
 
@@ -89,7 +89,7 @@
 	$plain_text  = nl2br($plain_text);
 	
 	$message  = $salut.",<br/><br/>";
-	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
+	$message .= sprintf( $text , html_entity_decode($_SESSION['selOutlet']['outlet_name']), $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', html_entity_decode($property['name'])." Team"  );
 	
 	// ===============
 	// Email template
@@ -184,8 +184,6 @@
 										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">'._description.'</span></h4>
 
 										'.substr($_SESSION['selOutlet']['outlet_description'],0,90).'...
-										<a href="#" style="color: #3279BB; text-decoration: underline;">Read More</a>
-
 									</td>
 									<td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="20">&nbsp;</td><!-- spacer -->
 									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="146">
@@ -204,7 +202,6 @@
 
 										<a href="http://www.facebook.com/bernd.orttenburger" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/facebook.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
 										<a href="http://twitter.com/#!/bistro79" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/twitter.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
-										<a href="http://de.linkedin.com/in/orttenburger" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/linkedin.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
 
 									</td>
 								</tr>

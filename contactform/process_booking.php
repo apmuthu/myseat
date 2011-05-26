@@ -88,7 +88,12 @@ $prp_info = querySQL('property_info');
 	<!-- CSS - Theme -->
 	<link id="theme" href="style/themes/<?= $default_style;?>.css" rel="stylesheet" type="text/css" />
 	<link id="color" href="style/themes/<?= $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
-
+	<style type="text/css">
+		body {
+			background: <?= $general['contactform_background'];?>;
+		}
+	</style>
+	
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
     <script src="js/jquery.easing.1.3.js"></script>

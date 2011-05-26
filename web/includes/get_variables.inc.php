@@ -138,6 +138,7 @@ if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet'][
 		foreach ($rows as $key => $value) {
 			$_SESSION['selOutlet'][$key] = $value;
 		}
+	}
 }
 
 // Check if selected date is within open times of outlet
@@ -157,10 +158,11 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 		$field_close = $weekday.'_close_time';
 		$break_open = $weekday.'_open_break';
 		$break_close = $weekday.'_close_break';
-	
+	echo "HERE1".$weekday;
 		if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' 
 		&& $_SESSION['selOutlet'][$field_open] != NULL && $_SESSION['selOutlet'][$field_close] != NULL ) 
 		{	
+			echo "HERE2";
 			$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
 			$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
 		}
@@ -169,9 +171,7 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 		$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
 		$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
 
-	
-	
-}
+
 $rows = querySQL('maitre_info');
 foreach($rows as $row) {
 	$maitre['maitre_id'] = $row->maitre_id;

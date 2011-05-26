@@ -110,7 +110,7 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 				
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
 					 $pax_capacity = ($tbl_capacity >=1) ? $_SESSION['outlet_max_capacity']-$availability[date('H:i',$value)] : 0;
-					 if ( $pax_capacity == 0 ) {
+					 if ( $pax_capacity <= 0 ) {
 						echo " disabled='disabled' ";
 					 }
 				
@@ -219,7 +219,7 @@ function defineOffDays(){
 
 function processBooking(){
 // rather than recursively calling query, insert all rows with one query
-	 GLOBAL $general;
+	 GLOBAL $general, $global_basedir;
 	 // database table to store reservations
 	 $table ='reservations';
 	 // reservation date

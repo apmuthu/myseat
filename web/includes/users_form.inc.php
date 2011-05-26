@@ -66,10 +66,14 @@ if ($_SESSION['page'] == 7){
 				// creating a new property and admin
 				echo "<span class='bold'>".$roles[2]."</strong><input type='hidden' name='role' id='role' value='2'>";
 			}
-			?>
-		
+			?>		
 	</p>
 	<br/>
+				<?php
+				if ($_SESSION['page']==7){
+					echo "<input type='hidden' name='active' value='1'>";
+				}
+				?>
 			<input type="hidden" name="created" value="<?= date('Y-m-d H:i:s');?>">
 			<input type="hidden" name="userID" value="<?= $row['userID'];?>">
 			<input type="hidden" name="property_id" value="<?= $_SESSION['property'];?>">
