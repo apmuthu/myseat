@@ -158,11 +158,10 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 		$field_close = $weekday.'_close_time';
 		$break_open = $weekday.'_open_break';
 		$break_close = $weekday.'_close_break';
-	echo "HERE1".$weekday;
+		
 		if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' 
 		&& $_SESSION['selOutlet'][$field_open] != NULL && $_SESSION['selOutlet'][$field_close] != NULL ) 
 		{	
-			echo "HERE2";
 			$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
 			$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
 		}
