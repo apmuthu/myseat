@@ -51,6 +51,14 @@ if ($p == 2 || $_SESSION['page'] == 2){
 	<p>	 	 	 	 	 	 	
 		<input type="text" name="fax" id="fax" value="<?= $row['fax'];?>"/>
 	</p>
+	<label>Facebook Link</label>	
+	<p>	 	 	 	 	 	 	
+		<input type="text" name="social_fb" id="social_fb" value="<?= $row['social_fb'];?>"/>
+	</p>
+	<label>Twitter Link</label>	
+	<p>	 	 	 	 	 	 	
+		<input type="text" name="social_tw" id="social_tw" value="<?= $row['social_tw'];?>"/>
+	</p>
 	<label><?= _img;?></label>	
 	<p>	 	 	 	 	 	 	
 		<input type="file" name="img[]" value=""/>

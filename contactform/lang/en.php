@@ -64,7 +64,7 @@
 	$lang["contact_form_time"] = 'Time';
 
 	// Default text of the contact form -- "Phone"
-	$lang["contact_form_phone"] = 'Telephone';
+	$lang["contact_form_phone"] = 'Telephone*';
 
 	// Default text of the contact form -- "Number of persons"
 	$lang["contact_form_pax"] = 'Number of people';
@@ -122,7 +122,7 @@
 	$lang["conf_title"] = 'Table reservation';
 
 	// The page title -- "Storno</strong> Cancel your reservation"
-	$lang["cxl_title"] = '<strong>Cancel</strong> your reservation';
+	$lang["cxl_title"] = 'Cancel your reservation';
 
 	// A subline of text I -- "Reservation progress for"
 	$lang["conf_intro"] = 'Reservation progress for';

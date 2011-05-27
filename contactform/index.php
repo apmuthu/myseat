@@ -237,12 +237,13 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 			if ($_SESSION['single_outlet'] == 'OFF') {
 				$num_outlets = querySQL('num_outlets');
 			}
-				echo"<p>".lang("contact_form_restaurant")."</p><br/><h3><div>";
+
 				if ($num_outlets>1) {
+					echo"<p>".lang("contact_form_restaurant")."</p><br/><h3><div>";
 					echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
 					$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
 				} else{
-					echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>".$outlet_name;
+					echo "<h3><div><input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>".$outlet_name;
 				}
 			
 				echo " - ".date($general['dateformat'],strtotime($_SESSION['selectedDate']))."</h3>";
@@ -399,41 +400,37 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 
   <!-- Javascript at the bottom for fast page loading --> 
 <script>
-	var disabledDays = [<?php defineOffDays(); ?>];
-
 	/* utility functions */
-	function offDays(date) {
-	  var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+	var unavailableDates = [<?php defineOffDays(); ?>];
+
+	function unavailable(date) {
+		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
 		m = m+1;
 		/* add leading zero */
 		if (d < 10) d = "0" + d;
 		if (m < 10) m = "0" + m;
-	  for (i = 0; i < disabledDays.length; i++) {
-	    if ($.inArray( y + '-' + m + '-' + d, disabledDays) != -1 || new Date() > date) {
-	      return [false];
-	    }
+	  ymd = y + "-" + m + "-" + d;
+	  if ($.inArray(ymd, unavailableDates) == -1) {
+	    return [true];
+	  } else {
+	    return [false];
 	  }
-	  return [true];
-	}
-	function noDayoffs(date) {
-	  var noWeekend = jQuery.datepicker.noWeekends(date);
-	  return noWeekend[0] = offDays(date);
 	}
 
     jQuery(document).ready(function($) {
       // Setup datepicker input at customer reservation form
       $("#bookingpicker").datepicker({
-	      nextText: '&raquo;',
+		  minDate: '0',
+		  maxDate: '+6M',      
+		  nextText: '&raquo;',
 	      prevText: '&laquo;',
 	      firstDay: 1,
 	      numberOfMonths: 2,
-		  minDate: 0,
-		  maxDate: '+6M',
 	      gotoCurrent: true,
 	      altField: '#dbdate',
 	      altFormat: 'yy-mm-dd',
 	      defaultDate: 0,
-		  beforeShowDay: noDayoffs,
+		  beforeShowDay: unavailable,
 	      dateFormat: '<?= $general['datepickerformat'];?>',
 	      regional: '<?= substr($_SESSION['language'],0,2);?>',
 	      onSelect: function(dateText, inst) { window.location.href="?selectedDate=" + $("#dbdate").val() + "&outletID=" + $("#single_outlet").val(); }

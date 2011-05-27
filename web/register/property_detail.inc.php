@@ -52,6 +52,14 @@
 				<p>	 	 	 	 	 	 	
 					<?= $row['fax'];?>
 				</p>
+				<label>Facebook Link</label>	
+				<p>	 	 	 	 	 	 	
+					<?= $row['social_fb'];?>
+				</p>
+				<label>Twitter Link</label>	
+				<p>	 	 	 	 	 	 	
+					<?= $row['social_tw'];?>
+				</p>
 				<br/><br/>	 	 	 	 	 	 	 
 				<small>				
 					<? if($row['created']){ echo _created." ".humanize($row['created']);}?>

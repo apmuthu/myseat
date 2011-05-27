@@ -60,7 +60,7 @@
 	$lang["contact_form_time"] = 'Hora';
 
 	// Default text of the contact form -- "Phone"
-	$lang["contact_form_phone"] = 'Tel&eacute;fono';
+	$lang["contact_form_phone"] = 'Tel&eacute;fono*';
 
 	// Default text of the contact form -- "Number of persons"
 	$lang["contact_form_pax"] = 'Numero de comensales';
@@ -115,10 +115,10 @@
 	$lang["email_subject"] = 'Confirmaci&oactue;n de reserva para';
 
 	// The page title -- "<strong>Reservation Process</strong>"
-	$lang["conf_title"] = '<strong>Processo de Reserva</strong>';
+	$lang["conf_title"] = 'Processo de Reserva';
 
 	// The page title -- "<strong>Cancel Your Reservation</strong>"
-	$lang["cxl_title"] = '<strong>Cancelar Tu Reserva</strong>';
+	$lang["cxl_title"] = 'Cancelar Tu Reserva';
 
 	// A subline of text I -- "Reservation progress for"
 	$lang["conf_intro"] = 'Progresso de reserva para';

@@ -194,6 +194,8 @@ $sql = query("CREATE TABLE IF NOT EXISTS `properties` (
   `img_filename` varchar(255)  NOT NULL,
   `logo_filename` varchar(255)  NOT NULL,
   `status` varchar(10)  NOT NULL DEFAULT 'active',
+  `social_fb` VARCHAR( 255 ) NOT NULL,
+  `social_tw` VARCHAR( 255 ) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;")
  or die(mysql_error()); 

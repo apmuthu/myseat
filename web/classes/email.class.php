@@ -200,8 +200,8 @@
 
 										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">'._online.'</span></h4>
 
-										<a href="http://www.facebook.com/bernd.orttenburger" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/facebook.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
-										<a href="http://twitter.com/#!/bistro79" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/twitter.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
+										<a href="'.$property['social_fb'].'" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/facebook.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
+										<a href="'.$property['social_tw'].'" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/twitter.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
 
 									</td>
 								</tr>

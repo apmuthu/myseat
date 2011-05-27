@@ -122,7 +122,7 @@
 	$lang["conf_title"] = 'Bord Reservation';
 
 	// The page title -- "Storno</strong> Cancel your reservation"
-	$lang["cxl_title"] = '<strong>Annullere</strong> din reservation';
+	$lang["cxl_title"] = 'Annullere din reservation';
 
 	// A subline of text I -- "Reservation progress for"
 	$lang["conf_intro"] = 'Reservation fremskridt for';

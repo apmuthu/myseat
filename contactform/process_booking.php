@@ -133,14 +133,11 @@ $prp_info = querySQL('property_info');
 	<!-- page container -->
 	  <div id="page"> 
 	    <!-- page title -->
-	    <h2 class="ribbon full">Get your table <span>Make an instant reservation</span> </h2>
-	    <div class="triangle-ribbon"></div>
-	    <br class="cl" />
 	    
 	    <div id="page-content" class="container_12">
-		
-		<!-- page content goes here -->
-			
+			<!-- page title -->
+		    <h2><?= $lang["conf_title"];?><span></span> </h2>
+		    <br class="cl" />
 
 			<h4>
 			  <?php

@@ -114,11 +114,11 @@
 	// The emails subject -- "Reservation confirmation for"
 	$lang["email_subject"] = 'Reserverings bevestiging voor';
 	
-	// The page title -- "Reservation</strong> Process"
-	$lang["conf_title"] = '<strong>Reserverings voortgang</strong>';
+	// The page title -- "Reservation Process"
+	$lang["conf_title"] = 'Reserverings voortgan';
 	
 	// The page title -- "Storno</strong> Cancel your reservation"
-	$lang["cxl_title"] = '<strong>Annuleer</strong> uw reservering';
+	$lang["cxl_title"] = 'Annuleer uw reservering';
 	
 	// A subline of text I -- "Reservation progress for"
 	$lang["conf_intro"] = 'Reserverings voortgang voor';

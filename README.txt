@@ -3,7 +3,7 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1797                       =-= 
+=-= Version: 0.1798                       =-= 
 =-= Date:    22.05.2011                   =-= 
 =-= Time:    14:12 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -16,14 +16,18 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.1797
+LAST CHANGES in 0.1797 & 0.1798
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - Dansk language added
-- Small bugfixes
+- Small bugfixes in contactform
+- Security update on web/classes/autocomplete.php
 
-DATABASE ADD in 0.1795
+DATABASE ADD in 0.1798
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 See documentation/database_update.sql:
+In table properties two fields for social media added
+
+DATABASE ADD in 0.1795
 In table outlets one field added
 
 INSTALLATION
@@ -68,16 +72,14 @@ MULTILINGUAL
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Actual mySeat is translated into
 
-English
-German
-Spanish
-French
-Dutch
-Swedish
-Italian
-Chinese
-Danish
-
+'en_EN' => 'English'
+'de_DE' => 'German'
+'es_ES' => 'Spanish'
+'fr_FR' => 'French'
+'nl_NL' => 'Dutch'
+'se_SE' => 'Swedish'
+'it_IT' => 'Italian'
+'cn_CN' => 'Chinese'
 
 
 LICENSE

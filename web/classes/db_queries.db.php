@@ -143,7 +143,7 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'db_outlet_info':
-			$result = query("SELECT outlet_id, outlet_name, outlet_description, outlet_description_en,	 
+			$result = query("SELECT outlet_id, outlet_name, property_id, outlet_description, outlet_description_en,	 
 						cuisine_style, property_id, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
 						outlet_close_time, outlet_timestamp, outlet_closeday, saison_start, saison_end,  	  	 
 						saison_year, webform, confirmation_email, passerby_max_pax, avg_duration,	 
@@ -160,7 +160,7 @@ function querySQL($statement){
 			return getRowListarray($result);
 		break;
 		case 'outlet_info':
-			$result = query("SELECT outlet_id, outlet_name, outlet_description, outlet_description_en,	 
+			$result = query("SELECT outlet_id, property_id, outlet_name, outlet_description, outlet_description_en,	 
 						cuisine_style, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
 						outlet_close_time, outlet_closeday, saison_start, saison_end,  	  	 
 						saison_year, webform, confirmation_email, passerby_max_pax, avg_duration,	 
@@ -384,7 +384,7 @@ function querySQL($statement){
 			reservation_wait, repeat_id, reservation_bill,
 			reservation_discount, reservation_bill_paid, reservation_billet_sent,
 			reservation_parkticket, reservation_table, reservation_status,
-			reservation_advertise,reservation_referer
+			reservation_advertise,reservation_referer,outlets.outlet_name
 							FROM `reservations` 
 							INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
 							WHERE `reservation_hidden` = '0' 
@@ -683,7 +683,8 @@ function querySQL($statement){
 							zip, city, country,
 							contactperson, phone, fax,
 							email, website, created,
-							img_filename, logo_filename, status 
+							img_filename, logo_filename, 
+							status, social_fb, social_tw 
 							FROM `properties` ORDER BY name ASC");
 			return getRowList($result);
 		break;
@@ -692,7 +693,8 @@ function querySQL($statement){
 					zip, city, country,
 					contactperson, phone, fax,
 					email, website, created,
-					img_filename, logo_filename, status 
+					img_filename, logo_filename, 
+					status, social_fb, social_tw 
 					FROM `properties`
 					WHERE `country` LIKE '%s'
 					AND `city` LIKE '%s'
@@ -704,7 +706,8 @@ function querySQL($statement){
 					zip, city, country,
 					contactperson, phone, fax,
 					email, website, created,
-					img_filename, logo_filename, status 
+					img_filename, logo_filename, 
+					status, social_fb, social_tw
 					FROM `properties` 
 					WHERE `id` ='%d'
                     LIMIT 1",$_SESSION['propertyID']);

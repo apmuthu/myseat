@@ -115,10 +115,10 @@
 	$lang["email_subject"] = '预约确认';
 
 	// The page title -- "Reservation</strong> Process"
-	$lang["conf_title"] = '确认<strong>预约</strong> ';
+	$lang["conf_title"] = '确认<strong>预约 ';
 
 	// The page title -- "Storno</strong> Cancel your reservation"
-	$lang["cxl_title"] = '<strong>取消</strong> 预约';
+	$lang["cxl_title"] = '取消 预约';
 
 	// A subline of text I -- "Reservation progress for"
 	$lang["conf_intro"] = 'Reservation progress for';
