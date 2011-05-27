@@ -18,7 +18,8 @@
 		"de" => "Deutsch",
 		"fr" => "Fran&ccedil;aise",
 		"nl" => "Nederlandse",
-		"cn" => "Chinese"
+		"cn" => "Chinese",
+		"dk" => "Dansk",
 	);
 
 	// The contact information in the top-right of the page -- "www.openmyseat.com <br /> www.myseat.us"
