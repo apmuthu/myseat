@@ -2,7 +2,7 @@
 // This file holds the translation text
 // Text to translate: "define ( '_needle', 'please_translate_me_here' );"
 // Language: da_DK
-// Translator: Mobarak Said <mws@foot-step.dk>
+// Translator: Mobarak Said <said@myseat.us>
 
 
 //original text: "Open:"
