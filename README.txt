@@ -68,14 +68,16 @@ MULTILINGUAL
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 Actual mySeat is translated into
 
-'en_EN' => 'English'
-'de_DE' => 'German'
-'es_ES' => 'Spanish'
-'fr_FR' => 'French'
-'nl_NL' => 'Dutch'
-'se_SE' => 'Swedish'
-'it_IT' => 'Italian'
-'cn_CN' => 'Chinese'
+English
+German
+Spanish
+French
+Dutch
+Swedish
+Italian
+Chinese
+Danish
+
 
 
 LICENSE

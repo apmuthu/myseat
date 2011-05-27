@@ -35,9 +35,9 @@
 	$lang["title"] = 'Bord reservation';
 
 	// A line of text before the contact form -- "<h3>Make an instant reservation now!</h3>"
-	$lang["contact_form_intro"] = '<p>Kære Gæst,<br/><br/> 
+	$lang["contact_form_intro"] = '<p>K&aelig;re G&aelig;st,<br/><br/> 
 	Her har du mulighed for at lave en bord reservation online.
- Efter endt proces, vil du modtage en bekræftelses via e-mail hurtigst muligt.
+ Efter endt proces, vil du modtage en bekr&aelig;ftelses via e-mail hurtigst muligt.
  Hvis reservationen er for en begivenhed eller for mere end % s mennesker, bedes du kontakte os
  direkte.
 	</p>';
@@ -55,7 +55,7 @@
 	$lang["contact_form_advertise"] = 'Jeg vil gerne modtage information via e-mail.';
 
 	// Default text of the contact form -- "Notes"
-	$lang["contact_form_notes"] = 'Vigtige oplysninger (allergi, ønsker)';
+	$lang["contact_form_notes"] = 'Vigtige oplysninger (allergi, &oslash;nsker)';
 
 	// Default text of the contact form -- "Restaurant"
 	$lang["contact_form_restaurant"] = '';
@@ -91,13 +91,13 @@
 	$lang["contact_form_success"] = 'Thank you for your reservation. An email confirmation was sent.<br/> Your Booking number is: ';
 
 	// The full outlet message -- "An error occurred while booking, please try again."
-	$lang["contact_form_full"] = 'Restauranten kan ikke reserveres for denne dato, prøv en anden dato.';
+	$lang["contact_form_full"] = 'Restauranten kan ikke reserveres for denne dato, pr&oslash;v en anden dato.';
 
 	// The failure message -- "An error occurred while booking, please try again."
-	$lang["contact_form_fail"] = 'En fejl opstod under reservationen, prøv igen.';
+	$lang["contact_form_fail"] = 'En fejl opstod under reservationen, pr&oslash;v igen.';
 
 	// The success message -- "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
-	$lang["cxl_form_success"] = 'Din reservation er blevet aflyst! Velkommen en anden gang! <br/> Du er velkommen til at kontakte os, hvis du har yderligere spørgsmål eller bekymringer.';
+	$lang["cxl_form_success"] = 'Din reservation er blevet aflyst! Velkommen en anden gang! <br/> Du er velkommen til at kontakte os, hvis du har yderligere sp&oslash;rgsm&aring;l eller bekymringer.';
 
 	//----------------------------
 	// CONTACT FORM
@@ -116,7 +116,7 @@
 	//----------------------------
 
 	// The emails subject -- "Reservation confirmation for"
-	$lang["email_subject"] = 'Reservation bekræftelse';
+	$lang["email_subject"] = 'Reservation bekr&aelig;ftelse';
 
 	// The page title -- "Reservation</strong> Process"
 	$lang["conf_title"] = 'Bord Reservation';
@@ -141,7 +141,7 @@
 	//----------------------------
 
 	// The content on the first footer 
-	$lang["footer_one"] =  '<p><small>Hvis der er yderligere spørgsmål eller specielle ønsker, så tøv ikke med at kontakte os <br/> på telefonnummer% s eller via e-mail til <a href="mailto:%s">% s </ a>. </ lille> </ p>';
+	$lang["footer_one"] =  '<p><small>Hvis der er yderligere sp&oslash;rgsm&aring;l eller specielle &oslash;nsker, s&aring; t&oslash;v ikke med at kontakte os <br/> p&aring; telefonnummer %s eller via e-mail til <a href="mailto:%s">%s </ a>. </ lille> </ p>';
 
 
 	//----------------------------
