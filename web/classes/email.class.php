@@ -1,4 +1,8 @@
 <?php
+		// Prepare basedir
+		if (substr($global_basedir,0,-4) !='web/') {
+			$global_basedir = $global_basedir.'web/';
+		}
 		
 		// Initiate dates
 		$pdate = date($general['dateformat'],strtotime($_SESSION['selectedDate']));
