@@ -123,7 +123,7 @@ ob_start();
 
 function writeForm($table =''){
 	// rather than recursively calling query, insert all rows with one query
-		GLOBAL $general;
+		GLOBAL $general,$global_basedir;
 		$_SESSION['errors'] = array();
 	// prepare POST data for storage in database:
 	// $keys

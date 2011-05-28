@@ -57,10 +57,10 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 		$_SESSION['outletID'] = querySQL('web_standard_outlet');
 	}
 
-	if ($_GET['so']) {
+	if ($_GET['so']=='ON') {
 		// set single outlet indicator
 		$_SESSION['single_outlet'] = 'ON';	
-	}else{
+	}else if($_SESSION['single_outlet']==''){
 		// reset single outlet indicator
 		$_SESSION['single_outlet'] = 'OFF';	
 	}
@@ -199,7 +199,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 				</ul>
 			</div>
 			<div class='langnav'>
-				<?= strtoupper($prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone']);?>
+				<?= $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
 				<br/><br/><strong><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
 			</div>
 	    </nav>

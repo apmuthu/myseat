@@ -66,13 +66,6 @@ INSERT INTO `l16n` (`id`, `needle`, `en`, `de`, `fr`, `es`, `nl`, `dk`, `se`, `i
 (191, '_specific', 'Specific', 'Spezielle', 'Précis', 'Específico', 'Specifieke', 'Specifikke', 'Specifik', 'Specifico', '', '', '', ''),
 (192, '_dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard', 'Dashboard');
 
-/* Update the database from XT 0.1744 to > XT 0.1745 */
-/* ------------------------------------------------- */
-INSERT INTO `l16n` (`id`, `needle`, `en`, `de`, `fr`, `es`, `nl`, `dk`, `se`, `it`, `fi`, `no`, `pl`, `tr`) VALUES 
-(193, '_reservation_advertise', 'I would like to receive informations by email.', 'Ich m&ouml;chte in Zukunft Informationen per Email erhalten.', 'Je voudrais recevoir des informations par e-mail.', 'Me gustaría recibir información por correo electrónico.', 'Ik wil graag informatie ontvangen per e-mail.', 'Jeg vil gerne modtage information via e-mail.', 'Jag vill få information via e-post.', 'Desidero ricevere informazioni via email.', '', '', '', ''),
-(194, '_DR_', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.', 'Dr.'),
-(195, '_PROF_', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.', 'Prof.');
-
 /* Update the database from XT 0.178 to > XT 0.1782 */
 /* ------------------------------------------------- */
 ALTER TABLE `reservations` ADD `reservation_referer` TEXT NOT NULL ;
@@ -80,3 +73,12 @@ ALTER TABLE `reservations` ADD `reservation_referer` TEXT NOT NULL ;
 /* Update the database from XT 0.1782 to > XT 0.179 */
 /* ------------------------------------------------- */
 ALTER TABLE `properties` ADD `website` VARCHAR( 200 ) NOT NULL;
+
+/* Update the database from XT 0.179 to > XT 0.1795 */
+/* ------------------------------------------------- */
+ALTER TABLE `outlets` ADD `outlet_description_en` TEXT NOT NULL AFTER `outlet_description` ;
+
+/* Update the database from XT 0.1795 to > XT 0.1798 */
+/* ------------------------------------------------- */
+ALTER TABLE `properties` ADD `social_fb` VARCHAR( 255 ) NOT NULL ;
+ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) NOT NULL ;

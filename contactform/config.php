@@ -123,9 +123,11 @@
 	
 	function language_navigation($language)
 	{
-			echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang=en"><img src="img/flag_en.png"/></a></li>';
+			echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang=en&so='.$_SESSION['single_outlet'].'&prp='.$_SESSION['property'].'&outletID='.$_SESSION['outletID'].'">
+			<img src="img/flag_en.png"/></a></li>';
 			if($language!='en'){
-				echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'"><img src="img/flag_'.$language.'.png"/></a></li>';
+				echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'&so='.$_SESSION['single_outlet'].'&prp='.$_SESSION['property'].'&outletID='.$_SESSION['outletID'].'">
+				<img src="img/flag_'.$language.'.png"/></a></li>';
 			}
 	}
 	
