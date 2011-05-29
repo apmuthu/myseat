@@ -22,8 +22,8 @@
 
 	// Email sender & receiver
 	$to = $_POST['reservation_guest_email'];
-	$from = $property['name']." <".$_SESSION['selOutlet']['confirmation_email'].">";
-	$bcc = $property['name']." <".$_SESSION['selOutlet']['confirmation_email'].">";
+	$from = html_entity_decode($property['name'])." <".$_SESSION['selOutlet']['confirmation_email'].">";
+	$bcc = html_entity_decode($property['name'])." <".$_SESSION['selOutlet']['confirmation_email'].">";
 
 	// To send HTML mail, the Content-type header must be set
 	$headers  = 'MIME-Version: 1.0' . "\r\n";
