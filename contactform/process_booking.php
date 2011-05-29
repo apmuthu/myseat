@@ -142,7 +142,7 @@ $prp_info = querySQL('property_info');
 			<h4>
 			  <?php
 			    lang("conf_intro"); 
-			    echo " ".$outlet_name." ".$lang["_at_"]." ".buildDate($general['dateformat'],$sd,$sm,$sy)." ".$lang["_at_"]." ".$bookingtime;
+			    echo " ".$outlet_name." ".$lang["_at_"]." ".buildDate($general['dateformat'],$sd,$sm,$sy)." - ".$bookingtime;
 			  ?>
 			</h4>
 			<br/>
