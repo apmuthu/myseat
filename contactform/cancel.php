@@ -92,7 +92,7 @@ $prp_info = querySQL('property_info');
 				</ul>
 			</div>
 			<div class='langnav'>
-				<?= strtoupper($prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone']);?>
+				<?= $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
 				<br/><br/><strong><a href="index.php"><?= $lang["contact_form_back"];?></a> | <a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
 			</div>
 	    </nav>
