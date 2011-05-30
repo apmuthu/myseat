@@ -21,6 +21,7 @@ LAST CHANGES in 0.1797 & 0.1798
 - Dansk language added
 - Small bugfixes in contactform
 - Security update on web/classes/autocomplete.php
+- Email template updated
 
 DATABASE ADD in 0.1798
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -80,6 +81,7 @@ Actual mySeat is translated into
 'se_SE' => 'Swedish'
 'it_IT' => 'Italian'
 'cn_CN' => 'Chinese'
+'dk_DK' => 'Danish'
 
 
 LICENSE
