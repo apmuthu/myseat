@@ -279,24 +279,6 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 						    personsList($general['max_menu'],2);
 						?>
                     </div>
-			<br/><br/>
-			
-			<!-- facebook button-->		
-		    <?php if ($me): ?>
-			<img src="https://graph.facebook.com/<?php echo $uid; ?>/picture">
-		    <a href="<?php echo $logoutUrl; ?>">
-		      <img src="http://static.ak.fbcdn.net/rsrc.php/z2Y31/hash/cxrz4k7j.gif">
-		    </a>
-		    <?php else: ?>
-		    <div>
-		      <a href="<?php echo $loginUrl; ?>">
-		        <img src="http://static.ak.fbcdn.net/rsrc.php/zB6N8/hash/4li2k73z.gif">
-		      </a>
-		    </div>
-		    <?php endif ?>
-			<!-- facebook button end -->
-			
-			<br/>
 			<br/>
 		    <div>
 			<label><?php lang("contact_form_title"); ?></label>
