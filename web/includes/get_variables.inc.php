@@ -18,6 +18,13 @@ if ($_SESSION['token'] == $_POST['token']) {
 		$resultQuery = writeForm('settings');
 	}else if ($_POST['action']=='save_evnt') {
 		$resultQuery = writeForm('events');
+	}else if ($_POST['action']=='save_ldgr') {
+		if (($_POST['type'] == 'credit' && $_POST['amount'] > 0) || ($_POST['type'] == 'debit' && $_POST['amount'] < 0)) {
+			$_POST['amount'] = $_POST['amount'] * -1;
+		}else if ($_POST['type'] == 'debit' && $_POST['amount'] < 0) {
+			$_POST['amount'] = $_POST['amount'] * -1;
+		}
+		$resultQuery = writeForm('ledger');
 	}else if ($_POST['action']=='save_prpty') {
 		$resultQuery = writeForm('properties');
 		$_SESSION['property'] = $resultQuery;
@@ -144,31 +151,46 @@ if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet'][
 // Check if selected date is within open times of outlet
 if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
 	 && $_SESSION['selectedDate_saison']<=$_SESSION['selOutlet']['saison_end'])
-	) {
+	){
 		// if not, go to standard outlet
-		if(	$_SESSION['page'] == 2){
-		  $_SESSION['outletID'] = querySQL('standard_outlet');
+		if(	$_SESSION['page'] == 2 || $_SESSION['page']=='' ){
+		  	$outlets = querySQL('db_outlets');
+			foreach($outlets as $row) {
+			 if ( ($row->saison_start<=$row->saison_end 
+				 && $_SESSION['selectedDate_saison']>=$row->saison_start 
+				 && $_SESSION['selectedDate_saison']<=$row->saison_end)
+				) {
+				$_SESSION['outletID'] = $row->outlet_id;
+				}
+			}
+			$rows = querySQL('db_outlet_info');
+				if($rows){
+					foreach ($rows as $key => $value) {
+						$_SESSION['selOutlet'][$key] = $value;
+					}
+				}
 		}
 	}
 	
-		// Set daily outlet open/close time
-		// overwrite the standard times with the daily ones
-		$weekday = date("w",strtotime($_SESSION['selectedDate']));
-		$field_open = $weekday.'_open_time';
-		$field_close = $weekday.'_close_time';
-		$break_open = $weekday.'_open_break';
-		$break_close = $weekday.'_close_break';
-		
-		if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' 
-		&& $_SESSION['selOutlet'][$field_open] != NULL && $_SESSION['selOutlet'][$field_close] != NULL ) 
-		{	
-			$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
-			$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
-		}
 	
-		// set break times
-		$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
-		$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
+	// Set daily outlet open/close time
+	// overwrite the standard times with the daily ones
+	$weekday = date("w",strtotime($_SESSION['selectedDate']));
+	$field_open = $weekday.'_open_time';
+	$field_close = $weekday.'_close_time';
+	$break_open = $weekday.'_open_break';
+	$break_close = $weekday.'_close_break';
+
+	if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' 
+	&& $_SESSION['selOutlet'][$field_open] != NULL && $_SESSION['selOutlet'][$field_close] != NULL ) 
+	{	
+		$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
+		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
+	}
+
+	// set break times
+	$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
+	$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
 
 
 $rows = querySQL('maitre_info');
