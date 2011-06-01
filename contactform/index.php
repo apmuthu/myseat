@@ -70,23 +70,16 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 		$time = $_GET['times'].":00";	
 	}
 
-// ** get superglobal variables
-	include('../web/includes/get_variables.inc.php');
-// CSRF - Secure forms with token
-	$barrier = md5(uniqid(rand(), true)); 
-	$_SESSION['barrier'] = $barrier;
-
-
 	// Get POST data	
     // outlet id
     if (!$_SESSION['outletID']) {
-		$_SESSION['outletID'] = ($_GET['outletID']) ? (int)$_GET['outletID'] : querySQL('standard_outlet');
+		$_SESSION['outletID'] = ($_GET['outletID']) ? (int)$_GET['outletID'] : querySQL('web_standard_outlet');
     }
     
     if ($_GET['outletID']) {
 		$_SESSION['outletID'] = (int)$_GET['outletID'];
     }else {
-    	$_SESSION['outletID'] = querySQL('standard_outlet');
+    	$_SESSION['outletID'] = querySQL('web_standard_outlet');
     }
 	
 	// get property info for logo path
@@ -97,11 +90,6 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	}else{
 		$website = "http://".$prp_info['website'];
 	}
-
-	// selected date
-    if ($_GET['selectedDate']) {
-        $_SESSION['selectedDate'] = $_GET['selectedDate'];
-    }
 	
 	// +++ memorize selected outlet details; maybe moved reservation +++
 	$rows = querySQL('db_outlet_info');
@@ -110,7 +98,13 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 			$_SESSION['selOutlet'][$key] = $value;
 		}
 	}
-
+	
+	// ** get superglobal variables
+		include('../web/includes/get_variables.inc.php');
+	// CSRF - Secure forms with token
+		$barrier = md5(uniqid(rand(), true)); 
+		$_SESSION['barrier'] = $barrier;
+		
 	// ** set configuration
 	include('../config/config.inc.php');
 	
