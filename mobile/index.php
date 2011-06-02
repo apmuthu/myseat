@@ -33,8 +33,8 @@ $_SESSION['outletID'] = '';
        $_SESSION['property'] = (int)$_GET['prp'];
    }elseif ($_POST['prp']) {
        $_SESSION['property'] = (int)$_POST['prp'];
-   }elseif (!$_SESSION['property']){
-	$_SESSION['property'] = '1';
+   }elseif ($_SESSION['property']==''){
+	$_SESSION['property'] = 1;
 }
 $_SESSION['propertyID'] = $_SESSION['property'];
 
@@ -45,7 +45,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 		$_SESSION['outletID'] = querySQL('web_standard_outlet');
 	}
 
-	if ($_GET['so']) {
+	if ($_GET['so']=='ON') {
 		// set single outlet indicator
 		$_SESSION['single_outlet'] = 'ON';	
 	}else{
@@ -250,23 +250,6 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 									    personsList($general['max_menu'],2);
 									?>
 					</p>
-					<!-- facebook button-->
-					<p>
-					<br/>		
-				    <?php if ($me): ?>
-					<img src="https://graph.facebook.com/<?php echo $uid; ?>/picture">
-				    <a href="<?php echo $logoutUrl; ?>">
-				      <img src="http://static.ak.fbcdn.net/rsrc.php/z2Y31/hash/cxrz4k7j.gif">
-				    </a>
-				    <?php else: ?>
-				    <div>
-				      <a href="<?php echo $loginUrl; ?>">
-				        <img src="http://static.ak.fbcdn.net/rsrc.php/zB6N8/hash/4li2k73z.gif">
-				      </a>
-				    </div>
-				    <?php endif ?>
-					</p>
-					<!-- facebook button end -->
 					<p>
 						<label><?php lang("contact_form_title"); ?></label>
 						<?php
