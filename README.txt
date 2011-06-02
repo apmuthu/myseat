@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1798                       =-= 
-=-= Date:    22.05.2011                   =-= 
-=-= Time:    14:12 GMT                    =-= 
+=-= Version: 0.1799                       =-= 
+=-= Date:    02.06.2011                   =-= 
+=-= Time:    08:19 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,20 +16,15 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.1797 & 0.1798
+LAST CHANGES in 0.1799
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Dansk language added
 - Small bugfixes in contactform
-- Security update on web/classes/autocomplete.php
-- Email template updated
+- bugfixes in email confirmation
 
 DATABASE ADD in 0.1798
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 See documentation/database_update.sql:
 In table properties two fields for social media added
-
-DATABASE ADD in 0.1795
-In table outlets one field added
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
