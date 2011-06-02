@@ -45,8 +45,8 @@ $_SESSION['outletID'] = '';
        $_SESSION['property'] = (int)$_GET['prp'];
    }elseif ($_POST['prp']) {
        $_SESSION['property'] = (int)$_POST['prp'];
-   }elseif (!$_SESSION['property']){
-	$_SESSION['property'] = '1';
+   }elseif ($_SESSION['property']==''){
+	$_SESSION['property'] = 1;
 }
 $_SESSION['propertyID'] = $_SESSION['property'];
 
@@ -60,7 +60,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	if ($_GET['so']=='ON') {
 		// set single outlet indicator
 		$_SESSION['single_outlet'] = 'ON';	
-	}else if($_SESSION['single_outlet']==''){
+	}else{
 		// reset single outlet indicator
 		$_SESSION['single_outlet'] = 'OFF';	
 	}
