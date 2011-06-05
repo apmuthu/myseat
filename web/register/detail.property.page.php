@@ -1,6 +1,6 @@
 <?php if($settings['googlemap_key'] != ""){?>
     <!-- Google Map Key -->
-    <!-- <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?= $settings['googlemap_key']; ?>" type="text/javascript" ></script> -->
+    <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?= $settings['googlemap_key']; ?>" type="text/javascript" ></script>
     <script type="text/javascript" src="js/jquery.gmap-1.1.0-min.js"></script>
 <?php } ?>
 <?

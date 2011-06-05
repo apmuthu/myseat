@@ -525,15 +525,15 @@ define ( '_img', 'Imagen' );
 //original text: "free"
 define ( '_free', 'gratis' );
 
-//original text: "Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s. If you want cancel your reservation please use your booking number \'%s\' at the homepage. We wish you an enjoyable stay at our restaurant and are looking forward to your visit! Yours %s"
+//original text: "Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s. If you want to cancel your reservation please use your booking number \'%s\' at the homepage. We wish you an enjoyable stay at our restaurant and are looking forward to your visit! Yours %s"
 // LEAVE THIS TEXT AS IS ! DO NOT TRANSLATE!
-define ( '_email_confirmation_en', 'Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s.<br/>If you want cancel your reservation please use your booking number \'%s\' at the homepage.<br/>We wish you an enjoyable stay at our restaurant and are looking forward to your visit!<br/><br/>Yours<br/>%s' );
+define ( '_email_confirmation_en', 'Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s.<br/>If you want to cancel your reservation please use your booking number \'%s\' at the homepage.<br/>We wish you an enjoyable stay at our restaurant and are looking forward to your visit!<br/><br/>Yours<br/>%s' );
 
 //original text: "Reservation confirmation for "
 // LEAVE THIS TEXT AS IS ! DO NOT TRANSLATE!
 define ( '_email_subject_en', 'Confirmación de reserva para' );
 
-//original text: "Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s. If you want cancel your reservation please use your booking number \'%s\' at the homepage. We wish you an enjoyable stay at our restaurant and are looking forward to your visit! Yours %s"
+//original text: "Thank you very much for your reservation in our %s. With pleasure we confirm your reservation for %s person(s) on %s at %s. If you want to cancel your reservation please use your booking number \'%s\' at the homepage. We wish you an enjoyable stay at our restaurant and are looking forward to your visit! Yours %s"
 define ( '_email_confirmation', 'Muchas gracias por realizar su reserva en nuestro %s. Nos complace confirmar su reservación para %s persona(s) el %s a las %s.<br/>Si quisiera cancelar su reservación, por favor use su número de registro \'%s\' en la página de inicio.<br/>Le deseamos un disfrutable paso por nuestro restaurant y estaremos pendientes a su visita.<br/><br/>Atentamente,<br/>%s' );
 
 //original text: "before"

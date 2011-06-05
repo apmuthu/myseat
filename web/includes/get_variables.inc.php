@@ -140,13 +140,18 @@ $_SESSION['selectedDate_year']	 = $sj;
 // ++++++++++++++++++++++++++++++++++++++++
 // only load when outlet is changed
 if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet']['outlet_id'] ) {
+	$_SESSION['selOutlet'] = array();
 	$rows = querySQL('db_outlet_info');
 	if($rows){
 		foreach ($rows as $key => $value) {
 			$_SESSION['selOutlet'][$key] = $value;
 		}
+		$_SESSION['selOutlet']['open_time'] = $_SESSION['selOutlet']['outlet_open_time'];
+		$_SESSION['selOutlet']['close_time'] = $_SESSION['selOutlet']['outlet_close_time'];
 	}
 }
+$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet']['open_time'];
+$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet']['close_time'];
 
 // Check if selected date is within open times of outlet
 if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
@@ -181,13 +186,11 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 	$break_open = $weekday.'_open_break';
 	$break_close = $weekday.'_close_break';
 
-	if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' 
-	&& $_SESSION['selOutlet'][$field_open] != NULL && $_SESSION['selOutlet'][$field_close] != NULL ) 
+	if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' ) 
 	{	
 		$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
 		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
 	}
-
 	// set break times
 	$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
 	$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];

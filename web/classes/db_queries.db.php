@@ -65,9 +65,10 @@ function querySQL($statement){
 			$result = query("SELECT outlet_id FROM `outlets` 
 							WHERE `property_id` = '%d' 
 							AND ( `saison_year` = 0 OR `saison_year` = YEAR(NOW()) )
-							AND saison_start > '%d' 
-							AND saison_end > '%d' 
-							ORDER BY outlet_id LIMIT 1",$_SESSION['property'],$_SESSION['selectedDate_saison'],$_SESSION['selectedDate_saison']);
+							AND saison_start <= '%d' 
+							AND saison_end >= '%d' 
+							ORDER BY outlet_id LIMIT 1", 
+							$_SESSION['property'],$_SESSION['selectedDate_saison'], $_SESSION['selectedDate_saison']);
 			return getResult($result);
 		break;
 		case 'web_standard_outlet':

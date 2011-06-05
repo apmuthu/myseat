@@ -34,7 +34,7 @@ and takes less than five minutes to complete.
 
 Before starting the automatic installer follow these instructions:
 Create a database for mySeat on your web server, as well as a MySQL user who has all privileges for accessing and modifying it.
-Open <config/config.general.php> and <PLC/plc.class.php> in a text editor and fill in your database details.
+Open <config/config.general.php> in a text editor and fill in your database details.
 Browse to your new mySeat site to the directory /install.
 This will take you to the mySeat installer, which starts with a small explanation.
 

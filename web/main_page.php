@@ -21,8 +21,19 @@ This file is part of mySeat.
 */
 
 /** Login **/
+// ** set configuration
+	include('../config/config.general.php');
+	
 	require_once '../PLC/plc.class.php';
-	$user = new flexibleAccess();
+	$dbAccess = array(
+	  'dbName' => $settings['dbName'],
+	  'dbUser' => $settings['dbUser'],
+	  'dbPass' => $settings['dbPass'],
+	  'dbPort' => '3306'
+	 );
+
+	$user = new flexibleAccess('',$dbAccess);
+
 	if ( $_GET['logout'] == 1 ){
 		$user->logout();
 	}
@@ -43,8 +54,6 @@ This file is part of mySeat.
 
 	}
 
-// ** set configuration
-	include('../config/config.general.php');
 // ** connect to database
 	include('classes/connect.db.php');
 // ** localization functions

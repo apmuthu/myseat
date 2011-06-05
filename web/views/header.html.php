@@ -15,6 +15,11 @@
 <meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
 <meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
 
+<!-- Meta data for all iDevices -->
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
 <!-- Template stylesheet -->
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="css/print.css" type="text/css" media="print" >

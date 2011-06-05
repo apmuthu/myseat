@@ -70,8 +70,7 @@
 		echo $lang[$key];
 	}
 	
-	function language_navigation_original()
-	{
+	function language_navigation_original() {
 		global $lang;
 		$languages = $lang["available_language"];
 		foreach( $languages as $single_language )
@@ -81,8 +80,7 @@
 		}
 	}
 	
-	function language_navigation($language)
-	{
+	function language_navigation($language) {
 			echo '<li><a href="'.$_SERVER['PHP_SELF'].'?lang=en&so='.$_SESSION['single_outlet'].'&prp='.$_SESSION['property'].'&outletID='.$_SESSION['outletID'].'">
 			<img src="img/flag_en.png"/></a></li>';
 			if($language!='en'){
@@ -91,12 +89,12 @@
 			}
 	}
 	
-	function language_navigation_mobile($language)
-	{
+	function language_navigation_mobile($language) {
+			global $global_basedir;
 			if($language!='en'){
-				echo '<a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'" style="margin-right:9px;"><img src="../contactform/img/flag_'.$language.'.png"/></a>&nbsp;';
+				echo '<a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'" style="margin-right:9px;"><img src="'.$global_basedir.'/contactform/img/flag_'.$language.'.png"/></a>&nbsp;';
 			}
-		echo '<a href="'.$_SERVER['PHP_SELF'].'?lang=en" style="margin-right:13px;"><img src="../contactform/img/flag_en.png"/></a>';
+		echo '<a href="'.$_SERVER['PHP_SELF'].'?lang=en" style="margin-right:13px;"><img src="'.$global_basedir.'/contactform/img/flag_en.png"/></a>';
 	}
 	
 	

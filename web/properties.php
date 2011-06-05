@@ -10,8 +10,18 @@ require_once '../PLC/plc.class.php';
 if($_GET['p'] == 6 || $_GET['p'] == 5 || $_GET['logout']==1){
 
 	/** Login **/
+	// ** set configuration
+		include('../config/config.general.php');
 
-	$user = new flexibleAccess();
+		require_once '../PLC/plc.class.php';
+		$dbAccess = array(
+		  'dbName' => $settings['dbName'],
+		  'dbUser' => $settings['dbUser'],
+		  'dbPass' => $settings['dbPass'],
+		  'dbPort' => '3306'
+		 );
+
+		$user = new flexibleAccess('',$dbAccess);
 	if ( $_GET['logout'] == 1 ){
 		$user->logout();
 	}

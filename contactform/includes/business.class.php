@@ -228,7 +228,7 @@ function processBooking(){
 	// prepare POST data for storage in database:
 	// $keys
 	// $values 
-	if( $_POST['action'] == 'submit') {
+	if( $_POST['action'] == 'submit' && trim($_POST['reservation_guest_name'])!='' && trim($_POST['reservation_time'])!='' && (int)$_POST['reservation_pax']>0) {
 		$keys = array();
 		$values = array();
 		$i=1;
