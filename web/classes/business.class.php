@@ -709,7 +709,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 	list($h2,$m2,$s2)	= explode(":",$close_time);
 	$value  			= mktime($h1+0,$m1+0,0,date("m"),$day,date("Y"));
 	$opentime 			= $value;
-	$endtime		 	= mktime($h2+0,$m2+0,0,date("m"),$endday,date("Y"));
+	$endtime		 	= mktime($h2+0,$m2+15,0,date("m"),$endday,date("Y")); //set endtime +15 to prevent error
 	$i 					= 1;
 	
 		//walk through timeslots
@@ -728,22 +728,23 @@ function getAvailability($ava_by_time, $intervall='15') {
 			$out_ava_temp_before = 0;
 			$out_ava_temp_after = 0;
 			$ii = 1;
-			
+
 			//count the reservations before the timeslot's time by duration
 			while ( $startvalue <= $value) {
-				// not smaller than starttime
-				//$startvalue = ($startvalue < $opentime) ? $opentime : $startvalue;
 				if ($startvalue >= $opentime){
 					/* after midnight correction **FALSE**
 					if($value-$startvalue > 3600 && $dayshift == 1){
 						//$startvalue = $value-3600;
 					} */
 					$ava_temp = ($ava_by_time[date('H:i:s',$startvalue)]) ? $ava_by_time[date('H:i:s',$startvalue)] : 0;
-					$out_ava_temp_before += $ava_temp;
+					if (($startvalue >= $opentime)) {
+						$out_ava_temp_before += $ava_temp;
+					}
+					
 				}
-				//echo "$startvalue = mktime(".$h3."+1-1,".$m3."+".$ii."*".$intervall.",0,date('m',".$startvalue."),date('d',".$startvalue."),date('Y',".$startvalue."));";
+
 				$startvalue = mktime($h3+1-1,$m3+$ii*$intervall,0,date("m",$startvalue),date("d",$startvalue),date("Y",$startvalue)); 
-				if($startvalue>=$endtime){break;}
+				if($startvalue>$endtime){break;}
 				$ii++;
 			}
 			$ii = 1;
@@ -765,8 +766,13 @@ function getAvailability($ava_by_time, $intervall='15') {
 			
 			// block before and after reservation time
 			$out_availability[date('H:i',$value)] = $out_ava_temp_before + $out_ava_temp_after; 
+			//echo "out_availability[".date('H:i',$value)."] = ".$out_ava_temp_before." + ".$out_ava_temp_after."<br/>";
+			
 			// block after reservation time
 			//$out_availability[date('H:i',$value)] = $out_ava_temp_before; 
+			
+			// block after reservation time
+			//$out_availability[date('H:i',$value)] = $out_ava_temp_after;
 			
 		  $value = mktime($h1+0,$m1+$i*$intervall,0,date("m"),$day,date("Y")); 
 		  $i++;
