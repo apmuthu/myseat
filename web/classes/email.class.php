@@ -84,8 +84,10 @@
 	// prepare text
 	if ( $_POST['email_type'] == 'en' ) {
 		$text = _email_confirmation_en;
+		$descr = 'outlet_description_en';
 	}else{
 		$text = _email_confirmation;
+		$descr = 'outlet_description';
 	}
 	
 	$plain_text  = $salut.",\r\n\r\n";
@@ -187,7 +189,7 @@
 
 										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">'._description.'</span></h4>
 
-										'.substr($_SESSION['selOutlet']['outlet_description'],0,90).'...
+										'.substr($_SESSION['selOutlet'][$descr],0,90).'...
 									</td>
 									<td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="20">&nbsp;</td><!-- spacer -->
 									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="146">
