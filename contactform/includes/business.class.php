@@ -110,7 +110,7 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 				
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
 					 $pax_capacity = ($tbl_capacity >=1) ? $_SESSION['outlet_max_capacity']-$availability[date('H:i',$value)] : 0;
-					 if ( $pax_capacity <= 0 ) {
+					 if ( $pax_capacity <= 0 || $tbl_capacity < 1) {
 						echo " disabled='disabled' ";
 					 }
 				

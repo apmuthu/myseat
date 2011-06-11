@@ -194,8 +194,8 @@ if ($_SESSION['token'] == $_POST['token']) {
 			$val_capacity = $_SESSION['outlet_max_capacity']-$occupancy[$startvalue];
 			$tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_occupancy[$startvalue]; 
 
-			if( $res_pax > $val_capacity || $tbl_capacity < $res_tbl ){
-				//prevent double entry 	
+			if( $res_pax > $val_capacity || $tbl_capacity  < 1 ){
+				//prevent double array entry 	
 				$index = array_search('reservation_wait',$keys);
 				if($index>0){
 					if ($values[$index] == '0') {
@@ -261,7 +261,7 @@ $token = md5(uniqid(rand(), true));
 $_SESSION['token'] = $token;
 
 // after processing reservation, redirect to main page
-header("Location: ../main_page.php?p=2&selectedDate=".$_SESSION['reservation_date']." ");
+header("Location: ../main_page.php?p=2&selectedDate=".$_SESSION['reservation_date']."&tbl=".$tbl_occupancy[$startvalue]."&cap=".$tbl_capacity);
 
 exit;
 
