@@ -35,24 +35,23 @@
 	$lang["title"] = 'Table reservation';
 
 	// A line of text before the contact form -- "<h3>Make an instant reservation now!</h3>"
-	$lang["contact_form_intro"] = '<p>Dear Guest,<br/><br/> 
-	Here you have the possibility to make a table reservation online.
-	After completing the process, you will receive a confirmation Email promptly.  
-	If the reservation is for an event or for more than %s people is wished, please contact us
-	directly.
+	$lang["contact_form_intro"] = '<p>Dear Guest,<br/><br/>
+	Thank you for visiting our online table reservation page.
+	After completing the process, you will receive a confirmation Email.
+	If the reservation is for an event, or a reservation for more than %s people is wished, please contact us via phone.
 	</p>';
 
 	// Default text of the contact form -- "Name or Group Name"
-	$lang["contact_form_name"] = 'First Name, Name';
+	$lang["contact_form_name"] = 'First Name, Last Name';
 
 	// Default text of the contact form -- "E-mail address"
 	$lang["contact_form_email"] = 'E-mail address';
-	
+
 	// Default text of the contact form -- "Security question"
 	$lang["security_question"] = 'Security question';
-	
+
 	// Default text of the contact form -- "Advertise"
-	$lang["contact_form_advertise"] = 'I would like to receive informations by email.';
+	$lang["contact_form_advertise"] = 'I would like to receive information by email.';
 
 	// Default text of the contact form -- "Notes"
 	$lang["contact_form_notes"] = 'Important details (allergies, wishes)';
@@ -140,8 +139,8 @@
 	// FOOTER
 	//----------------------------
 
-	// The content on the first footer 
-	$lang["footer_one"] =  '<p><small>If there are any further questions or special requests, please do not hesitate to contact us<br/>under telephone number %s or via Email to <a href="mailto:%s">%s</a>.</small></p>';
+	// The content on the first footer
+	$lang["footer_one"] =  '<p><small>* Required information<br/>If there are any further questions or special requests, please do not hesitate to contact us<br/>via telephone %s or Email to <a href="mailto:%s">%s</a>.</small></p>';
 
 
 	//----------------------------

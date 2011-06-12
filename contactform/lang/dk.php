@@ -49,7 +49,7 @@
 	$lang["contact_form_email"] = 'E-mail Adresse';
 	
 	// Default text of the contact form -- "Security question"
-	$lang["security_question"] = 'Anti-auto booking';
+	$lang["security_question"] = 'Sikkerhedssp&oslash;rgsm&aring;l';
 	
 	// Default text of the contact form -- "Advertise"
 	$lang["contact_form_advertise"] = 'Jeg vil gerne modtage information via e-mail.';
@@ -73,7 +73,7 @@
 	$lang["contact_form_title"] = 'Titel';
 
 	// Default text for the 'captcha' field of the contact form -- "Security question"
-	$lang["contact_form_captcha"] = 'Anti-auto booking';
+	$lang["contact_form_captcha"] = 'Sikkerhedssp&oslash;rgsm&aring;l';
 
 	// The 'Send' button -- "Book"
 	$lang["contact_form_send"] = 'Reserver bord';
@@ -88,7 +88,7 @@
 	$lang["book_num"] = 'Reservations Nummer';
 
 	// The success message -- "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
-	$lang["contact_form_success"] = 'Thank you for your reservation. An email confirmation was sent.<br/> Your Booking number is: ';
+	$lang["contact_form_success"] = 'Tak for din reservation. En e-mail bekr&aelig;ftelse er blevet sendt. <br/> Dit bookingnummer er: ';
 
 	// The full outlet message -- "An error occurred while booking, please try again."
 	$lang["contact_form_full"] = 'Restauranten kan ikke reserveres for denne dato, pr&oslash;v en anden dato.';
@@ -116,7 +116,7 @@
 	//----------------------------
 
 	// The emails subject -- "Reservation confirmation for"
-	$lang["email_subject"] = 'Reservation bekr&aelig;ftelse';
+	$lang["email_subject"] = 'Reservation bekræftelse';
 
 	// The page title -- "Reservation</strong> Process"
 	$lang["conf_title"] = 'Bord Reservation';
