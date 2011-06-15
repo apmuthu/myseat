@@ -68,7 +68,6 @@ session_start();
 					<ul style="margin-left:40px;" class="global">
 						<li>Create a database for mySeat on your web server, as well as a MySQL user who has all privileges for accessing and modifying it.</li>
 						<li>Open <tt>config/config.general.php</tt> in a text editor and fill in your database details.</li>
-						<li>Open <tt>PLC/plc.class.php</tt> also in a text editor and fill in your database details twice.</li>
 						<li>Be sure to set the right of the folder <tt>/uploads</tt> and all content in it to '777'.</li>
 					</ul>
 					</p>
