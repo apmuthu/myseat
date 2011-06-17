@@ -73,10 +73,11 @@ function querySQL($statement){
 		break;
 		case 'web_standard_outlet':
 			$result = query("SELECT outlet_id FROM `outlets` 
-							WHERE `property_id` ='%d' 
-							AND `webform` ='1' 
+							WHERE `property_id` = '%d' 
 							AND ( `saison_year` = 0 OR `saison_year` = YEAR(NOW()) )
-							ORDER BY outlet_name LIMIT 1",$_SESSION['property']);
+							AND `webform` ='1' 
+							ORDER BY outlet_name DESC LIMIT 1",
+							$_SESSION['property']);
 			return getResult($result);
 		break;
 		case 'num_outlets':
@@ -701,6 +702,10 @@ function querySQL($statement){
 					AND `city` LIKE '%s'
 					ORDER BY name ASC",$_SESSION['countryID'],$_SESSION['city']);
 			return getRowList($result);
+		break;
+		case 'num_admin':
+			$result = query("SELECT COUNT(*) FROM `plc_users` WHERE `role` ='1' OR `role` ='2'");
+			return getResult($result);
 		break;
 		case 'property_info':
 			$result = query("SELECT id, name, street,

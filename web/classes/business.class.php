@@ -361,7 +361,6 @@ function outletListweb($outlet_id = '1', $disabled = 'enabled',$tablename='outle
 	return $mem_dayoff;
 }
 
-
 function getLangList($langTrans, $set, $disabled = 'enabled'){
 	echo"<select name='language' id='language' size='1' $disabled>\n";
 		

@@ -123,7 +123,7 @@ ob_start();
 
 function writeForm($table =''){
 	// rather than recursively calling query, insert all rows with one query
-		GLOBAL $general,$global_basedir;
+		GLOBAL $general,$global_basedir,$settings;
 		$_SESSION['errors'] = array();
 	// prepare POST data for storage in database:
 	// $keys
@@ -164,7 +164,13 @@ function writeForm($table =''){
 			
 				if($value != "EdituseR"){
 					$keys[$i] = $key;
-					$insert = new flexibleAccess();
+					$dbAccess = array(
+					  'dbName' => $settings['dbName'],
+					  'dbUser' => $settings['dbUser'],
+					  'dbPass' => $settings['dbPass'],
+					  'dbPort' => '3306'
+					 );
+					$insert = new flexibleAccess('',$dbAccess);
 					$password = $insert->hash_password($value);
 					$values[$i] = "'".$password."'";
 				}

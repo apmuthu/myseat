@@ -146,12 +146,11 @@ if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet'][
 		foreach ($rows as $key => $value) {
 			$_SESSION['selOutlet'][$key] = $value;
 		}
-		$_SESSION['selOutlet']['open_time'] = $_SESSION['selOutlet']['outlet_open_time'];
-		$_SESSION['selOutlet']['close_time'] = $_SESSION['selOutlet']['outlet_close_time'];
+		// memorize open times
+		$_SESSION['open_time'] = $_SESSION['selOutlet']['outlet_open_time'];
+		$_SESSION['close_time'] = $_SESSION['selOutlet']['outlet_close_time'];
 	}
 }
-$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet']['open_time'];
-$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet']['close_time'];
 
 // Check if selected date is within open times of outlet
 if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
@@ -174,9 +173,14 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 						$_SESSION['selOutlet'][$key] = $value;
 					}
 				}
+				// memorize open times
+				$_SESSION['open_time'] = $_SESSION['selOutlet']['outlet_open_time'];
+				$_SESSION['close_time'] = $_SESSION['selOutlet']['outlet_close_time'];
 		}
 	}
-	
+	// Set back original open times
+	$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['open_time'];
+	$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['close_time'];	
 	
 	// Set daily outlet open/close time
 	// overwrite the standard times with the daily ones
@@ -185,16 +189,17 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 	$field_close = $weekday.'_close_time';
 	$break_open = $weekday.'_open_break';
 	$break_close = $weekday.'_close_break';
-
+	//echo $_SESSION['selOutlet']['outlet_open_time']."//".$_SESSION['selOutlet']['outlet_close_time']."<br/>";
 	if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' ) 
 	{	
 		$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
-		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];		
+		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];			
 	}
+	
 	// set break times
 	$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
 	$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
-
+	//echo $_SESSION['selOutlet']['outlet_open_time']."//".$_SESSION['selOutlet']['outlet_close_time'];
 
 $rows = querySQL('maitre_info');
 foreach($rows as $row) {

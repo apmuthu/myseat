@@ -1,4 +1,4 @@
-<?
+<?php
 if ($_SESSION['button']==2 || $_SESSION['page'] == 7) {
 	$row = "";
 }else{
@@ -84,7 +84,7 @@ if ($_SESSION['page'] == 7){
 		<input type="submit" class="button_dark" value="<?= _save;?>">
 	</div>
 	<br/>
-	<? include('content/rolesgrid.php')?>
+	<? include('content/rolesgrid.php');?>
 	<br/>
 </form>
 </div>

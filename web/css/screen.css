@@ -64,7 +64,7 @@ body.login                              {   text-align: left }
                                             text-align: center;
                                         }
 #login_top img                          { margin-top: 24px }
-#wrapper                                { width: 100% }
+#wrapper                                { /* width: 100% */ }
 #overlay                                {
                                             width: 100%;
                                             height: 100%;
