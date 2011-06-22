@@ -90,11 +90,11 @@
 	}
 	
 	function language_navigation_mobile($language) {
-			global $global_basedir;
-			if($language!='en'){
+			global $global_basedir,$general;
+			if(substr($general['language'],0,2)!='en'){
 				echo '<a href="'.$_SERVER['PHP_SELF'].'?lang='.$language.'" style="margin-right:9px;"><img src="'.$global_basedir.'/contactform/img/flag_'.$language.'.png"/></a>&nbsp;';
 			}
-		echo '<a href="'.$_SERVER['PHP_SELF'].'?lang=en" style="margin-right:13px;"><img src="'.$global_basedir.'/contactform/img/flag_en.png"/></a>';
+			echo '<a href="'.$_SERVER['PHP_SELF'].'?lang=en" style="margin-right:13px;"><img src="'.$global_basedir.'/contactform/img/flag_en.png"/></a>';
 	}
 	
 	
