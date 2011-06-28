@@ -1,15 +1,15 @@
 <!-- Begin reservation table data -->
 <table class="global resv-table" cellpadding="0" cellspacing="0">
 	<thead>
-	    <tr <? if($waitlist){echo"class='waitlist-header'";} ?>>
-	    	<th><?= _time; ?></th>
+	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>
+	    	<th><?php echo _time; ?></th>
 			<th></th>
-			<th><?= _guest_name; ?></th>
-			<th><?= _pax; ?></th>
-			<th><?= _phone_room; ?></th>
-			<th><?= _type; ?></th>
+			<th><?php echo _guest_name; ?></th>
+			<th><?php echo _pax; ?></th>
+			<th><?php echo _phone_room; ?></th>
+			<th><?php echo _type; ?></th>
 			<th> 
-			<?
+			<?php
 			 	if ($_SESSION['page'] == 1) {
 			 		echo _outlets;
 			 	}else{
@@ -17,19 +17,19 @@
 				} 
 			?>
 			</th>
-			<th class='noprint'><?= _author; ?></th>
-			<?
+			<th class='noprint'><?php echo _author; ?></th>
+			<?php
 			if($_SESSION['wait'] == 0){
 				echo "<th style='width:2%'>"._table."</th>";
 			}
 			?>
-	    	<th style='width:3%'><?= _status; ?></th>
+	    	<th style='width:3%'><?php echo _status; ?></th>
 			<th class='noprint'></th>
 			<th class='noprint' style='width:2%'></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 		// Clear reservation variable
 		$reservations ='';
 		
@@ -131,13 +131,13 @@
 	</tbody>
 	<tfoot>
 		<tr>
-			<td colspan="3" class="bold right-side-text"><?= _guest_summary;?></td>
-			<td class="bold"><?= $guestsum;?></td>
-			<td class="bold right-side-text"><?= _tables_summary;?></td>
-			<td class="bold"><?= $tablesum;?></td>
+			<td colspan="3" class="bold right-side-text"><?php echo _guest_summary;?></td>
+			<td class="bold"><?php echo $guestsum;?></td>
+			<td class="bold right-side-text"><?php echo _tables_summary;?></td>
+			<td class="bold"><?php echo $tablesum;?></td>
 			<td></td>
 			<td></td>
-			<?
+			<?php
 			if($_SESSION['wait'] == 0){
 				echo "<td></td>";
 			}

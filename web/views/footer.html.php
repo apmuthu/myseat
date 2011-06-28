@@ -11,8 +11,6 @@
 	<?php if($_SESSION['page']=='6'):?>
 	<script type="text/javascript" src="js/jwysiwyg/jquery.wysiwyg.js"></script>
 	<script type="text/javascript" src="js/mColorPicker.js"></script>
-	<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=<?= $settings['googlemap_key']; ?>" type="text/javascript" ></script>
-	<script type="text/javascript" src="../web/js/jquery.gmap-1.1.0-min.js"></script>
 	<?php endif ?>
 	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
@@ -59,8 +57,8 @@
 			altField: '#dbdate',
 			altFormat: 'yy-mm-dd',
 			defaultDate: 0,
-			dateFormat: '<?= $general['datepickerformat'];?>',
-			regional: '<?= substr($_SESSION['language'],0,2);?>',
+			dateFormat: '<?php echo $general['datepickerformat'];?>',
+			regional: '<?php echo substr($_SESSION['language'],0,2);?>',
 			onSelect: function(dateText, inst) { window.location.href="?selectedDate="+$("#dbdate").val(); }
 		});
 		// Setup datepickers export
@@ -74,8 +72,8 @@
 				altField: '#s_dbdate',
 				altFormat: 'yy-mm-dd',
 				defaultDate: 0,
-				dateFormat: '<?= $general['datepickerformat'];?>',
-				regional: '<?= substr($_SESSION['language'],0,2);?>'
+				dateFormat: '<?php echo $general['datepickerformat'];?>',
+				regional: '<?php echo substr($_SESSION['language'],0,2);?>'
 			});
 			$("#e_datepicker").datepicker({
 				nextText: '&raquo;',
@@ -87,10 +85,10 @@
 				defaultDate: 0,
 				altField: '#e_dbdate',
 				altFormat: 'yy-mm-dd',
-				dateFormat: '<?= $general['datepickerformat'];?>',
-				regional: '<?= substr($_SESSION['language'],0,2);?>'
+				dateFormat: '<?php echo $general['datepickerformat'];?>',
+				regional: '<?php echo substr($_SESSION['language'],0,2);?>'
 			});
-			//$("#datepicker").datepicker('setDate', new Date ( "<?= $pickerDate; ?>" ));
+			//$("#datepicker").datepicker('setDate', new Date ( "<?php echo $pickerDate; ?>" ));
 		<?php endif ?>
 		// Setup recurring date input
 		$("#recurring_date").datepicker({
@@ -103,10 +101,10 @@
 			altField: '#recurring_dbdate',
 			altFormat: 'yy-mm-dd',
 			defaultDate: 0,
-			dateFormat: '<?= $general['datepickerformat'];?>',
-			regional: '<?= substr($_SESSION['language'],0,2);?>'
+			dateFormat: '<?php echo $general['datepickerformat'];?>',
+			regional: '<?php echo substr($_SESSION['language'],0,2);?>'
 		});
-		//$("#recurring_date").datepicker('setDate', new Date ( "<?= $_SESSION['selectedDate']; ?>" ));
+		//$("#recurring_date").datepicker('setDate', new Date ( "<?php echo $_SESSION['selectedDate']; ?>" ));
 		// Setup event datepicker
 		$("#ev_datepicker").datepicker({
 			nextText: '&raquo;',
@@ -117,13 +115,13 @@
 			altField: '#event_date',
 			altFormat: 'yy-mm-dd',
 			defaultDate: 0,
-			dateFormat: '<?= $general['datepickerformat'];?>',
-			regional: '<?= substr($_SESSION['language'],0,2);?>'
+			dateFormat: '<?php echo $general['datepickerformat'];?>',
+			regional: '<?php echo substr($_SESSION['language'],0,2);?>'
 		});
 		
 		// NOTIFICATION: Check periodically for new reservations
 		// and notify every 1 minute
-		var holdTheInterval = setInterval(callNotifications, 35000);
+		//var holdTheInterval = setInterval(callNotifications, 35000);
 		
 		<?php if($_SESSION['page']=='3'):?>
 			/* Data Graph */

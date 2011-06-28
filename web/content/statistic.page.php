@@ -1,4 +1,4 @@
-<?
+<?php
 /**
  *
  *  Gets the first weekday of that month and year
@@ -100,7 +100,7 @@ $labelpie = array();
 		<ul class="second_level_tab">
 			<li>
 				<a href="?p=2" class="button_dark">
-					<?= _back;?>
+					<?php echo _back;?>
 				</a>
 			<li/>
 		</ul>
@@ -109,7 +109,7 @@ $labelpie = array();
 	</div>
 	<div class="content">
 		<h1 class="stats_header_text">
-			<?= _statistics." "._for_." ".strftime("%B",strtotime($_SESSION['selectedDate']))." "._for_." ".$_SESSION['selOutlet']['outlet_name'];?>
+			<?php echo _statistics." "._for_." ".strftime("%B",strtotime($_SESSION['selectedDate']))." "._for_." ".$_SESSION['selOutlet']['outlet_name'];?>
 		</h1>
 		<table id="numbers" class="data center" cellpadding="0" cellspacing="20">
 			<tbody>
@@ -117,7 +117,7 @@ $labelpie = array();
 					
 					<td width="400px">
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_pax."/"._year);?></span>
+						<span><?php echo strtoupper(_pax."/"._year);?></span>
 					 </div>
 					 <div class="stats_section_content">
 						<?
@@ -127,25 +127,25 @@ $labelpie = array();
 						$pax_prpty = ($pax_prpty==0) ? 1 :$pax_prpty;
 						 $pax_outlet = ($pax_outlet==0) ? 1 :$pax_outlet;
 						?>
-						<span class="bigger_number"><?= $pax_outlet;?></span>&nbsp;<span class='stats_small_text'>(<?= round((100/$pax_prpty*$pax_outlet),1);?>%)</span>
+						<span class="bigger_number"><?php echo $pax_outlet;?></span>&nbsp;<span class='stats_small_text'>(<?php echo round((100/$pax_prpty*$pax_outlet),1);?>%)</span>
 					 </div>
 					</td>
 					
 					<td width="200px">
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_cancelled."/"._year);?></span>
+						<span><?php echo strtoupper(_cancelled."/"._year);?></span>
 					 </div>
 					 <div class="stats_section_content">
-						<span class="big_number"><?= querySQL('statistic_cxl_year');?></span>
+						<span class="big_number"><?php echo querySQL('statistic_cxl_year');?></span>
 					 </div>
 					</td>
 					
 					<td width="200px">
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_wait_list."/"._year);?></span>
+						<span><?php echo strtoupper(_wait_list."/"._year);?></span>
 					 </div>
 					 <div class="stats_section_content">
-						<span class="big_number"><?= querySQL('statistic_wait_year');?></span>
+						<span class="big_number"><?php echo querySQL('statistic_wait_year');?></span>
 					 </div>
 					</td>
 					
@@ -153,20 +153,20 @@ $labelpie = array();
 					
 					<td>
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_webform."/"._year);?></span>
+						<span><?php echo strtoupper(_webform."/"._year);?></span>
 					 </div>
 					 <div class="stats_section_content">
-						<span class="bigger_number"><?= querySQL('statistic_online_year');?></span>
+						<span class="bigger_number"><?php echo querySQL('statistic_online_year');?></span>
 					 </div>
 					</td>
 					
 					<td colspan="2">
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_top." 7 "._trsources);?></span>
+						<span><?php echo strtoupper(_top." 7 "._trsources);?></span>
 					 </div>
 					 <div class="stats_section_content">
 						<ul>
-							<?
+							<?php
 							$referer_data = querySQL('statistic_referer');
 							foreach ($referer_data as $row) {
 								if ($row->reservation_referer!='') {
@@ -185,11 +185,11 @@ $labelpie = array();
 					
 					<td>
 					 <div class="stats_section_title">
-						<span><?= strtoupper(_top." 7 "._pax."/"._year);?></span>
+						<span><?php echo strtoupper(_top." 7 "._pax."/"._year);?></span>
 					 </div>
 					 <div class="stats_section_content">
 						<ul>
-						<?
+						<?php
 						$top_guests = querySQL('statistic_top5_guest_year');
 						foreach ($top_guests as $top_guest) {
 							echo "<li>".$top_guest->reservation_guest_name."&nbsp;<span class='stats_small_text'>(".$top_guest->total."&times;)</span></li>";
@@ -203,10 +203,10 @@ $labelpie = array();
 					
 					<td>
 					 <div class="stats_section_title">
-						<span>&empty; <?= strtoupper(_days."/"._reservations);?></span>
+						<span>&empty; <?php echo strtoupper(_days."/"._reservations);?></span>
 					 </div>
 					 <div class="stats_section_content">
-						<span class="biggest_number"><?= querySQL('statistic_res_days');?></span>
+						<span class="biggest_number"><?php echo querySQL('statistic_res_days');?></span>
 					 </div>
 					</td>
 					
@@ -216,11 +216,11 @@ $labelpie = array();
 		<br/>
 		<div id="graph_wrapper1" class="graph_wrapper"></div>
 		<table id="graph_week" class="data" style="display:none" cellpadding="0" cellspacing="0" width="100%">
-			<caption><?= _occupancy_per_week;?></caption>
+			<caption><?php echo _occupancy_per_week;?></caption>
 			<thead>
 				<tr>
 					<td class="no_input">&nbsp;</td>
-					<?
+					<?php
 					foreach ($labels as $value) {
 						echo "<th>".$value."</th>";
 					}
@@ -229,8 +229,8 @@ $labelpie = array();
 			</thead>
 			<tbody>
 				<tr>
-					<th><?= _days;?></th>
-					<?
+					<th><?php echo _days;?></th>
+					<?php
 					foreach ($statistic_week_def as $value) {
 						echo "<td>".$value."</td>";
 					}
@@ -241,11 +241,11 @@ $labelpie = array();
 		<br/>
 		<div id="graph_wrapper4" class="graph_wrapper"></div>
 		<table id="graph_weekday" class="data" style="display:none" cellpadding="0" cellspacing="0" width="100%">
-			<caption><?= _occupancy_per_week." / "._days;?></caption>
+			<caption><?php echo _occupancy_per_week." / "._days;?></caption>
 			<thead>
 				<tr>
 					<td class="no_input">&nbsp;</td>
-					<?
+					<?php
 					foreach ($label_wk as $value) {
 						echo "<th>".strftime("%A", get_first_day($value, $_SESSION['statistic_month'], $_SESSION['selectedDate_year']))."</th>";
 					}
@@ -254,8 +254,8 @@ $labelpie = array();
 			</thead>
 			<tbody>
 				<tr>
-					<th><?= _days;?></th>
-					<?
+					<th><?php echo _days;?></th>
+					<?php
 					foreach ($data_wk as $value) {
 						echo "<td>".$value."</td>";
 					}
@@ -266,11 +266,11 @@ $labelpie = array();
 		<br/>
 		<div id="graph_wrapper2" class="graph_wrapper"></div>
 		<table id="graph_month" class="data" style="display:none;" cellpadding="0" cellspacing="0" width="100%">
-			<caption><?= _occupancy_per_month;?></caption>
+			<caption><?php echo _occupancy_per_month;?></caption>
 			<thead>
 				<tr>
 					<td class="no_input">&nbsp;</td>
-					<?
+					<?php
 					foreach ($labelmonth as $value) {
 						echo "<th>".$value."</th>";
 					}
@@ -279,16 +279,16 @@ $labelpie = array();
 			</thead>
 			<tbody>
 				<tr>
-					<th><?= $_SESSION['selectedDate_year'];?></th>
-					<?
+					<th><?php echo $_SESSION['selectedDate_year'];?></th>
+					<?php
 					foreach ($datamonth as $value) {
 						echo "<td>".$value."</td>";
 					}
 					?>
 				</tr>
 				<tr>
-					<th><?= $_SESSION['selectedDate_year']-1;?></th>
-					<?
+					<th><?php echo $_SESSION['selectedDate_year']-1;?></th>
+					<?php
 					foreach ($datamonth2 as $value) {
 						echo "<td>".$value."</td>";
 					}
@@ -298,10 +298,10 @@ $labelpie = array();
 		</table>
 		<div id="graph_wrapper3" class="graph_wrapper"></div>
 		<table id="graph_type" class="data" style="display:none;" cellpadding="0" cellspacing="0" width="100%">
-			<caption><?= _guest_type_per_month;?></caption>
+			<caption><?php echo _guest_type_per_month;?></caption>
 			<thead>
 				<tr>
-					<?
+					<?php
 					foreach ($labelpie as $value) {
 						echo "<th>".$value."</th>";
 					}
@@ -309,7 +309,7 @@ $labelpie = array();
 				</tr>
 			</thead>
 			<tbody>
-				<?
+				<?php
 				foreach ($pie_data as $row) {
 					echo "<tr><th scope='row'>".$row->reservation_hotelguest_yn."</th>\n";
 					echo "<td>".$row->paxsum."</td>\n</tr>\n";

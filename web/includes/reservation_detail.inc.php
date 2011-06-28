@@ -2,50 +2,51 @@
  <div class="twocolumn form-height">
   <div class="content detailbig content-height">
 	<br/>
-	<label><?= _booknum;?></label>
-	<p><span class='bold'><?= $row->reservation_bookingnumber; ?></strong></p>
+	<label><?php echo _booknum;?></label>
+	<p><span class='bold'><?php echo $row->reservation_bookingnumber; ?></strong></p>
 	<br/>
-	<label><?= _outlets;?></label>
-	<p><?= $row->outlet_name; ?></p>
+	<label><?php echo _outlets;?></label>
+	<p><?php echo $row->outlet_name; ?></p>
 	<br/>
-	<label><?= _date;?></label>
+	<label><?php echo _date;?></label>
 	<p>
-		<?= date($general['dateformat'],strtotime($row->reservation_date));?>
+		<?php echo date($general['dateformat'],strtotime($row->reservation_date));?>
 	</p>
-			<label><?= _time; ?></label>
+			<label><?php echo _time; ?></label>
 			<p>
-				<?= formatTime($row->reservation_time,$general['timeformat']); ?>
+				<?php echo formatTime($row->reservation_time,$general['timeformat']); ?>
 			</p>
-			<label><?= _title; ?></label>
+			<label><?php echo _title; ?></label>
 			<p>
-				<? getTitleList($row->reservation_title,'disabled');?>
+				<?php getTitleList($row->reservation_title,'disabled');?>
 			</p>
-			<label><?= _guest_name; ?></label>
+			<label><?php echo _guest_name; ?></label>
 			<p>
-				<span class='bold'><?
+				<span class='bold'>
+				<?php
 				$_SESSION['reservation_guest_name'] = $row->reservation_guest_name;
 				echo $_SESSION['reservation_guest_name']; 
 				?></strong>
 			</p>
-			<label><?= _pax; ?></label>
+			<label><?php echo _pax; ?></label>
 			<p>
-				<?= $row->reservation_pax; ?>
+				<?php echo $row->reservation_pax; ?>
 			</p>
-		    <label><?= _type; ?></label>
+		    <label><?php echo _type; ?></label>
 			<p>
-					<?= getTypeList($row->reservation_hotelguest_yn,'disabled');?>
+					<?php echo getTypeList($row->reservation_hotelguest_yn,'disabled');?>
 		    </p>
-			<label><?= _phone_room; ?></label>
+			<label><?php echo _phone_room; ?></label>
 			<p>
-				<?= $row->reservation_guest_phone; ?>
+				<?php echo $row->reservation_guest_phone; ?>
 			</p>
-			<label><?= _note; ?></label>
+			<label><?php echo _note; ?></label>
 			<p>
-				<?= $row->reservation_notes; ?>
+				<?php echo $row->reservation_notes; ?>
 			</p>
-			<label><?= _author; ?></label>
+			<label><?php echo _author; ?></label>
 			<p>
-				<?= $row->reservation_booker_name; ?>
+				<?php echo $row->reservation_booker_name; ?>
 			</p>
 			<br/>
 		</div></div></div> <!-- end left column -->
@@ -55,17 +56,17 @@
 		 <div class="twocolumn form-height">
 		  <div class="content detailbig content-height">
 			<br/>
-			<label><?= _adress; ?></label>
+			<label><?php echo _adress; ?></label>
 			<p>
-				<?= $row->reservation_guest_adress; ?>
+				<?php echo $row->reservation_guest_adress; ?>
 			</p>
-			<label><?= _area_code; ?></label>
+			<label><?php echo _area_code; ?></label>
 			<p>
-				<?= $row->reservation_guest_city; ?>
+				<?php echo $row->reservation_guest_city; ?>
 			</p>
-			<label><?= _email; ?></label>
+			<label><?php echo _email; ?></label>
 			<p>
-				<?
+				<?php
 					echo $row->reservation_guest_email; 
 					if ( $row->reservation_advertise =='YES' ) {
 						echo"<img src='images/icons/mail_yes.png' class='mail-icon' title='Advertise allowed'/>";
@@ -74,24 +75,24 @@
 					}
 				?>
 			</p>
-			<label><?= _discount; ?></label>
+			<label><?php echo _discount; ?></label>
 			<p>
-				<?= $row->reservation_discount; ?>
+				<?php echo $row->reservation_discount; ?>
 			</p>
-			<label><?= _parking; ?></label>
+			<label><?php echo _parking; ?></label>
 			<p>
-				<?= $row->reservation_parkticket; ?>
+				<?php echo $row->reservation_parkticket; ?>
 			</p>
-			<!-- <label><?= _Tisch; ?></label>
+			<!-- <label><?php echo _Tisch; ?></label>
 				 <p>
-					<?= $row->reservation_table; ?>
+					<?php echo $row->reservation_table; ?>
 				 </p>
 			-->
 
-			<label><?= _payment; ?></label>
+			<label><?php echo _payment; ?></label>
 			<p>
 				<span class="width-250">
-				<?
+				<?php
 				echo _paid."<br>";
 				$paid = ($row->reservation_bill_paid) ? 1 : 0;
 				echo printOnOff($paid,'reservation_bill_paid')."&nbsp;&nbsp;";
@@ -107,21 +108,21 @@
 				?>
 				</span>
 			</p>
-			<label><?= _paid_by; ?></label>
+			<label><?php echo _paid_by; ?></label>
 			<p>
-				<? getPaidList($row->reservation_bill,'disabled');?>
+				<?php getPaidList($row->reservation_bill,'disabled');?>
 			</p>
-			<label><?= _multi_booking; ?></label>
+			<label><?php echo _multi_booking; ?></label>
 			<p>
-				<?= $row->start_date;?>
+				<?php echo $row->start_date;?>
 			</p>
 			<p>
-				<?= $row->end_date;?>
+				<?php echo $row->end_date;?>
 			</p>
 			<br/>
-			<label><?= _created; ?></label>
+			<label><?php echo _created; ?></label>
 			<p><small>
-				<?=  humanize($row->reservation_timestamp);?>
+				<?php echo humanize($row->reservation_timestamp);?>
 			</small></p>
 			<br/>
 		</div></div></div> <!-- end right column -->

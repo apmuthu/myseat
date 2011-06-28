@@ -2,15 +2,15 @@
 	<ul class="first_level_tab">
 		<?php if ( current_user_can( 'Property-Overview' ) ): ?>
 		<li>
-			<a href="?p=1" <? if ($_SESSION['page'] == 1 || $_SESSION['page'] == 6) { echo " class='active'";}?> >
-				<?= _property; ?>
+			<a href="?p=1" <?php if ($_SESSION['page'] == 1 || $_SESSION['page'] == 6) { echo " class='active'";}?> >
+				<?php echo _property; ?>
 			</a>
 		</li>
 		<?php endif ?>
 		<?php if ( current_user_can( 'Property-New' ) ): ?>
 		<li>
-			<a href="?p=2" <? if ($_SESSION['page'] == 2 || $_SESSION['page'] == 7) { echo " class='active'";}?> >
-				<?= _create; ?>
+			<a href="?p=2" <?php if ($_SESSION['page'] == 2 || $_SESSION['page'] == 7) { echo " class='active'";}?> >
+				<?php echo _create; ?>
 			</a>
 		</li>
 		<?php endif ?>
@@ -24,7 +24,7 @@
 		
 		<div class="header">
 			<div class="description">
-				<?
+				<?php
 				if ($_SESSION['page'] == 1 || $_SESSION['page'] == 6) { 
 					echo "<h3>"._property." "._overview."</h3>";
 				}else if ($_SESSION['page'] == 2) { 
@@ -41,13 +41,13 @@
 			<ul class="second_level_tab" style="line-height:1.4em">
 				<?php if ( $_SESSION['page'] == 5 ): ?>
 					<li>
-						<a href="?p=1" <? if ($_SESSION['page'] == 1 ) { echo " class='active'";}?> >
-							<?= _overview; ?>
+						<a href="?p=1" <?php if ($_SESSION['page'] == 1 ) { echo " class='active'";}?> >
+							<?php echo _overview; ?>
 						</a>
 					</li>
 					<li>
 						<a href="#" id="editToggle" onclick="return false;">
-							<?= _edit;?>
+							<?php echo _edit;?>
 						</a>
 					</li>
 				<?php endif ?>
@@ -67,7 +67,7 @@
 		<!-- Begin nomargin -->
 		<div class="content nomargin">
 			
-			<?
+			<?php
 			// ** content
 			switch($_SESSION['page']){
 				case '1':

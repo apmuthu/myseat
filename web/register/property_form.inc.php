@@ -1,4 +1,4 @@
-<?
+<?php
 if ($p == 2 || $_SESSION['page'] == 2){
 	$link = '?p=7';
 }elseif ($_SESSION['page'] == 6){
@@ -9,57 +9,57 @@ if ($p == 2 || $_SESSION['page'] == 2){
 
 ?>
 
-<form method="post" action="<?= $link; ?>" id="property_form" enctype="multipart/form-data">
+<form method="post" action="<?php echo $link; ?>" id="property_form" enctype="multipart/form-data">
 	<input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-	<label><?= _name;?></label>
+	<label><?php echo _name;?></label>
 	<p>
-		<input type="text" name="name" id="name" class="required" minlength="4" title=' ' value="<?= $row['name'];?>"/>
+		<input type="text" name="name" id="name" class="required" minlength="4" title=' ' value="<?php echo $row['name'];?>"/>
 	</p>
-	<label><?= _contact;?></label>
+	<label><?php echo _contact;?></label>
 	<p>
-		<input type="text" name="contactperson" id="contactperson" class="required" minlength="4" title=' ' value="<?= $row['contactperson'];?>"/>
+		<input type="text" name="contactperson" id="contactperson" class="required" minlength="4" title=' ' value="<?php echo $row['contactperson'];?>"/>
 	</p>
-	<label><?= _adress;?></label>
+	<label><?php echo _adress;?></label>
 	<p>
-		<input type="text" name="street" id="street" class="required" minlength="4" title=' ' value="<?= $row['street'];?>"/>
+		<input type="text" name="street" id="street" class="required" minlength="4" title=' ' value="<?php echo $row['street'];?>"/>
 	</p>
-	<label><?= _zip;?></label>
+	<label><?php echo _zip;?></label>
 	<p>
-		<input type="text" name="zip" id="zip" class="required" minlength="4" title=' ' value="<?= $row['zip'];?>"/>
+		<input type="text" name="zip" id="zip" class="required" minlength="4" title=' ' value="<?php echo $row['zip'];?>"/>
 	</p>
-	<label><?= _city;?></label>
+	<label><?php echo _city;?></label>
 	<p>
-		<input type="text" name="city" id="city" class="required" minlength="4" title=' ' value="<?= $row['city'];?>"/>
+		<input type="text" name="city" id="city" class="required" minlength="4" title=' ' value="<?php echo $row['city'];?>"/>
 	</p>
-	<label><?= _country;?></label>
+	<label><?php echo _country;?></label>
 	<p>
-		<? countryDropdown($countries,$row['country']); ?>
+		<?php countryDropdown($countries,$row['country']); ?>
 	</p>
-	<label><?= _email;?></label>
+	<label><?php echo _email;?></label>
 	<p>
-		<input type="text" name="email" id="email" class="required email" title=' ' value="<?= $row['email'];?>"/>
+		<input type="text" name="email" id="email" class="required email" title=' ' value="<?php echo $row['email'];?>"/>
 	</p>
-	<label><?= _website;?></label>
+	<label><?php echo _website;?></label>
 	<p>
-		<input type="text" name="website" id="website" class="required" title=' ' value="<?= $row['website'];?>"/>
+		<input type="text" name="website" id="website" class="required" title=' ' value="<?php echo $row['website'];?>"/>
 	</p>
-	<label><?= _phone;?></label>
+	<label><?php echo _phone;?></label>
 	<p>		 	 	 	 	 	 	
-		<input type="text" name="phone" id="phone" class="required" title=' ' value="<?= $row['phone'];?>"/>
+		<input type="text" name="phone" id="phone" class="required" title=' ' value="<?php echo $row['phone'];?>"/>
 	</p>
-	<label><?= _fax;?></label>	
+	<label><?php echo _fax;?></label>	
 	<p>	 	 	 	 	 	 	
-		<input type="text" name="fax" id="fax" value="<?= $row['fax'];?>"/>
+		<input type="text" name="fax" id="fax" value="<?php echo $row['fax'];?>"/>
 	</p>
 	<label>Facebook Link</label>	
 	<p>	 	 	 	 	 	 	
-		<input type="text" name="social_fb" id="social_fb" value="<?= $row['social_fb'];?>"/>
+		<input type="text" name="social_fb" id="social_fb" value="<?php echo $row['social_fb'];?>"/>
 	</p>
 	<label>Twitter Link</label>	
 	<p>	 	 	 	 	 	 	
-		<input type="text" name="social_tw" id="social_tw" value="<?= $row['social_tw'];?>"/>
+		<input type="text" name="social_tw" id="social_tw" value="<?php echo $row['social_tw'];?>"/>
 	</p>
-	<label><?= _img;?></label>	
+	<label><?php echo _img;?></label>	
 	<p>	 	 	 	 	 	 	
 		<input type="file" name="img[]" value=""/>
 		<br/><small>best 350x250px | .gif .jpg .png</small>
@@ -69,13 +69,13 @@ if ($p == 2 || $_SESSION['page'] == 2){
 		<input type="file" name="img[]" value=""/>
 		<br/><small>best 250x80px | .gif .jpg .png</small>
 	</p>
-			<input type="hidden" name="created" value="<?= date('Y-m-d H:i:s');?>">
-			<input type="hidden" name="id" value="<?= ($row['id']) ? $row['id'] : 1;?>">
-			<input type="hidden" name="propertyID" value="<?= $_SESSION['propertyID'];?>">
+			<input type="hidden" name="created" value="<?php echo date('Y-m-d H:i:s');?>">
+			<input type="hidden" name="id" value="<?php echo ($row['id']) ? $row['id'] : 1;?>">
+			<input type="hidden" name="propertyID" value="<?php echo $_SESSION['propertyID'];?>">
 			<input type="hidden" name="token" value="<?php echo $token; ?>" />
 			<input type="hidden" name="action" value="save_prpty">
 	<br/>
 	<div style="text-align:center;">
-		<input type="submit" class="button_dark" value="<?= _save;?>">
+		<input type="submit" class="button_dark" value="<?php echo _save;?>">
 	</div>
 </form>

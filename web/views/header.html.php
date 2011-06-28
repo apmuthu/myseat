@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head> 
 <!-- Website Title --> 
-<title><?= $general['app_name'];?></title>
+<title><?php echo $general['app_name'];?></title>
 
 <!-- Meta data for SEO -->
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
@@ -38,7 +38,7 @@
 <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
-<?
+<?php
 list($y,$m,$d)	= explode("-",$_SESSION['selectedDate']);
 $pickerDate = $d."/".$m."/".$y;
 ?>

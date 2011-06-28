@@ -1,4 +1,4 @@
-<?
+<?php
 
 //get capabilities
 $cap = querySQL('capabilities');

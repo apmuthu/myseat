@@ -149,11 +149,11 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	<link href="style/base.css" rel="stylesheet" type="text/css" />
 	<link href="style/grid.css" rel="stylesheet" type="text/css" />
 	<!-- CSS - Theme -->
-	<link id="theme" href="style/themes/<?= $default_style;?>.css" rel="stylesheet" type="text/css" />
-	<link id="color" href="style/themes/<?= $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
+	<link id="theme" href="style/themes/<?php echo $default_style;?>.css" rel="stylesheet" type="text/css" />
+	<link id="color" href="style/themes/<?php echo $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		body {
-			background: <?= $general['contactform_background'];?>;
+			background: <?php echo $general['contactform_background'];?>;
 		}
 	</style>
 	
@@ -181,8 +181,8 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	<br/>
 	<div id="wrapper"> 
 	    <!-- logo -->
-	    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
-		<a href="<? echo $website; ?>">mySeat</a>
+	    <h1 id="logo" style="background-image: url(../uploads/logo/<?php echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
+		<a href="<?php echo $website; ?>">mySeat</a>
 		</h1>
 	    <nav>
 			<div class='langnav'>		
@@ -191,8 +191,8 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 				</ul>
 			</div>
 			<div class='langnav'>
-				<?= $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
-				<br/><br/><strong><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
+				<?php echo $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
+				<br/><br/><strong><a href="cancel.php?p=2"><?php echo $lang["contact_form_cxl"];?></a></strong>
 			</div>
 	    </nav>
 
@@ -202,7 +202,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	<!-- page container -->
 	  <div id="page"> 
 	    <!-- page title -->
-	    <h2><?= $lang["conf_title"];?><span></span> </h2>
+	    <h2><?php echo $lang["conf_title"];?><span></span> </h2>
 	    <br class="cl" />
 	    
 	    <div id="page-content" class="container_12">
@@ -239,21 +239,48 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 				}
 			
 				echo " - ".date($general['dateformat'],strtotime($_SESSION['selectedDate']))."</h3>";
-		    // Outlet description
-			if ($language == 'en') {
-				echo $_SESSION['selOutlet']['outlet_description_en']."<br/>";
-			}else{
-				echo $_SESSION['selOutlet']['outlet_description']."<br/>";
-			}
+
+				// Special event of the day and outlet
+				$special_events = '';
+				$special_events = querySQL('event_data_day');
+
+					if ( $special_events ) {
+						echo "<div class='alert_ads'>";
+						// special events today at outlet
+									foreach($special_events as $row) {
+										echo "
+										<img src='../web/images/icon_cutlery.png' alt='special' class='middle'/>
+										<span class='bold'>
+										<a href='".$_SERVER['SCRIPT_NAME']."?outletID=".$row->outlet_id."&selectedDate=".$row->event_date."'>".
+										_today.": ".$row->subject."</a></span>
+										<p>".$row->description."<br/><cite><span class='bold'>
+										".date($general['dateformat'],strtotime($row->event_date)).
+										"</span> ".formatTime($row->start_time,$general['timeformat']).
+										" - ".formatTime($row->end_time,$general['timeformat'])." | ".
+										_ticket_price.": ".number_format($row->price,2).
+										"</cite></p>";
+										if( key($row) != count($events_advertise)-1 ) {
+											echo"<br/>";
+										} 
+									}
+								echo "</div>";
+					}else{
+						// Outlet description
+						if ($language == 'en') {
+							echo $_SESSION['selOutlet']['outlet_description_en']."<br/>";
+						}else{
+							echo $_SESSION['selOutlet']['outlet_description']."<br/>";
+						}
+					}
 			?>
 		</div>
 		<br/><br/><br/>
 			 <!-- Datepicker -->
 			    <div id="bookingpicker"></div>
-			    <input type="hidden" name="dbdate" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+			    <input type="hidden" name="dbdate" id="dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
 
-			    <input type="hidden" name="reservation_date" value="<?= $_SESSION['selectedDate'];?>">
-			    <input type="hidden" name="recurring_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+			    <input type="hidden" name="reservation_date" value="<?php echo $_SESSION['selectedDate'];?>">
+			    <input type="hidden" name="recurring_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
 
 			    <!-- END datepicker -->
 			<br/>
@@ -341,7 +368,7 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 				<input type="hidden" name="reservation_referer" value="<?php echo $_SESSION['referer']; ?>" />
 				<input type="hidden" name="reservation_hotelguest_yn" id="reservation_hotelguest_yn" value="PASS"/>
 				<input type="hidden" name="reservation_booker_name" id="reservation_booker_name" value="Contact Form"/>
-				<input type="hidden" name="reservation_author" id="reservation_author" value="<?= querySQL('db_property');?> Team"/>
+				<input type="hidden" name="reservation_author" id="reservation_author" value="<?php echo querySQL('db_property');?> Team"/>
 				<input type="hidden" name="email_type" id="email_type" value="<?php echo $language; ?>"/>
                 <?php
 				$day_off = getDayoff();
@@ -405,12 +432,12 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	      altFormat: 'yy-mm-dd',
 	      defaultDate: 0,
 		  beforeShowDay: unavailable,
-	      dateFormat: '<?= $general['datepickerformat'];?>',
-	      regional: '<?= substr($_SESSION['language'],0,2);?>',
+	      dateFormat: '<?php echo $general['datepickerformat'];?>',
+	      regional: '<?php echo substr($_SESSION['language'],0,2);?>',
 	      onSelect: function(dateText, inst) { window.location.href="?selectedDate=" + $("#dbdate").val() + "&outletID=" + $("#single_outlet").val(); }
       });
       // month is 0 based, hence for Feb. we use 1
-      $("#bookingpicker").datepicker('setDate', new Date(<?= $sy.", ".($sm-1).", ".$sd; ?>));
+      $("#bookingpicker").datepicker('setDate', new Date(<?php echo $sy.", ".($sm-1).", ".$sd; ?>));
       $("#ui-datepicker-div").hide();
       $("#reservation_outlet_id").change(function(){
 	    window.location.href='?outletID=' + this.value;

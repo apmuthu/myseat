@@ -21,6 +21,18 @@ session_start();
 	include('../config/config.inc.php');
 // ** get superglobal variables
 	include('../web/includes/get_variables.inc.php');	
+
+
+	// property id
+	   if ($_GET['prp']) {
+	       $_SESSION['property'] = (int)$_GET['prp'];
+	   }elseif ($_POST['prp']) {
+	       $_SESSION['property'] = (int)$_POST['prp'];
+	   }elseif ($_SESSION['property']==''){
+		$_SESSION['property'] = 1;
+	}
+	$_SESSION['propertyID'] = $_SESSION['property'];
+
 // ** get property info for logo path
 $prp_info = querySQL('property_info');
 
@@ -43,112 +55,71 @@ $prp_info = querySQL('property_info');
   }
 ?>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<html lang="<?php echo $language; ?>">
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-<!-- Meta data for SEO -->
-<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
-<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
-<meta name="robots" content="all,follow" />
-<meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
-<meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
-<meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management, table planner, restaurant table planner, table management, hotel" />
-<!-- Website Title --> 
-<title>Reservation</title>
+<!DOCTYPE html> 
+<html> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	<!-- Meta data for SEO -->
+	<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
+	<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
+	<meta name="robots" content="all,follow" />
+	<meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
+	<meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
+	<meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management" />
 
-<!-- Template stylesheet -->
-<link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
-<link href="../contactform/style/datepicker.css" rel="stylesheet" type="text/css" />
+	<!-- Website Title --> 
+	<title>Cancel Reservation</title> 
 
-<!-- jQuery Library-->
-<script src="../contactform/js/jQuery.min.js"></script>
-<script src="../contactform/js/jquery.easing.1.3.js"></script>
-<script src="../contactform/js/jquery-ui.js" type="text/javascript" ></script> 
-<script src="../contactform/js/functions.js"></script>
+	<!-- jQuery Library-->
+	<link rel="stylesheet" href="jqmobile/jquery.mobile-1.0a4.1.min.css" />
+	<script type="text/javascript" src="jqmobile/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="jqmobile/jquery.mobile-1.0a4.1.min.js"></script>
 
 </head>
 <body>
-	<!-- Begin page wrapper -->
-	<div id="wrapper">
-		
-		<div id="top_bar">
-			<div class="inner">
-				<h1>
-					<a href="<? echo $website; ?>">
-						<? echo $prp_info['name'];?>
-					</a>
-				</h1>
-			</div>
-			<div class="home">
-				<a href="index.php">
-					<img src="images/icon_home.png" alt="" width="40" height="40"/>
-				</a>
-			</div>
-		</div>
-		<br/><br/>
-		<div id="content_wrapper">
-			<div class="inner">
-				<h2 class="header"><?php lang("cxl_intro");?></h2>
-				<p>
-					<br/>
-					<span id="result">
-				  	<?php
-	                 if($_POST['action'] == 'cncl_book'){
-				      if($cancel>=1){
-						echo "<div class='alert_success'><p><img src='../web/images/icons/icon_accept.png' alt='success' class='middle'/>&nbsp;&nbsp;";
-						echo $lang['cxl_form_success']."<br>";
-						echo "</p></div>";
-				      }else{
-						echo "<div class='alert_error'><p><img src='../web/images/icon_error.png' alt='error' class='middle'/>&nbsp;&nbsp;";
-						echo $lang['contact_form_fail']."<br>";
-						echo "</p></div>";
-				      }
-	                 }
-				  	?>
-	            	</span>
-				</p>
-			</div>
-			<br class="clear"/>
-			<hr/>
-			<div class="inner">
-			 <form method="post" action="cancel.php" name="contactForm" id="contactForm">
-                    <br/>
-                        <p>
-                        <label><?php lang("book_num"); ?></label><br/>
-                                <input type="text" name="reservation_bookingnumber" id="reservation_bookingnumber" class="form required" value=""/>
-                        </p>
-                        <br/>
-                        <p>
-                        <label><?php lang("contact_form_email"); ?></label><br/>
-                                <input type="text" name="reservation_guest_email" class="form required email" id="reservation_guest_email" value="" />
-                        </p>
-                    <br/>
-                <p class="tc">
-                  <input type="hidden" name="reservation_timestamp" value="<?= date('Y-m-d H:i:s');?>">
-                  <input type="hidden" name="reservation_ip" value="<?= $_SERVER['REMOTE_ADDR'];?>">
+
+	<div data-role="page" data-theme="b">
+
+		<div data-role="header">
+			<h1><?php echo $prp_info['name'];?></h1>
+			<a href="index.php" data-icon="grid" data-direction="reverse" class="ui-btn-right" data-iconpos="notext">Index</a>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p><?php lang("cxl_intro");?></p>
+			
+			<span id="result">
+		  	<?php
+             if($_POST['action'] == 'cncl_book'){
+		      if($cancel>=1){
+				echo"<a href='#' data-role='button' data-icon='check' data-theme='e'>".$lang['cxl_form_success']."</a>";
+		      }else{
+				echo"<a href='#' data-role='button' data-icon='alert' data-theme='e'>".$lang['contact_form_fail']."</a>";
+		      }
+             }
+		  	?>
+        	</span>
+			<br/>
+			<form method="post" action="cancel.php" name="contactForm" id="contactForm">
+				<div data-role="fieldcontain">
+				    <label for="reservation_bookingnumber"><?php lang("book_num"); ?></label>
+				    <input type="text" name="reservation_bookingnumber" id="reservation_bookingnumber"/>
+				</div>
+				<div data-role="fieldcontain">
+					<label  for="reservation_guest_email"><?php lang("contact_form_email"); ?></label>
+                    <input type="text" name="reservation_guest_email" id="reservation_guest_email"/>
+				</div>
+				<input type="hidden" name="reservation_timestamp" value="<?php echo date('Y-m-d H:i:s');?>">
+                  <input type="hidden" name="reservation_ip" value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
                   <input type="hidden" name="action" value="cncl_book">
-                  <input type='submit' class='button_dark' value="<?php lang("contact_form_cxl");?>"/>
-                </p>
-                <div class="error"></div>
-              </form>
-			
-			<br/><br/>
-			<div class="pagination"><small>
-			&copy; 2010 by <a href="http://www.myseat.us" target="_blank">mySeat</a> 
-			under the GPL license, designed for easy  & free restaurant reservations.
-			<small></div>
-			<br/><br/>
-		</div>
-	</div>
-	<!-- End page wrapper -->
-</body>
-</html>			
-			
+                  <input type='submit' data-theme="b" value="<?php lang("contact_form_cxl");?>"/>
+			</form>		
+		</div><!-- /content -->
 
-
+		<div data-role="footer">
+			<h6>&copy; 2010 by mySeat</h6>
+		</div><!-- /footer -->
+	</div><!-- /page -->
 </body>
 </html>

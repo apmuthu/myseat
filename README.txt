@@ -16,9 +16,11 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.180
+LAST CHANGES in 0.181
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Security bugfix in install routine
+- Complete code review; now also works on servers with
+  short_open_tag = OFF
+- Higher compatibility
 
 
 INSTALLATION

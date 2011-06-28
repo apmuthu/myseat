@@ -3,7 +3,7 @@
 	<div class="content">
 		<ul class="submenu">
 			
-			<?
+			<?php
 			$valid_outlets = array();
 			$outlets = querySQL('db_outlets');
 			foreach($outlets as $row) {

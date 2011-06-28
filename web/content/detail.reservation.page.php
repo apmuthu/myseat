@@ -2,26 +2,26 @@
 <div class="onecolumn">
 	
 	<div class="header">
-<?
+<?php
 $rows = querySQL('reservation_info');
 //print_r($rows);
 	// display rows
 	foreach($rows as $row) { 
 ?>	
-		<h2><?= _detail;?></h2>
+		<h2><?php echo _detail;?></h2>
 		
 		<!-- Begin 2nd level tab -->
 		<ul class="second_level_tab">
 			<?php if ( $dayoff == 0 && current_user_can( 'Reservation-New' ) ): ?>
 			<li>
 				<a href="#" id="editToggle" onclick="return false;">
-					<?= _edit;?>
+					<?php echo _edit;?>
 				</a>
 			</li>
 			<?php endif ?>
 			<li>
-				<a href="?p=2&outletID=<?= $_SESSION['outletID']; ?>" class="button_dark">
-					<?= _back;?>
+				<a href="?p=2&outletID=<?php echo $_SESSION['outletID']; ?>" class="button_dark">
+					<?php echo _back;?>
 				</a>
 			<li/>
 		</ul>
@@ -37,7 +37,7 @@ $rows = querySQL('reservation_info');
 		}
 		?>
 		>
-					<? include('includes/reservation_detail.inc.php'); ?>
+					<?php include('includes/reservation_detail.inc.php'); ?>
 		</div>
 		<div id="edit"
 		<?php if ($resedit == 'OFF'){
@@ -45,7 +45,7 @@ $rows = querySQL('reservation_info');
 		}
 		?>
 		>
-					<? include('includes/reservation_form.inc.php'); ?>
+					<?php include('includes/reservation_form.inc.php'); ?>
 		</div>
 		<br class="clear">
 	</div> <!-- end content wrapper -->
@@ -53,11 +53,11 @@ $rows = querySQL('reservation_info');
 </div>
 <div class="onecolumn">
 	<div class="header">
-		<h3><?= _info;?></h3>
+		<h3><?php echo _info;?></h3>
 	</div>
   <div id="content_wrapper">
 	<div class="content detailbig">
-<?
+<?php
 // INFO: guest history
 // count total visits
 $visits = querySQL('reservation_visits');
@@ -95,7 +95,7 @@ echo "</select></div></p><br/>";
 	</div>
   </div>
 </div>
-<?}?>
+<?php } ?>
 <br/>
 <br style='clear:both;'/>
 </div>

@@ -1,30 +1,41 @@
 <?php
 session_start();
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set("display_errors", 1);
 // clear all old session variables
 $_SESSION = array();
 
-require_once 'plc.class.php';
-$user = new flexibleAccess();
-$user->logout();
+// ** set configuration
+	include('../config/config.general.php');
+	
+	require_once '../PLC/plc.class.php';
+	$dbAccess = array(
+	  'dbName' => $settings['dbName'],
+	  'dbUser' => $settings['dbUser'],
+	  'dbPass' => $settings['dbPass'],
+	  'dbPort' => '3306'
+	 );
+
+	$user = new flexibleAccess('',$dbAccess);
 
 
 if ( $_GET['form'] == 1 ){
     if ( $user->autologin() ){
-		header("Location: {$_SESSION['forwardPage']}");
+		header("Location: ".$_SESSION['forwardPage']);
 		exit; //To ensure security
 	}
 
     if( isset($_POST['user']) && isset($_POST['token'])){
 
-	$newpassword = "";
-	if ( isset($_POST['nPass1']) && isset($_POST['nPass2']) ) {
-		if ( $_POST['nPass1'] == $_POST['nPass2'] ) {
-			$newpassword = substr($_POST['nPass1'],0,12);
-		}else{
-			$user->login_matchFalse();	
-			exit; //To ensure security
+		$newpassword = "";
+		if ( isset($_POST['nPass1']) && isset($_POST['nPass2']) ) {
+			if ( $_POST['nPass1'] == $_POST['nPass2'] ) {
+				$newpassword = substr($_POST['nPass1'],0,12);
+			}else{
+				$user->login_matchFalse();	
+				exit; //To ensure security
+			}
 		}
-	}
 
 		$loginAttempt = $user->login(substr($_POST['user'],0,30),substr($_POST['token'],0,12),$newpassword);
         if ( $loginAttempt == 1 ){
@@ -36,7 +47,7 @@ if ( $_GET['form'] == 1 ){
     	}else if ( $loginAttempt == 3 ){
 			$user->login_newpass();
 		}else if ( $loginAttempt == 4 ){
-		$user->login_brutforce();
+			$user->login_brutforce();
 		}
 	}else{
 			$user->login_form();

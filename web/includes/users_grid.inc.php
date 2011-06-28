@@ -3,16 +3,16 @@
 	<thead>
 	    <tr>
 			<th>ID</th>
-			<th><?= _name; ?></th>
-			<th><?= _email; ?></th>
-			<th><?= _type; ?></th>
+			<th><?php echo _name; ?></th>
+			<th><?php echo _email; ?></th>
+			<th><?php echo _type; ?></th>
 			<th>IP</th>
-			<th><?= _time; ?></th>
+			<th><?php echo _time; ?></th>
 			<th></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 
 		$users = querySQL('db_prp_users');
 		

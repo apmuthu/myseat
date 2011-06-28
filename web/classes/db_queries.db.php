@@ -650,9 +650,9 @@ function querySQL($statement){
 		case 'statistic_online_year':
 			$result = query("SELECT COUNT(*) FROM `reservations`  
 							WHERE `reservation_outlet_id`='%d' 
-							AND `reservation_outlet_id` = '%s'
-							AND `reservation_booker_name` = '%s'
-							",$_SESSION['outletID'],$_SESSION['selectedDate_year'],'Contact Form'
+							AND YEAR(reservation_date) = '%s'
+							AND `reservation_referer` != ''
+							",$_SESSION['outletID'],$_SESSION['selectedDate_year']
 							);
 			return getResult($result);
 		break;

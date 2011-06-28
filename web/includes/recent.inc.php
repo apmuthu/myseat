@@ -3,7 +3,7 @@
 	
 	<div class="header">
 	
-		<h2><?= _recent_reservations;?></h2>
+		<h2><?php echo _recent_reservations;?></h2>
 
 		
 	</div>
@@ -13,7 +13,7 @@
 		<!-- Begin content -->
 		<ul class="global">
 			
-			<?
+			<?php
 			$recent = querySQL('recent');
 
 			if ($recent) {

@@ -3,14 +3,14 @@
 	<div class="onecolumn_wrapper">
 	 <div class="onecolumn small-column">
 	  <div class="content" >
-		<? 				
+		<?php				
 		//message box
 		include('includes/messagebox.inc.php'); 
 		?>
 <!-- Beginn left column -->	
 <form method="post" action="?q=3" id="general_settings_form">
 	<input type="hidden" name="action" value="save_set">
-	<?
+	<?php
 	//get new settings
 	$general = querySQL('settings_inc');
 	
@@ -95,10 +95,10 @@
 		}
 	}
 	?>
-		<!-- <input type="hidden" name="property_id" value="<?= $row->property_id;?>"> -->
+		<!-- <input type="hidden" name="property_id" value="<?php echo $row->property_id;?>"> -->
 		<input type="hidden" name="token" value="<?php echo $token; ?>" />
 		<div class="center">
-			<input type="submit" class="button_dark" value="<?= _save;?>">
+			<input type="submit" class="button_dark" value="<?php echo _save;?>">
 		</div>
 	</div></div></div> <!-- end one column -->
 

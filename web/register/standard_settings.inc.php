@@ -1,4 +1,4 @@
-<?
+<?php
 // ### Set standard settings for a new property ###
 $query = "INSERT INTO `settings` (`property_id`, `language`, `timezone`, `timeformat`, `timeintervall`, `dateformat`, `dateformat_short`, `datepickerformat`, `app_name`, `max_menu`, `old_days`, `manual_lines`) VALUES
 	('".$new_id."', 'en_EN', 'Europe/Berlin', 24, 15, 'd.m.Y', 'd/m', 'd/m/y', 'mySeat XT', 8, 120, 5);";

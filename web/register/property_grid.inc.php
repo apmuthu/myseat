@@ -4,18 +4,18 @@
 <table class="global" style="margin:0px 0px;" cellpadding="0" cellspacing="0">
 	<thead>
 	    <tr>
-			<th style="width:30%"><?= _name; ?></th>
-			<th style="width:20%"><?= _adress; ?></th>
-			<th style="width:20%"><?= _area_code; ?></th>
-			<th style="width:10%"><?= _contact; ?></th>
-			<th style="width:5%"><?= _email; ?></th>
-			<th style="width:5%"><?= _phone; ?></th>
-			<th style="width:5%"><?= _fax; ?></th>
-			<th style="width:5%"><?= _delete; ?></th>
+			<th style="width:30%"><?php echo _name; ?></th>
+			<th style="width:20%"><?php echo _adress; ?></th>
+			<th style="width:20%"><?php echo _area_code; ?></th>
+			<th style="width:10%"><?php echo _contact; ?></th>
+			<th style="width:5%"><?php echo _email; ?></th>
+			<th style="width:5%"><?php echo _phone; ?></th>
+			<th style="width:5%"><?php echo _fax; ?></th>
+			<th style="width:5%"><?php echo _delete; ?></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 
 		$properties = querySQL('all_properties');
 		

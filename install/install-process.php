@@ -1,5 +1,7 @@
 <ul style="margin-left:40px; font-size:1.1em;" class="global">
 <?php
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set("display_errors", 1);
 // TABLES -------------------------------------------------
 
 $sql = query("CREATE TABLE IF NOT EXISTS `capabilities` (

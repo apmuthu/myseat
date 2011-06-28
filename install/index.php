@@ -1,6 +1,7 @@
 <?php
 session_start();
-
+error_reporting(E_ALL & ~E_NOTICE);
+ini_set("display_errors", 1);
 // ** set configuration
 	include('../config/config.general.php');
 // ** database functions
@@ -29,12 +30,6 @@ session_start();
 <!-- Template stylesheet -->
 <link rel="stylesheet" href="../web/css/screen.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="../web/css/print.css" type="text/css" media="print" >
-<link rel="stylesheet" href="../web/css/datepicker.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="../web/css/tipsy.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="../web/js/jwysiwyg/jquery.wysiwyg.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="../web/js/jquery.autocomplete.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="../web/js/visualize/visualize.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="../web/js/fancybox/jquery.fancybox-1.3.0.css" type="text/css" media="screen"/>
 
 <!--[if IE 7]>
 	<link href="../web/css/ie7.css" rel="stylesheet" type="text/css" media="all">
@@ -79,8 +74,8 @@ session_start();
 					</form>
 					<br class="clear"/><br>
 					<p style="margin-left:40px; font-size:1.2em;">
-						<?
-						if($_POST['action']=='install'){
+						<?php
+						if($_POST['action']=='install' || 1==1){
 							include('install-process.php');
 						}
 						?>
@@ -95,7 +90,7 @@ session_start();
 	<!-- End control panel wrapper -->
 </body>
 </html>
-<?
+<?php
 // close database connection
 mysql_close();
 ?>

@@ -1,6 +1,16 @@
 <?php
-	require_once 'plc.class.php';
-	 $user = new flexibleAccess();
+// ** set configuration
+	include('../config/config.general.php');
+	
+	require_once '../PLC/plc.class.php';
+	$dbAccess = array(
+	  'dbName' => $settings['dbName'],
+	  'dbUser' => $settings['dbUser'],
+	  'dbPass' => $settings['dbPass'],
+	  'dbPort' => '3306'
+	 );
+
+	$user = new flexibleAccess('',$dbAccess);
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

@@ -1,4 +1,4 @@
-<?
+<?php
 // initialize
 $count_slots = 0;
 $val_by_time = 0;

@@ -53,11 +53,11 @@ $prp_info = querySQL('property_info');
 	<link href="style/base.css" rel="stylesheet" type="text/css" />
 	<link href="style/grid.css" rel="stylesheet" type="text/css" />
 	<!-- CSS - Theme -->
-	<link id="theme" href="style/themes/<?= $default_style;?>.css" rel="stylesheet" type="text/css" />
-	<link id="color" href="style/themes/<?= $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
+	<link id="theme" href="style/themes/<?php echo $default_style;?>.css" rel="stylesheet" type="text/css" />
+	<link id="color" href="style/themes/<?php echo $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		body {
-			background: <?= $general['contactform_background'];?>;
+			background: <?php echo $general['contactform_background'];?>;
 		}
 	</style>
 
@@ -82,8 +82,8 @@ $prp_info = querySQL('property_info');
 	<br/>
 	<div id="wrapper"> 
 	    <!-- logo -->
-	    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
-		<a href="<? echo $website; ?>">mySeat</a>
+	    <h1 id="logo" style="background-image: url(../uploads/logo/<?php echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
+		<a href="<?php echo $website; ?>">mySeat</a>
 		</h1>
 	    <nav>
 			<div class='langnav'>		
@@ -92,8 +92,8 @@ $prp_info = querySQL('property_info');
 				</ul>
 			</div>
 			<div class='langnav'>
-				<?= $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
-				<br/><br/><strong><a href="index.php"><?= $lang["contact_form_back"];?></a> | <a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a></strong>
+				<?php echo $prp_info['street']."<br>".$prp_info['zip']." ".$prp_info['city']."<br/>"."Tel. ".$prp_info['phone'];?>
+				<br/><br/><strong><a href="index.php"><?php echo $lang["contact_form_back"];?></a> | <a href="cancel.php?p=2"><?php echo $lang["contact_form_cxl"];?></a></strong>
 			</div>
 	    </nav>
 
@@ -145,15 +145,15 @@ $prp_info = querySQL('property_info');
                                         </div>
                                     <br/>
                                 <p class="tc">
-                                  <input type="hidden" name="reservation_timestamp" value="<?= date('Y-m-d H:i:s');?>">
-                                  <input type="hidden" name="reservation_ip" value="<?= $_SERVER['REMOTE_ADDR'];?>">
+                                  <input type="hidden" name="reservation_timestamp" value="<?php echo date('Y-m-d H:i:s');?>">
+                                  <input type="hidden" name="reservation_ip" value="<?php echo $_SERVER['REMOTE_ADDR'];?>">
                                   <input type="hidden" name="action" value="cncl_book">
                                   <button type="submit" class="button" id="submit"><?php lang("contact_form_cxl");?></button>
                                 </p>
                                 <div class="error"></div>
                               </form>
 			<br/><br/><br/><br/><br/>
-			<a href="index.php"><div class='button <?= $default_color;?>' style="line-height:32px;"><?php lang("contact_form_back");?></div></a>
+			<a href="index.php"><div class='button <?php echo $default_color;?>' style="line-height:32px;"><?php lang("contact_form_back");?></div></a>
 			<br/>
 			<div class="clear"></div>
 			<br/><br/><br/>

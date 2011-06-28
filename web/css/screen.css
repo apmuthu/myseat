@@ -24,7 +24,6 @@ a img                                   { border: none }
 										    font-family: 'DroidSansRegular';
 										    src: url('font/droidsans-webfont.eot');
 										    src: url('font/droidsans-webfont.eot?iefix') format('eot'),
-										         url('font/droidsans-webfont.woff') format('woff'),
 										         url('font/droidsans-webfont.ttf') format('truetype'),
 										         url('font/droidsans-webfont.svg#webfontzjU3WeCs') format('svg');
 										    font-weight: normal;
@@ -36,7 +35,6 @@ a img                                   { border: none }
 										    font-family: 'DroidSansBold';
 										    src: url('font/droidsans-bold-webfont.eot');
 										    src: url('font/droidsans-bold-webfont.eot?iefix') format('eot'),
-										         url('font/droidsans-bold-webfont.woff') format('woff'),
 										         url('font/droidsans-bold-webfont.ttf') format('truetype'),
 										         url('font/droidsans-bold-webfont.svg#webfontwkojXOq7') format('svg');
 										    font-weight: bold;

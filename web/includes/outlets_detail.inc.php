@@ -1,53 +1,53 @@
 
 <div class="content res-height">
-	<label><?= _property;?></label>
+	<label><?php echo _property;?></label>
 	<p><span class='bold'>	 	 				 
-		<?= $row->name;?>
+		<?php echo $row->name;?>
 	</strong></p>
-	<label><?= _name;?></label>
+	<label><?php echo _name;?></label>
 	<p><span class='bold'>
-		<?= $row->outlet_name;?>
+		<?php echo $row->outlet_name;?>
 	</strong></p>
-	<label><?= _cuisine_style;?></label>
+	<label><?php echo _cuisine_style;?></label>
 	<p>
-		<?= $cuisines[($row->cuisine_style-1)];?>
+		<?php echo $cuisines[($row->cuisine_style-1)];?>
 	</p>
-	<label><?= _description;?></label>
+	<label><?php echo _description;?></label>
 	<p>	 	 	 	 	 	 	 
-		<?= trim(utf8_encode($row->outlet_description));?>
+		<?php echo trim(utf8_encode($row->outlet_description));?>
 	</p>
-	<label><?= _description." "._international;?></label>
+	<label><?php echo _description." "._international;?></label>
 	<p>	 	 	 	 	 	 	 
-		<?= trim(utf8_encode($row->outlet_description_en));?>
+		<?php echo trim(utf8_encode($row->outlet_description_en));?>
 	</p>	
-	<label><?= _confirmation_email;?></label>
+	<label><?php echo _confirmation_email;?></label>
 	<p>
-		<?= $row->confirmation_email;?>
+		<?php echo $row->confirmation_email;?>
 	</p>
-	<label><?= _seats;?></label>
+	<label><?php echo _seats;?></label>
 	<p>		 	 	 	 	 	 	
-		<?= $row->outlet_max_capacity;?>
+		<?php echo $row->outlet_max_capacity;?>
 	</p>
-	<label><?= _tables;?></label>	
+	<label><?php echo _tables;?></label>	
 	<p>	 	 	 	 	 	 	
-		<?= $row->outlet_max_tables;?>
+		<?php echo $row->outlet_max_tables;?>
 	</p>
-	<label>Max. <?= _passerby;?></label>	
+	<label>Max. <?php echo _passerby;?></label>	
 	<p>	 	 	 	 	 	 	
-		<?= $row->passerby_max_pax;?>
+		<?php echo $row->passerby_max_pax;?>
 	</p>
-	<label><?= _duration;?></label>	
+	<label><?php echo _duration;?></label>	
 	<p>	 	 	 	 	 	 			
-		<?= $row->avg_duration;?> h
+		<?php echo $row->avg_duration;?> h
 	</p>
-	<label><?= _webform;?></label>
+	<label><?php echo _webform;?></label>
 	<p>		
-		<?= printOnOff($row->webform);?>
+		<?php echo printOnOff($row->webform);?>
 	</p>
 	<br/>
 	<label>Booking Links</label>
 	<p>		
-		<?
+		<?php
 		echo "<br/><span class='bold'>".$row->outlet_name." :</span><br/>";
 		echo "<input type='text' name='' class='width-450' value=' ".$global_basedir."contactform/index.php?so=ON&prp=".$row->property_id."&outletID=".$row->outlet_id."'/>";
 		echo "<br/><span class='bold'>"._property." :</span><br/>";
@@ -67,37 +67,37 @@
 <div class="twocolumn_wrapper right">
 	<div class="twocolumn" >
 		<div class="content res-height">		 	 	 	 	 	 		 	 	 	 	 	 				 	 	 	 	 	 	 
-			<label><?= _season_start;?></label>
+			<label><?php echo _season_start;?></label>
 			<p>		
-				<?= buildDate($general['dateformat_short'],substr($row->saison_start,2,2),substr($row->saison_start,0,2));?>
+				<?php echo buildDate($general['dateformat_short'],substr($row->saison_start,2,2),substr($row->saison_start,0,2));?>
 			</p>			 	 	 	 	 	 	 
-			<label><?= _season_end;?></label>	
+			<label><?php echo _season_end;?></label>	
 			<p>		
-				<?= buildDate($general['dateformat_short'],substr($row->saison_end,2,2),substr($row->saison_end,0,2));?>
+				<?php echo buildDate($general['dateformat_short'],substr($row->saison_end,2,2),substr($row->saison_end,0,2));?>
 			</p>
-			<label><?= _year;?></label>	
+			<label><?php echo _year;?></label>	
 			<p>		
-				<?= $row->saison_year;?>
+				<?php echo $row->saison_year;?>
 			</p>	 	 	 	 	 	 	 
 			<br/>
-			<label><?= _day_off;?></label>
+			<label><?php echo _day_off;?></label>
 			<p>		
-				<? echo getWeekdays_select($row->outlet_closeday,'disabled'); ?>
+				<?php echo getWeekdays_select($row->outlet_closeday,'disabled'); ?>
 			</p>
 			<br/>
-			<label><?= _general." "._open_time." & "._close_time;?></label>
+			<label><?php echo _general." "._open_time." & "._close_time;?></label>
 			<p>		 	 	 	 	 	 	
-				<? 
+				<?php
 					echo formatTime($row->outlet_open_time,$general['timeformat']);
 					echo " - "; 	 	 	 	 	 	
 					echo formatTime($row->outlet_close_time,$general['timeformat']);
 				?>
 			</p>		 	 	 	 	 	 	 		 	 	 	 	 	 	 
 			<br/>
-			<label><?= _specific." "._open_time." & "._close_time;?></label>
+			<label><?php echo _specific." "._open_time." & "._close_time;?></label>
 			<p>	
 				<table>
- 	 	 	 	 <?
+ 	 	 	 	 <?php
 					$day = strtotime("next Monday");
 					for ($i=1; $i <= 7; $i++) { 
 						$weekday = date("w",$day);
@@ -112,10 +112,10 @@
 				</table>
 			</p>
 			<br/><br/>
-			<label><?= _break;?></label>
+			<label><?php echo _break;?></label>
 			<p>	
 				<table>
- 	 	 	 	 <?
+ 	 	 	 	 <?php
 					$day = strtotime("next Monday");
 					for ($i=1; $i <= 7; $i++) { 
 						$weekday = date("w",$day);
@@ -131,6 +131,6 @@
 			</p>	 	 	 	 	 	 	 	 	 	 	 	 	 	 		 	 	 	 	 	 	 		 	 	 	 	 	 
 			<br/><br/>
 			<small>				
-				<?= _created." ".humanize($row->outlet_timestamp);?>
+				<?php echo _created." ".humanize($row->outlet_timestamp);?>
 			</small>
 </div>

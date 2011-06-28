@@ -2,24 +2,24 @@
 <div class="onecolumn">
 	
 	<div class="header">
-<?
+<?php
 $rows = querySQL('outlet_info');
 
 	// display rows
 	foreach($rows as $row) { 
 ?>	
-		<h2><?= _detail;?></h2>
+		<h2><?php echo _detail;?></h2>
 
 		<!-- Begin 2nd level tab -->
 		<ul class="second_level_tab">
 			<li>
 				<a href="#" id="editToggle" onclick="return false;">
-					<?= _edit;?>
+					<?php echo _edit;?>
 				</a>
 			</li>
 			<li>
 				<a href="?p=6&q=1" class="button_dark">
-					<?= _back;?>
+					<?php echo _back;?>
 				</a>
 			<li/>
 		</ul>
@@ -32,23 +32,27 @@ $rows = querySQL('outlet_info');
 <div id="show">
 	<div class="twocolumn_wrapper">
 	 <div class="twocolumn">
-			<? include('includes/outlets_detail.inc.php'); ?>
+			<?php 
+				include('includes/outlets_detail.inc.php'); 
+			?>
 	 </div>
 	</div> <!-- end detail -->
 </div>
 <div id="edit" style="display:none;">
 	<div class="twocolumn_wrapper">
 	 <div class="twocolumn">
-			<? include('includes/outlets_form.inc.php'); ?>
+			<?php 
+				include('includes/outlets_form.inc.php'); 
+			?>
 	 </div>
 	</div> <!-- end detail -->
 </div>
 		<br class="clear">
 		<br/>
-			<a href="?p=6&q=1" class="button_dark"><input type="button" class="button_dark" value="<?= _back;?>"/></a>
+			<a href="?p=6&q=1" class="button_dark"><input type="button" class="button_dark" value="<?php echo _back;?>"/></a>
 		<br/>
 	</div> <!-- end content wrapper -->
 	<!-- End detail -->	
 </div></div>
 <!-- End one column box -->
-<? } ?>
+<?php } ?>

@@ -1,6 +1,6 @@
 <ul class="timeline">
 
-<?
+<?php
 // get Pax by timeslot
 $resbyTime = reservationsByTime('pax');
 $tblbyTime = reservationsByTime('tbl');

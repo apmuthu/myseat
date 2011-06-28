@@ -1,4 +1,4 @@
-<?
+<?php
 // ** set configuration
 	include('../config/config.general.php');
 // ** database functions

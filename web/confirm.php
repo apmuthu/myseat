@@ -93,7 +93,7 @@
 								<div id="login_info" class="alert_info" style="margin:auto;padding:auto;">
 									<p>
 										<img src="images/icon_info.png" alt="success" class="middle"/>
-										<?= $errorMessage;?>
+										<?php echo $errorMessage;?>
 									</p>
 							</div>
 									<br /><center>

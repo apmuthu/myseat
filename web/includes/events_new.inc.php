@@ -6,7 +6,7 @@
 			 <div class="onecolumn small-column">
 			  <div class="content" >
 		
-			<? 
+			<?php
 			include('includes/messagebox.inc.php');
 			include('includes/events_form.inc.php'); 
 			?>

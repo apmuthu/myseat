@@ -2,7 +2,7 @@
 // ** Database Details Settings
 
  // ** the database that we will use
- $settings['dbName'] = 'myseatXT';
+ $settings['dbName'] = 'myseat';
  // ** the database host
  // ** mostly 'localhost' fits
  $settings['dbHost'] = 'localhost';
@@ -17,7 +17,7 @@
  // ** Google map API key
  // ** Sign up for your own at: http://code.google.com/intl/en-EN/apis/maps/signup.html
  // ** Do not use mine please !!
- // $settings['googlemap_key'] = "ABQIAAAA1-uY3igh_R_JiWHmwKK_UxT75Ut2Ph_t8aXAK0xXRJ_z6BkX6xTyGQK8WxAFbqP1c4QmI7AiZ-VjAQ";
+ //$settings['googlemap_key'] = "ABQIAAAA1-uY3igh_R_JiWHmwKK_UxT75Ut2Ph_t8aXAK0xXRJ_z6BkX6xTyGQK8WxAFbqP1c4QmI7AiZ-VjAQ";
 
  // ** Daylight settings
  // ** noon time

@@ -3,20 +3,20 @@
 	<thead>
 	    <tr>
 			<th>ID</th>
-			<th><?= _name; ?></th>
-			<th><?= _seats; ?></th>
-			<th><?= _tables; ?></th>
-			<th><?= _open_time; ?></th>
-			<th><?= _duration; ?></th>
-			<th><?= _season_start; ?></th>
-			<th><?= _year; ?></th>
-			<th><?= _cuisine_style; ?></th>
-	    	<th><?= _webform; ?></th>
-			<th><?= _delete; ?></th>
+			<th><?php echo _name; ?></th>
+			<th><?php echo _seats; ?></th>
+			<th><?php echo _tables; ?></th>
+			<th><?php echo _open_time; ?></th>
+			<th><?php echo _duration; ?></th>
+			<th><?php echo _season_start; ?></th>
+			<th><?php echo _year; ?></th>
+			<th><?php echo _cuisine_style; ?></th>
+	    	<th><?php echo _webform; ?></th>
+			<th><?php echo _delete; ?></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 			if($_SESSION['button'] == 1){
 				$outlets =	querySQL('db_all_outlets');
 			}else if($_SESSION['button'] == 3){

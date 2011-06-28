@@ -1,104 +1,105 @@
-<?
+<?php
 if ($_SESSION['button']==2) {
 	$row = "";
 }
 ?>
 <div class="content form-height">
 <form method="post" action="?p=6" id="edit_outlet_form">
-	<label><?= _property;?></label>
+	<label><?php echo _property;?></label>
 	<p><span class='bold'>	 	 				 
-		<?= querySQL('db_property');?>
+		<?php echo querySQL('db_property');?>
 	</strong></p>
-	<label><?= _name;?></label>
+	<label><?php echo _name;?></label>
 	<p>
-		<input type="text" name="outlet_name" id="outlet_name" class="required" title=' ' value="<?= $row->outlet_name;?>"/>
+		<input type="text" name="outlet_name" id="outlet_name" class="required" title=' ' value="<?php echo $row->outlet_name;?>"/>
 	</p>
-	<label><?= _cuisine_style;?></label>
+	<label><?php echo _cuisine_style;?></label>
 	<p>
-  		<?= cuisineDropdown($cuisines,$row->cuisine_style);?>
-	</p>
-	<br/>
-	<label><?= _description;?></label>
-	<p>
-		<textarea name="outlet_description" id="outlet_description" rows="5" cols="35" class="required width-97" title=' '><?= trim($row->outlet_description);?></textarea>
+  		<?php echo cuisineDropdown($cuisines,$row->cuisine_style);?>
 	</p>
 	<br/>
-	<label><?= _description." "._international;?></label>
+	<label><?php echo _description;?></label>
 	<p>
-		<textarea name="outlet_description_en" id="outlet_description_en" rows="5" cols="35" class="required width-97" title=' '><?= trim($row->outlet_description_en);?></textarea>
+		<textarea name="outlet_description" id="outlet_description" rows="5" cols="35" class="required width-97" title=' '><?php echo trim($row->outlet_description);?></textarea>
+	</p>
+	<br/>
+	<label><?php echo _description." "._international;?></label>
+	<p>
+		<textarea name="outlet_description_en" id="outlet_description_en" rows="5" cols="35" class="required width-97" title=' '><?php echo trim($row->outlet_description_en);?></textarea>
 	</p>	
-	<label><?= _confirmation_email;?></label>
+	<label><?php echo _confirmation_email;?></label>
 	<p>
-		<input type="text" name="confirmation_email" id="confirmation_email" class="required email" title=' ' value="<?= $row->confirmation_email;?>"/>
+		<input type="text" name="confirmation_email" id="confirmation_email" class="required email" title=' ' value="<?php echo $row->confirmation_email;?>"/>
 	</p>
-	<label><?= _seats;?></label>
+	<label><?php echo _seats;?></label>
 	<p>		 	 	 	 	 	 	
-		<input type="text" name="outlet_max_capacity" id="outlet_max_capacity" class="required digits" title=' ' value="<?= $row->outlet_max_capacity;?>"/>
+		<input type="text" name="outlet_max_capacity" id="outlet_max_capacity" class="required digits" title=' ' value="<?php echo $row->outlet_max_capacity;?>"/>
 	</p>
-	<label><?= _tables;?></label>	
+	<label><?php echo _tables;?></label>	
 	<p>	 	 	 	 	 	 	
-		<input type="text" name="outlet_max_tables" id="outlet_max_tables" class="required digits" title=' ' value="<?= $row->outlet_max_tables;?>"/>
+		<input type="text" name="outlet_max_tables" id="outlet_max_tables" class="required digits" title=' ' value="<?php echo $row->outlet_max_tables;?>"/>
 	</p>
-	<label>Max. <?= _passerby;?></label>	
+	<label>Max. <?php echo _passerby;?></label>	
 	<p>	 	 	 	 	 	 	
-		<input type="text" name="passerby_max_pax" id="passerby_max_pax" class="digits" title=' ' value="<?= $row->passerby_max_pax;?>"/>
+		<input type="text" name="passerby_max_pax" id="passerby_max_pax" class="digits" title=' ' value="<?php echo $row->passerby_max_pax;?>"/>
 	</p>
-	<label><?= _duration;?></label>	
+	<label><?php echo _duration;?></label>	
 	<p>	 	 	 	 	 	 			
-			<? getDurationList($general['timeintervall'],'avg_duration',$row->avg_duration);?>
+			<?php getDurationList($general['timeintervall'],'avg_duration',$row->avg_duration);?>
 	</p>
-	<label><?= _webform;?></label>
+	<label><?php echo _webform;?></label>
 	<p>		
-		<?= printOnOff($row->webform,'webform','');?>
+		<?php echo printOnOff($row->webform,'webform','');?>
 	</p>
 	<br/><br/>		 	 	 	 	 	 		 	 	 	 	 	 				 	 	 	 	 	 	 
 	<br class="clear">
-		<input type="submit" class="button_dark" value="<?= _save;?>"/>		 	 	 	 	 	 	 			 	 	 	 	 	 	
+		<input type="submit" class="button_dark" value="<?php echo _save;?>"/>		 	 	 	 	 	 	 			 	 	 	 	 	 	
 </div></div></div> <!-- end left column -->
 <!-- Beginn right column -->	
 <div class="twocolumn_wrapper right">
 	<div class="twocolumn" >
 		<div class="content form-height">
-			<label><?= _season_start;?></label>
+			<label><?php echo _season_start;?></label>
 			<p>		
-				<?
+				<?php
 				// buildDate($general['dateformat_short'],substr($row->saison_start,2,2),substr($row->saison_start,0,2));
 				echo monthDropdown('saison_start_month',substr($row->saison_start,0,2));
 				echo " "; 
 				echo dayDropdown('saison_start_day',substr($row->saison_start,2,2));
 				?>
 			</p>			 	 	 	 	 	 	 
-			<label><?= _season_end;?></label>	
+			<label><?php echo _season_end;?></label>	
 			<p>		
-				<?
+				<?php
 				// buildDate($general['dateformat_short'],substr($row->saison_end,2,2),substr($row->saison_end,0,2));
 				echo monthDropdown('saison_end_month',substr($row->saison_end,0,2));
 				echo " ";
 				echo dayDropdown('saison_end_day',substr($row->saison_end,2,2));
 				?>
 			</p>
-			<label><?= _year;?></label>	
+			<label><?php echo _year;?></label>	
 			<p>
-					<?= yearDropdown('saison_year',$row->saison_year); ?>
+					<?php echo yearDropdown('saison_year',$row->saison_year); ?>
 			</p>
 			<br/>
-			<label><?= _day_off;?></label>
+			<label><?php echo _day_off;?></label>
 			<p>	
-				<? echo getWeekdays_select($row->outlet_closeday); ?>	
+				<?php echo getWeekdays_select($row->outlet_closeday); ?>	
 			</p>
 			<br/>
-			<label><?= _general." "._open_time." & "._close_time;?></label>
+			<label><?php echo _general." "._open_time." & "._close_time;?></label>
 			<p>		 	 	 	 	 	 	
-				<? getTimeList($general['timeformat'], $general['timeintervall'],'outlet_open_time',$row->outlet_open_time);
-				   echo " ";
-	 	 	 	   getTimeList($general['timeformat'], $general['timeintervall'],'outlet_close_time',$row->outlet_close_time);
+				<?php 
+					getTimeList($general['timeformat'], $general['timeintervall'],'outlet_open_time',$row->outlet_open_time);
+				   	echo " ";
+	 	 	 	   	getTimeList($general['timeformat'], $general['timeintervall'],'outlet_close_time',$row->outlet_close_time);
 				?>
 			</p>
 			<br/>
-			<label><?= _specific." "._open_time." & "._close_time;?></label>
+			<label><?php echo _specific." "._open_time." & "._close_time;?></label>
 			<p>	
 				<table class='opentime-table'>
- 	 	 	 	 <?
+ 	 	 	 	 <?php
 					$day = strtotime("next Monday");
 					for ($i=1; $i <= 7; $i++) { 
 						$weekday = date("w",$day);
@@ -115,10 +116,10 @@ if ($_SESSION['button']==2) {
 				</table>
 			</p>
 			<br/>
-			<label><?= _break;?></label>
+			<label><?php echo _break;?></label>
 			<p>	
 				<table class='opentime-table'>
- 	 	 	 	 <?
+ 	 	 	 	 <?php
 					$day = strtotime("next Monday");
 					for ($i=1; $i <= 7; $i++) { 
 						$weekday = date("w",$day);
@@ -137,11 +138,11 @@ if ($_SESSION['button']==2) {
 			<br/><br/>
 			<?php if ($_SESSION['button']!=2): ?> 	 	 	 	 	 	 
 				<small>				
-					<?= _created." ".humanize($row->outlet_timestamp);?>
+					<?php echo _created." ".humanize($row->outlet_timestamp);?>
 				</small>
 			<?php endif ?>	
-			<input type="hidden" name="outlet_id" value="<?= $row->outlet_id;?>">
-			<input type="hidden" name="property_id" value="<?= $_SESSION['property'];?>">
+			<input type="hidden" name="outlet_id" value="<?php echo $row->outlet_id;?>">
+			<input type="hidden" name="property_id" value="<?php echo $_SESSION['property'];?>">
 			<input type="hidden" name="token" value="<?php echo $token; ?>" />
 			<input type="hidden" name="action" value="save_out">
 </form>

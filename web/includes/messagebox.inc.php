@@ -1,4 +1,4 @@
-<?
+<?php
 // get outlet maximum capacity
 $maxC = maxCapacity();
 // get Pax by timeslot
@@ -88,6 +88,7 @@ if ($special_events && $_SESSION['page'] == 2 ) {
 	echo "<div class='alert_info'>";
 		// special events
 		foreach($special_events as $row) {
+			$special_event_subject = $row->subject;
 			echo "
 			<img src='../web/images/icon_cutlery.png' alt='special' class='middle'/>
 			<span class='bold'>

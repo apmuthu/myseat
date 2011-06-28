@@ -1,4 +1,4 @@
-<?
+<?php
 
 // Once used, please DO NOT CHANGE anyway!
 $cuisines = array(

@@ -1,13 +1,13 @@
 <!-- Begin one column box -->
 <div class="onecolumn">
 	<div class="header">
-		<h2><?= _export;?></h2>
+		<h2><?php echo _export;?></h2>
 		
 		<!-- Begin 2nd level tab -->
 		<ul class="second_level_tab">
 			<li>
 				<a href="?p=2" class="button_dark">
-					<?= _back;?>
+					<?php echo _back;?>
 				</a>
 			<li/>
 		</ul>
@@ -27,40 +27,40 @@
 			<tr>
 				<td>
 					<th></th>
-					<label class='leftside'><?= _date; ?></label>
+					<label class='leftside'><?php echo _date; ?></label>
 					<br class="clear"/>
 					<div class="date dategroup">
-						<div class="text" id="s_datetext"><?= $_SESSION['selectedDate_user']; ?></div>
+						<div class="text" id="s_datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 						<input type="text" id="s_datepicker"/>
-						<input type="hidden" name="s_dbdate" id="s_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+						<input type="hidden" name="s_dbdate" id="s_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
 		    	    </div>
 					
-					<strong class='leftside'>&nbsp;&nbsp; <?= _till;?> &nbsp;&nbsp;</strong>  
+					<strong class='leftside'>&nbsp;&nbsp; <?php echo _till;?> &nbsp;&nbsp;</strong>  
 					
 					<div class="date dategroup">
-						<div class="text" id="e_datetext"><?= $_SESSION['selectedDate_user']; ?></div>
+						<div class="text" id="e_datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 						<input type="text" id="e_datepicker"/>
-						<input type="hidden" name="e_dbdate" id="e_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+						<input type="hidden" name="e_dbdate" id="e_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
 		    	    </div>
 				</td>
 			</tr>
 			<tr>
-				<th><span class='bold'><?= _outlets; ?></strong></th>
+				<th><span class='bold'><?php echo _outlets; ?></strong></th>
 				<td>
-							<? getOutletList(1,'enabled'); ?>
+							<?php getOutletList(1,'enabled'); ?>
 				</td>
 			</tr>
 			<tr>
-				<th><span class='bold'><?= _type; ?></strong></th>
+				<th><span class='bold'><?php echo _type; ?></strong></th>
 				<td>
-							<? getTypeList();?>
+							<?php getTypeList();?>
 				</td>
 			</tr>
 			<tr>
 				<td>
 					<br/><br/>
 				<input type="hidden" name="action" value="export">
-				<input type="submit" class="button_dark" value="<?= _export;?>">
+				<input type="submit" class="button_dark" value="<?php echo _export;?>">
 				</td>
 			</tr>
 			</form>

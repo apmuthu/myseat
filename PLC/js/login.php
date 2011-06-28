@@ -1,4 +1,4 @@
-<? session_start(); ?>
+<?php session_start(); ?>
 /***********************************
 **	PHP Login Ajax JQuery
 **	programmer@chazzuka.com
@@ -8,7 +8,7 @@
 ** Edited to work with PLC by BEO
 ************************************/
 // GLOBAL PARAMS
-var indexpage		=	'<? echo $_SESSION['forwardPage']; ?>';
+var indexpage		=	'<?php echo $_SESSION['forwardPage']; ?>';
 var file			=	'index.php?form=1';
 var placeholder		=	'#wrapper2';
 var waitholder		=	'#err';

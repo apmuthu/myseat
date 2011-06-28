@@ -2,20 +2,20 @@
 <table class="global width-100" cellpadding="0" cellspacing="0">
 	<thead>
 	    <tr>
-			<th><?= _date; ?></th>
-			<th><?= _subject; ?></th>
-			<th><?= _outlets; ?></th>
-			<th><?= _open_time; ?></th>
-			<th><?= _close_time; ?></th>
-			<!-- ><th><?= _open_to; ?></th> 
-			<th><?= _contact; ?></th> -->
-			<th><?= _advertise_start; ?></th>
-			<th><?= _ticket_price; ?></th>
-			<th><?= _delete; ?></th>
+			<th><?php echo _date; ?></th>
+			<th><?php echo _subject; ?></th>
+			<th><?php echo _outlets; ?></th>
+			<th><?php echo _open_time; ?></th>
+			<th><?php echo _close_time; ?></th>
+			<!-- ><th><?php echo _open_to; ?></th> 
+			<th><?php echo _contact; ?></th> -->
+			<th><?php echo _advertise_start; ?></th>
+			<th><?php echo _ticket_price; ?></th>
+			<th><?php echo _delete; ?></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 
 		$events =	querySQL('db_propery_events');
 		

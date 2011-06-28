@@ -86,12 +86,12 @@ echo "<body>
 	<div id="menu_wrapper">
 		<ul class="nav margin-left-40">
 			<li>
-				<a href="#" <?if($_GET['p']=='2'){echo "class='active'";} ?> >
+				<a href="#" <?php if($_GET['p']=='2'){echo "class='active'";} ?> >
 					Sign up Property	
 				</a>
 			</li>
 			<li>
-				<a href="#" <?if($_GET['p']=='7'){echo "class='active'";} ?> >
+				<a href="#" <?php if($_GET['p']=='7'){echo "class='active'";} ?> >
 					Create Admin user	
 				</a>
 			</li>
@@ -104,7 +104,7 @@ echo "<body>
 	<!-- Begin content -->
 	<div id="content_wrapper">
 	
-<?
+<?php
 	// ** content
 
 		// property page wrapper

@@ -1,4 +1,4 @@
-<?
+<?php
 // This file holds the translation text
 // Text to translate: "define ( '_needle', 'please_translate_me_here' );"
 // Language: fr_FR

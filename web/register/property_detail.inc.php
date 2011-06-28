@@ -1,68 +1,70 @@
+<?php if($settings['googlemap_key'] != ""){?>
 <script type="text/javascript">	
 	// GOOGLE MAP INTEGRATION
 	$(document).ready(function() {
 		$("#map_canvas").gMap({ markers: [
-                            { address: "<?= $row['street'].", ".$row['city'].", ".$row['country'];?>",
+                            { address: "<?php echo $row['street'].", ".$row['city'].", ".$row['country'];?>",
                               html: "_address"}],
 			      zoom: 16 });
 	});
 </script>
+<?php } ?>
 				<h3>	 	 				 
-					<div class="property-logo" style="background-image: url(../uploads/logo/<? echo ($row['logo_filename']=='') ? 'logo.png' : $row['logo_filename'];?>);"></div>
-					<?= $row['name'];?>
+					<div class="property-logo" style="background-image: url(../uploads/logo/<?php echo ($row['logo_filename']=='') ? 'logo.png' : $row['logo_filename'];?>);"></div>
+					<?php echo $row['name'];?>
 				</h3>
 				<br class="cl" />
 				<br/>
-				<div class="property-image" style="background-image: url(../uploads/img/<? echo ($row['img_filename']=='') ? 'noImage.png' : $row['img_filename'];?>);"></div>
+				<div class="property-image" style="background-image: url(../uploads/img/<?php echo ($row['img_filename']=='') ? 'noImage.png' : $row['img_filename'];?>);"></div>
 				<br class="cl" />
 				<br/><br/>
-				<label><?= _contact;?></label>
+				<label><?php echo _contact;?></label>
 				<p><strong>
-					<?= $row['contactperson'];?>
+					<?php echo $row['contactperson'];?>
 				</p></strong>
-				<label><?= _adress;?></label>
+				<label><?php echo _adress;?></label>
 				<p><strong>
-					<?= $row['street'];?>
+					<?php echo $row['street'];?>
 				</p></strong>
-				<label><?= _zip;?></label>
+				<label><?php echo _zip;?></label>
 				<p><strong>
-					<?= $row['zip'];?>
+					<?php echo $row['zip'];?>
 				</p></strong>
-				<label><?= _city;?></label>
+				<label><?php echo _city;?></label>
 				<p><strong>
-					<?= $row['city'];?>
+					<?php echo $row['city'];?>
 				</p></strong>
-				<label><?= _country;?></label>
+				<label><?php echo _country;?></label>
 				<p><strong>
-					<?= $countries[$row['country']];?>
+					<?php echo $countries[$row['country']];?>
 				</p></strong>
-				<label><?= _email;?></label>
+				<label><?php echo _email;?></label>
 				<p><strong>
-					<?= $row['email'];?>
+					<?php echo $row['email'];?>
 				</p></strong>
-				<label><?= _website;?></label>
+				<label><?php echo _website;?></label>
 				<p><strong>
-					<?= $row['website'];?>
+					<?php echo $row['website'];?>
 				</p></strong>
-				<label><?= _phone;?></label>
+				<label><?php echo _phone;?></label>
 				<p><strong>		 	 	 	 	 	 	
-					<?= $row['phone'];?>
+					<?php echo $row['phone'];?>
 				</p></strong>
-				<label><?= _fax;?></label>	
+				<label><?php echo _fax;?></label>	
 				<p>	 	 	 	 	 	 	
-					<?= $row['fax'];?>
+					<?php echo $row['fax'];?>
 				</p>
 				<label>Facebook Link</label>	
 				<p>	 	 	 	 	 	 	
-					<?= $row['social_fb'];?>
+					<?php echo $row['social_fb'];?>
 				</p>
 				<label>Twitter Link</label>	
 				<p>	 	 	 	 	 	 	
-					<?= $row['social_tw'];?>
+					<?php echo $row['social_tw'];?>
 				</p>
 				<br/><br/>	 	 	 	 	 	 	 
 				<small>				
-					<? if($row['created']){ echo _created." ".humanize($row['created']);}?>
+					<?php if($row['created']){ echo _created." ".humanize($row['created']);}?>
 				</small>
 				<?php if($settings['googlemap_key'] != ""){?>
 					<!-- Google Map Plugin -->

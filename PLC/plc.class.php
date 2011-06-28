@@ -42,7 +42,7 @@ class flexibleAccess{
   * The database that we will use
   * var string
   */
- var $dbName = 'myseat';
+ var $dbName = 'mySeat';
  /**
   * The database host
   * mostly 'localhost' fits
@@ -351,6 +351,19 @@ function newpassword($newpass='',$id)
 	return $id;
 }
 
+ /*
+  * Creates a cookie session entry. The array should have the form 'database field' => 'value'
+  * @param array $data
+  * return int
+  */  
+function insertSession($data)
+{
+   if (!is_array($data)) $this->error('Data is not an array', __LINE__);
+   foreach ($data as $k => $v ) $data[$k] = "'".$this->escape($v)."'";
+   $this->query("INSERT INTO `{$this->dbSession}` (`".implode('`, `', array_keys($data))."`) VALUES (".implode(", ", $data).")",__LINE__);
+   return (int)mysql_insert_id($this->dbConn);
+ }
+
  /**
  	* Logout function
  	* param string $redirectTo
@@ -363,8 +376,8 @@ function newpassword($newpass='',$id)
 	 	foreach ($setCookie as $k => $v ) $setCookie[$k] = "'".$this->escape($v)."'";
 		$sql = "DELETE FROM `{$this->dbSession}` WHERE `{$this->tbSessions['key_id']}` = ".$setCookie['key_id'];
    		$this->query($sql,__LINE__);
-   		setcookie($this->remCookieName, '', time()-3600);
-   		$_SESSION[$this->sessionVariable] = '';
+   		$_SESSION[$this->sessionVariable] = array();
+   		setcookie($this->remCookieName, '', time()-60000);
    		$this->userData = '';
    		if ( $redirectTo != '' && !headers_sent()){
    			header('Location: '.$redirectTo );
@@ -575,7 +588,7 @@ function autologin_weak()
 		
 	$sql = "SELECT * FROM `{$this->dbTable}` WHERE `{$this->tbFields['userID']}` = ".$setCookie['user_id']." LIMIT 1";
 	$res = $this->query($sql,__LINE__);
-	if ( @mysql_num_rows($res) == 0)
+	if ( mysql_num_rows($res) == 0)
 		return false;
 		
 		//TRUE - store logged in user data
@@ -606,7 +619,7 @@ function autologin()
 		 AND `{$this->tbSessions['user_id']}` = ".$setCookie['user_id']."
 		 LIMIT 1";
 	$res = $this->query($sql,__LINE__);
-	if ( @mysql_num_rows($res) == 0){
+	if ( mysql_num_rows($res) == 0){
 		return false;
 	}
 	$this->sessionData = mysql_fetch_array($res);
@@ -667,18 +680,6 @@ function read_cookie()
 	return $setCookie;
 	}
 }
- /*
-  * Creates a cookie session entry. The array should have the form 'database field' => 'value'
-  * @param array $data
-  * return int
-  */  
-function insertSession($data)
-{
-   if (!is_array($data)) $this->error('Data is not an array', __LINE__);
-   foreach ($data as $k => $v ) $data[$k] = "'".$this->escape($v)."'";
-   $this->query("INSERT INTO `{$this->dbSession}` (`".implode('`, `', array_keys($data))."`) VALUES (".implode(", ", $data).")",__LINE__);
-   return (int)mysql_insert_id($this->dbConn);
- }
  /*
   * Creates an entry when login fails
   * @param int $id

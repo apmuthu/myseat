@@ -1,4 +1,4 @@
-<?
+<?php
 		// check what startpage
 		if ($q==1) {
 			if ( current_user_can( 'Settings-Outlets' ) ){
@@ -16,36 +16,36 @@
 	<ul class="first_level_tab">
 		<?php if ( current_user_can( 'Settings-Outlets' ) ): ?>
 		<li>
-			<a href="?p=6&q=1&btn=1" <? if ($q == 1) { echo " class='active'";}?> >
-				<img src='images/menu-icons/store.png' class='nav-image'><?= _outlets; ?>
+			<a href="?p=6&q=1&btn=1" <?php if ($q == 1) { echo " class='active'";}?> >
+				<img src='images/menu-icons/store.png' class='nav-image'><?php echo _outlets; ?>
 			</a>
 		</li>
 		<?php endif ?>
 		<?php if ( current_user_can( 'Settings-Users' ) ): ?>
 		<li>
-			<a href="?p=6&q=2&btn=1" <? if ($q == 2) { echo " class='active'";}?> >
-				<img src='images/menu-icons/user.png' class='nav-image'><?= _users; ?>
+			<a href="?p=6&q=2&btn=1" <?php if ($q == 2) { echo " class='active'";}?> >
+				<img src='images/menu-icons/user.png' class='nav-image'><?php echo _users; ?>
 			</a>
 		</li>
 		<?php endif ?>
 		<?php if ( current_user_can( 'Settings-General' ) ): ?>
 			<li>
-				<a href="?p=6&q=3" <? if ($q == 3) { echo " class='active'";}?> >
-					<img src='images/menu-icons/equalizer.png' class='nav-image'><?= _general; ?>
+				<a href="?p=6&q=3" <?php if ($q == 3) { echo " class='active'";}?> >
+					<img src='images/menu-icons/equalizer.png' class='nav-image'><?php echo _general; ?>
 				</a>
 			</li>
 		<?php endif ?>
 		<?php if ( current_user_can( 'Settings-Events' ) ): ?>
 			<li>
-				<a href="?p=6&q=4&btn=1" <? if ($q == 4) { echo " class='active'";}?> >
-					<img src='images/menu-icons/ticket.png' class='nav-image'><?= _sp_events; ?>
+				<a href="?p=6&q=4&btn=1" <?php if ($q == 4) { echo " class='active'";}?> >
+					<img src='images/menu-icons/ticket.png' class='nav-image'><?php echo _sp_events; ?>
 				</a>
 			</li>
 		<?php endif ?>
 		<?php if ( current_user_can( 'Property-New' ) ): ?>
 			<li>
-				<a href="?p=6&q=5" <? if ($q == 5) { echo " class='active'";}?> >
-					<img src='images/menu-icons/home.png' class='nav-image'><?= _property; ?>
+				<a href="?p=6&q=5" <?php if ($q == 5) { echo " class='active'";}?> >
+					<img src='images/menu-icons/home.png' class='nav-image'><?php echo _property; ?>
 				</a>
 			</li>
 		<?php endif ?>
@@ -59,7 +59,7 @@
 		
 		<div class="header">
 			<div class="description">
-				<?
+				<?php
 				if ($q == 1 && $_SESSION['button'] == 1) { 
 					echo "<h3>"._existing_outlets."</h3>";
 				}else if ($q == 1 && $_SESSION['button'] == 2) { 
@@ -84,23 +84,23 @@
 			<?php if ( $q == 1 ): ?>
 			<ul class="second_level_tab">
 				<li>
-					<a href="?p=6&q=1&btn=1" <? if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
-						<?= _active;?>
+					<a href="?p=6&q=1&btn=1" <?php if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
+						<?php echo _active;?>
 					</a>
 				</li>
 				<li>
-					<a href="?p=6&q=1&btn=3" <? if ($_SESSION['button'] == 3) { echo " class='active'";}?> >
-						<?= 'In'._active;?>
+					<a href="?p=6&q=1&btn=3" <?php if ($_SESSION['button'] == 3) { echo " class='active'";}?> >
+						<?php echo 'In'._active;?>
 					</a>
 				</li>
 				<li>
-					<a href="?p=6&q=1&btn=2" <? if ($_SESSION['button'] == 2) { echo " class='active'";}?> >
-						<?= _create;?>
+					<a href="?p=6&q=1&btn=2" <?php if ($_SESSION['button'] == 2) { echo " class='active'";}?> >
+						<?php echo _create;?>
 					</a>
 				</li>
 				<li>
-					<a href="?p=2&outletID=<?= $_SESSION['outletID']; ?>">
-						<?= _back;?>
+					<a href="?p=2&outletID=<?php echo $_SESSION['outletID']; ?>">
+						<?php echo _back;?>
 					</a>
 				</li>
 			</ul>
@@ -108,17 +108,17 @@
 			<?php if ( $q == 2 ): ?>
 			<ul class="second_level_tab">
 				<li>
-					<a href="?p=6&q=2&btn=1" <? if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
-						<?= _users;?>
+					<a href="?p=6&q=2&btn=1" <?php if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
+						<?php echo _users;?>
 					</a>
 				</li>
 				<li>
-					<a href="?p=6&q=2&btn=2" <? if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3 || $p == 6) { echo " class='active'";}?> >
-						<?= _create;?>
+					<a href="?p=6&q=2&btn=2" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3 || $p == 6) { echo " class='active'";}?> >
+						<?php echo _create;?>
 					</a>
 				</li>
 				<li>
-					<?
+					<?php
 					echo'<a href="';
 					if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) {
 						echo "?p=6&q=2&btn=1";
@@ -135,7 +135,7 @@
 			<ul class="second_level_tab">
 				<li>
 					<a href="?p=6&q=1&btn=1">
-						<?= _back;?>
+						<?php echo _back;?>
 					</a>
 				</li>
 			</ul>
@@ -143,17 +143,17 @@
 			<?php if ( $q == 4 ): ?>
 			<ul class="second_level_tab">
 				<li>
-					<a href="?p=6&q=4&btn=1" <? if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
-						<?= _overview;?>
+					<a href="?p=6&q=4&btn=1" <?php if ($_SESSION['button'] == 1) { echo " class='active'";}?> >
+						<?php echo _overview;?>
 					</a>
 				</li>
 				<li>
-					<a href="?p=6&q=4&btn=2" <? if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) { echo " class='active'";}?> >
-						<?= _create;?>
+					<a href="?p=6&q=4&btn=2" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) { echo " class='active'";}?> >
+						<?php echo _create;?>
 					</a>
 				</li>
 				<li>
-					<?
+					<?php
 					echo'<a href="';
 					if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) {
 						echo "?p=6&q=4&btn=1";
@@ -171,12 +171,12 @@
 				<?php if ( current_user_can( 'Settings-Outlets' ) ): ?>
 				<li>
 					<a href="#" id="editToggle" onclick="return false;">
-						<?= _edit;?>
+						<?php echo _edit;?>
 					</a>
 				</li>
 				<li>
 					<a href="?p=6&q=1&btn=1">
-						<?= _back;?>
+						<?php echo _back;?>
 					</a>
 				</li>
 				<?php endif ?>
@@ -189,7 +189,7 @@
 		<!-- Begin nomargin -->
 		<div class="content nomargin">
 			
-			<?
+			<?php
 			// ** content of pages **
 			
 			switch($q){
@@ -258,6 +258,6 @@
 		<!-- End nomargin -->
 </div>
 <br/>
-	<a href="?p=2&outletID=<?= $_SESSION['outletID']; ?>" class="button_dark"><input type="button" class="button_dark" value="<?= _back;?>"/></a>
+	<a href="?p=2&outletID=<?php echo $_SESSION['outletID']; ?>" class="button_dark"><input type="button" class="button_dark" value="<?php echo _back;?>"/></a>
 <br/>
 <br class="clear"/>

@@ -1,4 +1,4 @@
-<?
+<?php
 if ($_POST['action']=='save_res') {	
 	// group reservation needs a common menu?
 	if ( (int)$_POST['reservation_pax'] >= $general['max_menu']){ 

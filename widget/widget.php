@@ -63,7 +63,7 @@ include('../config/config.inc.php');
 
  #myseat_widget {
    border:1px solid #aaa;
-   background: <?= $general['contactform_background'];?>;
+   background: <?php echo $general['contactform_background'];?>;
    width:235px;
    padding: 5px;
    text-align:left;

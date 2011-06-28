@@ -18,12 +18,12 @@ include('../../config/config.inc.php');
 // check for new reservations
 $new = querySQL('notifications');
 
-if($new){
+if($new!=''){
 	$message = _recent_reservations.":<br/>";
 	foreach ($new as $row) {
 		$message .= substr($row->reservation_time,0,5)." ".$row->reservation_guest_name." "._for_." ".$row->outlet_name."<br/>";
 	}
+	echo $message;
 }
-echo $message;
 
 ?>

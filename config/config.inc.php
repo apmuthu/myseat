@@ -1,4 +1,4 @@
-<?
+<?php
 // Get global file path
 function GetFileDir($php_self){
 	$filename = explode("/", $php_self); // THIS WILL BREAK DOWN THE PATH INTO AN ARRAY
@@ -11,7 +11,6 @@ function GetFileDir($php_self){
 // General settings per resort from database
 $general = array();
 $general = querySQL('settings_inc');
-	//print_r($general);
 
 if($_SESSION['valid_user']==TRUE){
 	$_SESSION['language'] = $general['language'];

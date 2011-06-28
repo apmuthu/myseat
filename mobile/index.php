@@ -13,6 +13,7 @@ $_SESSION['outletID'] = '';
 	include('../config/config.general.php');
 // ** business functions
 	require('../contactform/includes/business.class.php');
+	require('includes/business.class.php');
 // ** database functions
 	include('../web/classes/database.class.php');
 // ** localization functions
@@ -124,275 +125,188 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 	$_SESSION['language'] = $language;
 	translateSite(substr($language,0,2),'../web/');
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<html lang="<?php echo $language; ?>">
-<head> 
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="viewport" content="width=320; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-<!-- Meta data for SEO -->
-<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
-<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
-<meta name="robots" content="all,follow" />
-<meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
-<meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
-<meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management, table planner, restaurant table planner, table management, hotel" />
-<!-- Website Title --> 
-<title>Reservation</title>
+<!DOCTYPE html> 
+<html> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
-<!-- Template stylesheet -->
-<link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
-<link href="../contactform/style/datepicker.css" rel="stylesheet" type="text/css" />
+	<!-- Meta data for SEO -->
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+	<meta http-equiv="X-UA-Compatible" content="IE=8" />
+	<meta name="robots" content="follow,index,no-cache" />
+	<meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
+	<meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
+	<meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management, table planner, restaurant table planner, table management, hotel" />
+	<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
+	<meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
 
-<!-- jQuery Library-->
-<script src="../contactform/js/jQuery.min.js"></script>
-<script src="../contactform/js/jquery.easing.1.3.js"></script>
-<script src="../contactform/js/jquery-ui.js" type="text/javascript" ></script> 
-<script src="../contactform/js/functions.js"></script>
-<style type="text/css">
-	.ui-datepicker {
-		width: 295px;
-	}
-	.ui-datepicker table {
-		width: 295px;
-	}
-	.ui-datepicker-calendar {
-		width: 295px;
-	}
-</style>
+	<!-- Meta data for all iDevices -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+	<!-- Website Title --> 
+	<title>Table Reservation</title> 
+
+	<!-- Stylesheets -->
+	<link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
+	<link rel="stylesheet" href="jqmobile/jquery.mobile-1.0a4.1.min.css" />
+	<!-- jQuery Library-->
+	<script type="text/javascript" src="jqmobile/jquery-1.6.1.min.js"></script>
+	<script type="text/javascript" src="jqmobile/jquery.mobile-1.0a4.1.min.js"></script>
+	<script type="text/javascript" src="../web/js/jquery.validate.min.js"></script>
+
 </head>
 <body>
 
-	<!-- Begin page wrapper -->
-	<div id="wrapper">
-		
-		<div id="top_bar">
-			<div class="inner">
-				<h1>
-					<a href="<? echo $website; ?>">
-						<? echo $prp_info['name'];?>
-					</a>
-				</h1>
-			</div>
-			<div class="home">
+	<div data-role="page" data-theme="b">
+
+		<div data-role="header">
+			<h1><?php echo $lang["conf_title"];?></h1>
+			<a href="<?php echo $website; ?>" data-icon="home" class="ui-btn-left" data-direction="reverse"  data-iconpos="notext">Home</a>
+			<a href="cancel.php" data-icon="delete" class="ui-btn-right" data-iconpos="notext"><?php echo $lang["contact_form_cxl"];?></a>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<div style='float:right'>
 				<?php language_navigation_mobile(substr($general['language'],0,2)); ?>
-				<a href="cancel.php">
-					<img src="images/icon_recycle.png" alt="" width="40" height="40"/>
-				</a>
 			</div>
-		</div>
-		<br/><br/>
-		<div id="content_wrapper">
-			<div class="inner">
-				<h2 class="header"><?= $lang["conf_title"];?></h2>
-				<p>
-					<?php echo sprintf($lang["contact_form_intro"],$general['max_menu']); ?>
-				</p>
-			</div>
-			<br class="clear"/>
-			<hr/>
-			
-			
-			<?php
-				// Generate captcha fields
-				$captchaField1 = rand(1, 10);
-				$captchaField2 = rand(1, 20);
-				$captchaField3 = rand(1, 10);
-				$captchaField2 = ($captchaField2%2) ? "+" : "-";
-			?>
-			<div class="inner">
-				<h2>
-				<? echo
-		lang("contact_form_restaurant")."<br/>".date($general['dateformat'],strtotime($_SESSION['selectedDate']))."<br/>";?>
-				</h2>
-				<form action="process_booking.php" method="post" id="contactForm">
-					<?php	
-								// Restaurant dropdown
-								$num_outlets = 0;
-								if ($_SESSION['single_outlet'] == 'OFF') {
-									$num_outlets = querySQL('num_outlets');
+			<p>
+				<?php echo sprintf($lang["contact_form_intro"],$general['max_menu']); ?>
+			</p>
+			<h2>
+				<?php echo date($general['dateformat'],strtotime($_SESSION['selectedDate'])); ?>
+			</h2>
+			<form action="process_booking.php" method="post" id="contactform" data-ajax="false">
+				<legend><?php lang("contact_form_restaurant");?></legend><br/>
+				<?php	
+							// Restaurant dropdown
+							$num_outlets = 0;
+							if ($_SESSION['single_outlet'] == 'OFF') {
+								$num_outlets = querySQL('num_outlets');
+							}
+								if ($num_outlets>1) {
+									echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
+									$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
+								} else{
+									echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>".$outlet_name;
 								}
-									if ($num_outlets>1) {
-										echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
-										$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
-									} else{
-										echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>".$outlet_name;
-									}
 
-							    // Outlet description
-								if ($language == 'en') {
-									echo "<br/><br/>".$_SESSION['selOutlet']['outlet_description_en']."<br/>";
-								}else{
-									echo "<br/><br/>".$_SESSION['selOutlet']['outlet_description']."<br/>";
-								}
-								?>
-					<br class="clear"/>
-					<br/>
-					<br/>
-					 <!-- Datepicker -->
-					    <div id="bookingpicker"></div>
-					    <input type="hidden" name="dbdate" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
-					    <input type="hidden" name="reservation_date" value="<?= $_SESSION['selectedDate'];?>">
-					    <input type="hidden" name="recurring_dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
-					 <!-- END datepicker -->
-					<br/>
-					<p>
-					<label><?php lang("contact_form_time"); ?>*</label>
-					<?php
-					    timeList($general['timeformat'], $general['timeintervall'],'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
-					?>
-				    </p>
-					<p>
-						<label><?php lang("contact_form_pax"); ?>*</label>
-			                        <?php
-										//personsList(max pax before menu , standard selected pax);
-									    personsList($general['max_menu'],2);
-									?>
-					</p>
-					<p>
-						<label><?php lang("contact_form_title"); ?></label>
-						<?php
-							$title = '';
-							 if ($me) {
-							 	if ( $me['gender']=='male' ) {
-									$title = 'M';
-							 	}else if ( $me['gender']=='female' ) {
-									$title = 'F';
-							 	}
-							 }
-						    titleList($title);
-						?>
-					</p>
-					<label><?php lang("contact_form_name"); ?>*</label>
-		              	<input type="text" name="reservation_guest_name" class="form required" id="reservation_guest_name" value="<?php if($me['last_name']){echo $me['last_name'].", ".$me['first_name'];} ?>" />
-					<p>
-					<label><?php lang("contact_form_email"); ?>*</label>
-			          	<input type="text" name="reservation_guest_email" class="form required email" id="reservation_guest_email" value="<?php echo $me['email']; ?>" />
-					</p>
-					<p>
-					<label></label>
-						<input type="checkbox" name="reservation_advertise" class="small" id="reservation_advertise" value="YES"/>&nbsp;&nbsp;<?php lang("contact_form_advertise"); ?>
-					</p>
-					<p>
-					<label><?php lang("contact_form_phone"); ?></label>
-			            <input type="text" name="reservation_guest_phone" class="form required" id="reservation_guest_phone" value="" />
-					</p>
-					<p>
-					    <label><?php lang("contact_form_notes"); ?></label>
-					    <textarea name="reservation_notes" class="form" id="reservation_notes" style="width:85%" rows="5" cols="2"></textarea>
-					</p>
-					<p>
-						<div class="captchaContainer">
-	                		<label for="captcha">
-								<?php lang("security_question"); ?>
-								<br class="cl" />
-			            		<span id="captchaField1" class="captchaField"><?php echo $captchaField1; ?></span>
-			            		<input type="hidden" name="captchaField1" value="<?php echo $captchaField1; ?>"/>
-
-			            		<span id="captchaField2" class="captchaField"><?php echo $captchaField2; ?></span>
-			            		<input type="hidden" name="captchaField2" value="<?php echo $captchaField2; ?>"/>
-
-								<span id="captchaField3" class="captchaField"><?php echo $captchaField3; ?></span>
-								<input type="hidden" name="captchaField3" value="<?php echo $captchaField3; ?>"/>
-
-								<span class="captchaField">=</span>
-							</label>
-	                		<input type="text" name="captcha" class="form required captcha" id="captcha" value="" style="width:25%"/>
-	                	</div>
-					</p>
-					
-					<p>
-					</p>
-					<p>
-					</p>
-					
-					<br/>
-					<p>
-						<input type="hidden" name="action" id="action" value="submit"/>
-						<input type="hidden" name="barrier" value="<?php echo $barrier; ?>" />
-						<input type="hidden" name="reservation_referer" value="<?php echo $_SESSION['referer']; ?>" />
-						<input type="hidden" name="reservation_hotelguest_yn" id="reservation_hotelguest_yn" value="PASS"/>
-						<input type="hidden" name="reservation_booker_name" id="reservation_booker_name" value="Contact Form"/>
-						<input type="hidden" name="reservation_author" id="reservation_author" value="<?= $prp_info['name'];?> Team"/>
-						<input type="hidden" name="email_type" id="email_type" value="<?php echo $language; ?>"/>
-					    
-					
-					    <?php
-						$day_off = getDayoff();
-		                if ($day_off == 0) {
-		                	echo"<input type='submit' class='button_dark' value='".$lang['contact_form_send']."'/>";
-		                }else{
-							echo "<div class='alert_error' style='margin-bottom:20px'><p>
-									<img src='images/icon_error.png' alt='delete'' class='middle'/> 
-									&nbsp;&nbsp;"._day_off."</p></div>";
-						}
-		                ?>	
-					</p>
-					<br/><br/>
-				</form>
-				<div class="pagination">
-				<?php echo sprintf($lang["footer_one"],$prp_info['phone'],$prp_info['email'],$prp_info['email']); ?>
-				<br/><br/>
-				<small>
-					&copy; 2010 by <a href="http://www.myseat.us" target="_blank">mySeat</a>
-					 under the GPL license, designed for easy  & free restaurant reservations.
-				</small>
-				</div>
+						    // Outlet description
+							if ($language == 'en') {
+								echo "<br/><br/>".$_SESSION['selOutlet']['outlet_description_en']."<br/>";
+							}else{
+								echo "<br/><br/>".$_SESSION['selOutlet']['outlet_description']."<br/>";
+							}
+				?>
 				<br/>
-			</div>
+				<div data-role="fieldcontain">
+				 <!-- Datepicker -->
+					<legend for="date">Date Input</legend><br/>
+					<?php echo DateDropdown();?>
+				 <!-- END datepicker -->
+				</div>
+				<div data-role="fieldcontain">
+				<legend><?php lang("contact_form_time"); ?>*</legend><br/>
+				<?php
+				    timeList($general['timeformat'], $general['timeintervall'],'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
+				?>
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_pax"); ?>*</legend><br/>
+                    <?php
+						//personsList(max pax before menu , standard selected pax);
+					    personsList($general['max_menu'],2);
+					?>
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_title"); ?></legend><br/>
+					<?php
+						$title = '';
+						 if ($me) {
+						 	if ( $me['gender']=='male' ) {
+								$title = 'M';
+						 	}else if ( $me['gender']=='female' ) {
+								$title = 'F';
+						 	}
+						 }
+					    titleList($title);
+					?>
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_name"); ?>*</legend><br/>
+		              	<input type="text" name="reservation_guest_name" class="form required" id="reservation_guest_name" value="<?php if($me['last_name']){echo $me['last_name'].", ".$me['first_name'];} ?>" />
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_email"); ?>*</legend><br/>
+			          	<input type="text" name="reservation_guest_email" class="form required email" id="reservation_guest_email" value="<?php echo $me['email']; ?>" /><br/>
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_advertise"); ?></legend><br/>
+					<fieldset data-role="controlgroup">
+						<input type="checkbox" name="reservation_advertise" class="custom" id="reservation_advertise" value="YES"/>
+						<label for="reservation_advertise">OK</label>
+				    </fieldset>
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_phone"); ?></legend><br/>
+			            <input type="text" name="reservation_guest_phone" class="form required" id="reservation_guest_phone" value="" />
+				</div>
+				<div data-role="fieldcontain">
+					<legend><?php lang("contact_form_notes"); ?></legend><br/>
+				    <textarea name="reservation_notes" class="form" id="reservation_notes" style="width:85%" rows="5" cols="2"></textarea>
+				</div>
+				<div data-role="fieldcontain">
+					<input type="hidden" name="action" id="action" value="submit"/>
+					<input type="hidden" name="barrier" value="<?php echo $barrier; ?>" />
+					<input type="hidden" name="reservation_referer" value="<?php echo $_SESSION['referer']; ?>" />
+					<input type="hidden" name="reservation_hotelguest_yn" id="reservation_hotelguest_yn" value="PASS"/>
+					<input type="hidden" name="reservation_booker_name" id="reservation_booker_name" value="Contact Form"/>
+					<input type="hidden" name="reservation_author" id="reservation_author" value="<?php echo $prp_info['name'];?> Team"/>
+					<input type="hidden" name="email_type" id="email_type" value="<?php echo $language; ?>"/>
+				</div>
+				<div data-role="fieldcontain">
+				    <?php
+					$day_off = getDayoff();
+	                if ($day_off == 0) {
+	                	echo"<input type='submit' data-theme='b' value='".$lang['contact_form_send']."'/>";
+	                }else{
+						echo"<a href='#' data-role='button' data-icon='alert' data-theme='e'>"._day_off."</a>";
+					}
+	                ?>
+				</div>
+				<h4 style='text-align:center;'>
+					<?php echo sprintf($lang["footer_one"],$prp_info['phone'],$prp_info['email'],$prp_info['email']); ?>
+				</h4>
+				<div class="error" style="visibility:hidden;"></div>
+		</form>
 		</div>
-	</div>
-	<!-- End page wrapper -->
+		<div data-role="footer">
+			<h6>&copy; 2010 by mySeat</h6>
+		</div><!-- /footer -->
+	</div><!-- /page -->
 
 	<!-- Javascript at the bottom for fast page loading --> 
 	<script>
-		var disabledDays = [<?php defineOffDays(); ?>];
-
-		/* utility functions */
-		function offDays(date) {
-		  var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
-			m = m+1;
-			/* add leading zero */
-			if (d < 10) d = "0" + d;
-			if (m < 10) m = "0" + m;
-		  for (i = 0; i < disabledDays.length; i++) {
-		    if ($.inArray( y + '-' + m + '-' + d, disabledDays) != -1 || new Date() > date) {
-		      return [false];
-		    }
-		  }
-		  return [true];
-		}
-		function noDayoffs(date) {
-		  var noWeekend = jQuery.datepicker.noWeekends(date);
-		  return noWeekend[0] = offDays(date);
-		}
-
 	    jQuery(document).ready(function($) {
-	      // Setup datepicker input at customer reservation form
-	      $("#bookingpicker").datepicker({
-		      nextText: '&raquo;',
-		      prevText: '&laquo;',
-		      firstDay: 1,
-		      numberOfMonths: 1,
-			  minDate: 0,
-			  maxDate: '+6M',
-		      gotoCurrent: true,
-		      altField: '#dbdate',
-		      altFormat: 'yy-mm-dd',
-		      defaultDate: 0,
-			  beforeShowDay: noDayoffs,
-		      dateFormat: '<?= $general['datepickerformat'];?>',
-		      regional: '<?= substr($_SESSION['language'],0,2);?>',
-		      onSelect: function(dateText, inst) { window.location.href="?selectedDate=" + $("#dbdate").val() + "&outletID=" + $("#single_outlet").val(); }
-	      });
-	      // month is 0 based, hence for Feb. we use 1
-	      $("#bookingpicker").datepicker('setDate', new Date(<?= $sy.", ".($sm-1).", ".$sd; ?>));
-	      $("#ui-datepicker-div").hide();
-	      $("#reservation_outlet_id").change(function(){
-		    window.location.href='?outletID=' + this.value;
-		  });
-	    });
+	      
+			$("#reservation_outlet_id").live("change" , function(){
+			    window.location.href='index.php?outletID=' + this.value;
+			  });
+			$("#reservation_date").live("change" , function(){
+			    window.location.href='index.php?selectedDate=' + $('#reservation_date option:selected').val() + "&outletID=" + $("#reservation_outlet_id").val();
+			  });
+
+			// Start validation with customer reservation form
+			$("#contactform").validate({
+				errorLabelContainer: $("#contactform div.error"),
+				highlight: function(element, errorClass) {
+					$(element).addClass(errorClass);
+				}
+			});
+			
+		 });
 	</script>
+
 </body>
 </html>

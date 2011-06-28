@@ -2,19 +2,19 @@
 <table class="global resv-table" cellpadding="0" cellspacing="0">
 	<thead>
 	    <tr>
-			<th><?= _date; ?></th>    	
-			<th><?= _time; ?></th>
+			<th><?php echo _date; ?></th>    	
+			<th><?php echo _time; ?></th>
 			<th></th>
-			<th><?= _guest_name; ?></th>
-			<th><?= _pax; ?></th>
-			<th><?= _phone_room; ?></th>
-			<th><?= _type; ?></th>
-			<th><?= _outlets; ?></th>
-			<th><?= _author; ?></th>
+			<th><?php echo _guest_name; ?></th>
+			<th><?php echo _pax; ?></th>
+			<th><?php echo _phone_room; ?></th>
+			<th><?php echo _type; ?></th>
+			<th><?php echo _outlets; ?></th>
+			<th><?php echo _author; ?></th>
 	    </tr>
 	</thead>
 	<tbody>
-		<?
+		<?php
 
 		$reservations =	querySQL('search');
 		

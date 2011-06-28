@@ -12,35 +12,35 @@
 <!-- Begin one column box -->
 <div class='onecolumn'>
  <div class='header'>
-	<a href="?selectedDate=<?= buildDate($settings['dbdate'],$sd,$sm,$sj,-1); ?>" class="navgroup">
+	<a href="?selectedDate=<?php echo buildDate($settings['dbdate'],$sd,$sm,$sj,-1); ?>" class="navgroup">
 		&laquo;
 	</a>
 	<div class="date dategroup">
-		<div class="text" id="datetext"><?= $_SESSION['selectedDate_user']; ?></div>
+		<div class="text" id="datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 		<input type="text" id="datepicker"/>
-		<input type="hidden" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+		<input type="hidden" id="dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
 	</div>
-	<a href="?selectedDate=<?= buildDate($settings['dbdate'],$sd,$sm,$sj,1); ?>" class="navgroup">
+	<a href="?selectedDate=<?php echo buildDate($settings['dbdate'],$sd,$sm,$sj,1); ?>" class="navgroup">
 		&raquo;
 	</a>
 	<!-- Begin 2nd level tab -->
 	<ul class='second_level_tab'>
 		<li>
-			<a href='?p=2' class='button_dark'> <?= _back;?>
+			<a href='?p=2' class='button_dark'> <?php echo _back;?>
 			</a>
 		<li/>
 	</ul>
 	<!-- End 2nd level tab -->
  </div>
 <div id='content_wrapper'>
-		<? 
+		<?php
 			// MESSAGE boxes goes here
 			include('includes/messagebox.inc.php'); 
 		?>
 </div>
 </div>
 <br class='cl' />
-			<?
+			<?php
 			// ** print out the timelines of all outlets **
 			// memorize actual selected outlet
 			$rem_outlet = $_SESSION['outletID'];

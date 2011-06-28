@@ -86,11 +86,11 @@ $prp_info = querySQL('property_info');
 	<link href="style/base.css" rel="stylesheet" type="text/css" />
 	<link href="style/grid.css" rel="stylesheet" type="text/css" />
 	<!-- CSS - Theme -->
-	<link id="theme" href="style/themes/<?= $default_style;?>.css" rel="stylesheet" type="text/css" />
-	<link id="color" href="style/themes/<?= $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
+	<link id="theme" href="style/themes/<?php echo $default_style;?>.css" rel="stylesheet" type="text/css" />
+	<link id="color" href="style/themes/<?php echo $general['contactform_color_scheme'];?>.css" rel="stylesheet" type="text/css" />
 	<style type="text/css">
 		body {
-			background: <?= $general['contactform_background'];?>;
+			background: <?php echo $general['contactform_background'];?>;
 		}
 	</style>
 	
@@ -116,14 +116,14 @@ $prp_info = querySQL('property_info');
 	  <header> 
 	    <!-- logo -->
 	    <!-- logo -->
-		    <h1 id="logo" style="background-image: url(../uploads/logo/<? echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
+		    <h1 id="logo" style="background-image: url(../uploads/logo/<?php echo ($prp_info['logo_filename']=='') ? 'logo.png' : $prp_info['logo_filename'];?>);">
 			<a href="index.php?p=2">mySeat</a>
 			</h1>
 	    <!-- nav -->
 	    <nav>
 	      <ul id="nav">
-	        <li><a href="index.php"><?= $lang["contact_form_back"];?></a></li>
-	        <li <? if($p == 2){echo'class="current"';} ?> ><a href="cancel.php?p=2"><?= $lang["contact_form_cxl"];?></a>
+	        <li><a href="index.php"><?php echo $lang["contact_form_back"];?></a></li>
+	        <li <?php if($p == 2){echo'class="current"';} ?> ><a href="cancel.php?p=2"><?php echo $lang["contact_form_cxl"];?></a>
 	      </ul>
 	      <br class="cl" />
 	    </nav>
@@ -136,7 +136,7 @@ $prp_info = querySQL('property_info');
 	    
 	    <div id="page-content" class="container_12">
 			<!-- page title -->
-		    <h2><?= $lang["conf_title"];?><span></span> </h2>
+		    <h2><?php echo $lang["conf_title"];?><span></span> </h2>
 		    <br class="cl" />
 
 			<h4>
@@ -191,7 +191,7 @@ $prp_info = querySQL('property_info');
 			  ?>
                 	</span>
 			<br/>
-			<a href="index.php"><button class="button <?= $default_color;?>" ><?= $lang["contact_form_back"];?></button></a>
+			<a href="index.php"><button class="button <?php echo $default_color;?>" ><?php echo $lang["contact_form_back"];?></button></a>
 			<br/>
 
 	    <br class="cl" />

@@ -2,8 +2,8 @@
 	<!-- Begin 1st level tab -->
 	<ul class="first_level_tab">
 		<li>
-			<a href="main_page.php?q=1" <? if ($q == 1 || $q == 4) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
-				<?= _confirmed_reservations; ?>
+		<a href="main_page.php?q=1" <?php if ($q == 1 || $q == 4) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
+				<?php echo _confirmed_reservations; ?>
 			</a>
 		</li>
 		<?php 
@@ -15,8 +15,8 @@
 		} 
 		?>
 		<li>
-			<a href="main_page.php?q=3&s=1" <? if ($q == 3) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
-				<?= _canceled_reservations; ?>
+			<a href="main_page.php?q=3&s=1" <?php if ($q == 3) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
+				<?php echo _canceled_reservations; ?>
 			</a>
 		</li>
 	</ul>	
@@ -28,21 +28,21 @@
 	<div class="onecolumn">
 		
 		<div class="header">
-			<? if ($searchquery == ''){ ?>
-			<a href="?selectedDate=<?= buildDate($settings['dbdate'],$sd,$sm,$sj,-1); ?>" class="navgroup">
+			<?php if ($searchquery == ''){ ?>
+			<a href="?selectedDate=<?php echo buildDate($settings['dbdate'],$sd,$sm,$sj,-1); ?>" class="navgroup">
 				&laquo;
 			</a>
 			<div class="date dategroup">
-				<div class="text" id="datetext"><?= $_SESSION['selectedDate_user']; ?></div>
+				<div class="text" id="datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 				<input type="text" id="datepicker"/>
-				<input type="hidden" id="dbdate" value="<?= $_SESSION['selectedDate']; ?>"/>
+				<input type="hidden" id="dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
     	    </div>
-			<a href="?selectedDate=<?= buildDate($settings['dbdate'],$sd,$sm,$sj,1); ?>" class="navgroup">
+			<a href="?selectedDate=<?php echo buildDate($settings['dbdate'],$sd,$sm,$sj,1); ?>" class="navgroup">
 				&raquo;
 			</a>
 			<div class="dategroup_name">
-				<a href="?selectedDate=<?= buildDate($settings['dbdate']); ?>">
-					<? 
+				<a href="?selectedDate=<?php echo buildDate($settings['dbdate']); ?>">
+					<?php
 					echo $_SESSION['selOutlet']['outlet_name'].
 					" - ".strftime("%A",strtotime($_SESSION['selectedDate'])).
 					" , ".date($general['dateformat'],strtotime($_SESSION['selectedDate'])); 
@@ -53,42 +53,42 @@
 			<ul class="second_level_tab noprint">
 				<li>
 					<a href="#" id="outlet_detail_button">
-						<?= _detail;?>
+						<?php echo _detail;?>
 					</a>
 				</li>
-				<? if ($q == 1){ ?>
+				<?php if ($q == 1){ ?>
 				<li>
 					<a href="javascript:window.print()">
 						<!-- <img src="images/menu-icons/printer.png" alt="Print"> -->
-						<?= _print;?>
+						<?php echo _print;?>
 					</a>
 				</li>
-				<? } ?>
+				<?php } ?>
 			</ul>
 			<!-- End 2nd level tab -->
-			<? }else{ ?>
+			<?php }else{ ?>
 			<div class="dategroup_name">
-				<?= _search_results;?>
+				<?php echo _search_results;?>
 			</div>
 			<!-- Begin 2nd level tab -->
 			<ul class="second_level_tab">
 				<li>
 					<a href="main_page.php?q=1" id="search_back_button">
-						<?= _back;?>
+						<?php echo _back;?>
 					</a>
 				</li>
 			</ul>
 			<!-- End 2nd level tab -->
-			<? } ?>
+			<?php } ?>
 		</div>
 
 		<!-- Daily outlets details -->
 		<div id='daily_outlets_details'>
-			<? include('includes/daily_outlet_details.inc.php'); ?>
+			<?php include('includes/daily_outlet_details.inc.php'); ?>
 		</div>		
 
 		<!-- ALERT & MESSAGE boxes goes here -->
-			<? 
+			<?php
 			if($searchquery == '' && $_SESSION['storno'] == 0){
 				echo "<div class='noprint'>"; 
 					include('includes/messagebox.inc.php'); 
@@ -99,7 +99,7 @@
 			?>
 
 		<!-- CAPACITY timeline goes here -->
-		<?
+		<?php
 
 		if(($q=='1' || $q=='2') && $dayoff == 0){
 		echo "<div class='timeline-section' id='timeline'>";	
@@ -111,7 +111,7 @@
 		<!-- Begin nomargin -->
 		<div class="content">
 			
-			<?
+			<?php
 			// ** content
 			switch($q){
 				case '1':
