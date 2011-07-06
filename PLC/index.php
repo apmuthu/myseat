@@ -18,6 +18,9 @@ $_SESSION = array();
 
 	$user = new flexibleAccess('',$dbAccess);
 
+	if ( $_GET['logout'] == 1 ){
+		$user->logout();
+	}
 
 if ( $_GET['form'] == 1 ){
     if ( $user->autologin() ){

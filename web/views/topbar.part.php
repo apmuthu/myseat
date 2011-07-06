@@ -36,7 +36,7 @@
 			</li>
 			-->
 			<li>
-				<a href="../PLC/index.php" title="Logout">
+				<a href="../PLC/index.php?logout=1" title="Logout">
 					<img src="images/icon_logout.png" alt="" class="middle"/>
 				</a>
 			</li>

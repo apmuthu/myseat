@@ -207,6 +207,7 @@ function writeForm($table =''){
 				 && $key != "token"
 				 && $key != "verify"
 				 && $key != "PHPSESSID"
+				 && $key != "new"
 				 && substr($key,0,15) != "outlet_closeday"){
 					
 					// all other 'normal fields'
@@ -307,7 +308,7 @@ function writeForm($table =''){
 			$new_id = mysql_insert_id();
 			
 			// Set STANDARD settings for new property
-			if ($table == 'properties' && $_POST['id'] == 0) {
+			if ($table == 'properties' && $_POST['new'] == 1) {
 			  include('register/standard_settings.inc.php');
 			}
 

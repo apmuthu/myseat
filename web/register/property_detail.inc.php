@@ -1,14 +1,4 @@
-<?php if($settings['googlemap_key'] != ""){?>
-<script type="text/javascript">	
-	// GOOGLE MAP INTEGRATION
-	$(document).ready(function() {
-		$("#map_canvas").gMap({ markers: [
-                            { address: "<?php echo $row['street'].", ".$row['city'].", ".$row['country'];?>",
-                              html: "_address"}],
-			      zoom: 16 });
-	});
-</script>
-<?php } ?>
+
 				<h3>	 	 				 
 					<div class="property-logo" style="background-image: url(../uploads/logo/<?php echo ($row['logo_filename']=='') ? 'logo.png' : $row['logo_filename'];?>);"></div>
 					<?php echo $row['name'];?>
