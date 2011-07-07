@@ -42,13 +42,13 @@ class flexibleAccess{
   * The database that we will use
   * var string
   */
- var $dbName = 'mySeat';
+ var $dbName = 'XXX';
  /**
   * The database host
   * mostly 'localhost' fits
   * var string
   */
- var $dbHost = 'localhost';
+ var $dbHost = 'local';
  /**
   * The database port
   * var int
@@ -58,12 +58,12 @@ class flexibleAccess{
   * The database user
   * var string
   */
- var $dbUser = 'root';
+ var $dbUser = 'rootx';
  /**
   * The database password
   * var string
   */
- var $dbPass = 'root';
+ var $dbPass = 'rootx';
  /**
   * The session variable ($_SESSION[$sessionVariable]) which will hold the data while the user is logged on
   * var string
@@ -228,6 +228,7 @@ var $tbTrans = array(
 			    $this->{$k} = $v;
 		}
     }
+
     $this->remCookieDomain = $_SERVER['HTTP_HOST'];
     $this->dbConn = ($dbConn=='')? mysql_connect($this->dbHost.':'.$this->dbPort, $this->dbUser, $this->dbPass):$dbConn;
     if ( !$this->dbConn ) die(mysql_error($this->dbConn));

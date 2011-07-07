@@ -10,17 +10,17 @@ $_SESSION = array();
 	
 	require_once '../PLC/plc.class.php';
 	$dbAccess = array(
+	  'dbHost' => $settings['dbHost'],
 	  'dbName' => $settings['dbName'],
 	  'dbUser' => $settings['dbUser'],
 	  'dbPass' => $settings['dbPass'],
-	  'dbPort' => '3306'
+	  'dbPort' => $settings['dbPort']
 	 );
 
 	$user = new flexibleAccess('',$dbAccess);
-
-	if ( $_GET['logout'] == 1 ){
-		$user->logout();
-	}
+	
+	// auto checkout when going to loginpage
+	$user->logout();
 
 if ( $_GET['form'] == 1 ){
     if ( $user->autologin() ){
