@@ -75,7 +75,7 @@ ini_set("display_errors", 1);
 					<br class="clear"/><br>
 					<p style="margin-left:40px; font-size:1.2em;">
 						<?php
-						if($_POST['action']=='install' || 1==1){
+						if($_POST['action']=='install'){
 							include('install-process.php');
 						}
 						?>

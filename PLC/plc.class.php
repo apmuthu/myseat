@@ -48,7 +48,7 @@ class flexibleAccess{
   * mostly 'localhost' fits
   * var string
   */
- var $dbHost = 'local';
+ var $dbHost = 'localhost';
  /**
   * The database port
   * var int
