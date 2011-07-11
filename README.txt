@@ -3,8 +3,8 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.181                        =-= 
-=-= Date:    28.06.2011                   =-= 
+=-= Version: 0.182                        =-= 
+=-= Date:    11.07.2011                   =-= 
 =-= Time:    05:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -18,7 +18,7 @@ mySeat will help you keep track of your reservations with ease.
 
 LAST CHANGES in 0.182
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Better INstall routine for various server setups
+- Better Install routine for various server setups
 
 
 INSTALLATION
