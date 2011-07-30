@@ -21,6 +21,8 @@ LAST CHANGES in 0.185
 - Complete code review; now also works on servers with
   short_open_tag = OFF
 - Higher compatibility
+- email UTF-8 bugfix
+- emmedable booking form added
 
 
 INSTALLATION
