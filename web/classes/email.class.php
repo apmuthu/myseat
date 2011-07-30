@@ -34,50 +34,43 @@
 
 	// Subject of email
         if ( $_POST['email_type'] == 'en' ) {
-		$subject = _email_subject_en." ".html_entity_decode($property['name']);
+		$subject = html_entity_decode(_email_subject_en." ".$_SESSION['selOutlet']['outlet_name']);
 	}else{
-		$subject = _email_subject." ".html_entity_decode($property['name']);
+		$subject = html_entity_decode(_email_subject." ".$_SESSION['selOutlet']['outlet_name']);
 	}
 	
 	//Salutation
 	if ( $_POST['email_type'] == 'en' ) {
 		switch ($_POST['reservation_title']) {
 			case 'W':
-				$salut = _dear_mrs_en." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_mrs_en." ".$_POST['reservation_guest_name'];
 				break;	
 			case 'F':
-				$salut = _dear_family_en." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_family_en." ".$_POST['reservation_guest_name'];
 				break;
 			case 'C':
-				$salut = _dear_sirs_and_madams_en." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_sirs_and_madams_en." ".$_POST['reservation_guest_name'];
 				break;
 			default:
-				$salut = _dear_mr_en." ".html_entity_decode($_POST['reservation_guest_name']);	
+				$salut = _dear_mr_en." ".$_POST['reservation_guest_name'];	
 		}
 	}else{
 		switch ($_POST['reservation_title']) {
 			case 'W':
-				$salut = _dear_mrs." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_mrs." ".$_POST['reservation_guest_name'];
 				break;	
 			case 'F':
-				$salut = _dear_family." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_family." ".$_POST['reservation_guest_name'];
 				break;
 			case 'C':
-				$salut = _dear_sirs_and_madams." ".html_entity_decode($_POST['reservation_guest_name']);
+				$salut = _dear_sirs_and_madams." ".$_POST['reservation_guest_name'];
 				break;
 			default:
-				$salut = _dear_mr." ".html_entity_decode($_POST['reservation_guest_name']);	
+				$salut = _dear_mr." ".$_POST['reservation_guest_name'];	
 		}
 	}
-
-	// prepate subject of email
-        if ( $_POST['email_type'] == 'en' ) {
-		$subject = _email_subject_en." ".$_SESSION['selOutlet']['outlet_name'];
-	}else{
-		$subject = _email_subject." ".$_SESSION['selOutlet']['outlet_name'];
-	}
 	
-	// prepate logo file
+	// prepare logo file
 	$logo = ($property['logo_filename']=='') ? 'logo.png' : $property['logo_filename'];
 	$logo = substr($global_basedir,0,-4).'uploads/logo/'.$logo;
 	
@@ -95,7 +88,7 @@
 	$plain_text  = nl2br($plain_text);
 	
 	$message  = $salut.",<br/><br/>";
-	$message .= sprintf( $text , html_entity_decode($_SESSION['selOutlet']['outlet_name']), $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', html_entity_decode($property['name'])." Team"  );
+	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
 	
 	// ===============
 	// Email template

@@ -420,7 +420,7 @@ define ( '_advertise_start', 'Werbung starten' );
 define ( '_days', 'Tage' );
 
 //original text: "Reservation confirmation for"
-define ( '_email_subject', 'Reservierungsbestätigung für' );
+define ( '_email_subject', 'Reservierungsbest&auml;tigung f&uuml;r' );
 
 //original text: "Dear Mr."
 define ( '_dear_mr', 'Sehr geehrter Herr' );
