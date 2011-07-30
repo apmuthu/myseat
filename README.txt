@@ -3,8 +3,8 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.182                        =-= 
-=-= Date:    11.07.2011                   =-= 
+=-= Version: 0.185                        =-= 
+=-= Date:    30.07.2011                   =-= 
 =-= Time:    05:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -16,9 +16,11 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.182
+LAST CHANGES in 0.185
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Better Install routine for various server setups
+- Complete code review; now also works on servers with
+  short_open_tag = OFF
+- Higher compatibility
 
 
 INSTALLATION
