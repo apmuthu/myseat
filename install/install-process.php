@@ -89,6 +89,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `outlets` (
   `saison_end` varchar(4) NOT NULL DEFAULT '',
   `saison_year` int(4) NOT NULL,
   `webform` char(1) DEFAULT '0',
+  `limit_password` varchar(255) NOT NULL,
   `confirmation_email` varchar(255) NOT NULL,
   `passerby_max_pax` int(12) NOT NULL,
   `avg_duration` varchar(5) NOT NULL,
