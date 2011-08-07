@@ -19,7 +19,8 @@ function DateDropdown($field='reservation_date', $disabled = 'enabled'){
 		if ($i == 0) {
 			$datetext = _today;
 		}else{
-			$datetext = strftime('%a %e %b', $stamp);	
+			//$datetext = strftime('%a %e %b', $stamp);
+			$datetext = date('D j M', $stamp);
 		}
 
 	    echo "<option value='".date($settings['dbdate'],$stamp)."' ";

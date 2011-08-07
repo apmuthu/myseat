@@ -59,13 +59,6 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 		$time = $_GET['times'].":00";	
 	}
 
-// ** get superglobal variables
-	include('../web/includes/get_variables.inc.php');
-// CSRF - Secure forms with token
-	$barrier = md5(uniqid(rand(), true)); 
-	$_SESSION['barrier'] = $barrier;
-
-
 	// Get POST data	
     // outlet id
     if (!$_SESSION['outletID']) {
@@ -99,6 +92,13 @@ $_SESSION['propertyID'] = $_SESSION['property'];
 			$_SESSION['selOutlet'][$key] = $value;
 		}
 	}
+	
+	// ** get superglobal variables
+		include('../web/includes/get_variables.inc.php');
+	// CSRF - Secure forms with token
+		$barrier = md5(uniqid(rand(), true)); 
+		$_SESSION['barrier'] = $barrier;
+	
 
 	// ** set configuration
 	include('../config/config.inc.php');
