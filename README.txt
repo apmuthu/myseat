@@ -4,8 +4,8 @@
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-= Version: 0.185                        =-= 
-=-= Date:    07.08.2011                   =-= 
-=-= Time:    05:48 GMT                    =-= 
+=-= Date:    12.08.2011                   =-= 
+=-= Time:    07:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -24,6 +24,7 @@ LAST CHANGES in 0.185
 - email UTF-8 bugfix
 - emmedable booking form added
 - mobile frontend timeformat bugfix
+- added SMTP support for emails
 
 
 INSTALLATION
