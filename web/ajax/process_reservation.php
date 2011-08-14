@@ -40,8 +40,15 @@ $table = 'reservations';
 // initiate variables
 $_SESSION['reservation_pax'] = 0;
 
-// CSRF - Secure forms with token
-if ($_SESSION['token'] == $_POST['token']) {
+// limit password
+	$compare_pass = 1;
+if($_SESSION['selOutlet']['limit_password']!=""){
+	$compare_pass = ($_POST['limit_password'] == $_SESSION['selOutlet']['limit_password']) ? 2 : 0;	
+}
+
+
+// CSRF - Secure forms with token and limit password
+if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 	// submitted forms storage
 		$reservation_date = $_SESSION['selectedDate'];
 		$recurring_date = $_SESSION['selectedDate'];
@@ -78,6 +85,7 @@ if ($_SESSION['token'] == $_POST['token']) {
 				 && $key != "token"
 				 && $key != "recurring_span"
 				 && $key != "reservation_bookingnumber"
+				 && $key != "limit_password"
 				 && $key != "verify"){
 					$keys[$i] = $key;
 					$values[$i] = "'".$value."'";
@@ -253,6 +261,9 @@ if ($_SESSION['token'] == $_POST['token']) {
 		
 			// *** send confirmation email
 			if ( $_POST['email_type'] != 'no' && $new_id != $_POST['reservation_id']) {
+				// ** PHPMailer class
+				require_once('../classes/phpmailer/class.phpmailer.php');
+				//send email confirmation
 				include('../classes/email.class.php');
 			}
 }

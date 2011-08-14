@@ -735,7 +735,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 					if($value-$startvalue > 3600 && $dayshift == 1){
 						//$startvalue = $value-3600;
 					} */
-					$ava_temp = ($ava_by_time[date('H:i:s',$startvalue)]) ? $ava_by_time[date('H:i:s',$startvalue)] : 0;
+					$ava_temp = (isset($ava_by_time[date('H:i:s',$startvalue)])) ? $ava_by_time[date('H:i:s',$startvalue)] : 0;
 					if (($startvalue >= $opentime)) {
 						$out_ava_temp_before += $ava_temp;
 					}
@@ -753,7 +753,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 			while ( $endvalue > $value) {
 				// not bigger than endtime
 				$endvalue = ($endvalue > $endtime) ? $endtime : $endvalue;
-				$ava_temp = ($ava_by_time[date('H:i:s',$endvalue)]) ? $ava_by_time[date('H:i:s',$endvalue)] : 0;
+				$ava_temp = (isset($ava_by_time[date('H:i:s',$endvalue)])) ? $ava_by_time[date('H:i:s',$endvalue)] : 0;
 				$out_ava_temp_after += $ava_temp;
 				$endvalue = mktime($h4+0,$m4-$ii*$intervall,0,date("m"),$endday2,date("Y")); 
 				$ii++;

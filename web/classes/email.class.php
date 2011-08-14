@@ -1,4 +1,6 @@
 <?php
+
+
 		// Prepare basedir
 		if (substr($global_basedir,0,-4) !='web/') {
 			$global_basedir = $global_basedir.'web/';
@@ -245,7 +247,39 @@
 	
 	//***
 	//SEND OUT MAIL
+
+	//switch LOCAL/SMTP email use
+	if($settings['emailSMTP'] == 'SMTP'){
+		
+		//PHPMailer
+		$mail = new PHPMailer();
+		
+		$mail->IsSMTP(); 							   // telling the class to use SMTP
+		$mail->Host          = $settings['emailHost'];
+		$mail->SMTPAuth      = true;                   // enable SMTP authentication
+		$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
+		$mail->Host          = $settings['emailHost']; // sets the SMTP server
+		$mail->Port          = $settings['emailPort']; // set the SMTP port
+		$mail->Username      = $settings['emailUser']; // SMTP account username
+		$mail->Password      = $settings['emailPass']; // SMTP account password
+		
+		$mail->SetFrom($_SESSION['selOutlet']['confirmation_email'], html_entity_decode($property['name']));
+		$mail->AddReplyTo($_SESSION['selOutlet']['confirmation_email'], html_entity_decode($property['name']));
+		$mail->Subject       = $subject;
+		$mail->AltBody       = $plain_text; // optional, comment out and test.
+		$mail->MsgHTML($html_text);
+		$mail->AddAddress($_POST['reservation_guest_email'], 'Guest');
+
+		  if(!$mail->Send()) {
+		    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
+		  }
+		  // Clear all addresses and attachments for next loop
+		  $mail->ClearAddresses();
+	} else{
+		//PHP native
 		mail( $to, $subject, $html_text, $headers);
+	}
+		?>
 	//***
 	
 ?>

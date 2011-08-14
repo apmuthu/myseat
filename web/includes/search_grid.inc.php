@@ -11,6 +11,7 @@
 			<th><?php echo _type; ?></th>
 			<th><?php echo _outlets; ?></th>
 			<th><?php echo _author; ?></th>
+			<th></th>
 	    </tr>
 	</thead>
 	<tbody>
@@ -43,8 +44,16 @@
 			<td>".$row->reservation_guest_phone."</td>
 			<td>".$row->reservation_hotelguest_yn."</td>
 			<td>".$row->outlet_name."</td>
-			<td>".$row->reservation_booker_name."</td>
-			</tr>";
+			<td>".$row->reservation_booker_name."</td>";
+			
+			echo "<td class='noprint'>";
+			// DELETE BUTTON
+			if ( current_user_can( 'Reservation-Delete' ) && $q!=3 ){
+		    	echo"<a href='#modalsecurity' name='".$row->repeat_id."' id='".$id."' class='delbtn'>
+					<img src='images/icons/delete_cross.png' alt='"._cancelled."' class='help' title='"._delete."'/></a>";
+			}
+			echo"</td></tr>";
+
 			}
 		}
 		?>
