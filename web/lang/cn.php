@@ -604,4 +604,16 @@ define ( '_trsources', '流量来源' );
 
 //original text: "Website"
 define ( '_website', '网站' );
+
+//original text: "This list shows guests who cancel on a regular basis."
+define ( '_cxl_text', '这份清单显示客人取消定期.' );
+
+// original text: "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
+define ( '_contact_form_success', '感谢您的预订。一封确认电子邮件发送<BR/>您的预订数量: ');
+
+// original text: "Important details (allergies, wishes)"
+define ( '_form_notes', '（过敏，愿望）的重要细节');
+
+// original text: "I accept the terms of use of the restaurant."
+define ( '_reservation_terms', '我接受的餐厅使用的条款');
 ?>

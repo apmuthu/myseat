@@ -280,6 +280,3 @@
 		mail( $to, $subject, $html_text, $headers);
 	}
 		?>
-	//***
-	
-?>

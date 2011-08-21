@@ -53,3 +53,15 @@
 	<br/>
 </div>
 </div>
+
+<!-- Modal Message "CXL list" -->
+<div style="display:none">
+<div id="cxllist" style='background:#FFF;' width='400px;'>
+	<h2>CXL <?php echo _overview; ?></h2>
+	<br/>
+	<p class='center'><strong>
+		This is a test.
+	</strong></p>
+	<br/><br/>
+</div>
+</div>

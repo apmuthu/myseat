@@ -1,6 +1,7 @@
 <?php
 // Get global file path
 function GetFileDir($php_self){
+	$filename2 = '';
 	$filename = explode("/", $php_self); // THIS WILL BREAK DOWN THE PATH INTO AN ARRAY
 		for( $i = 0; $i < (count($filename) - 2); ++$i ) {
 			$filename2 .= $filename[$i].'/';
@@ -26,7 +27,7 @@ setlocale(LC_TIME, $general['language']);
 
 /* Set global base path */
 $global_basedir = '';
-if ($_SERVER['HTTPS']) {
+if (isset($_SERVER['HTTPS'])) {
 	$global_basedir = 'https://';
 }else{
 	$global_basedir = 'http://';

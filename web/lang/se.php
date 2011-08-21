@@ -610,4 +610,17 @@ define ( '_trsources', 'Trafikkällor' );
 
 //original text: "Website"
 define ( '_website', 'Webbplats' );
+
+//original text: "This list shows guests who cancel on a regular basis."
+define ( '_cxl_text', 'Listan visar gäster som avbryter på regelbunden basis.' );
+
+// original text: "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
+define ( '_contact_form_success', 'Gracias por su reserva. Una confirmación por correo electrónico fue enviado <br/> su número de reserva es: ');
+
+// original text: "Important details (allergies, wishes)"
+define ( '_form_notes', 'Viktig information (allergier, önskemål)' );
+
+// original text: "I accept the terms of use of the restaurant."
+define ( '_reservation_terms', 'Jag accepterar villkoren för användning av restaurangen.');
+
 ?>

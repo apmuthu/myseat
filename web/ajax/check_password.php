@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 $_SESSION['language'] = ($_SESSION['language']) ? $_SESSION['language'] : 'en';
 
@@ -21,15 +21,13 @@ $_SESSION['language'] = ($_SESSION['language']) ? $_SESSION['language'] : 'en';
 // prevent dangerous input
 secureSuperGlobals();
 
-if(isSet($_POST['username'])){
-    $value = $_POST['username'];
-
-    $sql_check = querySQL('check_username');
-
-    if(mysql_num_rows($sql_check)){
-        echo '<span style="color: red;">'. _already_user_1 .' <span class="bold">'.$value.'</span> '. _already_user_2 .'</span>';
+if(isSet($_POST['password'])){
+	
+    if($_POST['password'] != $_SESSION['selOutlet']['limit_password']){
+        echo '&nbsp;<span style="color: red;">'. _wrong_password .'</span>';
     }else{
         echo "OK";
     }
+
 }
 ?>

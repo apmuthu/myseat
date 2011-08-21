@@ -46,8 +46,18 @@
 			<input type="text" name="reservation_booker_name" id="reservation_booker_name" class='required' minlength="3"  maxlength="30" title=' ' />
 		</p>
 		<br/>
+		<?php 
+			if ($_SESSION['selOutlet']['limit_password']!='') {
+		?>
+			<p>
+			<label><?php echo _enter_password; ?>*</label><br/>
+				<input type="text" name="limit_password" id="limit_password" class="required width-97" style="float:left;"/>
+				<div id="status"></div>
+			</p>
+		<?php } ?>
+		<br/><br/>
 		<div class="center">
-			<input type="submit" class="button_dark" value="<?php echo _save;?>">
+			<input id="submit_btn" type="submit" class="button_dark" value="<?php echo _save;?>">
 			<br/>
 			<?php 
 				if($special_event_subject!=''){
@@ -133,3 +143,38 @@
  <br class="clear">
 </div> <!-- end content wrapper -->
 <br/><br/><br/>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	if($("#limit_password")){
+	//	$("#submit_btn").hide(); //disable
+	}
+	
+	$("#limit_password").keyup(function() {
+	var pwd = $("#limit_password").val();
+	if(pwd.length >= 3) {
+	  $("#status").html('<img align="absmiddle" src="images/ajax-loader.gif" />');
+	
+	  $.ajax({
+		type: "POST",
+		url: "ajax/check_password.php",
+		data: "password="+ pwd,
+		success: function(msg){
+			$("#status").ajaxComplete(function(event, request){
+					
+					if( msg.length < 4 ){
+						$(this).html("&nbsp;<img align='absmiddle' src='images/icons/icon_accept.png' />" + msg);
+						//$("#submit_btn").show(); //enabled
+					}else{
+							$(this).html(msg);
+							//$("#submit_btn").hide(); //disable
+					}
+			});
+		}
+	  });
+	}
+  });
+	
+});
+</script>

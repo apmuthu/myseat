@@ -324,7 +324,7 @@ function outletListweb($outlet_id = '1', $disabled = 'enabled',$tablename='outle
 	//remember outlet ID
 	$mem_outletID = $_SESSION['outletID'];
 	
-	echo"<select name='".$tablename."' id='".$tablename."' class='drop' title=' ' size='1' $disabled>\n";
+	echo"<select name='".$tablename."' id='".$tablename."' title=' ' size='1' $disabled>\n";
 			
 		$outlets = querySQL('db_outlets_web');
 

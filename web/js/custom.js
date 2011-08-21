@@ -438,6 +438,10 @@ $(document).ready(function() {
 			}
 	});
 	
+	// Open CXL List
+	$("a#cxlbuttontrigger").fancybox({
+			'hideOnContentClick': true
+		});
 
 	$('.wysiwyg').css('width', '100%');
     

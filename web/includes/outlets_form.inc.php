@@ -47,6 +47,10 @@ if ($_SESSION['button']==2) {
 	<p>	 	 	 	 	 	 			
 			<?php getDurationList($general['timeintervall'],'avg_duration',$row->avg_duration);?>
 	</p>
+	<label><?php echo _password;?></label>	
+	<p>	 	 	 	 	 	 	
+		<input type="text" name="limit_password" id="limit_password" title=' ' value="<?php echo $row->limit_password;?>"/>
+	</p>
 	<label><?php echo _webform;?></label>
 	<p>		
 		<?php echo printOnOff($row->webform,'webform','');?>

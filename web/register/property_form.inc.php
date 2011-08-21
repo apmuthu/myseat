@@ -70,7 +70,7 @@ if ($p == 2 || $_SESSION['page'] == 2){
 		<br/><small>best 250x80px | .gif .jpg .png</small>
 	</p>
 			<input type="hidden" name="created" value="<?php echo date('Y-m-d H:i:s');?>">
-			<input type="hidden" name="id" value="<?php echo ($row['id']) ? $row['id'] : 1;?>">
+			<input type="hidden" name="id" value="<?php echo ($row['id']) ? $row['id'] : 0;?>">
 			<input type="hidden" name="new" value="<?php echo ($row['id']) ? 0 : 1;?>">
 			<input type="hidden" name="propertyID" value="<?php echo $_SESSION['propertyID'];?>">
 			<input type="hidden" name="token" value="<?php echo $token; ?>" />

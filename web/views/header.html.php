@@ -20,6 +20,10 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 
+<!-- Icons -->
+<link rel="shortcut icon" href="../favicon.ico">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png"/>
+
 <!-- Template stylesheet -->
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="css/print.css" type="text/css" media="print" >

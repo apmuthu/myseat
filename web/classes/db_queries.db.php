@@ -87,6 +87,18 @@ function querySQL($statement){
 							AND `webform` = '1'",$_SESSION['selectedDate_year'],$_SESSION['property']);
 			return getResult($result);
 		break;
+		case 'check_web_outlet':
+			$result = query("SELECT COUNT(*) FROM `outlets` 
+							WHERE ( `saison_year` = 0 OR `saison_year` = '%d' )
+							AND `outlet_id` ='%d'
+							AND `webform` = '1'",$_SESSION['selectedDate_year'],$_SESSION['outletID']);
+			return getResult($result);
+		break;
+		case 'property_id_outlet':
+			$result = query("SELECT `property_id` FROM `outlets` 
+							WHERE `outlet_id` ='%d'",$_SESSION['outletID']);
+			return getResult($result);
+		break;
 		case 'security_outlet':
 			$result = query("SELECT COUNT(*) FROM `outlets` 
 							WHERE ( `saison_year` = 0 OR `saison_year` = '%d' )
@@ -785,6 +797,19 @@ function querySQL($statement){
 		case 'sanitize_unique_id':
 			$result = query("UPDATE `reservations` SET reservation_bookingnumber = '' WHERE `reservation_date`<'%s'",$before_yesterday);
 			return $result;
+		break;
+		case 'cxl_list':
+			$result = query("SELECT reservation_title, reservation_guest_name, reservation_timestamp, COUNT(*) AS count 
+							FROM `reservations`
+							LEFT JOIN `outlets` ON outlet_id = reservation_outlet_id
+							WHERE `reservation_hidden` = '1' 
+							AND `property_id` = '%d'
+							GROUP BY `reservation_guest_name`
+							ORDER BY count DESC
+							LIMIT 20",
+							$_SESSION['propertyID']
+							);
+			return getRowList($result);
 		break;
 	}
 	

@@ -610,4 +610,16 @@ define ( '_trsources', 'Fonti di traffico' );
 
 //original text: "Website"
 define ( '_website', 'Sito' );
+
+//original text: "This list shows guests who cancel on a regular basis."
+define ( '_cxl_text', 'Questo elenco mostra gli ospiti che cancella in maniera regolare.' );
+
+// original text: "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
+define ( '_contact_form_success', 'Grazie per la vostra prenotazione. Una conferma mail è stata inviata <br/> Il tuo numero di prenotazione è: ');
+
+// original text: "Important details (allergies, wishes)"
+define ( '_form_notes', 'Dettagli importanti (allergie, desideri)');
+
+// original text: "I accept the terms of use of the restaurant."
+define ( '_reservation_terms', 'Accetto i termini d\'uso del ristorante.');
 ?>

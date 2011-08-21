@@ -611,4 +611,16 @@ define ( '_trsources', 'Verkeer Bronnen' );
 
 //original text: "Website"
 define ( '_website', 'Website' );
+
+//original text: "This list shows guests who cancel on a regular basis."
+define ( '_cxl_text', 'Deze lijst toont gasten die te annuleren op een regelmatige basis.' );
+
+// original text: "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
+define ( '_contact_form_success', 'Bedankt voor uw reservering bij Restaurant De Griekse Keuken. Er is naar het opgegeven emailadres een bevestiging gestuurd.<br/> Uw reserveringsnummer is: ');
+
+// original text: "Important details (allergies, wishes)"
+define ( '_form_notes', 'Belangrijke details (allergieën, wensen)');
+
+// original text: "I accept the terms of use of the restaurant."
+define ( '_reservation_terms', 'Ik ga akkoord met de gebruiksvoorwaarden van het restaurant.');
 ?>

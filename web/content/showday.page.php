@@ -8,10 +8,11 @@
 		</li>
 		<?php 
 		if ( $today_date <= $_SESSION['selectedDate'] && $dayoff == 0 && current_user_can('Reservation-New') ){
-			echo'<li>
-				<a href="main_page.php?q=2"';
+			echo'<li><a href="main_page.php?q=2"';
 				if ($q == 2) { echo " class='active'";}else{ echo " class='inactive'"; } 
-				echo'>'._add_reservation.'</a></li>';
+				echo'>'. _add_reservation;
+				if ($_SESSION['selOutlet']['limit_password']!='') { echo "&nbsp<img src='../PLC/img/lock.png'/ height='12px'>";}
+				echo '</a></li>';
 		} 
 		?>
 		<li>
@@ -55,6 +56,9 @@
 					<a href="#" id="outlet_detail_button">
 						<?php echo _detail;?>
 					</a>
+				</li>
+				<li>
+					<a id="cxlbuttontrigger" href="ajax/cxllist.php">CXL</a>
 				</li>
 				<?php if ($q == 1){ ?>
 				<li>

@@ -610,4 +610,16 @@ define ( '_trsources', 'Trafik kilde' );
 
 //original text: "Website"
 define ( '_website', 'Hjemmeside' );
+
+//original text: "This list shows guests who cancel on a regular basis."
+define ( '_cxl_text', 'Denne liste viser gæster, der annullerer på regelmæssig basis.' );
+
+// original text: "Thank you for your reservation. An email confirmation was sent. Your Booking number is:"
+define ( '_contact_form_success', 'Tak for din reservation. En e-mail bekræftelse blev sendt <br/> Din reservation nummer er: ');
+
+// original text: "Important details (allergies, wishes)"
+define ( '_form_notes', 'Vigtige oplysninger (allergi, &oslash;nsker)');
+
+// original text: "I accept the terms of use of the restaurant."
+define ( '_reservation_terms', 'Jeg accepterer betingelserne for brug af restauranten.');
 ?>

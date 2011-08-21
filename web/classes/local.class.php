@@ -61,7 +61,7 @@ function formatTime($tm, $format){
 
 // read translation text from database
 function translateSite($lang='en', $apx = ''){
-	$lang=($lang=='') ? 'en' : $lang;
+	$lang=($lang=='') ? 'en' : substr($lang,0,2);
 	include($apx.'lang/'.$lang.".php");
 	/* old version with dtabase use
 	$sql = "SELECT * FROM `l16n`";
