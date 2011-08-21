@@ -3,8 +3,8 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.185                        =-= 
-=-= Date:    12.08.2011                   =-= 
+=-= Version: 0.186                        =-= 
+=-= Date:    21.08.2011                   =-= 
 =-= Time:    07:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -16,15 +16,10 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.185
+LAST CHANGES in 0.186
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Complete code review; now also works on servers with
-  short_open_tag = OFF
-- Higher compatibility
-- email UTF-8 bugfix
-- emmedable booking form added
-- mobile frontend timeformat bugfix
-- added SMTP support for emails
+- added function of 'CXL' list
+- changed online form; completely new
 
 
 INSTALLATION
