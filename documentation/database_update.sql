@@ -82,3 +82,6 @@ ALTER TABLE `outlets` ADD `outlet_description_en` TEXT NOT NULL AFTER `outlet_de
 /* ------------------------------------------------- */
 ALTER TABLE `properties` ADD `social_fb` VARCHAR( 255 ) NOT NULL ;
 ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) NOT NULL ;
+/* Update the database from XT 0.1790 to > XT 0.180 */
+/* ------------------------------------------------- */
+ALTER TABLE  `outlets` ADD  `limit_password` VARCHAR( 255 ) NOT NULL AFTER  `avg_duration` ;
