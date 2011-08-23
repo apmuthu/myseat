@@ -37,19 +37,17 @@
 			</a>
 		</li>
 		<?php endif ?>
-		<li>
+<!--		<li>
 			<a href="http://<?php echo $_SERVER['HTTP_HOST'].substr(dirname($_SERVER['PHP_SELF']),0,-4);?>/contactform/index.php?so=ON&prp=<?php echo $_SESSION['property'];?>&outletID=<?php echo $_SESSION['outletID'];?>" target="blank">
 			<?php echo _online;?>
 			</a>
-
 		</li>
-		<!--
 		<li>
 			<a href="?p=5" <?php if($_SESSION['page']=='5'){echo "class='active'";} ?> >
 				<?php echo _info; ?>
 			</a>
 		</li>
-		-->
+-->
 	</ul>
 	
 	<div id="search">
