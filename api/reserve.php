@@ -272,6 +272,33 @@ if($check_web_outlet==1){
 		    timeList($general['timeformat'], 30,'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
 		} 
 		?>
+		<?php
+		// Special event of the day and outlet
+		$special_events = '';
+		$special_events = querySQL('event_data_day');
+
+			if ( $special_events ) {
+				echo "<br/><div class='alert_ads'>";
+				// special events today at outlet
+							foreach($special_events as $row) {
+								echo "<span class='bold'>
+								<a href='".$_SERVER['SCRIPT_NAME']."?outletID=".$row->outlet_id."&selectedDate=".$row->event_date."'>".
+								_today.": ".$row->subject."</a></span>
+								<p>".$row->description."<br/><cite><span class='bold'>
+								".date($general['dateformat'],strtotime($row->event_date)).
+								"</span> ".formatTime($row->start_time,$general['timeformat']).
+								" - ".formatTime($row->end_time,$general['timeformat'])." | ".
+								_ticket_price.": ".number_format($row->price,2).
+								"</cite></p>";
+								if( key($row) != count($events_advertise)-1 && key($row) > 1) {
+									// BR between special events
+									echo"<br/>";
+								}
+							}
+						echo "</div>";
+			}
+			//end special events
+		?>
 </div>
 <div class="register">	
 	<div class="number"><?php echo $order+4;?></div>
