@@ -25,6 +25,7 @@ LAST CHANGES in 0.186
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+SEE DOCUMENTATION FOR MORE DETAILS.
 mySeat is well known for its ease of installation.
 Under most circumstances installing mySeat is a very simple process
 and takes less than five minutes to complete.
