@@ -88,6 +88,36 @@ $prp_info = querySQL('property_info');
     <script type="text/javascript" src="js/jquery-ui.js"></script> 
     <script src="js/functions.js"></script>
 
+	<!-- Here you can define your own color scheme for the booking form -->
+		<style type="text/css">
+			html {
+				background:url(images/html-bg.jpg) left top repeat !important;
+			}
+			.data1, .data2, .data3, .register{
+				background-color: #F6E6CC;			
+			}
+			h1, .data1 .number, .data2 .number, .data3 .number, .register .number{
+				color: #AB245E;			
+			}
+			a, a:active, a:visited {
+			color: #42032C;
+			}
+			a:hover {
+				color:#7e4e7f;
+				background-color: #F6E6CC;
+			}
+			.button:hover {
+				color:#7e4e7f;
+				background-color: #F6E6CC;
+			}
+				button, .button, .btn_pax {
+				background-color: #561C40;
+				color: #F6E6CC;
+				border: 1px solid #B89394;
+				text-shadow: none;
+			}
+		</style>
+	<!-- color scheme for the booking form END -->
 
     <title><?php echo _edit_reservation;?></title>
 </head>
