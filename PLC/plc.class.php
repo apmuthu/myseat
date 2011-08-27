@@ -42,7 +42,7 @@ class flexibleAccess{
   * The database that we will use
   * var string
   */
- var $dbName = 'XXX';
+ var $dbName = 'myseat';
  /**
   * The database host
   * mostly 'localhost' fits
@@ -53,17 +53,17 @@ class flexibleAccess{
   * The database port
   * var int
   */
- var $dbPort = 3306;
+ var $dbPort = '3306';
  /**
   * The database user
   * var string
   */
- var $dbUser = 'rootx';
+ var $dbUser = 'root';
  /**
   * The database password
   * var string
   */
- var $dbPass = 'rootx';
+ var $dbPass = 'root';
  /**
   * The session variable ($_SESSION[$sessionVariable]) which will hold the data while the user is logged on
   * var string
@@ -300,7 +300,7 @@ function login($uname,$password,$newpassword)
 			$this->loadUser($this->userID);
 			
 			//store IP & datetime in DB
-			$time_now = date('Y-m-d H:i:s');
+			$time_now = date('Y-m-d H:i:s', time() );
 	  		$sql = "UPDATE `{$this->dbTable}` 
 					SET `{$this->tbFields['last_ip']}` = '".$_SERVER[REMOTE_ADDR]."', 
 						`{$this->tbFields['last_login']}` = '".$time_now."' 

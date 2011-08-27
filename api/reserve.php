@@ -86,17 +86,23 @@ $_SESSION['role'] = 6;
 		$_SESSION['single_outlet'] = 'OFF';
 	}
 
-//standard outlet for contact form
+// outlet ID
 	if ($_GET['outletID']) {
 		$_SESSION['outletID'] = (int)$_GET['outletID'];
 		$_SESSION['property'] = querySQL('property_id_outlet');
 	}
 
-// property id
+	// prevent injection with false outlet id's
+	$check_web_outlet = querySQL('check_web_outlet');
+
+// property ID
    if ($_GET['propertyID']) {
        $_SESSION['property'] = (int)$_GET['propertyID'];
 	   $_SESSION['outletID'] = querySQL('web_standard_outlet');
 	   $_SESSION['propertyID'] = $_SESSION['property'];
+	
+	   // prevent injection with false outlet id's
+	   $check_web_outlet = 1;
    }
 	
 
@@ -106,8 +112,6 @@ $_SESSION['role'] = 6;
 		$time = $_GET['times'].":00";	
 	}
 
-	// prevent injection with false outlet id's
-	$check_web_outlet = querySQL('check_web_outlet');
 
 	// ** set configuration
 	include('../config/config.inc.php');
@@ -216,7 +220,7 @@ if($check_web_outlet==1){
 	    
 <div id="page-content">
 <?php
-	if($check_web_outlet<1){
+	if( $check_web_outlet<1 ){
 		echo "<div class='tc'><div class='alert_error'><p><img src='../web/images/icon_error.png' alt='error' class='middle'/>&nbsp;&nbsp;";
 		echo _sorry."<br></p></div><br/></div>";
 		exit; //stop script
