@@ -4,7 +4,7 @@
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-= Version: 0.186                        =-= 
-=-= Date:    21.08.2011                   =-= 
+=-= Date:    27.08.2011                   =-= 
 =-= Time:    07:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -20,6 +20,7 @@ LAST CHANGES in 0.186
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - added function of 'CXL' list
 - changed online form; completely new
+- small bug fixes
 
 
 INSTALLATION
