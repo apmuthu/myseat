@@ -19,7 +19,7 @@
 	<script type="text/javascript" src="js/browser.js"></script>
 	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
-	
+	<script type="text/javascript" src="lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js"></script>	
 	
 	<script type="text/javascript">
 	

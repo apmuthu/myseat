@@ -212,9 +212,11 @@ if($check_web_outlet==1){
     <script src="js/jquery.easing.1.3.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script> 
     <script src="js/functions.js"></script>
+	<script type="text/javascript" src="../web/lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js"></script>	
 
 <!-- Uncomment to define your own color scheme for the booking form -->
 <!-- The example here is from the Monmarthe DEMO page at myseat.us -->
+
 <!--
 	<style type="text/css">
 		html {
@@ -271,14 +273,14 @@ if($check_web_outlet==1){
 
 					if ($num_outlets>1) {
 						$order++;
-						echo "<h1>"._webform." "._for_."<span>".$prp_info['name']."</span></h1><div class='trenner'></div>";
+						echo "<h1>"._webform." "._for_." <span>".$prp_info['name']."</span></h1><div class='trenner'></div>";
 						echo"<div class='data3'>	
 							<div class='number'>".$order."</div>";
 						echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
 						$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
 						echo"</div>";
 					} else{
-						echo "<h1>"._webform." "._for_."<span>".$outlet_name."</span></h1><div class='trenner'></div>";
+						echo "<h1>"._webform." "._for_." <span>".$outlet_name."</span></h1><div class='trenner'></div>";
 					}
 ?>
 <div class="data1">	
