@@ -258,6 +258,4 @@
 		<!-- End nomargin -->
 </div>
 <br/>
-	<a href="?p=2&outletID=<?php echo $_SESSION['outletID']; ?>" class="button_dark"><input type="button" class="button_dark" value="<?php echo _back;?>"/></a>
-<br/>
 <br class="clear"/>
