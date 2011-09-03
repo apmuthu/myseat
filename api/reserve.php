@@ -297,8 +297,8 @@ if($check_web_outlet==1){
 	<div>
         <?php //personsList($general['max_menu'],2); ?>
 		<input type="text" name="reservation_pax" id="reservation_pax" readonly="true" value="2"/>
-		<a href="javascript:void(0);" class="inc btn_pax">&plus;</a>
-		<a href="javascript:void(0);" class="dec btn_pax">&minus;</a>
+		<a href="javascript:void(0);" class="inc btn_pax">+</a>
+		<a href="javascript:void(0);" class="dec btn_pax">-</a>
 	</div>
 </div>
 <div class="data3">	

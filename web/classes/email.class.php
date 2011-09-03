@@ -1,6 +1,5 @@
 <?php
 
-
 		// Prepare basedir
 		if (substr($global_basedir,0,-4) !='web/') {
 			$global_basedir = $global_basedir.'web/';
@@ -191,7 +190,6 @@
 
 										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">Email Options</span></h4>
 
-										<a href="'.substr($global_basedir,0,-4).'contactform/cancel.php?p=2" style="color: #3279BB; text-decoration: underline;">'._reservations.' '._delete.'</a>
 										<br><a href="http://www.myseat.us/terms.php" style="color: #3279BB; text-decoration: underline;">Terms & Conditions</a>
 										<br><a href="http://www.myseat.us/privacy.php" style="color: #3279BB; text-decoration: underline;">Privacy Policy</a>
 

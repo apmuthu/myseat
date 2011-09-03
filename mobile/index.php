@@ -8,12 +8,12 @@ $_SESSION['outletID'] = '';
 
 // PHP part of page / business logic
 // ** set configuration
-	require("../contactform/config.php");
+	include("config.php");
 
 	include('../config/config.general.php');
 // ** business functions
-	require('../contactform/includes/business.class.php');
-	require('includes/business.class.php');
+	include('../api/business.class.php');
+	include('includes/business.class.php');
 // ** database functions
 	include('../web/classes/database.class.php');
 // ** localization functions

@@ -89,6 +89,7 @@ $prp_info = querySQL('property_info');
     <script src="js/functions.js"></script>
 
 	<!-- Here you can define your own color scheme for the booking form -->
+	<!--
 		<style type="text/css">
 			html {
 				background:url(images/html-bg.jpg) left top repeat !important;
@@ -117,6 +118,7 @@ $prp_info = querySQL('property_info');
 				text-shadow: none;
 			}
 		</style>
+	-->
 	<!-- color scheme for the booking form END -->
 
     <title><?php echo _edit_reservation;?></title>

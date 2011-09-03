@@ -3,8 +3,8 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.186                        =-= 
-=-= Date:    27.08.2011                   =-= 
+=-= Version: 0.1861                       =-= 
+=-= Date:    03.09.2011                   =-= 
 =-= Time:    07:48 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
@@ -16,11 +16,16 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.186
+LAST CHANGES in 0.1861
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+- PLC database bugfix
+- mobile bugfix
+- api bugfix
 - added function of 'CXL' list
 - changed online form; completely new
 - small bug fixes
+
+Thanks to Mobarak for the help on finding the bugs!
 
 
 INSTALLATION
