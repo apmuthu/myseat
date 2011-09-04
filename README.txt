@@ -19,6 +19,7 @@ mySeat will help you keep track of your reservations with ease.
 LAST CHANGES in 0.187
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - JS & CSS changes in /web to increase performance
+- Outlet ID bugfix in /api
 - PLC database bugfix
 - mobile bugfix
 - api bugfix

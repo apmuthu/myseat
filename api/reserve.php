@@ -276,11 +276,12 @@ if($check_web_outlet==1){
 						echo "<h1>"._webform." "._for_." <span>".$prp_info['name']."</span></h1><div class='trenner'></div>";
 						echo"<div class='data3'>	
 							<div class='number'>".$order."</div>";
-						echo "<input type='hidden' id='single_outlet' value='".$_SESSION['outletID']."'>";
+						echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>";
 						$outlet_result = outletListweb($_SESSION['outletID'],'enabled','reservation_outlet_id');
 						echo"</div>";
 					} else{
 						echo "<h1>"._webform." "._for_." <span>".$outlet_name."</span></h1><div class='trenner'></div>";
+						echo "<input type='hidden' name='reservation_outlet_id' id='single_outlet' value='".$_SESSION['outletID']."'>";
 					}
 ?>
 <div class="data1">	
