@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1861                       =-= 
-=-= Date:    03.09.2011                   =-= 
-=-= Time:    07:48 GMT                    =-= 
+=-= Version: 0.187                        =-= 
+=-= Date:    04.09.2011                   =-= 
+=-= Time:    08:58 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,8 +16,9 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.1861
+LAST CHANGES in 0.187
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+- JS & CSS changes in /web to increase performance
 - PLC database bugfix
 - mobile bugfix
 - api bugfix
