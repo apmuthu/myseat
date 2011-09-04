@@ -70,25 +70,7 @@
 			echo "</select>\n</div></p><br/>";
 		}else if ($key == 'id'){
 			echo "<input type='hidden' name='id' value='".$value."'>";
-		}else if ($key == 'contactform_color_scheme'){
-			
-			$colors = array('black', 'blue', 'green', 'grey', 'purple', 'red');
-			
-				echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
-				echo"<select name='$key' id='$key' class='required' title=' ' size='1' >";
-						// make option list
-						foreach ($colors as $val) {
-							echo "<option value='".$val."' ";
-							echo ($value==$val) ? "selected='selected'" : "";
-							echo ">".$val."</option>\n";
-						}
-						echo "</select>\n</div></p><br/>";
-
-		}else if ($key == 'contactform_background'){
-			echo "<p><label>".$formtext."</label><br/>
-				<input type='color' name='".$key."' id='".$key."' value='".$value."' 
-				data-hex='true'/></p><br/>";
-			}else{
+		}elseif($key != 'contactform_background' && $key != 'contactform_color_scheme'){
 			echo "<p><label>".$formtext."</label><br/>
 				<input type='text' name='".$key."' id='".$key."' value='".$value."' 
 				class='required' title=' '/></p><br/>";	

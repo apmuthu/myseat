@@ -45,7 +45,7 @@ a img                                   { border: none }
 	Global layout
 */
 body                                    {
-                                            background: url("../images/gray_noise.jpg") repeat scroll left top rgb(255, 255, 255); margin: 0pt;
+                                            background: repeat scroll left top #dbdbdb; margin: 0pt;
                                             font-size: 12px;
 											font-family: 'DroidSansRegular', Arial;
                                             padding: 0;
@@ -354,7 +354,8 @@ input.button_red:active                 {
 #top_bar                                {
                                             width: 100%;
                                             height: 60px;
-                                            background: #000 url('../images/bg_head.png') repeat-x;
+											background-color: #341931;
+                                            /* background: #000 url('../images/bg_head.png') repeat-x; */
                                             border-bottom: 1px solid #444;
                                         }
 #top_bar a                              { color: #BFABC9 }
@@ -386,7 +387,8 @@ input.button_red:active                 {
 #menu_wrapper                           {
                                             width: 100%;
                                             height: 60px;
-                                            background: transparent url('../images/bg_menu.png') repeat-x;
+											background-color: #1A1C27;
+                                            /* background: transparent url('../images/bg_menu.png') repeat-x; */
                                             border-bottom: 1px solid #fff;
                                         }
 #menu_wrapper #search                   {
@@ -394,7 +396,7 @@ input.button_red:active                 {
                                             margin: 13px 30px 0 0;
                                             width: 252px;
                                             height: 30px;
-                                            background: transparent url('../images/bg_search.png') repeat-x;
+                                            background: transparent url('../images/bg_search.png') repeat-x; 
                                         }
 #menu_wrapper #search input             { margin: 3px 0 0 40px }
 .nav                                    {
@@ -825,7 +827,8 @@ input.button_red:active                 {
                                             width: 100%;
                                             height: 50px;
                                             padding-top: 10px;
-                                            background: #000000 url('../images/bg_head.png') repeat-x;
+											background-color: #341931;
+                                            /* background: #000000 url('../images/bg_head.png') repeat-x; */
                                             border-top: 1px solid #fff;
                                             margin-top: 30px;
                                             text-align: center;

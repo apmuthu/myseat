@@ -27,20 +27,13 @@
 <!-- Template stylesheet -->
 <link rel="stylesheet" href="css/screen.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="css/print.css" type="text/css" media="print" >
-<link rel="stylesheet" href="css/datepicker.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="css/tipsy.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="css/jgrowl.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="js/visualize/visualize.css" type="text/css" media="all"/>
-<link rel="stylesheet" href="js/jwysiwyg/jquery.wysiwyg.css" type="text/css" media="all"/>
+<link rel="stylesheet" href="css/plugins.css" type="text/css" media="all"/>
 <link rel="stylesheet" href="js/fancybox/jquery.fancybox-1.3.0.css" type="text/css" media="screen"/>
-<link rel="stylesheet" href="css/autocomplete.css" type="text/css" media="all"/>
+
 <!--[if IE 7]>
 	<link href="css/ie7.css" rel="stylesheet" type="text/css" media="all">
 <![endif]-->
 
-<!-- jQuery Javascript Framework -->
-<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
 <?php
 list($y,$m,$d)	= explode("-",$_SESSION['selectedDate']);

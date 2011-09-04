@@ -1,23 +1,18 @@
+<!-- jQuery Javascript Framework -->
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+<script type="text/javascript">!window.jQuery && document.write(unescape("%3Cscript src='js/jquery-1.4.4.min.js' type='text/javascript'%3E%3C/script%3E"))</script>
+<script type="text/javascript">!window.jQuery.ui && document.write(unescape("%3Cscript src='js/jquery-ui-1.8.10.custom.min.js' type='text/javascript'%3E%3C/script%3E"))</script>
+
+
 	<!--[if IE]>
 		<script type="text/javascript" src="js/excanvas.js"></script>
 	<![endif]-->
 	<!-- Javascript at the bottom for fast page loading --> 
-	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
+	<script type="text/javascript" src="js/plugins.js"></script>
 	<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.0.js"></script>
-	<script type="text/javascript" src="js/hint.js"></script>
-	<?php if($_SESSION['page']=='3'):?>
-	<script type="text/javascript" src="js/visualize/jquery.visualize.js"></script>
-	<?php endif ?>
-	<?php if($_SESSION['page']=='6'):?>
-	<script type="text/javascript" src="js/jwysiwyg/jquery.wysiwyg.js"></script>
-	<script type="text/javascript" src="js/mColorPicker.js"></script>
-	<?php endif ?>
-	<script type="text/javascript" src="js/jquery.img.preload.js"></script>
 	<script type="text/javascript" src="js/jquery.validate.min.js"></script>
-	<script type="text/javascript" src="js/jquery.tipsy.js"></script>
-	<script type="text/javascript" src="js/jquery.jgrowl-min.js"></script>
-	<script type="text/javascript" src="js/browser.js"></script>
-	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
 	<script type="text/javascript" src="js/custom.js"></script>
 	<script type="text/javascript" src="lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js"></script>	
 	

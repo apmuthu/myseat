@@ -444,5 +444,6 @@ $(document).ready(function() {
 		});
 
 	$('.wysiwyg').css('width', '100%');
+	
     
 });
