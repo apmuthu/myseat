@@ -105,7 +105,7 @@
 
 		</head><body style="font-size: 12px; margin: 0; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #555555; width: 100%;" bgcolor="'.$bgcolor.'">
 
-		<!-- WRAPPER TABLE --> 
+		<!-- WRAPPER TABLE -->
 		<table cellspacing="0" style="font-size: 12px; line-height: 22px; font-family: Arial, sans-serif; color: #555555; table-layout: fixed;" width="100%" cellpadding="0"><tr><td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" bgcolor="#545454"> 	
 		<!-- ///////////////////////////////////// NEWSLETTER CONTENT  /////////////////////////////////// -->		
 
@@ -114,8 +114,7 @@
 			<p align="center" style="font-size: 12px; margin: 0 0 12px; padding: 0; line-height: 22px; font-family: Arial, sans-serif; color: #999999; text-align: center;"></p>
 
 		<!-- ////////////////////////////////// START MAIN CONTENT WRAP ////////////////////////////////// -->	
-
-			<table rules="none" cellspacing="0" border="0" frame="border" align="center" style="border-color: #E4E2E4 #E4E2E4 #E4E2E4 #E4E2E4; font-size: 12px; border-collapse: collapse; background-color: #ffffff; line-height: 22px; font-family: Arial, sans-serif; color: #555555; border-spacing: 0; border-style: solid solid solid solid; border-width: 10px 0px 0px 0px;" width="600" cellpadding="0" bgcolor="#ffffff">
+			<table rules="none" cellspacing="0" border="0" frame="border" align="center" style="border-color: #E4E2E4 #E4E2E4 #E4E2E4 #E4E2E4; font-size: 12px; border-collapse: collapse; background-color: #ffffff; line-height: 22px; font-family: Arial, sans-serif; color: #555555; border-spacing: 0; border-style: solid solid solid solid; border-width: 10px 0px 0px 0px;-moz-border-radius:7px;-webkit-border-radius:7px;" width="600" cellpadding="0" bgcolor="#ffffff">
 			<tr><td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;">
 
 		<!-- ////////////////////////////////// START HEADER ////////////////////////////////////////////  -->
@@ -177,45 +176,15 @@
 
 							<img src="'.$global_basedir.'images/email/footer-divider-600x16.gif" border="0" height="16" alt="" style="border: none; display: block;" width="600" />
 
-							<table cellspacing="0" align="center" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="540" cellpadding="0">
-								<tr>
-									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="206">
-
-										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">'._description.'</span></h4>
-
-										'.substr($_SESSION['selOutlet'][$descr],0,90).'...
-									</td>
-									<td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="20">&nbsp;</td><!-- spacer -->
-									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="146">
-
-										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">Email Options</span></h4>
-
-										<br><a href="http://www.myseat.us/terms.php" style="color: #3279BB; text-decoration: underline;">Terms & Conditions</a>
-										<br><a href="http://www.myseat.us/privacy.php" style="color: #3279BB; text-decoration: underline;">Privacy Policy</a>
-
-									</td>
-									<td style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="20">&nbsp;</td><!-- spacer -->
-									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="146">
-
-										<h4 style="padding: 0; font-size: 12px; margin: 0 0 14px; line-height: 18px; color: #252525; font-weight: bold;"><span style="color: #252525;">'._online.'</span></h4>
-
-										<a href="'.$property['social_fb'].'" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/facebook.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
-										<a href="'.$property['social_tw'].'" style="color: #3279BB; text-decoration: underline;"><img src="'.$global_basedir.'images/email/social/twitter.png" border="0" height="28" alt="" style="border: none;" width="28" /></a>
-
-									</td>
-								</tr>
-							</table>
-
-							<img src="'.$global_basedir.'images/email/footer-divider-600x31.gif" border="0" height="31" alt="" style="border: none; display: block;" width="600" />
-
 							<!-- company info + subscription -->
 							<table cellspacing="0" align="center" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;" width="540" cellpadding="0">
 								<tr>
 									<td valign="top" style="color: #555555; font-family: Arial, sans-serif; font-size: 12px; line-height: 22px;">
 									
 										   <b style="font-weight: bold;">© '.$property['name'].'</b>, '.$property['street'].', '.$property['city'].', '.$property['zip'].'<br/> T: '.$property['phone'].' |
-											E: <a href="mailto:'.$property['email'].'" style="color: #3279BB; text-decoration: underline;">'.$property['email'].'</a>
-
+											E: <a href="mailto:'.$property['email'].'" style="color: #3279BB; text-decoration: underline;">'.$property['email'].'</a> | 
+										<a href="http://www.myseat.us/terms.php" style="color: #3279BB; text-decoration: underline;">Terms & Conditions</a>
+										<a href="http://www.myseat.us/privacy.php" style="color: #3279BB; text-decoration: underline;">Privacy Policy</a>
 									</td>
 								</tr>	
 							</table>
