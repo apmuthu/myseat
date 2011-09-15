@@ -388,9 +388,11 @@ $(document).ready(function() {
 		$.ajax({
 		type: "POST",
 		url: "ajax/modify_status.php",
-		data: 'value=' + selected + '&id=' + status_id
+		data: 'value=' + selected + '&id=' + status_id,
+		success: function(result){
+			location.reload();
+		}
 		});
-		return true;
 	}); // Reservation Status dropdownbox END
 
 	/* Dayoff Status checkbox */

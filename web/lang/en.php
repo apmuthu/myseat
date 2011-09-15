@@ -192,16 +192,16 @@ define ( '_season_end', 'Season end' );
 define ( '_day_off', 'Day off' );
 
 //original text: "New entry has been added !"
-define ( '_new_entry', 'New entry has been added !' );
+define ( '_new_entry', 'New entry has been added' );
 
 //original text: "Entry has been edited !"
-define ( '_entry_edited', 'Entry has been edited !' );
+define ( '_entry_edited', 'Entry has been edited' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', 'Entry deleted!' );
+define ( '_entry_deleted', 'Entry deleted' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', 'Nothing deleted!' );
+define ( '_nothing_deleted', 'Nothing deleted' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', 'Do you really want to delete?' );

@@ -8,7 +8,7 @@
 		<br/>
 		<p>
 		<label><?php echo _time; ?>*</label><br/>
-				<?php getTimeList($general['timeformat'], $general['timeintervall'],'reservation_time','',$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],1);?>
+				<?php getTimeList($general['timeformat'], $general['timeintervall'],'reservation_time','',$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],1,'required');?>
 		</p>
 		<br/>
 		<p>

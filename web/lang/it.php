@@ -186,22 +186,22 @@ define ( '_close_time', ' Ora di chiusure' );
 define ( '_season_start', 'Debutto della stagione' );
 
 //original text: "Season end"
-define ( '_season_end', ' Fine della stagione' );
+define ( '_season_end', 'Fine della stagione' );
 
 //original text: "Day off"
-define ( '_day_off', ' Giorno/i di chiusura' );
+define ( '_day_off', 'Giorno/i di chiusura' );
 
 //original text: "New entry has been added !"
-define ( '_new_entry', 'Record aggiunto!' );
+define ( '_new_entry', 'Record aggiunto' );
 
 //original text: "Entry has been edited !"
-define ( '_entry_edited', ' Il record è stato modificato' );
+define ( '_entry_edited', 'Il record è stato modificato' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', ' Il record è stato eliminato' );
+define ( '_entry_deleted', 'Il record è stato eliminato' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', ' Nulla è stato eliminato!' );
+define ( '_nothing_deleted', 'Nulla è stato eliminato' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', 'Eliminare?' );

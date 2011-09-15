@@ -112,6 +112,13 @@ $_SESSION['role'] = 6;
 		$time = $_GET['times'].":00";	
 	}
 
+// selected pax	
+	if ($_GET['pax']) {
+		// set selected time
+		$_SESSION['pax'] = $_GET['pax'];	
+	}elseif($_SESSION['selected_pax']<1){
+		$_SESSION['pax'] = 2;
+	}
 
 	// ** set configuration
 	include('../config/config.inc.php');
@@ -163,6 +170,8 @@ if($check_web_outlet==1){
 
   // some constants
     $outlet_name = querySQL('db_outlet');
+	 $max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
+	 $pax_capacity = $max_passerby - $availability[$selected_time];
 }
   // translate to selected language
 	$language = $general['language'];
@@ -297,7 +306,7 @@ if($check_web_outlet==1){
 	<h3><?php echo ucfirst(_people_);?></h3>
 	<div>
         <?php //personsList($general['max_menu'],2); ?>
-		<input type="text" name="reservation_pax" id="reservation_pax" readonly="true" value="2"/>
+		<input type="text" name="reservation_pax" id="reservation_pax" readonly="true" value="<?php echo $_SESSION['pax'];?>"/>
 		<a href="javascript:void(0);" class="inc btn_pax">+</a>
 		<a href="javascript:void(0);" class="dec btn_pax">-</a>
 	</div>
@@ -454,7 +463,7 @@ if($check_web_outlet==1){
 	     	$("#ui-datepicker-div").hide();
 	     	$("#reservation_outlet_id").change(function(){
 	    		window.location.href='?propertyID=<?php echo $_SESSION['property'];?>&outletID=' + this.value;
-	  	 });
+	  	 	});
 	
 	 // +/- button for pax field  
 		$(".btn_pax").click(function() {
@@ -478,6 +487,7 @@ if($check_web_outlet==1){
 				  }
 		        }
 		        $button.parent().find("input").val(newVal);
+				window.location.href='?pax=' + newVal;
 		});
 	
     });

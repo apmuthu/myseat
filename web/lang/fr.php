@@ -192,16 +192,16 @@ define ( '_season_end', 'Fin de la saison' );
 define ( '_day_off', 'Jour de fermeture' );
 
 //original text: "New entry has been added !"
-define ( '_new_entry', 'Une nouvelle entrée a été ajoutée !' );
+define ( '_new_entry', 'Une nouvelle entrée a été ajoutée' );
 
 //original text: "Entry has been edited !"
-define ( '_entry_edited', 'L´entrée a été modifiée.' );
+define ( '_entry_edited', 'L´entrée a été modifiée' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', 'Entrée effacée!' );
+define ( '_entry_deleted', 'Entrée effacée' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', 'Rien est effacé!' );
+define ( '_nothing_deleted', 'Rien est effacé' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', 'Etes-vous sure de vouloir effacer cet utilisateur?' );

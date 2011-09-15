@@ -192,16 +192,16 @@ define ( '_season_end', '修业日期' );
 define ( '_day_off', '休息日' );
 
 //original text: "New entry has been added !"
-define ( '_new_entry', '新增预约已完成!' );
+define ( '_new_entry', '新增预约已完成' );
 
 //original text: "Entry has been edited !"
-define ( '_entry_edited', '修改预约已完成 !' );
+define ( '_entry_edited', '修改预约已完成' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', '该记录已被删除！' );
+define ( '_entry_deleted', '该记录已被删除' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', '没有记录被删除！' );
+define ( '_nothing_deleted', '没有记录被删除' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', '需要删除该条记录吗？' );

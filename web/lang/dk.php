@@ -192,16 +192,16 @@ define ( '_season_end', 'S&aelig;son slut' );
 define ( '_day_off', 'Lukket' );
 
 //original text: "New entry has been added !"
-define ( '_new_entry', 'Ny reservation er tilf&oslash;jet !' );
+define ( '_new_entry', 'Ny reservation er tilf&oslash;jet' );
 
 //original text: "Entry has been edited !"
-define ( '_entry_edited', 'Reservation er blevet redigeret !' );
+define ( '_entry_edited', 'Reservation er blevet redigeret' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', 'Reservation er slettet !' );
+define ( '_entry_deleted', 'Reservation er slettet' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', 'Intet slettet !' );
+define ( '_nothing_deleted', 'Intet slettet' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', '&Oslash;nsker du virkelige at slette?' );

@@ -104,4 +104,6 @@ if ($special_events && $_SESSION['page'] == 2 ) {
 	echo "</div>";
 }
 
+echo "<div id='realtimeupdate'></div>";
+
 ?>

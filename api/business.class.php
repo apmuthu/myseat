@@ -206,8 +206,8 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 					}
 				
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
-					 $pax_capacity = ($tbl_capacity >=1) ? $_SESSION['outlet_max_capacity']-$availability[date('H:i',$value)] : 0;
-					 if ( $pax_capacity <= 0 || $tbl_capacity < 1) {
+					 $pax_capacity = ($tbl_capacity >=1) ? $max_passerby-$availability[date('H:i',$value)]-$_SESSION['pax'] : 0;
+					 if ( $pax_capacity < 0 || $tbl_capacity < 1) {
 						echo " disabled='disabled' ";
 					 }
 				
@@ -238,11 +238,23 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 }
 
 function personsList($max_pax = '12', $standard = '4',$tablename='reservation_pax'){
+	GLOBAL $availability, $time;
+	 $selected_time = substr($time,0,5);
+	
+	 $max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
+	 $pax_capacity = $max_passerby - $availability[$selected_time];
+	
 	echo"<select name='".$tablename."' id='".$tablename."' class='drop' size='1' $disabled>\n";	
 		
 		for ($i=1; $i <= $max_pax; $i++) { 
-			 echo "<option value='".$i."'";
-			echo ($i == $standard) ? "selected='selected'" : "";
+			echo "<option value='".$i."'";
+
+			if ( $i < $pax_capacity ) {
+				echo " disabled='disabled' ";
+			}else{
+				echo ($i == $standard) ? "selected='selected'" : "";
+			}
+			
 			echo ">".$i."</option>\n";
 		}
 

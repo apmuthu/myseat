@@ -1,9 +1,12 @@
-<!-- jQuery Javascript Framework -->
-
+<!-- jQuery Javascript Framework / If using a HTTPS connection do not load via CND -->
+<!--
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
 <script type="text/javascript">!window.jQuery && document.write(unescape("%3Cscript src='js/jquery-1.4.4.min.js' type='text/javascript'%3E%3C/script%3E"))</script>
 <script type="text/javascript">!window.jQuery.ui && document.write(unescape("%3Cscript src='js/jquery-ui-1.8.10.custom.min.js' type='text/javascript'%3E%3C/script%3E"))</script>
+-->
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
 
 	<!--[if IE]>
@@ -17,6 +20,20 @@
 	<script type="text/javascript" src="lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js"></script>	
 	
 	<script type="text/javascript">
+	
+	// remember the old datepicker function
+	var _gotoToday = jQuery.datepicker._gotoToday;
+		// datepicker is directly inside the jQuery object, so override that
+		jQuery.datepicker._gotoToday = function(a){
+	    var target = jQuery(a);
+	    var inst = this._getInst(target[0]);
+	    // call the old function, so default behaviour is kept
+	    _gotoToday.call(this, a);
+	    // now do an additional call to _selectDate which will set the date and close
+	    // close the datepicker (if it is not inline)
+	    jQuery.datepicker._selectDate(a, 
+	    jQuery.datepicker._formatDate(inst,inst.selectedDay, inst.selectedMonth, inst.selectedYear));
+	}
 	
 	function callNotifications() {
       $.ajax({
@@ -32,12 +49,19 @@
              });
 	}
 	
-	$(document).ready(function(){
+$(document).ready(function() {
 		
 		// Preload images
 		$.preloadCssImages();
 		
-		// edit toogle buttons
+		// Realtime reservation updates with arte plugin
+		$.arte({'ajax_url': 'ajax/realtime.php?lastid=<?php echo $_SESSION['max_id']; ?>', 'on_success': update_field, 'time': 1000}).start();
+			function update_field(data)
+			{
+				$("#realtimeupdate").html(data);
+			}
+		
+		// edit-toogle buttons
 		$('#editToggle').click(function() {
           $('#show').toggle();
           $('#edit').toggle();
@@ -52,6 +76,7 @@
 			altField: '#dbdate',
 			altFormat: 'yy-mm-dd',
 			defaultDate: 0,
+			showButtonPanel: true,
 			dateFormat: '<?php echo $general['datepickerformat'];?>',
 			regional: '<?php echo substr($_SESSION['language'],0,2);?>',
 			onSelect: function(dateText, inst) { window.location.href="?selectedDate="+$("#dbdate").val(); }

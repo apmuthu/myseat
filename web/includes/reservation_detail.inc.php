@@ -2,6 +2,9 @@
  <div class="twocolumn form-height">
   <div class="content detailbig content-height">
 	<br/>
+	<label><?php echo _status;?></label>
+	<p><span class='bold'><?php echo showReservation_status($row->reservation_hidden); ?></strong></p>
+	<br/>
 	<label><?php echo _booknum;?></label>
 	<p><span class='bold'><?php echo $row->reservation_bookingnumber; ?></strong></p>
 	<br/>

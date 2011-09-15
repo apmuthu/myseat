@@ -199,10 +199,10 @@ define ( '_new_entry', 'Nuevo registro' );
 define ( '_entry_edited', 'Registro editado' );
 
 //original text: "Entry deleted!"
-define ( '_entry_deleted', 'Entrada eliminada!' );
+define ( '_entry_deleted', 'Entrada eliminada' );
 
 //original text: "Nothing deleted!"
-define ( '_nothing_deleted', 'No eliminado!' );
+define ( '_nothing_deleted', 'No eliminado' );
 
 //original text: "Do you really want to delete?"
 define ( '_sentence_2', '¿Quiere realmente eliminar?' );

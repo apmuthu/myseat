@@ -49,7 +49,7 @@ function getTimeList($format,$intervall,$field='',$select,$open_time='00:00:00',
 		
 		//echo $value."/".$endtime."/".date('H:i',$endtime)."//"; // error reporting
 		
-		echo"<select name='".$field."' id='".$field."' size='1' title=' ' ".$required.">\n";
+		echo"<select name='".$field."' id='".$field."' size='1' title=' ' class='".$required."'>\n";
 		echo "<option value='' ";
 		if ($select=='') {
 			echo "selected='selected'";
@@ -468,6 +468,19 @@ function getDayoff_select($dayoff,$id,$cando){
 			echo "checked='checked'";
 		}
 		echo " ".$cando."='".$cando."'><label> "._day_off."</label>";
+}
+
+// build checkboxes to select maitre dayoff
+function showReservation_status($status){
+		switch ($status) {
+			case '0':
+				return strtoupper(_active);
+			break;
+			case '1':
+				return strtoupper(_cancelled);
+			break;
+		}
+		
 }
 
 // build dropdown with year

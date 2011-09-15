@@ -57,7 +57,7 @@ body.login                              {   text-align: left }
 #login_top                              {
                                             width: 100%;
                                             height: 120px;
-                                            background: #1A1C27000 url('../images/bg_head_login.png') repeat-x;
+                                            background-color: #341931;
                                             border-bottom: 1px solid #fff;
                                             text-align: center;
                                         }
@@ -219,7 +219,7 @@ input.button_dark                       {
 											display:inline-block;
 											font-size:108%;
 											font-weight:700;
-											margin:0 5px 15px 0;
+											margin:0 10px 15px 0;
 											outline:none;
 											padding:5px 15px;
 											width:auto;

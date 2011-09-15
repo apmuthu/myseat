@@ -42,7 +42,7 @@
 				&raquo;
 			</a>
 			<div class="dategroup_name">
-				<a href="?selectedDate=<?php echo buildDate($settings['dbdate']); ?>">
+				<a href="?selectedDate=<?php echo $_SESSION['selectedDate']; ?>">
 					<?php
 					echo $_SESSION['selOutlet']['outlet_name'].
 					" - ".strftime("%A",strtotime($_SESSION['selectedDate'])).

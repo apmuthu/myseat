@@ -124,13 +124,17 @@ $_SESSION['selOutlet']['outlet_max_capacity'] = ($_SESSION['selOutlet']['outlet_
 
 // selected date
 if (empty($_SESSION['selectedDate'])) {
-	$_SESSION['selectedDate'] = ($_GET['selectedDate']) ? $_GET['selectedDate'] : buildDate($settings['dbdate'],date('d'),date('m'),date('Y'));
-}else if (isset($_GET['selectedDate'])) {
+	$_SESSION['selectedDate'] = buildDate($settings['dbdate'],date('d'),date('m'),date('Y'));
+}elseif (isset($_GET['selectedDate'])) {
 	$_SESSION['selectedDate'] = $_GET['selectedDate'];
 }
-else if (isset($_POST['selectedDate'])) {
+elseif (isset($_POST['selectedDate'])) {
     $_SESSION['selectedDate'] = $_POST['selectedDate'];
 }
+if (empty($_SESSION['selectedDate'])) {
+	$_SESSION['selectedDate'] = buildDate($settings['dbdate'],date('d'),date('m'),date('Y'));
+}
+
 
 list($sj,$sm,$sd)                = explode("-",$_SESSION['selectedDate']);
 $_SESSION['selectedDate_user']   = buildDate($general['dateformat'],$sd,$sm,$sj);
@@ -252,6 +256,7 @@ if(isset($_GET['resedit'])){
 }else{
 	$resedit = 'OFF';
 }
+
 // package code
 $_SESSION['pk_code'] = ( isset($_GET['pk']) ) ? $_GET['pk'] : 'CXL';
 
@@ -261,4 +266,9 @@ if(isset($_POST['searchquery'])){
 	$searchquery = $_POST['searchquery']."%";
 	$q = 4;
 }
+
+// Last ID of reservation table for ajax realtime updates
+$_SESSION['max_id'] = querySQL('max_id');
+
 ?>
+

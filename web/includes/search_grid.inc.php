@@ -4,7 +4,7 @@
 	    <tr>
 			<th><?php echo _date; ?></th>    	
 			<th><?php echo _time; ?></th>
-			<th></th>
+			<th><?php echo _status; ?></th>
 			<th><?php echo _guest_name; ?></th>
 			<th><?php echo _pax; ?></th>
 			<th><?php echo _phone_room; ?></th>
@@ -30,8 +30,8 @@
 			echo "<tr id='res-".$id."'>";
 			echo"<td>".humanize($row->reservation_date)."</td>
 			<td>".formatTime($row->reservation_time,$general['timeformat'])."</td>
-			<td>".printTitle($row->reservation_title)."</td>
-			<td>
+			<td>".showReservation_status($row->reservation_hidden)."</td>
+			<td>".printTitle($row->reservation_title)."
 			<span class='bold'><a href='?p=102&resID=".$id."' >".utf8_encode($row->reservation_guest_name)."</a></strong>";
 			if ($row->repeat_id !=0)
 	            {

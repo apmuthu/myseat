@@ -13,6 +13,7 @@ function querySQL($statement){
 							AND `reservation_wait` = '0' 
 							AND `reservation_outlet_id` = '%d' 
 							AND `reservation_date` = '%s'
+							AND ( NOT `reservation_status` = 'DEP' AND NOT `reservation_status` = 'NSW')
 							AND `reservation_id` != '%d'
 							GROUP BY `reservation_time`
 							ORDER BY `reservation_time` ASC",
@@ -27,7 +28,7 @@ function querySQL($statement){
 							AND `reservation_wait` = '0' 
 							AND `reservation_outlet_id` = '%s' 
 							AND `reservation_date` = '%s'
-							AND `reservation_status` != 'DEP'
+							AND ( NOT `reservation_status` = 'DEP' AND NOT `reservation_status` = 'NSW')
 							AND `reservation_hotelguest_yn` = 'PASS'
 							GROUP BY `reservation_time`
 							ORDER BY `reservation_time` ASC",
@@ -58,6 +59,23 @@ function querySQL($statement){
 							AND `reservation_hidden`=0 
 							AND `reservation_wait`=0 
 							AND `reservation_hotelguest_yn`='PASS' 
+							",$_SESSION['selectedDate'],$_SESSION['outletID']);
+			return getResult($result);
+		break;
+		case 'realtime_res':
+			$result = query("SELECT count(*) as new FROM reservations 
+							WHERE `reservation_id` > '%d'
+							AND `reservation_date`='%s' 
+							AND `reservation_outlet_id`='%d' 
+							AND `reservation_hidden`=0 
+							",$id,$_SESSION['selectedDate'],$_SESSION['outletID']);
+			return getResult($result);
+		break;
+		case 'max_id':
+			$result = query("SELECT MAX(reservation_id) FROM reservations
+							WHERE `reservation_date`='%s' 
+							AND `reservation_outlet_id`='%d' 
+							AND `reservation_hidden`=0 
 							",$_SESSION['selectedDate'],$_SESSION['outletID']);
 			return getResult($result);
 		break;
@@ -423,8 +441,7 @@ function querySQL($statement){
 			reservation_advertise,reservation_referer, outlet_name 
 				FROM `reservations` 
 				INNER JOIN `outlets` ON `outlet_id` = `reservation_outlet_id` 
-				WHERE `reservation_hidden` = '0'
-				AND `property_id` = '%d' 
+				WHERE `property_id` = '%d' 
 				AND (`reservation_guest_name` LIKE '%s' 
 					OR `reservation_bookingnumber` LIKE '%s' 
 					OR `reservation_guest_phone` LIKE '%s') 
@@ -811,6 +828,7 @@ function querySQL($statement){
 							);
 			return getRowList($result);
 		break;
+		
 	}
 	
 }
