@@ -22,6 +22,7 @@ LAST CHANGES in 0.188
 - Search function now searches in actual and canceld reservations
 - 'Today' button in datepicker
 - New realtime notification for new reservations
+- Software version shown in header
 
 
 INSTALLATION
