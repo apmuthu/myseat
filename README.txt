@@ -16,10 +16,10 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.188
+LATEST CHANGES in 0.188
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - Status 'No Show' and 'Departed' affects to availability
-- Search function now searches in actual and canceld reservations
+- Search function now searches in actual and canceled reservations
 - 'Today' button in datepicker
 - New realtime notification for new reservations
 - Software version shown in header
