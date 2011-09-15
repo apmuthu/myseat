@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.187                        =-= 
-=-= Date:    04.09.2011                   =-= 
-=-= Time:    08:58 GMT                    =-= 
+=-= Version: 0.188                        =-= 
+=-= Date:    15.09.2011                   =-= 
+=-= Time:    16:59 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,18 +16,12 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LAST CHANGES in 0.187
+LAST CHANGES in 0.188
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- JS & CSS changes in /web to increase performance
-- Outlet ID bugfix in /api
-- PLC database bugfix
-- mobile bugfix
-- api bugfix
-- added function of 'CXL' list
-- changed online form; completely new
-- small bug fixes
-
-Thanks to Mobarak for the help on finding the bugs!
+- Status 'No Show' and 'Departed' affects to availability
+- Search function now searches in actual and canceld reservations
+- 'Today' button in datepicker
+- New realtime notification for new reservations
 
 
 INSTALLATION
