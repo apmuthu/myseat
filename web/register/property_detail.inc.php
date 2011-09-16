@@ -56,10 +56,11 @@
 				<small>				
 					<?php if($row['created']){ echo _created." ".humanize($row['created']);}?>
 				</small>
-				<?php if($settings['googlemap_key'] != ""){?>
+
 					<!-- Google Map Plugin -->
 					<div class="google_map" style="margin-top:80px;">
-						<div id="map_canvas"></div>
+						<div id="map_canvas">
+							<img border='0'src="https://maps.google.com/maps/api/staticmap?markers=size:mid|color:red|<?php echo $row['street'];?>,<?php echo $row['zip'];?> <?php echo $row['city'];?>,<?php echo $countries[$row['country']];?>&zoom=15&size=720x270&maptype=roadmap&sensor=false"/>	
+						</div>
 					</div>
 					<!-- /Google Map -->
-				<?php } ?>
