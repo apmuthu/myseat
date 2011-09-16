@@ -26,7 +26,7 @@ secureSuperGlobals();
 
 	if( $newreservation > 0 ){
 		echo "<div class='alert_warning'><p style='margin-bottom:10px;'><img src='images/icon_info.png' alt='error' class='middle'/>";
-		echo '<a href="selectedDate='.$_SESSION['selectedDate'].'">('.$newreservation.') '._new_entry.'</a>';
+		echo '<a href="main_page.php?selectedDate='.$_SESSION['selectedDate'].'">('.$newreservation.') '._new_entry.'</a>';
 		echo "</p></div>";
 	}
 ?>
