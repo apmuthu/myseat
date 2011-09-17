@@ -91,7 +91,7 @@ $prp_info = querySQL('property_info');
 <body>
 <div id="page-content" style="margin-left: 10px;">
 	    <!-- page title -->
-	    <h2><?php echo $lang["conf_title"];?><span></span> </h2>
+	    <h2><?php echo _reservations;?><span></span> </h2>
 		<br class="cl" />
 	    
 	    <div id="page-content" class="container_12">

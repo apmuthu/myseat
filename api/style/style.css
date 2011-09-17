@@ -435,6 +435,15 @@ width: 530px;
 	padding:10px 10px 10px 40px;
 	margin-bottom:10px;
 }
+.data1 {
+	width:195px;
+	height:60px;
+	float:left;
+	background-color:#f3f3f3;
+	padding:10px 10px 10px 40px;
+	margin-bottom:10px;
+	margin-right:10px;
+}
 .register {
 	clear:both;
 	background-color:#f3f3f3;

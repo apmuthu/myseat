@@ -60,6 +60,7 @@ function checkMobile(){
 function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
 { 
 		GLOBAL $general,$availability, $tbl_availability;
+		
 		// calculate after midnight
 		$day    = date("d");
 		$endday = ($open_time < $close_time) ? date("d") : date("d")+1;
@@ -114,13 +115,13 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 				if($ava_passerby>0){
 					echo "<option value='".date('H:i',$value)."'";
 					if ( $select == date('H:i:s',$value) ) {
-						echo " selected='selected' ";
+						echo ' selected="selected" ';
 					}
-				
+
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
-					 $pax_capacity = ($tbl_capacity >=1) ? $_SESSION['outlet_max_capacity']-$availability[date('H:i',$value)] : 0;
-					 if ( $pax_capacity <= 0 || $tbl_capacity < 1) {
-						echo " disabled='disabled' ";
+					 $pax_capacity = ($tbl_capacity >=1) ? $_SESSION['outlet_max_capacity']-$availability[date('H:i',$value)]-$_SESSION['pax'] : 0; 
+					if ( $pax_capacity <= 0 || $tbl_capacity < 1) {
+						echo ' disabled="disabled" ';
 					 }
 				
 					echo " >";
@@ -128,7 +129,7 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 					$txt_value = ($format == 24) ? date('H:i',$value) : date("g:i a", $value);
 					echo $txt_value;
 					if ($showtime == 1) {
-						echo " - ".$ava_passerby." Seats free";
+						echo " - ".$pax_capacity." Seats free";
 					}
 					echo"</option>\n";
 				}
@@ -144,6 +145,7 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
 { 
 		GLOBAL $general,$availability, $tbl_availability;
+
 		// calculate after midnight
 		$day    = date("d");
 		$endday = ($open_time < $close_time) ? date("d") : date("d")+1;
@@ -202,22 +204,20 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 				if($ava_passerby>0){
 					echo "<input name='$field' type='radio' value='".date('H:i',$value)."'";
 					if ( $select == date('H:i:s',$value) ) {
-						echo " selected='selected' ";
+						echo ' selected="selected" ';
 					}
 				
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
 					 $pax_capacity = ($tbl_capacity >=1) ? $max_passerby-$availability[date('H:i',$value)]-$_SESSION['pax'] : 0;
-					 if ( $pax_capacity < 0 || $tbl_capacity < 1) {
-						echo " disabled='disabled' ";
+					
+					if ( $pax_capacity < 0 || $tbl_capacity < 1) {
+						echo ' disabled="disabled" ';
 					 }
 				
 					echo " ><span class='radiotext'>";
 				
 					$txt_value = ($format == 24) ? date('H:i',$value) : date("g:i a", $value);
-					echo $txt_value;
-					if ($showtime == 1) {
-						echo " - ".$ava_passerby." Seats free";
-					}
+					echo $availability[date('H:i',$value)]." ".$txt_value;
 					echo "</span>";
 				}
 			}
@@ -249,7 +249,7 @@ function personsList($max_pax = '12', $standard = '4',$tablename='reservation_pa
 		for ($i=1; $i <= $max_pax; $i++) { 
 			echo "<option value='".$i."'";
 
-			if ( $i < $pax_capacity ) {
+			if ( $i > $pax_capacity ) {
 				echo " disabled='disabled' ";
 			}else{
 				echo ($i == $standard) ? "selected='selected'" : "";

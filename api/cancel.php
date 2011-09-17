@@ -79,8 +79,16 @@ $prp_info = querySQL('property_info');
 	<link rel="shortcut icon" href="http://www.myseat.us/favicon.ico">
 
 	<!-- CSS - Setup -->
-	<link href="style/style.css" rel="stylesheet" type="text/css" />
 	<link href="style/datepicker.css" rel="stylesheet" type="text/css" />
+	<?php
+	// Mobile Browser detection
+		$mobile_browser = checkMobile();
+		if ($mobile_browser > 0) {
+			echo '<link href="style/mobile.css" rel="stylesheet" type="text/css" />';
+		}else{
+			echo '<link href="style/style.css" rel="stylesheet" type="text/css" />';
+		}
+	?>
 
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
@@ -89,7 +97,7 @@ $prp_info = querySQL('property_info');
     <script src="js/functions.js"></script>
 
 	<!-- Here you can define your own color scheme for the booking form -->
-	<!--
+<!--	
 		<style type="text/css">
 			html {
 				background:url(images/html-bg.jpg) left top repeat !important;
@@ -118,7 +126,7 @@ $prp_info = querySQL('property_info');
 				text-shadow: none;
 			}
 		</style>
-	-->
+-->	
 	<!-- color scheme for the booking form END -->
 
     <title><?php echo _edit_reservation;?></title>

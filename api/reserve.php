@@ -33,7 +33,7 @@ header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CN
 // ** SETTINGS **
 // Select the type of time selector:
 // 'radio': radio buttons; 'drop': select box 
-$time_selector = "radio";
+$time_selector = "rad";
 
 //link to terms&condition page
 // Your license
@@ -47,7 +47,7 @@ $terms_link = "http://www.myseat.us/terms.htm";
 
 // initial standard settings
 $_SESSION['role'] = 6;
-
+$_SESSION['resID'] = 0;
 // PHP part of page / business logic
 // ** set configuration
 	include('../config/config.general.php');
@@ -63,17 +63,6 @@ $_SESSION['role'] = 6;
 	include('../web/classes/connect.db.php');
 // ** all database queries
 	include('../web/classes/db_queries.db.php');
-
-// Mobile Browser detection
-	$mobile_browser = checkMobile();
-	if ($mobile_browser > 0) {
-		$fwd_lnk = "../mobile/index.php?";
-		foreach ($_GET as $key => $value) {
-			$fwd_lnk .= $key."=".$value."&"; 
-		}
-		$fwd_lnk = substr($fwd_lnk,0,-1);
-		header("Location: ".$fwd_lnk);
-	}
 		
 // get and define referer
 	$ref = getHost($_SERVER['HTTP_REFERER']);
@@ -167,7 +156,6 @@ if($check_web_outlet==1){
     // get availability by timeslot
     $availability = getAvailability($resbyTime,$general['timeintervall']);
     $tbl_availability = getAvailability($tblbyTime,$general['timeintervall']);
-
   // some constants
     $outlet_name = querySQL('db_outlet');
 	 $max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
@@ -213,8 +201,18 @@ if($check_web_outlet==1){
 	<link rel="shortcut icon" href="http://www.myseat.us/favicon.ico">
 
 	<!-- CSS - Setup -->
-	<link href="style/style.css" rel="stylesheet" type="text/css" />
 	<link href="style/datepicker.css" rel="stylesheet" type="text/css" />
+	<?php
+	// Mobile Browser detection
+		$mobile_browser = checkMobile();
+		//$mobile_browser = 1;
+		if ($mobile_browser > 0) {
+			$time_selector = "drop"; // mobile has always dropdown menu
+			echo '<link href="style/mobile.css" rel="stylesheet" type="text/css" />';
+		}else{
+			echo '<link href="style/style.css" rel="stylesheet" type="text/css" />';
+		}
+	?>
 
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
@@ -316,9 +314,9 @@ if($check_web_outlet==1){
 	<h3><?php echo _time;?></h3>
 		<?php
 		if ($time_selector == "radio") {
-		timeFields($general['timeformat'], 30,'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
+		timeFields($general['timeformat'], $general['timeintervall'],'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
 		}else{
-		    timeList($general['timeformat'], 30,'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
+		    timeList($general['timeformat'], $general['timeintervall'],'reservation_time',$time,$_SESSION['selOutlet']['outlet_open_time'],$_SESSION['selOutlet']['outlet_close_time'],0);
 		} 
 		?>
 		<?php
