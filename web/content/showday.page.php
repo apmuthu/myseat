@@ -3,7 +3,13 @@
 	<ul class="first_level_tab">
 		<li>
 		<a href="main_page.php?q=1" <?php if ($q == 1 || $q == 4) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
-				<?php echo _confirmed_reservations; ?>
+				<?php 
+				if ($q == 4){
+					echo _search;	
+				}else{
+					echo _confirmed_reservations;
+				} 
+				?>
 			</a>
 		</li>
 		<?php 
@@ -15,11 +21,13 @@
 				echo '</a></li>';
 		} 
 		?>
+		<?php if ($q != 4):?>
 		<li>
 			<a href="main_page.php?q=3&s=1" <?php if ($q == 3) { echo " class='active'";}else{ echo " class='inactive'"; }?> >
 				<?php echo _canceled_reservations; ?>
 			</a>
 		</li>
+		<?php endif; ?>
 	</ul>	
 	<!-- End 1st level tab -->
 	
