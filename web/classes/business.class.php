@@ -681,26 +681,33 @@ function maxCapacity(){
 function reservationsByTime($kind='pax') {
 
 	$availability_by_time = array();
-	$availability =	querySQL('availability');
-	if ($availability) {
-		foreach($availability as $row) {
-			$pax_by_time[$row->reservation_time] = $row->pax_total;
-			$tbl_by_time[$row->reservation_time] = $row->tbl_total;
-		}
-	}
-	$pass_availability = querySQL('passerby_availability');
-	if ($pass_availability) {
-		foreach($pass_availability as $row) {
-			$pass_by_time[$row->reservation_time] = $row->passerby_total;
-		}
-	}
 	
 	//return values
 	if( $kind=='pax' ){
+		$availability =	querySQL('availability');
+		if ($availability) {
+			foreach($availability as $row) {
+				$pax_by_time[$row->reservation_time] = $row->pax_total;
+				$tbl_by_time[$row->reservation_time] = $row->tbl_total;
+			}
+		}
 	    return $pax_by_time;
 	}else if( $kind=='tbl' ){
+		$availability =	querySQL('availability');
+		if ($availability) {
+			foreach($availability as $row) {
+				$pax_by_time[$row->reservation_time] = $row->pax_total;
+				$tbl_by_time[$row->reservation_time] = $row->tbl_total;
+			}
+		}
 	    return $tbl_by_time;
 	}else if( $kind=='pass' ){
+		$pass_availability = querySQL('passerby_availability');
+		if ($pass_availability) {
+			foreach($pass_availability as $row) {
+				$pass_by_time[$row->reservation_time] = $row->passerby_total;
+			}
+		}
 		return $pass_by_time;
 	}
 }
