@@ -33,7 +33,7 @@ header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CN
 // ** SETTINGS **
 // Select the type of time selector:
 // 'radio': radio buttons; 'drop': select box 
-$time_selector = "rad";
+$time_selector = "radio";
 
 //link to terms&condition page
 // Your license
@@ -152,13 +152,15 @@ if($check_web_outlet==1){
     $resbyTime = reservationsByTime('pax');
     $tblbyTime = reservationsByTime('tbl');
 	$_SESSION['passbyTime'] = reservationsByTime('pass');
-
+	// print_r($_SESSION['passbyTime']);
+	// echo $_SESSION['outletID'].", ".$_SESSION['selectedDate'].", ".$_SESSION['resID'];
     // get availability by timeslot
     $availability = getAvailability($resbyTime,$general['timeintervall']);
     $tbl_availability = getAvailability($tblbyTime,$general['timeintervall']);
-  // some constants
+	
+	// some constants
     $outlet_name = querySQL('db_outlet');
-	 $max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
+	$max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
 	 $pax_capacity = $max_passerby - $availability[$selected_time];
 }
   // translate to selected language
@@ -175,6 +177,7 @@ if($check_web_outlet==1){
 	if( $_SESSION['lang'] == ''){
 		$_SESSION['lang'] = $language;
 	}
+	//$_SESSION['lang'] = 'en';
 	$lang = substr($_SESSION['lang'],0,2);
 	translateSite($lang,'../web/');
 ?>

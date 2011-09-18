@@ -60,7 +60,7 @@ function checkMobile(){
 function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
 { 
 		GLOBAL $general,$availability, $tbl_availability;
-		
+
 		// calculate after midnight
 		$day    = date("d");
 		$endday = ($open_time < $close_time) ? date("d") : date("d")+1;
@@ -145,7 +145,6 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$close_time='24:00:00',$showtime=0) 
 { 
 		GLOBAL $general,$availability, $tbl_availability;
-
 		// calculate after midnight
 		$day    = date("d");
 		$endday = ($open_time < $close_time) ? date("d") : date("d")+1;
@@ -209,7 +208,7 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 				
 					 $tbl_capacity = $_SESSION['outlet_max_tables']-$tbl_availability[date('H:i',$value)];
 					 $pax_capacity = ($tbl_capacity >=1) ? $max_passerby-$availability[date('H:i',$value)]-$_SESSION['pax'] : 0;
-					
+			
 					if ( $pax_capacity < 0 || $tbl_capacity < 1) {
 						echo ' disabled="disabled" ';
 					 }
@@ -217,7 +216,7 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 					echo " ><span class='radiotext'>";
 				
 					$txt_value = ($format == 24) ? date('H:i',$value) : date("g:i a", $value);
-					echo $availability[date('H:i',$value)]." ".$txt_value;
+					echo $txt_value;
 					echo "</span>";
 				}
 			}
