@@ -271,7 +271,7 @@ $(document).ready(function() {
 
 	//activate Autocomplete
 	 $("#reservation_guest_name").autocomplete({
-		source: 'classes/autocomplete_res.php', 
+		source: 'ajax/autocomplete_res.php', 
 		minLength: 2,
 		select: function(event, ui) {
 			$('#reservation_guest_name').val(ui.item.value);
@@ -286,11 +286,11 @@ $(document).ready(function() {
 		}
 	  });
 	 $("#reservation_booker_name").autocomplete({
-		source:'classes/autocomplete.php?field=reservation_booker_name',
+		source:'ajax/autocomplete.php?field=reservation_booker_name',
 		minLength: 2
 	  });
 	$("#reservation_guest_email").autocomplete({
-		source:'classes/autocomplete.php?field=reservation_guest_email',
+		source:'ajax/autocomplete.php?field=reservation_guest_email',
 		minLength: 2,
 		select: function (event, ui) {
 		                    if (ui.item) {

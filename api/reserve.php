@@ -215,11 +215,11 @@ if($check_web_outlet==1){
 	?>
 
     <!-- jQuery Library-->
-    <script src="js/jQuery.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.js"></script> 
-    <script src="js/functions.js"></script>
-	<script type="text/javascript" src="../web/lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js"></script>	
+    <script src="js/jQuery.min.js" type="text/javascript"></script>
+    <script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
+    <script src="js/jquery-ui.js" type="text/javascript"></script> 
+    <script src="js/functions.js" type="text/javascript"></script>
+	<script src="../web/lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js" type="text/javascript"></script>	
 
 <!-- Uncomment to define your own color scheme for the booking form -->
 <!-- The example here is from the Monmarthe DEMO page at myseat.us -->

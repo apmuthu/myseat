@@ -1,32 +1,29 @@
 <?php
 session_start();
-$_SESSION['language'] = ($_SESSION['language']) ? $_SESSION['language'] : 'en';
+/*
+**************************************************************************
+                         Realtime lookup
+**************************************************************************/
 
-// Check for a unique username
-// ** set configuration
-    include('../../config/config.general.php');
-// ** database functions
-    include('../classes/database.class.php');
-// ** connect to database
-    include('../classes/connect.db.php');
-// ** all database queries
-    include('../classes/db_queries.db.php');
-// ** localization functions
-    include('../classes/local.class.php');
-// ** set configuration
-    include('../../config/config.inc.php');
-// translate to selected language
-    translateSite(substr($_SESSION['language'],0,2),'../');
+include_once('../../config/config.general.php');
+	
+mysql_connect($settings['dbHost'], $settings['dbUser'], $settings['dbPass']);
+mysql_select_db($settings['dbName']) or die ("No Database");
 
-// prevent dangerous input
-secureSuperGlobals();
-
+	/* get last id fo page */
 	$id = $_REQUEST['lastid']; // last ID
-	$newreservation = querySQL('realtime_res');
-
-	if( $newreservation > 0 ){
-		echo "<div class='alert_warning'><p style='margin-bottom:10px;'><img src='images/icon_info.png' alt='error' class='middle'/>";
-		echo '<a href="main_page.php?selectedDate='.$_SESSION['selectedDate'].'">('.$newreservation.') '._new_entry.'</a>';
-		echo "</p></div>";
-	}
+	/* build sql query */
+	$sql = sprintf("SELECT count(*) as new FROM reservations 
+						WHERE `reservation_id` > '%d'
+						AND `reservation_date`='%s' 
+						AND `reservation_outlet_id`='%d' 
+						AND `reservation_hidden`=0 
+						",$id,$_SESSION['selectedDate'],$_SESSION['outletID']);
+	
+	/* run sql query */
+	$fetch = mysql_query($sql);
+	/* Free connection resources. */
+	mysql_close();
+	/* return number of new reservations*/
+	echo mysql_result($fetch, 0);
 ?>

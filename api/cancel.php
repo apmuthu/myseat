@@ -91,10 +91,10 @@ $prp_info = querySQL('property_info');
 	?>
 
     <!-- jQuery Library-->
-    <script src="js/jQuery.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script type="text/javascript" src="js/jquery-ui.js"></script> 
-    <script src="js/functions.js"></script>
+    <script src="js/jQuery.min.js" type="text/javascript" ></script>
+    <script src="js/jquery.easing.1.3.js" type="text/javascript" ></script>
+    <script src="js/jquery-ui.js" type="text/javascript" ></script> 
+    <script src="js/functions.js" type="text/javascript" ></script>
 
 	<!-- Here you can define your own color scheme for the booking form -->
 <!--	

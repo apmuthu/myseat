@@ -8,7 +8,6 @@
 <script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui-1.8.10.custom.min.js"></script>
 
-
 	<!--[if IE]>
 		<script type="text/javascript" src="js/excanvas.js"></script>
 	<![endif]-->
@@ -35,30 +34,20 @@
 	    jQuery.datepicker._formatDate(inst,inst.selectedDay, inst.selectedMonth, inst.selectedYear));
 	}
 	
-	function callNotifications() {
-      $.ajax({
-               method: 'get',
-                  url : 'ajax/notify.php',
-                  dataType : 'text',
-                  success: 
-					function (text) { 
-						if(text.length > 1){
-							$.jGrowl(text, { sticky: true, theme: 'manilla' });
-						} 
-						}
-             });
-	}
-	
 $(document).ready(function() {
 		
 		// Preload images
 		$.preloadCssImages();
 		
 		// Realtime reservation updates with arte plugin
-		$.arte({'ajax_url': 'ajax/realtime.php?lastid=<?php echo $_SESSION['max_id']; ?>', 'on_success': update_field, 'time': 1000}).start();
+		$.arte({'ajax_url': 'ajax/realtime.php?lastid=<?php echo $_SESSION['max_id']; ?>', 'on_success': update_field, 'time': 5000}).start();
 			function update_field(data)
 			{
-				$("#realtimeupdate").html(data);
+				if ( data > 0 ) {
+				$("#realtimeupdate").html(
+					"<div class='alert_warning'><p style='margin-bottom:10px;'><a href='main_page.php?selectedDate=<?php echo $_SESSION['selectedDate']; ?>'>(" + data + ") <?php echo _new_entry;?></a></p></div>"
+					);	
+				};
 			}
 		
 		// edit-toogle buttons
@@ -138,10 +127,6 @@ $(document).ready(function() {
 			dateFormat: '<?php echo $general['datepickerformat'];?>',
 			regional: '<?php echo substr($_SESSION['language'],0,2);?>'
 		});
-		
-		// NOTIFICATION: Check periodically for new reservations
-		// and notify every 1 minute
-		//var holdTheInterval = setInterval(callNotifications, 35000);
 		
 		<?php if($_SESSION['page']=='3'):?>
 			/* Data Graph */

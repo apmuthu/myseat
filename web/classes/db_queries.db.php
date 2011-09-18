@@ -62,15 +62,6 @@ function querySQL($statement){
 							",$_SESSION['selectedDate'],$_SESSION['outletID']);
 			return getResult($result);
 		break;
-		case 'realtime_res':
-			$result = query("SELECT count(*) as new FROM reservations 
-							WHERE `reservation_id` > '%d'
-							AND `reservation_date`='%s' 
-							AND `reservation_outlet_id`='%d' 
-							AND `reservation_hidden`=0 
-							",$id,$_SESSION['selectedDate'],$_SESSION['outletID']);
-			return getResult($result);
-		break;
 		case 'max_id':
 			$result = query("SELECT MAX(reservation_id) FROM reservations
 							WHERE `reservation_date`='%s' 

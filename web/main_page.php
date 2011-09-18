@@ -21,6 +21,9 @@ This file is part of mySeat.
 
 /** Login **/
 // ** set configuration
+	//Software version
+	$sw_version = 'v0.188';
+	
 	include('../config/config.general.php');
 	
 	require_once '../PLC/plc.class.php';
