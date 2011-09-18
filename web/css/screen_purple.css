@@ -57,7 +57,7 @@ body.login                              {   text-align: left }
 #login_top                              {
                                             width: 100%;
                                             height: 120px;
-                                            background-color: #369;
+                                            background-color: #341931;
                                             border-bottom: 1px solid #fff;
                                             text-align: center;
                                         }
@@ -366,26 +366,24 @@ input.button_light:active               {
 #top_bar                                {
                                             width: 100%;
                                             height: 60px;
-											background-color: #369;
-											/* background-color: #341931; */
-                                            border-bottom: 1px solid #385474;
+											background-color: #341931;
+                                            /* background: #1A1C27 url('../images/bg_head.png') repeat-x; */
+                                            border-bottom: 1px solid #444;
                                         }
-#top_bar a                              { 	/* color: #BFABC9; */
-											color:#FFF; }
-#top_bar a:hover, #top_bar a:active     { 	color: #293d54; }
+#top_bar a                              { color: #BFABC9 }
+#top_bar a:hover, #top_bar a:active     { color: #ccc }
 #top_bar .logo                          {
                                             float: left;
                                             margin: 9px 0 0 30px;
                                         }
 #top_bar .account                       {
                                             float: right;
-											color:#ccc;
                                             margin: 11px 30px 0 0;
                                         }
 #top_bar .account .detail               {
                                             float: left;
                                             padding-right: 10px;
-                                            border-right: 1px solid #ccc;
+                                            border-right: 1px solid #666;
                                         }
 #top_bar .account .icon                 {
                                             float: left;
@@ -401,7 +399,7 @@ input.button_light:active               {
 #menu_wrapper                           {
                                             width: 100%;
                                             height: 60px;
-											background-color: #0c2544;
+											background-color: #000;
                                             /* background: transparent url('../images/bg_menu.png') repeat-x; */
                                             border-bottom: 1px solid #fff;
                                         }
@@ -410,15 +408,9 @@ input.button_light:active               {
                                             margin: 13px 30px 0 0;
                                             width: 252px;
                                             height: 30px;
-                                            /* background: transparent url('../images/bg_search.png') repeat-x; */
+                                            background: transparent url('../images/bg_search.png') repeat-x; 
                                         }
-#menu_wrapper #search input             { 
-											margin: 3px 0 0 40px;
-											background:#131d29;
-											border: 1px solid #293d55;
-											-webkit-border-radius:3px;
-											-moz-border-radius:3px;
-										}
+#menu_wrapper #search input             { margin: 3px 0 0 40px }
 .nav                                    {
                                             float: left;
                                             display: block;
@@ -843,8 +835,9 @@ input.button_light:active               {
                                             width: 100%;
                                             height: 50px;
                                             padding-top: 10px;
-											background-color: #131d29;
-                                            border-top: 1px solid #ccc;
+											background-color: #341931;
+                                            /* background: #1A1C27000 url('../images/bg_head.png') repeat-x; */
+                                            border-top: 1px solid #fff;
                                             margin-top: 30px;
                                             text-align: center;
                                             color: #fff;

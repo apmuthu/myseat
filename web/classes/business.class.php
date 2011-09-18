@@ -679,7 +679,7 @@ function maxCapacity(){
 // get reservations of day/outlet, grouped by time
 // $kind = 'pax' (persons) or 'tbl' (tables) or 'pass' (passerby)
 function reservationsByTime($kind='pax') {
-	
+
 	$availability_by_time = array();
 	$availability =	querySQL('availability');
 	if ($availability) {

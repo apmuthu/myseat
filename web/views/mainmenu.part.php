@@ -4,7 +4,7 @@
 	<ul class="nav margin-left-40">
 		<li>
 			<a href="main_page.php?p=1" <?php if($_SESSION['page']=='1'){echo "class='active'";} ?> >
-				<?php echo _dashboard; ?>	
+				<?php echo _dashboard; ?>
 			</a>
 		</li>
 		<li>

@@ -16,9 +16,14 @@
 				$_SESSION['prp_name'] = querySQL('db_property');
 			}
 			
+			$filename = substr(dirname(__FILE__),0,-9)."xt-admin";
 			
 			if($this_page != "property"){
-				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href=''><span class='bold'> ".$_SESSION['u_name']."</span></a>, ".$roles[$_SESSION['role']]." - ".$_SESSION['prp_name'];
+				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href='";
+				if ($_SESSION['role']=='1' && file_exists($filename)) {
+					echo"../XT-admin/index.php";				
+				}
+				echo "'><span class='bold'> ".$_SESSION['u_name']."</span></a>, ".$roles[$_SESSION['role']]." - ".$_SESSION['prp_name'];
 			}
 			?>
 		</div>
