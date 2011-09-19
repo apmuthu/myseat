@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.188                        =-= 
-=-= Date:    15.09.2011                   =-= 
-=-= Time:    16:59 GMT                    =-= 
+=-= Version: 0.190                        =-= 
+=-= Date:    19.09.2011                   =-= 
+=-= Time:    06:49 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,13 +16,12 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LATEST CHANGES in 0.188
+LATEST CHANGES in 0.190
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Status 'No Show' and 'Departed' affects to availability
-- Search function now searches in actual and canceled reservations
-- 'Today' button in datepicker
-- New realtime notification for new reservations
-- Software version shown in header
+- Bugfixes in online booking form
+- Bugfixes in timecontrol
+- New colors in GUI
+
 
 
 INSTALLATION
