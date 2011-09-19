@@ -71,10 +71,14 @@ $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
 		}
 		
 		$txt_time = ($general['timeformat'] == 24) ? date('H:i',$value) : date("g:i a", $value);
-		if($tbl_by_time == 100){
+		if($tbl_by_time >= 100){
 			$txt_capacity = 0;
 		}else if($tbl_by_time <= 25){
 			$txt_capacity = $pax_capacity;
+		}
+		
+		if ($txt_capacity < 0) {
+		 	$txt_capacity = '0'; 
 		}
 		
 		// Generating the timeline graph
