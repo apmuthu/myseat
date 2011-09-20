@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!-- Begin one column box -->
 <div class="onecolumn">
 	<div class="header">
@@ -47,7 +50,7 @@
 			<tr>
 				<th><span class='bold'><?php echo _outlets; ?></strong></th>
 				<td>
-							<?php getOutletList(1,'enabled'); ?>
+							<?php getOutletList(0,'enabled'); ?>
 				</td>
 			</tr>
 			<tr>

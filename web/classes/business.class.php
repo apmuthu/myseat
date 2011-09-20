@@ -254,9 +254,16 @@ function getTypeList($title='',$disabled=''){
 		echo "</select>\n";
 }
 
-function getOutletList($outlet_id = 1, $disabled = 'enabled',$tablename='outlet_id'){
+function getOutletList($outlet_id = 0, $disabled = 'enabled',$tablename='outlet_id'){
 	echo"<select name='".$tablename."' id='".$tablename."' size='1' $disabled>\n";
 		
+		// Empty
+		if (condition) {
+			echo "<option value='' ";
+			echo ($title=="") ? "selected='selected'" : "";
+			echo ">"._general."</option>\n";
+		}
+
 		$outlets = querySQL('db_outlets');
 		
 		foreach($outlets as $row) {

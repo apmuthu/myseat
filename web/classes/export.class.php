@@ -1,4 +1,5 @@
 <?php 
+session_start();
 // ** set configuration
 include('../../config/config.general.php');
 // ** database functions
@@ -30,8 +31,12 @@ FROM reservations INNER JOIN outlets ON (reservation_outlet_id = outlet_id)
 WHERE reservation_date >= '".$start_date."' AND reservation_date <= '".$end_date."' ";
 if($reservation_hotelguest_yn!=''){
 $sql .="AND reservation_hotelguest_yn = '".$reservation_hotelguest_yn."' ";
+}elseif($outlet_id == 0){
+$sql .="AND reservation_wait = 0 AND reservation_hidden = 0 AND property_id = '".$_SESSION['propertyID']."' ORDER BY reservation_guest_name ASC";	
+}else{
+$sql .="AND reservation_wait = 0 AND reservation_hidden = 0 AND reservation_outlet_id = '".$outlet_id."' ORDER BY reservation_guest_name ASC";	
 }
-$sql .="AND reservation_wait = 0 AND reservation_hidden = 0 AND reservation_outlet_id = '".$outlet_id."' ORDER BY reservation_guest_name ASC";
+
 
 $result = query($sql);
 
@@ -116,7 +121,7 @@ if (isset($w) && ($w==1)) //check for $w again
 	}
 	//define separator (defines columns in excel & tabs in word)
 	$sep = "\t"; //tabbed character
-
+echo $sql;
 	//start of printing column names as names of MySQL fields
 	for ($i = 0; $i < mysql_num_fields($result); $i++)
 	{
