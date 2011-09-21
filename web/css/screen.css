@@ -91,7 +91,7 @@ label                                   { font-family: 'DroidSansBold', Arial; }
                                         }
 img.middle                              {
                                             vertical-align: middle;
-                                            margin-right: 5px;
+											padding: 5px;
                                         }
 .border                                 { border: 5px solid #fff }
 h1                                      {

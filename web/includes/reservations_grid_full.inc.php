@@ -1,11 +1,14 @@
 <!-- Begin reservation table data -->
-<table class="global resv-table" style="width:100% !important" cellpadding="0" cellspacing="0">
+<table class="global resv-table" cellpadding="0" cellspacing="0">
 	<thead>
 	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>
 	    	<th><?php echo _time; ?></th>
+			<th></th>
+			<th><?php echo _guest_name; ?></th>
 			<th><?php echo _pax; ?></th>
-			<th style='width:20%'><?php echo _guest_name; ?></th>
-			<th style='width:20%'> 
+			<th><?php echo _phone_room; ?></th>
+			<th><?php echo _type; ?></th>
+			<th> 
 			<?php
 			 	if ($_SESSION['page'] == 1) {
 			 		echo _outlets;
@@ -14,14 +17,15 @@
 				} 
 			?>
 			</th>
+			<th class='noprint'><?php echo _author; ?></th>
 			<?php
 			if($_SESSION['wait'] == 0){
-				echo "<th>"._table."</th>";
+				echo "<th style='width:2%'>"._table."</th>";
 			}
 			?>
-	    	<th><?php echo _status; ?></th>
-			<th class='noprint'><?php echo _author; ?></th>
+	    	<th style='width:3%'><?php echo _status; ?></th>
 			<th class='noprint'></th>
+			<th class='noprint' style='width:2%'></th>
 	    </tr>
 	</thead>
 	<tbody>
@@ -57,23 +61,17 @@
 			}
 			// daylight coloring
 			if ($row->reservation_time > $daylight_evening){
-				echo " class='evening' >";
+				echo " class='evening' ";
 			}else if ($row->reservation_time > $daylight_noon){
-				echo " class='afternoon' >";
+				echo " class='afternoon' ";
 			}else if ($row->reservation_time < $daylight_noon){
-				echo " class='morning' >";
+				echo " class='morning' ";
 			}
-			// old reservations symbol
-			if( (strtotime($row->reservation_timestamp) + $general['old_days']*86400) <= time() ){
-				echo "<img src='images/icons/clock-ex.png' class='help tipsy middle' title='"._sentence_11."' />";
-			}else{
-				echo "<img src='images/icons/clock.png' class='middle'/>";
-			}
-			echo "<strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>";
-			echo"<td>
-				<strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;".$row->reservation_hotelguest_yn."</td>";
-				//<img src='images/icons/user-silhouette.png' class='middle'/>
-			echo "<td>".printTitle($row->reservation_title)."<strong> <a href='?p=102&resID=".$id."'"; 
+			
+			echo "><strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>
+			<td>".printTitle($row->reservation_title)."</td>
+			<td>
+			<strong><a href='?p=102&resID=".$id."'"; 
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
@@ -83,13 +81,22 @@
 	            echo "&nbsp;<img src='images/icons/arrow-repeat.png' alt='"._recurring.
 					 "' title='"._recurring."' class='tipsy' border='0' >";
 	            }
-			echo"</td><td>";
+				// old reservations symbol
+				if( (strtotime($row->reservation_timestamp) + $general['old_days']*86400) <= time() ){
+					echo "<img src='images/icons/clock-ex.png' class='help tipsy right-side' title='"._sentence_11."' />";
+				}
+			echo"</td>
+			<td><strong>".$row->reservation_pax."</strong></td>
+			<td>".$row->reservation_guest_phone."</td>
+			<td>".$row->reservation_hotelguest_yn."</td>
+			<td>";
 				if ($_SESSION['page'] == 1) {
 			 		echo $row->outlet_name;
 			 	}else{
 					echo $row->reservation_notes;
 				}
-			echo "</td>";
+			echo "</td>
+			<td class='noprint'>".$row->reservation_booker_name."</td>";
 			if($_SESSION['wait'] == 0){
 				echo "<td class='big tb_nr'><div id='reservation_table-".$id."' class='inlineedit'>".$row->reservation_table."</div></td>";
 			}
@@ -97,7 +104,7 @@
 				getStatusList($id, $row->reservation_status);
 			echo "</div></td>";
 			echo "<td class='noprint'>";
-			echo "<small>".$row->reservation_booker_name." | ".humanize($row->reservation_timestamp)."</small>";
+			echo "<small>".humanize($row->reservation_timestamp)."</small>";
 			echo "</td>";
 			echo "<td class='noprint'>";
 			// DELETE BUTTON
@@ -124,16 +131,20 @@
 	</tbody>
 	<tfoot>
 		<tr>
+			<td colspan="3" class="bold right-side-text"><?php echo _guest_summary;?></td>
+			<td class="bold"><?php echo $guestsum;?></td>
+			<td class="bold right-side-text"><?php echo _tables_summary;?></td>
+			<td class="bold"><?php echo $tablesum;?></td>
 			<td></td>
-			<td colspan="2" class="bold"><?php echo $guestsum;?>&nbsp;&nbsp;<?php echo _guest_summary;?></td>
-			<td></td>
-			<td colspan="2" class="bold"><?php echo $tablesum;?>&nbsp;&nbsp;<?php echo _tables_summary;?></td>
 			<td></td>
 			<?php
 			if($_SESSION['wait'] == 0){
 				echo "<td></td>";
 			}
 			?>
+			<td class="noprint"></td>
+			<td class="noprint"></td>
+			<td class="noprint"></td>	
 		</tr>
 	</tfoot>
 </table>

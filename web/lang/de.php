@@ -282,7 +282,7 @@ define ( '_move_reservation_to', 'Verschiebe Reservierung nach' );
 define ( '_sentence_5', 'Achtung: Dieser Tisch wurde schon vergeben!' );
 
 //original text: "The restaurant has already opened. Please contact the Maitre!"
-define ( '_sentence_6', 'Das Restaurant hat schon geoeffnet. Bitte kontaktieren Sie den zuständigen Maitre!' );
+define ( '_sentence_6', 'Das Restaurant hat schon geöffnet. Bitte kontaktieren Sie den zuständigen Maitre!' );
 
 //original text: "Are you sure to reserve such big table? From "
 define ( '_sentence_8', 'Sind Sie sicher das Sie einen so grossen Tisch reservieren wollen? Ab ' );
@@ -495,10 +495,10 @@ define ( '_no_', 'Nein' );
 define ( '_yes_', 'OK' );
 
 //original text: "NYA,Arrived,Seated,Parked,Departed,No Show"
-define ( '_statuslist', 'NYA,Angekommen,Plaziert,an Bar,Gegangen,No Show' );
+define ( '_statuslist', 'NYA,Angekommen,Platziert,an Bar,Gegangen,No Show' );
 
 //original text: "delete series"
-define ( '_delete_all_entries', 'serie löschen' );
+define ( '_delete_all_entries', 'Serie löschen' );
 
 //original text: "Settings"
 define ( '_settings', 'Einstellungen' );
