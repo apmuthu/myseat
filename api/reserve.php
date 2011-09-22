@@ -160,8 +160,8 @@ if($check_web_outlet==1){
 	
 	// some constants
     $outlet_name = querySQL('db_outlet');
-	$max_passerby = ($_SESSION['passerby_max_pax'] == 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['passerby_max_pax'];
-	 $pax_capacity = $max_passerby - $availability[$selected_time];
+	$max_pax = ($_SESSION['selOutlet']['passerby_max_pax'] <= 0) ? $_SESSION['selOutlet']['outlet_max_capacity'] : $_SESSION['selOutlet']['passerby_max_pax'];
+	$max_passerby = ($_SESSION['passerby_max_pax'] <= 0) ? $max_pax : $_SESSION['passerby_max_pax'];
 }
   // translate to selected language
 	$language = $general['language'];

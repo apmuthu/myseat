@@ -233,7 +233,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `reservations` (
   `reservation_bill_paid` varchar(10) NOT NULL DEFAULT '',
   `reservation_billet_sent` varchar(10) NOT NULL DEFAULT '',
   `reservation_parkticket` int(3) DEFAULT NULL,
-  `reservation_table` int(3) DEFAULT NULL,
+  `reservation_table` varchar(25) DEFAULT NULL,
   `reservation_status` varchar(25) DEFAULT 'NYA',
   `reservation_advertise` varchar(5) NOT NULL DEFAULT 'NO',
   `reservation_referer` text,
