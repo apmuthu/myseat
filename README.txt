@@ -38,6 +38,11 @@ Open <config/config.general.php> in a text editor and fill in your database deta
 Browse to your new mySeat site to the directory /install.
 This will take you to the mySeat installer, which starts with a small explanation.
 
+UPDATE
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+To update mySeat to a newer version, it is not necessary to do a full install.
+Just replace the old files on the web server.
+If there is a need to change or extend the database, it is clearly stated.
 
 MAIN FEATURES
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
