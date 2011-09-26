@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.190                        =-= 
-=-= Date:    19.09.2011                   =-= 
-=-= Time:    06:49 GMT                    =-= 
+=-= Version: 0.1905                       =-= 
+=-= Date:    26.09.2011                   =-= 
+=-= Time:    06:03 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,9 +16,10 @@ Collaborate effortlessly on reservations.
 Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
-LATEST CHANGES in 0.190
+LATEST CHANGES in 0.1905
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - Bugfixes in online booking form
+- Adaption of warning message
 - Bugfixes in timecontrol
 - New colors in GUI
 

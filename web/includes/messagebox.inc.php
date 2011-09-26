@@ -2,7 +2,7 @@
 // get outlet maximum capacity
 $maxC = maxCapacity();
 // get Pax by timeslot
-$passbyTime = reservationsByTime('pass');
+$passbyTime = reservationsByTime('pax');
 
 // Maitre day comment
 if (trim($maitre['maitre_comment_day']) != "" && $_SESSION['page'] == 2 ) {
