@@ -4,7 +4,7 @@
 	
 	<!-- Begin logo -->
 	<div class="logo">
-		<a href="<?php echo dirname($_SERVER['PHP_SELF']);?>"><img src="images/logo.png" alt=""/></a>
+		<a href="<?php echo dirname($_SERVER['PHP_SELF']);?>/main_page.php"><img src="images/logo.png" alt=""/></a>
 	</div>
 	<!-- End logo -->
 	
@@ -21,7 +21,7 @@
 			if($this_page != "property"){
 				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href='";
 				if ($_SESSION['role']=='1' && file_exists($filename)) {
-					echo"../XT-admin/index.php";				
+					echo"../xt-admin/index.php";				
 				}
 				echo "'><span class='bold'> ".$_SESSION['u_name']."</span></a>, ".$roles[$_SESSION['role']]." - ".$_SESSION['prp_name'];
 			}
