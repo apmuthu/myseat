@@ -80,10 +80,13 @@ function timeList($format,$intervall,$field='',$select,$open_time='00:00:00',$cl
 		
 		// limit booking time at actual day
 		// not to book past times
-		if ($_SESSION['selectedDate'] == date('Y-m-d') && date('H:i:s') > $open_time) {
+		// Blocking reservations x hour(s) before an outlet starts
+		// in second e.g. 3600 = 1 hour
+		$before_start = 0;
+		if ($_SESSION['selectedDate'] == date('Y-m-d') && date('H:i:s',time()+$before_start) > $open_time) {
 				//Set opentime to rounded actual time
 				$minutes = ceil(date('i')/$general['timeintervall'])*$general['timeintervall'];
-				$open_time = date('H').":".$minutes;
+				$open_time = date('H',time()+$before_start).":".$minutes;
 		}
 		// floor($min/60*4)/4*60
 
@@ -167,10 +170,13 @@ function timeFields($format,$intervall,$field='',$select,$open_time='00:00:00',$
 		
 		// limit booking time at actual day
 		// not to book past times
-		if ($_SESSION['selectedDate'] == date('Y-m-d') && date('H:i:s') > $open_time) {
+		// Blocking reservations x hour(s) before an outlet starts
+		// in second e.g. 3600 = 1 hour
+		$before_start = 0;
+		if ($_SESSION['selectedDate'] == date('Y-m-d') && date('H:i:s',time()+$before_start) > $open_time) {
 				//Set opentime to rounded actual time
 				$minutes = ceil(date('i')/$general['timeintervall'])*$general['timeintervall'];
-				$open_time = date('H').":".$minutes;
+				$open_time = date('H',time()+$before_start).":".$minutes;
 		}
 		// floor($min/60*4)/4*60
 

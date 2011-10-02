@@ -61,8 +61,8 @@ $prp_info = querySQL('property_info');
   // get Pax by timeslot
     $resbyTime = reservationsByTime();
   // get availability by timeslot
-    $availability = getAvailability($resbyTime,$general['timeintervall']);
-  // some constants
+    $availability = getAvailability($resbyTime,$general['timeintervall']); 
+ // some constants
     $bookingdate = date($general['dateformat'],strtotime($_POST['dbdate']));
     $bookingtime = formatTime($_POST['reservation_time'],$general['timeformat']);
     $outlet_name = querySQL('db_outlet');
@@ -88,7 +88,7 @@ $prp_info = querySQL('property_info');
 
     <title><?php echo _reservations;?></title>
 </head>
-<body>
+<body onLoad="window.parent.scroll(0,0);">
 <div id="page-content" style="margin-left: 10px;">
 	    <!-- page title -->
 	    <h2><?php echo _reservations;?><span></span> </h2>

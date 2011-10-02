@@ -22,16 +22,19 @@
 	}
 
 	// Email sender & receiver
-	$to = $_POST['reservation_guest_email'];
+	$to_guest = $_POST['reservation_guest_email'];
+	$to_admin = $_SESSION['selOutlet']['confirmation_email'];
 	$from = html_entity_decode($property['name'])." <".$_SESSION['selOutlet']['confirmation_email'].">";
-	$bcc = html_entity_decode($property['name'])." <".$_SESSION['selOutlet']['confirmation_email'].">";
+	//$bcc = html_entity_decode($property['name'])." <".$_SESSION['selOutlet']['confirmation_email'].">";
 
 	// To send HTML mail, the Content-type header must be set
-	$headers  = 'MIME-Version: 1.0' . "\r\n";
-	$headers .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+	$header_guest  = 'MIME-Version: 1.0' . "\r\n";
+	$header_guest .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
+	$header_guest .= 'From: ' . $from . "\r\n";
 	// Additional headers
-	$headers .= 'From: ' . $from . "\r\n";
-	$headers .= 'bcc: ' . $bcc . "\r\n";
+	$header_admin = 'From: ' . $from . "\r\n";
+	
+	//$headers .= 'Bcc: ' . $bcc . "\r\n";
 
 	// Subject of email
         if ( $_POST['email_type'] == 'en' ) {
@@ -89,6 +92,8 @@
 	$plain_text  = nl2br($plain_text);
 	
 	$message  = $salut.",<br/><br/>";
+	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
+	$res_details = formatTime($_POST['reservation_time'],$general['timeformat'])." "._for_." "._phone.": ".$_POST['reservation_guest_phone']." /"._note.": \"".$_POST['reservation_notes']."\"";
 	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
 	
 	// ===============
@@ -211,7 +216,22 @@
 		</body>
 		</html>';
 	
-	
+	//*** Outlet Admin notification email text
+	// if the line breaks are not working please try "\r\n" instead of "\n"
+	$notification_text  = _new_entry.".\n\n";
+	$notification_text  .= _booknum.": ".$_SESSION['booking_number']."\n";
+	$notification_text  .= _outlets.": ".$_SESSION['selOutlet']['outlet_name']."\n";
+	$notification_text  .= _date.": ".date($general['dateformat'],strtotime($_POST['reservation_date']))."\n";
+	$notification_text  .= _time.": ".formatTime($_POST['reservation_time'],$general['timeformat'])."\n";
+	$notification_text  .= _guest_name.": ".$_POST['reservation_guest_name']."\n";
+	$notification_text  .= _pax.": ".$_POST['reservation_pax']."\n";
+	$notification_text  .= _phone_room.": ".$_POST['reservation_guest_phone']."\n";
+	$notification_text  .= _email.": ".$_POST['reservation_guest_email']."\n";
+	$notification_text  .= _author.": ".$_POST['reservation_booker_name']."\n";
+	$notification_text  .= _note.": ".$_POST['reservation_notes']."\n\n";
+	$notification_text  .= _created.": ".date($general['dateformat'],time())."\n";
+
+
 	//***
 	//SEND OUT MAIL
 
@@ -219,31 +239,51 @@
 	if($settings['emailSMTP'] == 'SMTP'){
 		
 		//PHPMailer
-		$mail = new PHPMailer();
-		
+		$mail = new PHPMailer();					   // Instantiate your new class
 		$mail->IsSMTP(); 							   // telling the class to use SMTP
 		$mail->Host          = $settings['emailHost'];
 		$mail->SMTPAuth      = true;                   // enable SMTP authentication
 		$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
+		$mail->CharSet  	 = 'utf-8'; 			   // sets Encoding
+		//$mail->SMTPSecure	 = 'ssl'; 				   //  Used instead of TLS when only POP mail is selected
+		
+
 		$mail->Host          = $settings['emailHost']; // sets the SMTP server
 		$mail->Port          = $settings['emailPort']; // set the SMTP port
 		$mail->Username      = $settings['emailUser']; // SMTP account username
 		$mail->Password      = $settings['emailPass']; // SMTP account password
-		
-		$mail->SetFrom($_SESSION['selOutlet']['confirmation_email'], html_entity_decode($property['name']));
-		$mail->AddReplyTo($_SESSION['selOutlet']['confirmation_email'], html_entity_decode($property['name']));
+
+		// email message
+		$mail->SetFrom($to_admin, html_entity_decode($property['name']));
+		$mail->AddReplyTo($to_admin, html_entity_decode($property['name']));
 		$mail->Subject       = $subject;
 		$mail->AltBody       = $plain_text; // optional, comment out and test.
 		$mail->MsgHTML($html_text);
-		$mail->AddAddress($_POST['reservation_guest_email'], 'Guest');
+		$mail->AddAddress($to_guest, _pax);
 
 		  if(!$mail->Send()) {
 		    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
 		  }
 		  // Clear all addresses and attachments for next loop
 		  $mail->ClearAddresses();
+		
+		  // Outlet Admin notification email
+		 $mail->SetFrom($to_admin, html_entity_decode($property['name']));
+		 $mail->AddReplyTo($to_admin, html_entity_decode($property['name']));
+		 $mail->Subject = $subject;
+		 $mail->Body 	= $notification_text;
+		 $mail->AddAddress($to_admin, _reservations);
+		  
+		 if(!$mail->Send()) {
+		    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
+		 }
+		 // Clear all addresses and attachments for next loop
+		 $mail->ClearAddress();	
+		
 	} else{
 		//PHP native
-		mail( $to, $subject, $html_text, $headers);
+		mail( $to_guest, $subject, $html_text, $header_guest);
+		// Outlet Admin notification email
+		mail( $to_admin, $subject, $notification_text, $header_admin);
 	}
 		?>
