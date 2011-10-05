@@ -623,4 +623,13 @@ define ( '_form_notes', 'Wichtige Notizen (Allergien, Wünsche)');
 
 // original text: "I accept the terms of use of the restaurant."
 define ( '_reservation_terms', 'Ich akzeptiere die Nutzungsbedingungen des Restaurants.');
+
+// Default text of the admin notification email	
+define ( 'text_mail_1', '<br/>Vielen Dank für Ihre Reservierung in unserem');
+define ( 'text_mail_2', 'Gerne haben wir für Sie');
+define ( 'text_mail_3', 'Person(en) am');
+define ( 'text_mail_3.1', 'bis');
+define ( 'text_mail_4', 'um');
+define ( 'text_mail_5', 'reserviert');
+define ( 'text_mail_6', 'Wenn Sie Ihre Reservierung ändern oder stornieren möchten, zögern Sie bitte nicht uns per Email oder telefonisch zu kontaktieren (siehe Homepage).<br/>Wir wünschen Ihnen einen angenehmen Aufenthalt in unserem Restaurant und freuen uns auf Ihren Besuch! <br/><br/> Beste Grüße<br/>');
 ?>

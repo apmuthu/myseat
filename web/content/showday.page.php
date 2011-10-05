@@ -7,7 +7,7 @@
 				if ($q == 4){
 					echo _search;	
 				}else{
-					echo _confirmed_reservations;
+					echo _reservations;
 				} 
 				?>
 			</a>
@@ -129,6 +129,7 @@
 				case '1':
 				 if($dayoff == 0){	
 					// confirmed
+					echo "<br/><h3>"._confirmed_reservations."</h3>";
 					include('includes/reservations_grid.inc.php');
 		
 					// waitlist

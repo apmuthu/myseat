@@ -93,8 +93,8 @@
 	
 	$message  = $salut.",<br/><br/>";
 	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
-	$res_details = formatTime($_POST['reservation_time'],$general['timeformat'])." "._for_." "._phone.": ".$_POST['reservation_guest_phone']." /"._note.": \"".$_POST['reservation_notes']."\"";
-	$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
+	//$res_details = formatTime($_POST['reservation_time'],$general['timeformat'])." "._for_." "._phone.": ".$_POST['reservation_guest_phone']." /"._note.": \"".$_POST['reservation_notes']."\"";
+	//$message .= sprintf( $text , $_SESSION['selOutlet']['outlet_name'], $_POST['reservation_pax'], $txt_date, formatTime($_POST['reservation_time'],$general['timeformat']), '<strong>'.$_SESSION['booking_number'].'</strong>', $property['name']." Team"  );
 	
 	// ===============
 	// Email template

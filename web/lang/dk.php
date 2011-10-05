@@ -622,4 +622,13 @@ define ( '_form_notes', 'Vigtige oplysninger (allergi, &oslash;nsker)');
 
 // original text: "I accept the terms of use of the restaurant."
 define ( '_reservation_terms', 'Jeg accepterer betingelserne for brug af restauranten.');
+
+// Default text of the admin notification email	
+define ( 'text_mail_1', '<br/> Mange tak for din reservation i vores');
+define ( 'text_mail_2', 'Med fornøjelse vi bekræfte din reservation efter');
+define ( 'text_mail_3', 'person(er) på');
+define ( 'text_mail_3.1', 'til');
+define ( 'text_mail_4', 'på');
+define ( 'text_mail_5', ' ');
+define ( 'text_mail_6', 'Hvis du ønsker at ændre eller annullere din reservation tøv ikke med at kontakte os via e-mail eller telefon (se hjemmeside). <br/> <br/> Vi ønsker Dem et behageligt ophold på vores restaurant og ser frem til dit besøg! <br/> <br/> venlig <br/>');
 ?>

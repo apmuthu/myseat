@@ -755,7 +755,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 			$out_ava_temp_after = 0;
 			$ii = 1;
 
-			//count the reservations before the timeslot's time by duration
+			//count the reservations after the timeslot's time by duration
 			while ( $startvalue <= $value) {
 				if ($startvalue >= $opentime){
 					/* after midnight correction **FALSE**
@@ -764,7 +764,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 					} */
 					$ava_temp = (isset($ava_by_time[date('H:i:s',$startvalue)])) ? $ava_by_time[date('H:i:s',$startvalue)] : 0;
 					if (($startvalue >= $opentime)) {
-						$out_ava_temp_before += $ava_temp;
+						$out_ava_temp_after += $ava_temp;
 					}
 					
 				}
@@ -774,14 +774,14 @@ function getAvailability($ava_by_time, $intervall='15') {
 				$ii++;
 			}
 			$ii = 1;
-			//count the reservations after the timeslot's time by duration
+			//count the reservations before the timeslot's time by duration
 			//DeBUGGING
 			//echo "<b>".date('H:i d.m.y',$endvalue)."</b><br>";
 			while ( $endvalue > $value) {
 				// not bigger than endtime
 				$endvalue = ($endvalue > $endtime) ? $endtime : $endvalue;
 				$ava_temp = (isset($ava_by_time[date('H:i:s',$endvalue)])) ? $ava_by_time[date('H:i:s',$endvalue)] : 0;
-				$out_ava_temp_after += $ava_temp;
+				$out_ava_temp_before += $ava_temp;
 				$endvalue = mktime($h4+0,$m4-$ii*$intervall,0,date("m"),$endday2,date("Y")); 
 				$ii++;
 			}
@@ -795,10 +795,7 @@ function getAvailability($ava_by_time, $intervall='15') {
 			//echo "out_availability[".date('H:i',$value)."] = ".$out_ava_temp_before." + ".$out_ava_temp_after."<br/>";
 			
 			// block after reservation time
-			//$out_availability[date('H:i',$value)] = $out_ava_temp_before; 
-			
-			// block after reservation time
-			//$out_availability[date('H:i',$value)] = $out_ava_temp_after;
+			//$out_availability[date('H:i',$value)] = $out_ava_temp_after; 
 			
 		  $value = mktime($h1+0,$m1+$i*$intervall,0,date("m"),$day,date("Y")); 
 		  $i++;

@@ -35,6 +35,10 @@
 	}
 	
 $(document).ready(function() {
+		// Change of outlet ID in edit mode
+		$("#reservation_outlet_id").change(function(){
+		    window.location.href='?resedit=1&outletID=' + this.value;
+		  });
 		
 		// Preload images
 		$.preloadCssImages();

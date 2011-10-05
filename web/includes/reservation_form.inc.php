@@ -130,13 +130,3 @@
 			</form><!-- end form -->
 		</div></div></div> <!-- end right column -->
 
-<script type="text/javascript" charset="utf-8">
-
-	jQuery(document).ready(function($) {
-		$("#reservation_outlet_id").change(function(){
-		    window.location.href='?resedit=1&outletID=' + this.value;
-		  });
-	});
-
-</script>
-
