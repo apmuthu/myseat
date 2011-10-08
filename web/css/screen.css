@@ -158,6 +158,10 @@ table.global tr td.big                  {
                                             font-family: 'DroidSansBold', Arial;
                                         }
 .detailbig                              { font-size: 1.2em }
+.smicon									{
+											width:10px !important; 
+											height:10px !important;
+										}
 .line                                   {
                                             height: 1px;
                                             width: 100%;
@@ -342,9 +346,10 @@ input.button_dark:active 				{
 											/* background-color: #341931; */
                                             border-bottom: 1px solid #385474;
                                         }
-#top_bar a                              { 	/* color: #BFABC9; */
-											color:#FFF; }
-#top_bar a:hover, #top_bar a:active     { 	color: #293d54; }
+
+#top_bar a                              { 	color:#ccc; }
+#top_bar a:hover, #top_bar a:active     { 	color: #eee; }
+
 #top_bar .logo                          {
                                             float: left;
                                             margin: 9px 0 0 30px;
@@ -372,22 +377,22 @@ input.button_dark:active 				{
                                         }
 #menu_wrapper                           {
                                             width: 100%;
-                                            height: 60px;
+                                            height: 15px;
 											background-color: #0c2544;
-                                            /* background: transparent url('../images/bg_menu.png') repeat-x; */
-                                            border-bottom: 1px solid #fff;
+                                            border-top: 1px solid #47a;
+            								border-bottom: 1px solid #fff;
                                         }
-#menu_wrapper #search                   {
+#search                   				{
                                             float: right;
-                                            margin: 13px 30px 0 0;
+                                            margin: 0px 10px 0 0;
                                             width: 252px;
                                             height: 30px;
-                                            /* background: transparent url('../images/bg_search.png') repeat-x; */
                                         }
-#menu_wrapper #search input             { 
+#search input            				{ 
 											margin: 3px 0 0 40px;
-											background:#131d29;
-											border: 1px solid #293d55;
+											background:#f3f3f3;
+											color: #6E6E6E;
+											border: 1px solid #dcdcdc;
 											-webkit-border-radius:3px;
 											-moz-border-radius:3px;
 										}
@@ -403,17 +408,14 @@ input.button_dark:active 				{
                                             margin: 0 20px 0 20px;
                                         }
 .nav li a                               {
-                                            color: #b2b2b2;
                                             display: block;
                                             width: 100%;
                                             padding: 20px 0 20px 0;
                                             text-transform: uppercase;
                                             text-align: center;
                                             font-family: 'DroidSansBold', Arial;
-                                            text-shadow: 1px -1px 0px rgba(0, 0, 0, 0.746094);
-                                            filter: progid:DXImageTransform.Microsoft.Shadow(color='#1a1a1a', Direction=22, Strength=2);
-                                            zoom: 1;
                                         }
+
 .nav li a.active, .nav li a:active, .nav li a:hover, .nav li a.selected
                                         {
                                             background: transparent url('../images/bg_menu_selected.png') no-repeat center 80%;
@@ -847,14 +849,14 @@ input.button_dark:active 				{
                                             padding: 1em 2em;
                                         }
 .timeline                               {
-                                            font-size: 0.9em;
+                                            font-size: 10px;
                                             height: 9em;
                                             width: 100%;
                                         }
 .timeline li                            {
                                             position: relative;
                                             float: left;
-                                            width: 1.5em;
+                                            width: 13px;
                                             margin: 0 0.1em;
                                             height: 6em;
                                             list-style-type: none;

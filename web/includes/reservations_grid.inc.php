@@ -62,22 +62,22 @@
 			echo ">";
 			// old reservations symbol
 			if( (strtotime($row->reservation_timestamp) + $general['old_days']*86400) <= time() ){
-				echo "<img src='images/icons/clock-bolt.png' class='help tipsy middle' title='"._sentence_11."' />";
+				echo "<img src='images/icons/clock-bolt.png' class='help tipsyold middle smicon' title='"._sentence_11."' />";
 			}else{
 				// daylight coloring
 				if ($row->reservation_time > $daylight_evening){
-					echo "<img src='images/icons/clock-moon.png' class='middle'/>";
+					echo "<img src='images/icons/clock-moon.png' class='middle smicon'/>";
 				}else if ($row->reservation_time > $daylight_noon){
-					echo "<img src='images/icons/clock-sun.png' class='middle'/>";
+					echo "<img src='images/icons/clock-sun.png' class='middle smicon'/>";
 				}else if ($row->reservation_time < $daylight_noon){
-					echo "<img src='images/icons/clock-grey.png' class='middle'/>";
+					echo "<img src='images/icons/clock-grey.png' class='middle smicon'/>";
 				}
 			}
 			echo "<strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>";
 			echo"<td>
 				<strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;".$row->reservation_hotelguest_yn."</td>";
 				//<img src='images/icons/user-silhouette.png' class='middle'/>
-			echo "<td style='width:20%'>".printTitle($row->reservation_title)."<strong> <a href='?p=102&resID=".$id."'"; 
+			echo "<td style='width:20%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
@@ -104,11 +104,6 @@
 			echo "<small>".$row->reservation_booker_name." | ".humanize($row->reservation_timestamp)."</small>";
 			echo "</td>";
 			echo "<td class='noprint'>";
-			// DELETE BUTTON
-			if ( current_user_can( 'Reservation-Delete' ) && $q!=3 ){
-		    	echo"<a href='#modalsecurity' name='".$row->repeat_id."' id='".$id."' class='delbtn'>
-					<img src='images/icons/delete.png' alt='"._cancelled."' class='help' title='"._delete."'/></a>";
-			}
 			// MOVE BUTTON
 			//	echo "<a href=''><img src='images/icons/arrow.png' alt='move' class='help' title='"._move_reservation_to."'/></a>";
 			
@@ -116,8 +111,15 @@
 			if($_SESSION['wait'] == 1){
 				$leftspace = leftSpace(substr($row->reservation_time,0,5), $availability);
 				if($leftspace >= $row->reservation_pax && $_SESSION['outlet_max_tables']-$tbl_availability[substr($row->reservation_time,0,5)] >= 1){	    
-					echo"&nbsp;<a href='#' name='".$id."' class='alwbtn'><img src='images/icons/check-alt.png' name='".$id."' alt='"._allow."' class='help' title='"._allow."'/></a>";
+					echo"&nbsp;<a href='#' name='".$id."' class='alwbtn'><img src='images/icons/check-alt.png' name='".$id."' alt='"._allow."' class='help' title='"._allow."'/></a>&nbsp;&nbsp;";
 				}
+			}
+			// EDIT/DETAIL BUTTON
+			echo "<a href='?p=102&resID=".$id."'><img src='images/icons/pen-fill.png' alt='"._detail."' class='help' title='"._detail."'/></a>&nbsp;&nbsp;";
+			// DELETE BUTTON
+			if ( current_user_can( 'Reservation-Delete' ) && $q!=3 ){
+		    	echo"<a href='#modalsecurity' name='".$row->repeat_id."' id='".$id."' class='delbtn'>
+					<img src='images/icons/delete.png' alt='"._cancelled."' class='help' title='"._delete."'/></a>";
 			}
 		echo"</td></tr>";
 		$tablesum ++;

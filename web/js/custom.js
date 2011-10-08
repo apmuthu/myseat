@@ -28,7 +28,7 @@ $(function(){
 		}
 	);
 	
-	// $('#shortcut_item li a').tipsy({gravity: 'w'});
+	$('.tipsyold').tipsy({gravity: 'w'});
 	$('.tipsy').tipsy();
 	
 	$(document).click(function(){
@@ -443,8 +443,13 @@ $(document).ready(function() {
 	// Open CXL List
 	$("a#cxlbuttontrigger").fancybox({
 			'hideOnContentClick': true
-		});
+	});
+	// Open guest/reservation details
+	$("a#detlbuttontrigger").fancybox({
+			'hideOnContentClick': true
+	});
 
+	//wysiwyg css 100%
 	$('.wysiwyg').css('width', '100%');
 	
     

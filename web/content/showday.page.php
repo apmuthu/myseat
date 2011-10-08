@@ -61,6 +61,14 @@
 			<!-- Begin 2nd level tab -->
 			<ul class="second_level_tab noprint">
 				<li>
+					<div id="search">
+						<form action="main_page.php?p=2&q=1" id="search_form" name="search_form" method="post">
+							<p><input type="text" id="searchquery" name="searchquery" title="<?php echo _search_guest; ?>" class="search noshadow"/></p>
+							<input type="hidden" name="action" value="search">
+						</form>
+					</div>
+				</li>
+				<li>
 					<a href="#" id="outlet_detail_button">
 						<?php echo _detail;?>
 					</a>
