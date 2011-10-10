@@ -32,6 +32,8 @@
 	$header_guest .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 	$header_guest .= 'From: ' . $from . "\r\n";
 	// Additional headers
+	$header_guest  = 'MIME-Version: 1.0' . "\r\n";
+	$header_guest .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
 	$header_admin = 'From: ' . $from . "\r\n";
 	
 	//$headers .= 'Bcc: ' . $bcc . "\r\n";
@@ -218,6 +220,8 @@
 	
 	//*** Outlet Admin notification email text
 	// if the line breaks are not working please try "\r\n" instead of "\n"
+	$general['dateformat'] = ($general['dateformat']=='') ? 'd-m-Y' : $general['dateformat'];
+
 	$notification_text  = _new_entry.".\n\n";
 	$notification_text  .= _booknum.": ".$_SESSION['booking_number']."\n";
 	$notification_text  .= _outlets.": ".$_SESSION['selOutlet']['outlet_name']."\n";

@@ -68,7 +68,14 @@ if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 			if($key == 'password'){
 				if($value != "EdituseR"){
 					$keys[$i] = $key;
-					$insert = new flexibleAccess();
+					$dbAccess = array(
+					  'dbHost' => $settings['dbHost'],
+					  'dbName' => $settings['dbName'],
+					  'dbUser' => $settings['dbUser'],
+					  'dbPass' => $settings['dbPass'],
+					  'dbPort' => $settings['dbPort']
+					 );
+					$insert = new flexibleAccess('',$dbAccess);
 					$password = $insert->hash_password($value);
 					$values[$i] = "'".$password."'";
 				}

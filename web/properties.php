@@ -9,14 +9,17 @@ session_start();
 $this_page = "property";
 
 // ** LOGIN CLASS **/
-		$dbAccess = array(
-		  'dbName' => $settings['dbName'],
-		  'dbUser' => $settings['dbUser'],
-		  'dbPass' => $settings['dbPass'],
-		  'dbPort' => '3306'
-		 );
+	
+	$dbAccess = array(
+	  'dbHost' => $settings['dbHost'],
+	  'dbName' => $settings['dbName'],
+	  'dbUser' => $settings['dbUser'],
+	  'dbPass' => $settings['dbPass'],
+	  'dbPort' => $settings['dbPort']
+	 );
 
-		$user = new flexibleAccess('',$dbAccess);
+	$user = new flexibleAccess('',$dbAccess);
+
 
 		$cookie 				= $user->read_cookie();
 		$_SESSION['u_id'] 		= $user->userData[$user->tbFields['userID']];

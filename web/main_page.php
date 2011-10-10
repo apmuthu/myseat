@@ -22,11 +22,12 @@ This file is part of mySeat.
 /** Login **/
 // ** set configuration
 	//Software version
-	$sw_version = 'v0.1906';
+	$sw_version = 'v0.191';
 	
 	include('../config/config.general.php');
 	
 	require_once '../PLC/plc.class.php';
+	
 	$dbAccess = array(
 	  'dbHost' => $settings['dbHost'],
 	  'dbName' => $settings['dbName'],

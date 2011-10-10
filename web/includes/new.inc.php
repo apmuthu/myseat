@@ -37,6 +37,20 @@
 		</p>
 		<br/>
 		<p>
+		<label><?php echo _email; ?>&deg;</label><br/>
+				<input type="text" name="reservation_guest_email" id="reservation_guest_email" />
+				<small>&nbsp;<?php echo _fill_out; ?></small><br>
+				<small>
+					<?php echo _confirmation_email.": "; ?>
+					<input type="radio" name="email_type" checked="checked" value="no"/><?php echo _no_; ?>
+					<input type="radio" name="email_type" value="loc"/><?php echo _english; ?>
+					<input type="radio" name="email_type" value="en"/><?php echo _international; ?>
+					<input type="hidden" name="reservation_advertise" value=""/>
+				</small><br>
+				<input type="checkbox" name="reservation_advertise" id="reservation_advertise" value="YES"/>&nbsp;&nbsp;<small><?php echo _reservation_advertise; ?></small>
+		</p>
+		<br/>
+		<p>
 		<label><?php echo _note; ?></label><br/>
 			<textarea name="reservation_notes" id="reservation_notes" rows="5" cols="35" class="width-97"></textarea>
 		</p>
@@ -82,20 +96,6 @@
 				<input type="text" name="reservation_guest_city" id="reservation_guest_city" />
 		</p>
 		<br/>
-		<p>
-		<label><?php echo _email; ?>&deg;</label><br/>
-				<input type="text" name="reservation_guest_email" id="reservation_guest_email" />
-				<small>&nbsp;<?php echo _fill_out; ?></small><br>
-				<small>
-					<?php echo _confirmation_email.": "; ?>
-					<input type="radio" name="email_type" checked="checked" value="no"/><?php echo _no_; ?>
-					<input type="radio" name="email_type" value="loc"/><?php echo _english; ?>
-					<input type="radio" name="email_type" value="en"/><?php echo _international; ?>
-					<input type="hidden" name="reservation_advertise" value=""/>
-				</small><br>
-				<input type="checkbox" name="reservation_advertise" id="reservation_advertise" value="YES"/>&nbsp;&nbsp;<small><?php echo _reservation_advertise; ?></small>
-		</p>
-		<br/>		
 		<p>
 		<label><?php echo _discount; ?></label><br/>
 					<input name="reservation_discount" name="reservation_discount" id="reservation_discount" maxlength="3" class="width-50"/>
