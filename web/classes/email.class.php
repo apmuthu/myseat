@@ -32,8 +32,8 @@
 	$header_guest .= 'Content-type: text/html; charset=UTF-8' . "\r\n";
 	$header_guest .= 'From: ' . $from . "\r\n";
 	// Additional headers
-	$header_guest  = 'MIME-Version: 1.0' . "\r\n";
-	$header_guest .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
+	$header_admin  = 'MIME-Version: 1.0' . "\r\n";
+	$header_admin .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
 	$header_admin = 'From: ' . $from . "\r\n";
 	
 	//$headers .= 'Bcc: ' . $bcc . "\r\n";
