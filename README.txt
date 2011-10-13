@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1906                       =-= 
-=-= Date:    02.10.2011                   =-= 
-=-= Time:    06:03 GMT                    =-= 
+=-= Version: 0.1911                       =-= 
+=-= Date:    13.10.2011                   =-= 
+=-= Time:    05:42 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -17,22 +17,9 @@ Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.1906
+LATEST CHANGES in 0.1911
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Bugfix in online booking form to scroll up the page after booking
-- Setting up different emails for guest (html,short) and outlet admin (text,detailed)
-TO UPDATE: 
-Replace just the files: 
-/api/process_booking.php 
-/web/classes/email.class.php
-
-
-LATEST CHANGES in 0.1905
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Bugfixes in online booking form
-- Adaption of warning message
-- Bugfixes in timecontrol
-- New colors in GUI
+- Layout changes
 
 
 UPDATE
