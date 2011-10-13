@@ -1,7 +1,7 @@
 <?php
 
 		// Prepare basedir
-		if (substr($global_basedir,0,-4) !='web/') {
+		if (substr($global_basedir,-4) !='web/') {
 			$global_basedir = $global_basedir.'web/';
 		}
 		
