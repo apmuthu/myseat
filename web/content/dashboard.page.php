@@ -1,14 +1,3 @@
-<style type="text/css" media="screen">
-	.timeline	                            {
-                                            font-size: 0.8em !important;
-                                        	}  
-	.timeline li                            {
-	                                            width: 1.0em !important;
-	                                        }
-	.timeline li .label                     {
-											    display: none !important;
-											}
-</style>
 <!-- Begin one column box -->
 <div class='onecolumn'>
  <div class='header'>

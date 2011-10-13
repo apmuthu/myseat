@@ -225,7 +225,7 @@
 	$notification_text  = _new_entry.".\n\n";
 	$notification_text  .= _booknum.": ".$_SESSION['booking_number']."\n";
 	$notification_text  .= _outlets.": ".$_SESSION['selOutlet']['outlet_name']."\n";
-	$notification_text  .= _date.": ".date($general['dateformat'],strtotime($_POST['reservation_date']))."\n";
+	$notification_text  .= _date.": ".$_POST['reservation_date']."\n";
 	$notification_text  .= _time.": ".formatTime($_POST['reservation_time'],$general['timeformat'])."\n";
 	$notification_text  .= _guest_name.": ".$_POST['reservation_guest_name']."\n";
 	$notification_text  .= _pax.": ".$_POST['reservation_pax']."\n";
