@@ -1,6 +1,6 @@
 <!-- Begin reservation table data -->
 <br/>
-<table class="global resv-table-small" style="width:100%" cellpadding="0" cellspacing="0">
+<table class="global resv-table-small" style="width:100% !important" cellpadding="0" cellspacing="0">
 <!--
 	<thead>
 	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>
@@ -55,22 +55,24 @@
 				
 			echo "<tr id='res-".$id."'>";
 			echo "<td";
-			// daylight coloring
-			if ($row->reservation_time > $daylight_evening){
-				echo " class='evening'";
-			}else if ($row->reservation_time > $daylight_noon){
-				echo " class='afternoon'";
-			}else if ($row->reservation_time < $daylight_noon){
-				echo " class='morning'";
-			}
-			
-			echo " style='width:10px !important; padding:0px;'>&nbsp;</td>";
-			echo "<td";
 			// reservation after maitre message
 			if ($row->reservation_timestamp > $maitre['maitre_timestamp'] && $maitre['maitre_comment_day']!='') {
 				echo " class='tautologous' title='"._sentence_13."' ";
 			}
 			echo ">";
+			// old reservations symbol
+			if( (strtotime($row->reservation_timestamp) + $general['old_days']*86400) <= time() ){
+				echo "<img src='images/icons/clock-bolt.png' class='help tipsyold middle smicon' title='"._sentence_11."' />";
+			}else{
+				// daylight coloring
+				if ($row->reservation_time > $daylight_evening){
+					echo "<img src='images/icons/clock-moon.png' class='middle smicon'/>";
+				}else if ($row->reservation_time > $daylight_noon){
+					echo "<img src='images/icons/clock-sun.png' class='middle smicon'/>";
+				}else if ($row->reservation_time < $daylight_noon){
+					echo "<img src='images/icons/clock-grey.png' class='middle smicon'/>";
+				}
+			}
 			echo "<strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>";
 			echo"<td>
 				<strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;".$row->reservation_hotelguest_yn."</td>";
@@ -79,17 +81,12 @@
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
-			
-			// old reservations symbol
-			if( (strtotime($row->reservation_timestamp) + $general['old_days']*86400) <= time() ){
-				echo "<img src='images/icons/clock-bolt.png' class='help tipsyold middle smicon' title='"._sentence_11."' />";
-			}
-			// recurring symbol
-			if ($row->repeat_id !=0) {
+			if ($row->repeat_id !=0)
+	            {
+	            //print out recurring symbol
 	            echo "&nbsp;<img src='images/icons/loop-alt.png' alt='"._recurring.
 					 "' title='"._recurring."' class='tipsy' border='0' >";
-	        }
-	
+	            }
 			echo"</td><td style='width:20%'>";
 				if ($_SESSION['page'] == 1) {
 			 		echo $row->outlet_name;
