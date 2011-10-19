@@ -34,7 +34,7 @@
 			<label><?php echo _guest_name; ?></label>
 			<p>
 				<span class='bold'>
-				<input type="text" name="reservation_guest_name" id="reservation_guest_name" class="required widht-250" title=' ' minlength="3" value="<?php echo $_SESSION[reservation_guest_name];?>"/>
+				<input type="text" name="reservation_guest_name" id="reservation_guest_name" class="required width-250" title=' ' minlength="3" value="<?php echo $_SESSION[reservation_guest_name];?>"/>
 </strong>
 			</p>
 			<label><?php echo _pax; ?></label>
@@ -62,7 +62,7 @@
 			<br class="clear">
 		</div></div></div> <!-- end left column -->
 
-	<!-- Beginn right column -->	
+	<!-- Begin right column -->	
 		<div class="twocolumn_wrapper right">
 		 <div class="twocolumn form-height">
 		  <div class="content detailbig content-height">
