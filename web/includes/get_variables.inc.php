@@ -39,7 +39,7 @@ if (isset($_POST)){
 		}
 		if(mysql_num_rows($sql_check) < 1 || $_POST['userID'] != ''){
 			$id = writeForm('plc_users');
-			if($_POST['userID'] == 0){
+			if($_POST['active']==0){
 				include('classes/confirmation.class.php');
 			}
 		}

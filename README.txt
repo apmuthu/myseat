@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1913                       =-= 
-=-= Date:    16.10.2011                   =-= 
-=-= Time:    13:31 GMT                    =-= 
+=-= Version: 0.1914                       =-= 
+=-= Date:    23.10.2011                   =-= 
+=-= Time:    12:51 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -17,9 +17,10 @@ Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.1913
+LATEST CHANGES in 0.1914
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - Layout changes
+- No more need to activate admin account on installation 
 
 
 UPDATE
