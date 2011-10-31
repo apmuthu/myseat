@@ -1,11 +1,11 @@
 
 				<h3>	 	 				 
-					<div class="property-logo" style="background-image: url(../uploads/logo/<?php echo ($row['logo_filename']=='') ? 'logo.png' : $row['logo_filename'];?>);"></div>
+					<img class="property-logo" src="../uploads/logo/<?php echo ($row['logo_filename']=='') ? 'logo.png' : $row['logo_filename'];?>" border='0'>		
 					<?php echo $row['name'];?>
 				</h3>
 				<br class="cl" />
 				<br/>
-				<div class="property-image" style="background-image: url(../uploads/img/<?php echo ($row['img_filename']=='') ? 'noImage.png' : $row['img_filename'];?>);"></div>
+				<img class="property-image" src="../uploads/img/<?php echo ($row['img_filename']=='') ? 'noImage.png' : $row['img_filename'];?>" border='0'>
 				<br class="cl" />
 				<br/><br/>
 				<label><?php echo _contact;?></label>
@@ -58,9 +58,7 @@
 				</small>
 
 					<!-- Google Map Plugin -->
-					<div class="google_map" style="margin-top:80px;">
-						<div id="map_canvas">
-							<img border='0'src="https://maps.google.com/maps/api/staticmap?markers=size:mid|color:red|<?php echo $row['street'];?>,<?php echo $row['zip'];?> <?php echo $row['city'];?>,<?php echo $countries[$row['country']];?>&zoom=15&size=720x270&maptype=roadmap&sensor=false"/>	
+						<div id="map_canvas" class="center">
+							<img border='0'src="https://maps.google.com/maps/api/staticmap?markers=size:mid|color:red|<?php echo $row['street'];?>,<?php echo $row['zip'];?> <?php echo $row['city'];?>,<?php echo $countries[$row['country']];?>&zoom=15&size=650x270&maptype=roadmap&sensor=false"/>	
 						</div>
-					</div>
 					<!-- /Google Map -->

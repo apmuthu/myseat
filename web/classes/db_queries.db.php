@@ -265,7 +265,7 @@ function querySQL($statement){
 			return getRowList($result);
 		break;
 		case 'user_data':
-			$result = query("SELECT userID,username,password,email,role,
+			$result = query("SELECT userID,username,realname,password,email,role,
 		  					property_id,active,confirm_code,last_ip,last_login,created,modified 
 							FROM `plc_users` 
 							WHERE `userID` ='%d' 
@@ -315,13 +315,13 @@ function querySQL($statement){
 			return getResult($result);
 		break;
 		case 'db_all_users':
-			$result = query("SELECT userID,username,password,email,role,
+			$result = query("SELECT userID,username,realname,password,email,role,
 		  					property_id,active,confirm_code,last_ip,last_login,created,modified
 							FROM `plc_users` ORDER BY `username`");
 			return getRowList($result);
 		break;
 		case 'db_prp_users':
-			$result = query("SELECT userID,username,password,email,role,
+			$result = query("SELECT userID,username,realname,password,email,role,
 		  					property_id,active,confirm_code,last_ip,last_login,created,modified 
 							FROM `plc_users`
 							WHERE `property_id` ='%d'

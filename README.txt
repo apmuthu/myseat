@@ -3,45 +3,48 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.1914                       =-= 
-=-= Date:    23.10.2011                   =-= 
-=-= Time:    12:51 GMT                    =-= 
+=-= Version: 0.195                        =-= 
+=-= Date:    31.10.2011                   =-= 
+=-= Time:    12:11 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
-mySeat - Anti-frustration reservation software.
+mySeat - Restaurant Reservation software.
 
 Beautifully simple restaurant reservations.
 Collaborate effortlessly on reservations.
-Whether you are a restaurant team of 5 or a Grand-Hotel,
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.1914
+LATEST CHANGES in 0.195
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Layout changes
+- Layout changes, more modern touch
 - No more need to activate admin account on installation 
+- Login = Author function for Users
 
-
-UPDATE
-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-To update mySeat to a newer version, it is not necessary to do a full install.
-Just replace the old files on the web server.
-If there is a need to change or extend the database, it is clearly stated.
+There is a database update necessary for 0.195 version!
 
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 SEE DOCUMENTATION FOR MORE DETAILS.
-mySeat is well known for its ease of installation.
+mySeat is easy to install.
 Under most circumstances installing mySeat is a very simple process
-and takes less than five minutes to complete.
+and takes less than ten minutes to complete.
 
 Before starting the automatic installer follow these instructions:
 Create a database for mySeat on your web server, as well as a MySQL user who has all privileges for accessing and modifying it.
 Open <config/config.general.php> in a text editor and fill in your database details.
-Browse to your new mySeat site to the directory /install.
-This will take you to the mySeat installer, which starts with a small explanation.
+Browse to your new mySeat site to the directory </install>.
+This will take you to the mySeat automatic installer with small explanations.
+
+
+UPDATE
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+To update mySeat to a newer version, it is not necessary to do a full install.
+Just replace the old files on the web server, except the /config folder.
+If there is a need to change or extend the database, it is clearly stated.
+To update the database, point your webbrowser to mySeat </install/update.php>.
 
 
 MULTILINGUAL

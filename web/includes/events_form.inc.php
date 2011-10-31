@@ -22,7 +22,7 @@ $eventdate			 = buildDate($general['dateformat'],$sd,$sm,$sj);
 	<br style='clear:both'><br/>
 	<label><?php echo _outlets;?></label>
 	<p>
-		<div class="option_xl">
+		<div>
 			<div class="text"></div>
 				<?php getOutletList($row['outlet_id'],'enabled'); ?>
 		</div>
@@ -30,7 +30,7 @@ $eventdate			 = buildDate($general['dateformat'],$sd,$sm,$sj);
 	<br/>
 	<label><?php echo _advertise_start;?></label>
 	<p>
-		<div class='option'>
+		<div >
 			<div class='text'></div>
 			<select name='advertise_start' id='advertise_start' size='1'>
 				<?php

@@ -3,6 +3,7 @@
 	<thead>
 	    <tr>
 			<th>ID</th>
+			<th><?php echo _login; ?></th>
 			<th><?php echo _name; ?></th>
 			<th><?php echo _email; ?></th>
 			<th><?php echo _type; ?></th>
@@ -22,6 +23,7 @@
 					
 			echo"<td>".$row->userID."</td>
 			<td><span class='bold'><a href='?p=6&q=2&btn=3&userID=".$row->userID."'>".$row->username."</a></strong></td>
+			<td>".$row->realname."</td>
 			<td>".$row->email."</td>
 			<td>".$roles[$row->role]."</td>
 			<td><small>".$row->last_ip."</small></td>

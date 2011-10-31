@@ -19,14 +19,23 @@ if ($_SESSION['page'] == 7){
 	<label>
 		<?php
 		if ($_SESSION['page']==7){echo $roles[2]." ";}
-		echo _name;
+		echo _login;
 		?>
 	</label>
 	<p>
 		<input type="text" name="username" id="username" class='required' minlength='3' maxlength='12' title=' ' value="<?php echo $row['username'];?>"/>
 		<div id="status"></div>
 	</p>
-		<label>
+	<label>
+		<?php
+		if ($_SESSION['page']==7){echo $roles[2]." ";}
+		echo _name;
+		?>
+	</label>
+	<p>
+		<input type="text" name="realname" id="realname" class='required' minlength='3' title=' ' value="<?php echo $row['realname'];?>"/>
+	</p>
+	<label>
 		<?php
 		if ($_SESSION['page']==7){echo $roles[2]." ";}
 		echo _password;
@@ -43,6 +52,8 @@ if ($_SESSION['page'] == 7){
 	<p>
 		<input type="text" name="email" id="email" class="required email" title=' ' value="<?php echo $row['email'];?>"/>
 	</p>
+	<label><?php echo printOnOff($row['autofill'],'autofill','');?> <?php echo _users." = "._author;?></label>
+	<p></p>
 	<label><?php echo _type;?></label>
 	<p>
 			<?php
@@ -62,10 +73,11 @@ if ($_SESSION['page'] == 7){
 				}
 				
 				echo "</select>";
-				echo "<input type='hidden' name='active' value='0'>";
+				$active = ($row['active']==1) ? 1 : 0;
+				echo "<input type='hidden' name='active' value='".$active."'>";
 			}else{
 				// creating a new property and admin
-				echo "<span class='bold'>".$roles[2]."</span><input type='hidden' name='role' id='role' value='2'>";
+				echo "<span class='bold'>".$roles[2]."</span><input type='hidden' name='role' id='role' value='1'>";
 				echo "<input type='hidden' name='active' value='1'>";
 			}
 			?>		
@@ -76,6 +88,7 @@ if ($_SESSION['page'] == 7){
 					echo "<input type='hidden' name='active' value='1'>";
 				}
 				?>
+
 			<input type="hidden" name="created" value="<?php echo date('Y-m-d H:i:s');?>">
 			<input type="hidden" name="userID" value="<?php echo ($row['userID']) ? $row['userID'] : 0 ;?>">
 			<input type="hidden" name="property_id" value="<?php echo ($_SESSION['property']) ? $_SESSION['property'] : 1 ;?>">
@@ -92,38 +105,3 @@ if ($_SESSION['page'] == 7){
 	<br/>
 </form>
 </div>
-
-<script type="text/javascript">
-$(document).ready(function(){
-	
-	$("#username").change(function() {
-	var usr = $("#username").val();
-	if(usr.length >= 3) {
-	  $("#status").html('<img align="absmiddle" src="images/ajax-loader.gif" />');
-	
-	  $.ajax({
-		type: "POST",
-		url: "ajax/check_username.php",
-		data: "username="+ usr,
-		success: function(msg){
-			
-			$("#status").ajaxComplete(function(event, request){
-				if(msg.length <= 4){
-					$("#username").removeClass('error');
-					$("#username").addClass('blur');
-					$(this).html(' <img align="absmiddle" src="images/icons/icon_accept.png" /> ' + msg);
-				}else{
-					$("#username").removeClass('blur');
-					$("#username").addClass('error');
-					/* $("#username").val(''); */
-					$(this).html(msg);
-				}
-			});
-		}
-	  });
-	}
-  });
-	
-});
-	//-->
-</script>

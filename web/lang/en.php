@@ -631,4 +631,8 @@ define ( 'text_mail_3.1', 'till' );
 define ( 'text_mail_4', 'at' );
 define ( 'text_mail_5', ' ' );
 define ( 'text_mail_6', 'If you want to change or cancel your reservation please do not hesitate to contact us via email or by phone (see homepage).<br/><br/>We wish you an enjoyable stay at our restaurant and are looking forward to your visit!<br/><br/>Yours <br/>' );
+
+//original text: "Login"
+define ( '_login', 'Login' );
+
 ?>

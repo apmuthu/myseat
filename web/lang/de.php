@@ -632,4 +632,8 @@ define ( 'text_mail_3.1', 'bis');
 define ( 'text_mail_4', 'um');
 define ( 'text_mail_5', 'reserviert');
 define ( 'text_mail_6', 'Wenn Sie Ihre Reservierung ändern oder stornieren möchten, zögern Sie bitte nicht uns per Email oder telefonisch zu kontaktieren (siehe Homepage).<br/>Wir wünschen Ihnen einen angenehmen Aufenthalt in unserem Restaurant und freuen uns auf Ihren Besuch! <br/><br/> Beste Grüße<br/>');
+
+//original text: "Login"
+define ( '_login', 'Login' );
+
 ?>

@@ -32,7 +32,7 @@ session_start();
 					<th></th>
 					<label class='leftside'><?php echo _date; ?></label>
 					<br class="clear"/>
-					<div class="date dategroup">
+					<div style="float:left;">
 						<div class="text" id="s_datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 						<input type="text" id="s_datepicker"/>
 						<input type="hidden" name="s_dbdate" id="s_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>
@@ -40,7 +40,7 @@ session_start();
 					
 					<strong class='leftside'>&nbsp;&nbsp; <?php echo _till;?> &nbsp;&nbsp;</strong>  
 					
-					<div class="date dategroup">
+					<div style="float:left;">
 						<div class="text" id="e_datetext"><?php echo $_SESSION['selectedDate_user']; ?></div>
 						<input type="text" id="e_datepicker"/>
 						<input type="hidden" name="e_dbdate" id="e_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>

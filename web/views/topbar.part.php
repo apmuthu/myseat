@@ -23,7 +23,8 @@
 				if ($_SESSION['role']=='1' && file_exists($filename)) {
 					echo"../xt-admin/index.php";				
 				}
-				echo "'><span class='bold'> ".$_SESSION['u_name']."</span></a>";
+				$name = ($_SESSION['realname']=='') ? $_SESSION['u_name'] : $_SESSION['realname'];
+				echo "'><span class='bold'> ".$name."</span></a>";
 			}
 			?>
 		</div>

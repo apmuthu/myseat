@@ -616,4 +616,8 @@ define ( '_form_notes', '（过敏，愿望）的重要细节');
 
 // original text: "I accept the terms of use of the restaurant."
 define ( '_reservation_terms', '我接受的餐厅使用的条款');
+
+//original text: "Login"
+define ( '_login', '登录' );
+
 ?>

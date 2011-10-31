@@ -20,12 +20,12 @@
 		if ($key == 'id' || $key == 'property_id') {
 			echo "<input type='hidden' name='".$key."' value='".$value."'>";
 		}else if ($key == 'timezone'){
-			echo "<p><label>".$formtext."</label><br/><div class='option_xl'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div><div class='text'></div>";
 				timezoneDropdown($value);	
 			echo "\n</div></p><br/>";
 
 		}else if ($key == 'timeintervall'){
-			echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div ><div class='text'></div>";
 			echo"<select name='$key' id='$key' class='required' title=' ' size='1' >";
 				// make option list
 				$i = 15;
@@ -38,7 +38,7 @@
 			echo "</select>\n</div></p><br/>";
 			
 		}else if ($key == 'timeformat'){
-			echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div ><div class='text'></div>";
 			echo"<select name='$key' id='$key' class='required' title=' ' size='1' >";
 					// make option list
 						echo "<option value='12' ";
@@ -50,22 +50,22 @@
 					echo "</select>\n</div></p><br/>";
 
 		}else if ($key == 'dateformat'){
-			echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div ><div class='text'></div>";
 				dateformatDropdown($value,0);	
 			echo "\n</div></p><br/>";
 
 		}else if ($key == 'datepickerformat'){
-			echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div ><div class='text'></div>";
 				dateformatDropdown($value,1);	
 			echo "\n</div></p><br/>";
 
 		}else if ($key == 'dateformat_short'){
-			echo "<p><label>".$formtext."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>".$formtext."</label><br/><div ><div class='text'></div>";
 				dateformatDropdown($value,2);	
 			echo "\n</div></p><br/>";
 
 		}else if ($key == 'language'){
-			echo "<p><label>"._language."</label><br/><div class='option'><div class='text'></div>";
+			echo "<p><label>"._language."</label><br/><div ><div class='text'></div>";
 			getLangList($langTrans, $general['language'], 'enabled');
 			echo "</select>\n</div></p><br/>";
 		}else if ($key == 'id'){

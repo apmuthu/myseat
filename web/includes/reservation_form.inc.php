@@ -51,13 +51,23 @@
 			</p>
 			<label><?php echo _note; ?></label>
 			<p>
-				<textarea name="reservation_notes" id="reservation_notes" rows="5" cols="35" class="width-97"><?php echo trim($row->reservation_notes); ?></textarea>
+				<textarea name="reservation_notes" id="reservation_notes" rows="5" cols="35" class="width-97" maxlength="254"><?php echo trim($row->reservation_notes); ?></textarea>
 			</p>
-			<label><?php echo _author; ?></label>
+			<label><?php echo _author; ?>*</label>
 			<p>
 				<input type="text" name="reservation_booker_name" id="reservation_booker_name" class='required' minlength="3"  maxlength="30" title=' ' value='' />
 			</p>
 			<br/>
+			<?php 
+				if ($_SESSION['selOutlet']['limit_password']!='') {
+			?>
+				<p>
+				<label><?php echo _enter_password; ?>*</label><br/>
+					<input type="text" name="limit_password" id="limit_password" class="required width-97" style="float:left;"/>
+					<div id="status"></div>
+				</p>
+			<?php } ?>
+			<br/><br/>
 				<input type="submit" class="button_dark" value="<?php echo _save;?>"/></a>
 			<br class="clear">
 		</div></div></div> <!-- end left column -->

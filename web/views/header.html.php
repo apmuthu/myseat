@@ -12,7 +12,7 @@
 <meta name="author" lang="en" content="Bernd Orttenburger [www.myseat.us]" />
 <meta name="copyright" lang="en" content="mySeat [www.myseat.us]" />
 <meta name="keywords" content="mySeat, table reservation system, Bookings Diary, Reservation Diary, Restaurant Reservations, restaurant reservation system, open source, software, reservation management software, restaurant table management, table planner, restaurant table planner, table management, hotel" />
-<meta id="htmlTagMetaDescription" name="Description" content="Make online reservationsfor lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
+<meta id="htmlTagMetaDescription" name="Description" content="Make online reservations for lunch and dinners. mySeat is a OpenSource online reservation system for restaurants." />
 <meta id="htmlTagMetaKeyword" name="Keyword" content="restaurant reservations, online restaurant reservations, restaurant management software, mySeat, free tables" />
 
 <!-- Meta data for all iDevices -->

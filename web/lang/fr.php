@@ -623,4 +623,7 @@ define ( '_form_notes', 'Détails importants (allergies, souhaits)');
 
 // original text: "I accept the terms of use of the restaurant."
 define ( '_reservation_terms', 'J\'accepte les conditions d\'utilisation du restaurant.');
+
+//original text: "Login"
+define ( '_login', 'Entrer' );
 ?>

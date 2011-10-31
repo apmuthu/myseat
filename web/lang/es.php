@@ -632,4 +632,7 @@ define ( 'text_mail_3.1', 'para' );
 define ( 'text_mail_4', 'en' );
 define ( 'text_mail_5', ' ' );
 define ( 'text_mail_6', 'Si usted desea cambiar o cancelar su reservación no dude en contactarnos vía correo electrónico u teléfono (ver pagina web).<br/><br/>¡Le deseamos que su visita sea un placer en nuestro restaurante y esperamos su visita!<br/><br/>Ustedes <br/>' );
+
+//original text: "Login"
+define ( '_login', 'Login' );
 ?>

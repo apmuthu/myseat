@@ -440,6 +440,36 @@ $(document).ready(function() {
 			}
 	});
 	
+		// check username
+
+		$("#username").change(function() {
+		var usr = $("#username").val();
+		if(usr.length >= 3) {
+		  $("#status").html('<img align="absmiddle" src="images/ajax-loader.gif" />');
+
+		  $.ajax({
+			type: "POST",
+			url: "ajax/check_username.php",
+			data: "username="+ usr,
+			success: function(msg){
+
+				$("#status").ajaxComplete(function(event, request){
+					if(msg.length <= 4){
+						$("#username").removeClass('error');
+						$("#username").addClass('blur');
+						$(this).html(' <img align="absmiddle" src="images/icons/icon_accept.png" /> ' + msg);
+					}else{
+						$("#username").removeClass('blur');
+						$("#username").addClass('error');
+						/* $("#username").val(''); */
+						$(this).html(msg);
+					}
+				});
+			}
+		  });
+		}
+	  });
+	
 	// Open CXL List
 	$("a#cxlbuttontrigger").fancybox({
 			'hideOnContentClick': true

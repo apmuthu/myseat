@@ -52,12 +52,18 @@
 		<br/>
 		<p>
 		<label><?php echo _note; ?></label><br/>
-			<textarea name="reservation_notes" id="reservation_notes" rows="5" cols="35" class="width-97"></textarea>
+			<textarea name="reservation_notes" id="reservation_notes" rows="5" cols="35" class="width-97" maxlength="254"></textarea>
 		</p>
 		<br/>
 		<p>
 		<label><?php echo _author; ?>&deg;*</label><br/>
-			<input type="text" name="reservation_booker_name" id="reservation_booker_name" class='required' minlength="3"  maxlength="30" title=' ' />
+		<?
+		if ($_SESSION['autofill']==1) {
+			echo '<input type="text" name="author_readonly" disabled="disabled" value="'.$_SESSION['realname'].'"/><input type="hidden" name="reservation_booker_name" value="'.$_SESSION['realname'].'"/>';
+		}else{
+			echo'<input type="text" name="reservation_booker_name" id="reservation_booker_name" class="required" minlength="3"  maxlength="30" title=" " >';
+		}
+		?>
 		</p>
 		<br/>
 		<?php 
@@ -123,7 +129,8 @@
 		<br/>
 		<p>
 		<label><?php echo _multi_booking; ?></label>
-		<div class="date dategroup">
+		<div class="input-prepend">
+			 <span class="add-on"><?php echo _date; ?></span>
 			<div class="text" id="recurring_text"></div>
 			<input type="text" name="recurring_date" id="recurring_date"/>
 			<input type="hidden" name="recurring_dbdate" id="recurring_dbdate" value="<?php echo $_SESSION['selectedDate']; ?>"/>

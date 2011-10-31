@@ -85,3 +85,7 @@ ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) NOT NULL ;
 /* Update the database from XT 0.1790 to > XT 0.180 */
 /* ------------------------------------------------- */
 ALTER TABLE  `outlets` ADD  `limit_password` VARCHAR( 255 ) NOT NULL AFTER  `avg_duration` ;
+/* Update the database from XT 0.180 to > XT 0.192 */
+/* ------------------------------------------------- */
+ALTER TABLE  `plc_users` ADD  `realname` VARCHAR( 255 ) NOT NULL AFTER  `username`
+ALTER TABLE  `plc_users` ADD  `autofill` INT NOT NULL AFTER  `last_login`

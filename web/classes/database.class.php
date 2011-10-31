@@ -189,7 +189,7 @@ function writeForm($table =''){
 				$values[$i] = "'".$value."'";
 
 			}else if($key == 'role'){	
-				if ($value<2) {
+				if ($value<1 || $value>6) {
 					$value = 6;
 				}
 				// add role field
@@ -225,6 +225,15 @@ function writeForm($table =''){
 			$index = array_search('webform',$keys);
 			if(!$index){
 				$keys[] = 'webform';
+				$values[] = 0;
+			}
+		}
+		
+		// build outofill field on users
+		if($table == 'plc_users') {
+			$index = array_search('autofill',$keys);
+			if(!$index){
+				$keys[] = 'autofill';
 				$values[] = 0;
 			}
 		}

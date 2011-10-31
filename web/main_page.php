@@ -22,7 +22,7 @@ This file is part of mySeat.
 /** Login **/
 // ** set configuration
 	//Software version
-	$sw_version = 'v0.1914';
+	$sw_version = 'v0.195';
 	
 	include('../config/config.general.php');
 	
@@ -50,6 +50,8 @@ This file is part of mySeat.
 		$_SESSION['u_name'] 	= $user->userData[$user->tbFields['login']];
 		$_SESSION['u_email'] 	= $user->userData[$user->tbFields['email']];
 		$_SESSION['role'] 		= $user->userData['role'];
+		$_SESSION['realname'] 	= $user->userData['realname'];
+		$_SESSION['autofill'] 	= $user->userData['autofill'];
 		$_SESSION['property'] 	= $user->userData['property_id'];
 		$_SESSION['propertyID'] = $user->userData['property_id'];
 		$_SESSION['u_time'] 	= date("Y-m-d H:i:s", time());

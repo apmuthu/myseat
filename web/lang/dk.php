@@ -631,4 +631,7 @@ define ( 'text_mail_3.1', 'til');
 define ( 'text_mail_4', 'på');
 define ( 'text_mail_5', ' ');
 define ( 'text_mail_6', 'Hvis du ønsker at ændre eller annullere din reservation tøv ikke med at kontakte os via e-mail eller telefon (se hjemmeside). <br/> <br/> Vi ønsker Dem et behageligt ophold på vores restaurant og ser frem til dit besøg! <br/> <br/> venlig <br/>');
+
+//original text: "Login"
+define ( '_login', 'Logon' );
 ?>
