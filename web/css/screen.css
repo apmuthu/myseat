@@ -137,16 +137,16 @@ ul.global li                            { line-height: 2em }
 ol.global                               { margin-left: 30px }
 ol.global li                            { line-height: 2em }
 table.global tr                         { background: #fff }
-table.global tr td, table.global tr th  { font-size: 1.2em }
+table.global tr td, table.global tr th  { font-size: 1.1em }
 table.global thead tr                   {
                                             font-family: 'DroidSansBold', Arial;
                                             background: #ebebeb;
                                             text-align: left;
                                             text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.49);
                                         }
-table.global tr th, table.global tr td  { padding: 7px 15px 7px 15px }
+table.global tr th, table.global tr td  { padding: 3px 7px 3px 7px }
 table.global tr td.big                  {
-                                            font-size: 1.5em;
+                                            font-size: 1.4em;
                                             font-family: 'DroidSansBold', Arial;
                                         }
 .center                                 {
@@ -154,10 +154,10 @@ table.global tr td.big                  {
                                             text-align: center;
                                         }
 .big                                    {
-                                            font-size: 1.5em;
+                                            font-size: 1.3em;
                                             font-family: 'DroidSansBold', Arial;
                                         }
-.detailbig                              { font-size: 1.2em }
+.detailbig                              { font-size: 1.1em }
 .smicon									{
 											width:10px !important; 
 											height:10px !important;
@@ -1137,7 +1137,7 @@ label.error                             { margin-left: 6px; }
 	Daylight Colors 
 */					
 .morning				{
-					    background:#F6F4E9;
+					    background:#E4E9F0;
 					    text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.746094);
 					}
 .afternoon				{
@@ -1168,6 +1168,7 @@ label.error                             { margin-left: 6px; }
 					}
 .resv-table-small	{
 						margin:15px 0px 0px 0px; 
+						border-collapse:collapse;
 						font-size:0.9em; 
 						width:100%;
 					}
