@@ -1014,53 +1014,5 @@ function login_form(){
 	echo '</form></div>';
 }
 
-  /**
-  	* Login form TRUE holder 
-  	* @access private
-	*
-  */
-  function login_true(){
-      echo '{'.
-              'succes: true,'.
-              'title: \'Login Success.\''.
-          '}';
-  }
-  /**
-  	* Login form FALSE holder
-  	* @access private
-	*
-  */
-  function login_false(){
-	$l = 1 + $this->loginAttempts - $this->fAtmp;
-      echo '{'.
-              'succes: false,'.
-              'title: \'Login Failed : Login is not valid. '.$l.' attempts left.\''.
-          '}';
-  }
-  function login_attemptFalse(){
-      echo '{'.
-              'succes: false,'.
-              'title: \'Login blocked for '.$this->loginTime.' minutes: Too many false login attempts.\''.
-          '}';
-  }
-  function login_newpass(){
-      echo '{'.
-              'succes: true,'.
-              'title: \'Changed password.\''.
-          '}';
-  }
-  function login_matchFalse(){
-      echo '{'.
-              'succes: false,'.
-              'title: \'New passwords do not match.\''.
-          '}';
-  }
-  function login_brutforce(){
-      echo '{'.
-              'succes: false,'.
-              'title: \'Password unsave! Not allowed.\''.
-          '}';
-  }
-
 }
 ?>
