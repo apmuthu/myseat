@@ -22,7 +22,7 @@ This file is part of mySeat.
 /** Login **/
 // ** set configuration
 	//Software version
-	$sw_version = 'v0.195';
+	$sw_version = 'v0.1951';
 	
 	include('../config/config.general.php');
 	
