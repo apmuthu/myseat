@@ -201,9 +201,6 @@ $sql = query("CREATE TABLE IF NOT EXISTS `properties` (
   `status` varchar(10)  NOT NULL DEFAULT 'active',
   `social_fb` VARCHAR( 255 ) NOT NULL,
   `social_tw` VARCHAR( 255 ) NOT NULL,
-  `guesttype_HG` VARCHAR( 255 ) NOT NULL ,
-  `guesttype_PASS` VARCHAR( 255 ) NOT NULL ,
-  `guesttype_WALK` VARCHAR( 255 ) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;")
  or die(mysql_error()); 
@@ -300,6 +297,9 @@ $sql = query("CREATE TABLE IF NOT EXISTS `settings` (
   `manual_lines` int(2) NOT NULL,
   `contactform_color_scheme` varchar(12)  NOT NULL DEFAULT 'grey',
   `contactform_background` varchar(7)  NOT NULL DEFAULT 'E0ECDB',
+  `guest_type_text_HG` VARCHAR( 255 ) NOT NULL ,
+  `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL ,
+  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;")
  or die(mysql_error());

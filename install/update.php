@@ -70,17 +70,17 @@ $table_updates[$i]['field'] = "autofill";
 $table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `autofill` INT NOT NULL AFTER `last_login`";
 $i++;
 
-$table_updates[$i]['table'] = "properties";
-$table_updates[$i]['field'] = "guesttype_HG";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guesttype_HG` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['field'] = "guest_type_text_HG";
+$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_HG` VARCHAR( 255 ) NOT NULL";
 $i++;
-$table_updates[$i]['table'] = "properties";
-$table_updates[$i]['field'] = "guesttype_PASS";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guesttype_PASS` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['field'] = "guest_type_text_PASS";
+$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL";
 $i++;
-$table_updates[$i]['table'] = "properties";
-$table_updates[$i]['field'] = "guesttype_WALK";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guesttype_WALK` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['field'] = "guest_type_text_WALK";
+$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL";
 $i++;
 
 // ------------------------------------------------
