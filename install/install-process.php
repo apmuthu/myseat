@@ -160,6 +160,7 @@ echo "<li>The PLC-Sessions table has been created. </li>";
 $sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
   `userID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL DEFAULT '',
+  `realname` VARCHAR( 255 ) NOT NULL DEFAULT '',
   `password` varchar(100) NOT NULL DEFAULT '',
   `email` varchar(150) NOT NULL DEFAULT '',
   `role` smallint(2) NOT NULL DEFAULT '5',
@@ -168,6 +169,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
   `confirm_code` varchar(255) NOT NULL,
   `last_ip` varchar(40) CHARACTER SET utf8  NOT NULL,
   `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `autofill` INT NOT NULL DEFAULT '',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userID`),
@@ -199,6 +201,9 @@ $sql = query("CREATE TABLE IF NOT EXISTS `properties` (
   `status` varchar(10)  NOT NULL DEFAULT 'active',
   `social_fb` VARCHAR( 255 ) NOT NULL,
   `social_tw` VARCHAR( 255 ) NOT NULL,
+  `guesttype_HG` VARCHAR( 255 ) NOT NULL ,
+  `guesttype_PASS` VARCHAR( 255 ) NOT NULL ,
+  `guesttype_WALK` VARCHAR( 255 ) NOT NULL
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;")
  or die(mysql_error()); 
