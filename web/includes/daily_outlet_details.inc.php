@@ -60,7 +60,7 @@
 					   }
 					?>
 				</p>
-				<label>Max. <?php echo _passerby;?></label>
+				<label><?php echo _passerby;?></label>
 				<p>
 					<?php if ( current_user_can( 'Daily-Outlet-Edit' ) ){
 						echo'<input type="text" name="outlet_child_passer_max_pax" id="outlet_child_passer_max_pax" 

@@ -61,8 +61,27 @@ function formatTime($tm, $format){
 
 // read translation text from database
 function translateSite($lang='en', $apx = ''){
+	GLOBAL $general;
 	$lang=($lang=='') ? 'en' : substr($lang,0,2);
 	include($apx.'lang/'.$lang.".php");
+	
+	//define custom guest type
+	if ($general['guest_type_text_HG']!="") {
+		define ( '_HG_', $general['guest_type_text_HG'] );
+	}else{
+		define ( '_HG_', _HG );
+	}
+	if ($general['guest_type_text_HG']!="") {
+		define ( '_PASS_', $general['guest_type_text_PASS'] );
+	}else{
+		define ( '_PASS_', _PASS );
+	}
+	if ($general['guest_type_text_WALK']!="") {
+		define ( '_WALK_', $general['guest_type_text_WALK'] );
+	}else{
+		define ( '_WALK_', _WALK );
+	}
+	
 	/* old version with dtabase use
 	$sql = "SELECT * FROM `l16n`";
 	$result = mysql_query($sql);

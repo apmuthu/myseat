@@ -32,7 +32,7 @@
 	<p>	 	 	 	 	 	 	
 		<?php echo $row->outlet_max_tables;?>
 	</p>
-	<label>Max. <?php echo _passerby;?></label>	
+	<label><?php echo _passerby;?></label>	
 	<p>	 	 	 	 	 	 	
 		<?php echo $row->passerby_max_pax;?>
 	</p>

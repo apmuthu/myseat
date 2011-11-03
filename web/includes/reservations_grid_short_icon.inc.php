@@ -1,6 +1,6 @@
 <!-- Begin reservation table data -->
 <br/>
-<table class="global resv-table-small" style="width:100% !important" cellpadding="0" cellspacing="0">
+<table class="global resv-table-small" cellpadding="0" cellspacing="0">
 <!--
 	<thead>
 	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>

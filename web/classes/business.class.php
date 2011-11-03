@@ -254,6 +254,23 @@ function getTypeList($title='',$disabled=''){
 		echo "</select>\n";
 }
 
+// print selected type
+function printType($type=''){
+		
+		switch ($type) {
+			case 'HG':
+				echo _HG_;
+				break;
+			case 'PASS':
+				echo _PASS_;
+				break;
+			case 'WALK':
+				echo _WALK_;
+				break;			
+
+		}
+}
+
 function getOutletList($outlet_id = 0, $disabled = 'enabled',$tablename='outlet_id'){
 	echo"<select name='".$tablename."' id='".$tablename."' size='1' $disabled>\n";
 		

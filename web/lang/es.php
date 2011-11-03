@@ -457,13 +457,13 @@ define ( '_mail', 'Factura' );
 define ( '_room', 'Salón' );
 
 //original text: "Inhouse Guest"
-define ( '_HG_', 'Huésped alojado' );
+define ( '_HG', 'Huésped alojado' );
 
 //original text: "Passer by"
-define ( '_PASS_', 'De paso' );
+define ( '_PASS', 'De paso' );
 
 //original text: "Walk in"
-define ( '_WALK_', 'Ingresado' );
+define ( '_WALK', 'Ingresado' );
 
 //original text: "Create"
 define ( '_create', 'Crear' );
@@ -481,7 +481,7 @@ define ( '_back', 'Volver' );
 define ( '_detail', 'Detalle' );
 
 //original text: "Passerby"
-define ( '_passerby', 'Pasajero' );
+define ( '_passerby', 'Max. Pasajero' );
 
 //original text: "Residence time"
 define ( '_duration', 'Duración de la estadía' );

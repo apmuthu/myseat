@@ -470,7 +470,8 @@ function querySQL($statement){
 			timezone, timeformat, timeintervall,
 			dateformat, dateformat_short, datepickerformat,
 			app_name, max_menu, old_days,
-			manual_lines, contactform_color_scheme, contactform_background
+			manual_lines, contactform_color_scheme, contactform_background, 
+			guest_type_text_HG, guest_type_text_PASS, guest_type_text_WALK
 							FROM `settings` 
 							WHERE `property_id` = '%d'", $_SESSION['property']);
 			return getRowListarray($result);

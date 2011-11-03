@@ -1,6 +1,6 @@
 <!-- Begin reservation table data -->
 <br/>
-<table class="global resv-table-small" style="width:100%" cellpadding="0" cellspacing="0">
+<table class="global resv-table-small" cellpadding="0" cellspacing="0">
 <!--
 	<thead>
 	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>
@@ -72,10 +72,10 @@
 			}
 			echo ">";
 			echo "<strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>";
-			echo"<td>
-				<strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;".$row->reservation_hotelguest_yn."</td>";
-				//<img src='images/icons/user-silhouette.png' class='middle'/>
-			echo "<td style='width:20%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
+			echo "<td><strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;";
+			printType($row->reservation_hotelguest_yn);
+				//echo "<img src='images/icons/user-silhouette.png' class='middle'/>";
+			echo "</td><td style='width:20%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
@@ -132,12 +132,11 @@
 		?>
 	</tbody>
 	<tfoot>
-		<tr>
+		<tr style="border:1px #000;">
 			<td></td>
 			<td colspan="2" class="bold"><?php echo $guestsum;?>&nbsp;&nbsp;<?php echo _guest_summary;?></td>
 			<td></td>
 			<td colspan="2" class="bold"><?php echo $tablesum;?>&nbsp;&nbsp;<?php echo _tables_summary;?></td>
-			<td></td>
 			<?php
 			if($_SESSION['wait'] == 0){
 				echo "<td></td>";

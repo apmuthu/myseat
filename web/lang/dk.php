@@ -456,13 +456,13 @@ define ( '_mail', 'Faktura' );
 define ( '_room', 'V&aelig;relse' );
 
 //original text: "Inhouse Guest"
-define ( '_HG_', 'Husets g&aelig;st' );
+define ( '_HG', 'Husets g&aelig;st' );
 
 //original text: "Passer by"
-define ( '_PASS_', 'Forbi kommende' );
+define ( '_PASS', 'Forbi kommende' );
 
 //original text: "Walk in"
-define ( '_WALK_', 'Walk in' );
+define ( '_WALK', 'Walk in' );
 
 //original text: "Create"
 define ( '_create', 'Opret' );
@@ -480,7 +480,7 @@ define ( '_back', 'Tilbage' );
 define ( '_detail', 'Detaljer' );
 
 //original text: "Passerby"
-define ( '_passerby', 'Forbi kommende' );
+define ( '_passerby', 'Max. Forbi kommende' );
 
 //original text: "Residence time"
 define ( '_duration', 'Opholdstid' );

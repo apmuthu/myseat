@@ -39,7 +39,7 @@ if ($_SESSION['button']==2) {
 	<p>	 	 	 	 	 	 	
 		<input type="text" name="outlet_max_tables" id="outlet_max_tables" class="required digits" title=' ' value="<?php echo $row->outlet_max_tables;?>"/>
 	</p>
-	<label>Max. <?php echo _passerby;?></label>	
+	<label><?php echo _passerby;?></label>	
 	<p>	 	 	 	 	 	 	
 		<input type="text" name="passerby_max_pax" id="passerby_max_pax" class="digits" title=' ' value="<?php echo $row->passerby_max_pax;?>"/>
 	</p>

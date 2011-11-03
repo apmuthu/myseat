@@ -456,13 +456,13 @@ define ( '_mail', '收据' );
 define ( '_room', '房号' );
 
 //original text: "Inhouse Guest"
-define ( '_HG_', '住宿客人' );
+define ( '_HG', '住宿客人' );
 
 //original text: "Passer by"
-define ( '_PASS_', '非酒店房客' );
+define ( '_PASS', '非酒店房客' );
 
 //original text: "Walk in"
-define ( '_WALK_', '未预约客人' );
+define ( '_WALK', '未预约客人' );
 
 //original text: "Create"
 define ( '_create', '新增' );
