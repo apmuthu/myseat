@@ -299,7 +299,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `settings` (
   `contactform_background` varchar(7)  NOT NULL DEFAULT 'E0ECDB',
   `guest_type_text_HG` VARCHAR( 255 ) NOT NULL ,
   `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL ,
-  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL
+  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL ,
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8;")
  or die(mysql_error());
