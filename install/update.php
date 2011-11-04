@@ -72,15 +72,15 @@ $i++;
 
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_HG";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_HG` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_HG` VARCHAR( 255 ) NOT NULL";
 $i++;
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_PASS";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL";
 $i++;
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_WALK";
-$table_updates[$i]['query'] = "ALTER TABLE  `properties` ADD  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL";
 $i++;
 
 // ------------------------------------------------
