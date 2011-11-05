@@ -1520,8 +1520,10 @@ label.error                             { margin-left: 6px; }
 					    display: block;
 					    background-position:center center;
 					    background-repeat: no-repeat; 
-					    width: 350px;
-					    height: 250px;
+						min-width:350px;
+						max-width:350px;
+						max-height:260px;
+						min-height:260px;
 					    float: right;
 						padding: 4px;
 						border: 1px solid #ddd;
@@ -1536,8 +1538,10 @@ label.error                             { margin-left: 6px; }
 					    display: block;
 					    background-position:center center;
 					    background-repeat: no-repeat; 
-					    width: 250px;
-					    height: 80px;
+						min-width:250px;
+						max-width:250px;
+						max-height:80px;
+						min-height:80px;
 					    float: left;
 					}
 .nav-image				{
@@ -1623,6 +1627,9 @@ label.error                             { margin-left: 6px; }
 					}	
 .right-side-text	{
 						text-align:right;
+					}
+.left-side-text		{
+						text-align:left;
 					}
 .detail-slider		{
 						width:45%; 

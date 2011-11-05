@@ -36,10 +36,12 @@
 			
 			echo"<div class='onecolumn'><div class='header'>\n";
 			echo"<div class='dategroup_name'>"._statistics."</div>
-			</div>\n<div class='center width-70 margin-top-20'>";
+			</div>\n";
 			
 			//reset zebra containers
 			$c = 0;
+			echo"<div class='center width-70'><br/> <table class='left-side-text width-70'>";
+			
 			
 			$outlets = querySQL('db_outlets');
 			foreach($outlets as $row) {
@@ -57,19 +59,17 @@
 						}
 					}
 
-					echo "<div class='";
-					echo ($c++%2==1) ? 'right-side' : 'leftside' ;
-					echo "'>\n";
+					echo ($c++%2==1) ? '' : '<tr>' ;
 					// get outlet maximum capacity
 					$maxC = maxCapacity();
-					
+					echo "<td>";
 					include('includes/sparkline.inc.php');
-					
-					echo"<br/>\n</div>";
-					echo ($c%2==1) ? "" : "<br class='cl' /><br/><br/><br/><br/>" ;
+					echo "</td>";
+					//echo"<br/>\n</div>";
+					echo ($c%2==1) ?  '' : '</tr>' ;
 				}
 			}
-			echo"</div></div><br class='clear' />";
+			echo"</table><br/></div></div><br class='clear' />";
 			
 			// memorize actual selected outlet
 			$_SESSION['outletID'] = $rem_outlet;

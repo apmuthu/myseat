@@ -865,6 +865,9 @@ function leftSpace($reservation_time, $occupancy){
 	list($h,$m) = explode(":",$time);
 	$leftspace = $_SESSION['outlet_max_capacity']-$occupancy[$time];
 	$endtime = timeDifference($time,$_SESSION['selOutlet']['avg_duration'],'ADD',0);
+	// check if end time is not exceedind outlet close time
+	$endtime = ($endtime > $_SESSION['selOutlet']['outlet_close_time']) ? $_SESSION['selOutlet']['outlet_close_time'] : $endtime;
+
 	if ($endtime<$time) {
 		$endtime = $time;
 	}

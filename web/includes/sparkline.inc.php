@@ -99,5 +99,5 @@ $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
   <?php
   echo"<a href='main_page.php?p=2&outletID=".$_SESSION['selOutlet']['outlet_id']."'>".$_SESSION['selOutlet']['outlet_name']."</a>";
   ?>
-</li>
+ </li>
 </ul>
