@@ -1,4 +1,6 @@
-<ul class="timeline">
+<ul class="sparklist">
+  <li>
+    <span class="sparkline">
 
 <?php
 // get Pax by timeslot
@@ -45,6 +47,7 @@ list($h4,$m4)		= explode(":",$_SESSION['selOutlet']['outlet_close_break']);
 $open_break  		= mktime($h3+0,$m3+0,0,date("m"),$day,date("Y"));
 $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
 
+ 	// Beginn sparkline loop
 	while( $value <= $endtime )
 	{ 
 		// generate timeslot value in percentage
@@ -67,29 +70,12 @@ $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
 		}else{
 			$val_capacity = $tbl_capacity;
 			$val_by_time = $tbl_by_time;
-			$txt_capacity = "<div class='table'>".$val_capacity."</div>";
 		}
-		
-		$txt_time = ($general['timeformat'] == 24) ? date('H:i',$value) : date("g:i a", $value);
-		if($tbl_by_time >= 100){
-			$txt_capacity = 0;
-		}else if($tbl_by_time <= 25){
-			$txt_capacity = $pax_capacity;
-		}
-		
-		if ($txt_capacity < 0) {
-		 	$txt_capacity = '0'; 
-		}
-		
-		// Generating the timeline graph
+
+		// Generating the sparkline graph
 		if( $value <= $open_break || ($value >= $close_break && $value<=$endtime) ){
-			echo"<li>\n<span class='label'>".$txt_capacity."</span>";
-			echo"<span class='label2'>";
-			if (date('i',$value)=="00") {
-				echo ($general['timeformat'] == 24) ? date('H',$value) : date('h a', $value);
-			}
-			echo "</span>";
-			echo "<span class='count";
+
+			echo "<span class='index'><span class='count";
 			
 			if($val_by_time >= 100){
 				echo " full";
@@ -97,21 +83,21 @@ $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
 				echo " high";
 			}else if($val_by_time >= 5){
 				echo " low";
-			}else if($val_by_time > 3){
+			}else{
 				echo " free";
+				$val_by_time = 5;
 			}
-			/*
-			if ($value == $rounded_time) {
-				//mark actual time
-				echo " active";
-			}
-			*/
-			echo "' style='height: ".$val_by_time."% !important;'>(0)</span>\n</li>\n";
+			
+			echo "' style='height: ".$val_by_time."% !important;'>".$val_capacity."</span>\n</span>\n";
 		}	
 		// increase time
 		$value = mktime($h1+0,$m1+$i*$general['timeintervall'],0,date("m"),$day,date("Y")); 
 		$i++;
 	}
 ?>
-<!-- <li><span class="label"></span><span class="label2 grey">&copy;timecontrol</span><span class="count"></span></li> -->
+  </span>
+  <?php
+  echo"<a href='main_page.php?p=2&outletID=".$_SESSION['selOutlet']['outlet_id']."'>".$_SESSION['selOutlet']['outlet_name']."</a>";
+  ?>
+</li>
 </ul>

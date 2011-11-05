@@ -196,6 +196,11 @@ function writeForm($table =''){
 				$keys[$i] = $key;
 				$values[$i] = "'".$value."'";
 				
+			}else if($key == 'contactform_color_scheme' || $key == 'contactform_background'){
+				// settings table correct HEX color code
+				$keys[$i] = $key;
+				$values[$i] = "'".substr($value,1,8)."'";
+					
 			}else if( $key != "action"
 				 && $key != "email_type"
 				 && $key != "password2"
@@ -228,6 +233,7 @@ function writeForm($table =''){
 				$values[] = 0;
 			}
 		}
+		
 		
 		// build outofill field on users
 		if($table == 'plc_users') {

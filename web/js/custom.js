@@ -1,33 +1,6 @@
 $(function(){
 	
-	$('.nav li a').each(function()
-		{
-			$(this).click(function(){
-				$('.nav li a').removeClass('selected');
-				$('.popup').css('display', 'none');
-				
-				$(this).addClass('selected');
-				
-				var popup = $(this).parent().find('.popup');
-				
-				//if has submenu
-				if(popup.length > 0)
-				{
-					//get the position of the placeholder element
-  					var pos = $(this).parent().offset();  
-  					var width = $(this).parent().width();
-  					var popupPos = pos.left-80+(width/2)+1;
-
-  					//show the menu directly over the placeholder
-  					popup.css( { "left": popupPos + "px", "top":pos.top + 60 + "px" } );
-  					popup.show();
-  					
-  					return false;
-				}
-			});
-		}
-	);
-	
+	$('#topbar').dropdown();
 	$('.tipsyold').tipsy({gravity: 'w'});
 	$('.tipsy').tipsy();
 	

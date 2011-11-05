@@ -1,9 +1,7 @@
-<div class="popup">
-	<div class="top"></div>
-	<div class="content">
-		<ul class="submenu">
-			
-			<?php
+  <li class="dropdown">
+    <a href="#" class="dropdown-toggle"><?php echo _outlets; ?></a>
+    <ul class="dropdown-menu">
+		<?php
 			$valid_outlets = array();
 			$outlets = querySQL('db_outlets');
 			foreach($outlets as $row) {
@@ -15,9 +13,6 @@
 				$valid_outlets[] = $row->outlet_id;
 				}
 			}
-			?>
-		</ul>
-		<br class="clear"/>
-	</div>
-	<div class="footer"></div>
-</div>
+		?>
+    </ul>
+  </li>

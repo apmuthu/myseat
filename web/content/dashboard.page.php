@@ -30,13 +30,16 @@
 </div>
 <br class='cl' />
 			<?php
-			// ** print out the timelines of all outlets **
+			// ** print out the sparklines of all outlets **
 			// memorize actual selected outlet
 			$rem_outlet = $_SESSION['outletID'];
 			
 			echo"<div class='onecolumn'><div class='header'>\n";
 			echo"<div class='dategroup_name'>"._statistics."</div>
-			</div>\n<div id='content_wrapper'>";
+			</div>\n<div class='center width-70 margin-top-20'>";
+			
+			//reset zebra containers
+			$c = 0;
 			
 			$outlets = querySQL('db_outlets');
 			foreach($outlets as $row) {
@@ -54,17 +57,16 @@
 						}
 					}
 
-					echo"<div style='min-width:400px !important;'>\n";
-
-					//make each outlet a timeline
-					echo"<h5><a href='main_page.php?p=2&outletID=".$row->outlet_id."'>".$row->outlet_name."</a></h5>";
-					
+					echo "<div class='";
+					echo ($c++%2==1) ? 'right-side' : 'leftside' ;
+					echo "'>\n";
 					// get outlet maximum capacity
 					$maxC = maxCapacity();
 					
-					include('includes/timeline.inc.php');
+					include('includes/sparkline.inc.php');
 					
-					echo"<br class='cl' /><br/>\n</div>";
+					echo"<br/>\n</div>";
+					echo ($c%2==1) ? "" : "<br class='cl' /><br/><br/><br/><br/>" ;
 				}
 			}
 			echo"</div></div><br class='clear' />";
@@ -83,13 +85,13 @@
 			echo"<div class='onecolumn'><div class='header'>\n";
 			echo"<div class='dategroup_name'>"._confirmed_reservations."</div>
 			</div>\n
-			<div id='content_wrapper'>\n";
+			<div class='content'>\n";
 			
 			// no waitlist
 			$_SESSION['wait'] = 0;
 			include('includes/reservations_grid.inc.php');
 			
-			echo"<br class='cl' /><br/>\n</div></div><br/>";
+			echo"\n<br class='cl' /><br/>\n</div></div><br/>";
 			
 			?>
 

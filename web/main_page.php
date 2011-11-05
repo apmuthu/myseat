@@ -97,18 +97,15 @@ if ( $security < 1 ){
 //echo "<pre>".print_r($_SESSION)."</pre>";
 
 // ** begin page content
-echo "<body>
-	<!-- Begin control panel wrapper -->
-	<div id='wrapper'>";
+echo "<body>";
 
 	// ** top bar
-	include('views/topbar.part.php');
-	
+	include('views/topbar2.part.php');
 	// ** main menu
-	include('views/mainmenu.part.php');
-	
-	// ** debugging
-	//echo "<pre>".print_r($_SESSION)."</pre>";
+	//include('views/mainmenu.part.php');
+
+	echo "<div id='wrapper'>";
+
 	
 	// ** content
 	switch($_SESSION['page']){

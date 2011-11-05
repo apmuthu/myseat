@@ -57,8 +57,7 @@
 		</form>
 	</div>
 	
-</div>
-<!-- End main menu -->
+</div><!-- End menu_wrapper -->
 
 <br class="clear"/>
 

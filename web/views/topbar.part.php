@@ -10,49 +10,14 @@
 	
 	<!-- Begin account menu -->
 	<div class="account">
-		<div class="detail">
-			<?php
-			if (!$_SESSION['prp_name']) {
-				$_SESSION['prp_name'] = querySQL('db_property');
-			}
-			
-			$filename = substr(dirname(__FILE__),0,-9)."xt-admin";
-			
-			if($this_page != "property"){
-				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href='";
-				if ($_SESSION['role']=='1' && file_exists($filename)) {
-					echo"../xt-admin/index.php";				
-				}
-				$name = ($_SESSION['realname']=='') ? $_SESSION['u_name'] : $_SESSION['realname'];
-				echo "'><span class='bold'> ".$name."</span></a>";
-			}
-			?>
-		</div>
 		<ul class="icon">
-			<!--
-			<li>
-				<a href="#" title="Message">
-					<img src="images/icon_message.png" id="message" alt="message" class="middle tipsy" original-title="New message"/>
-				</a>
-			</li>
-			<li>
-				<a href="#" title="Setting">
-					<img src="images/icon_setting.png" alt="" class="middle"/>
-				</a>
-			</li>
-			-->
-			<li>
-			<?php echo '<small>'.$sw_version."</small>&nbsp;";?>
-			</li>
 			<li>
 				<a href="../PLC/index.php?logout=1" title="Logout">
 					<img src="images/icon_logout.png" alt="" class="middle"/>
 				</a>
 			</li>
 		</ul>
-	</div>
-	<!-- End account menu -->
+	</div><!-- End account menu -->
 	
 	
-</div>
-<!--End top bar -->
+</div><!--End top bar -->

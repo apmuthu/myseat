@@ -12,15 +12,18 @@
 				?>
 			</a>
 		</li>
-		<?php 
-		if ( $today_date <= $_SESSION['selectedDate'] && $dayoff == 0 && current_user_can('Reservation-New') ){
-			echo'<li><a href="main_page.php?q=2"';
-				if ($q == 2) { echo " class='active'";}else{ echo " class='inactive'"; } 
-				echo'>'. _add_reservation;
-				if ($_SESSION['selOutlet']['limit_password']!='') { echo "&nbsp<img src='../PLC/img/lock.png'/ height='12px'>";}
-				echo '</a></li>';
-		} 
-		?>
+			<?php 
+			// disable "New reservation" when maitre comment is "Rücksprache"
+			$findme = "cksprache";
+			$pos = strpos($maitre['maitre_comment_day'],$findme);
+
+			if ( $today_date <= $_SESSION['selectedDate'] && $dayoff == 0 && current_user_can('Reservation-New') && $pos === false  ){
+				echo'<li>
+					<a href="main_page.php?q=2"';
+					if ($q == 2) { echo " class='active'";}
+					echo'class="active" >'._add_reservation.'</a></li>';
+			} 
+			?>
 		<?php if ($q != 4):?>
 		<li>
 			<a href="main_page.php?q=3&s=1" <?php if ($q == 3) { echo " class='active'";}else{ echo " class='inactive'"; }?> >

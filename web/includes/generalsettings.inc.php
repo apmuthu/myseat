@@ -71,12 +71,17 @@
 		}else if ($key == 'id'){
 			echo "<input type='hidden' name='id' value='".$value."'>";
 		}else if (substr($key,0,10) == 'guest_type'){
-				echo "<p><label>".$formtext."</label><br/>
-					<input type='text' name='".$key."' id='".$key."' value='".$value."'/></p><br/>";
-		}elseif($key != 'contactform_background' && $key != 'contactform_color_scheme'){
 			echo "<p><label>".$formtext."</label><br/>
-				<input type='text' name='".$key."' id='".$key."' value='".$value."' 
-				class='required' title=' '/></p><br/>";	
+					<input type='text' name='".$key."' id='".$key."' value='".$value."'/></p><br/>";
+		}else if ($key == 'contactform_color_scheme'){
+			/* echo "<p><label>".$formtext."</label><br/>
+				<input type='color' name='".$key."' id='".$key."' value='#".$value."' data-hex='true'/></p><br/>"; */
+		}else if ($key == 'contactform_background'){
+			/* echo "<p><label>".$formtext."</label><br/>
+				<input type='color' name='".$key."' id='".$key."' value='#".$value."' data-hex='true'/></p><br/>"; */
+		}else {
+			echo "<p><label>".$formtext."</label><br/>
+				<input type='text' name='".$key."' id='".$key."' value='".$value."' class='required' title=' '/></p><br/>";	
 		}
 	}
 	?>
