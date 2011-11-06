@@ -144,7 +144,7 @@ $forwardPage = "../web/main_page.php?p=1";
 		
 		<br class="clear"/><br/>
 				
-				<br>
+		<br/><br/>
 		<!-- Begin one column box -->
 		<div class="onecolumn most-recent" id="most_recent">
 
