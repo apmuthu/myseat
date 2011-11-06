@@ -76,32 +76,13 @@ $this_page = "property";
 	include('views/header.html.php');
 
 // ** begin page content
-echo "<body>
-	<!-- Begin control panel wrapper -->
-	<div id='wrapper'>";
+echo "<body>";
 
 	// ** top bar
 	include('views/topbar.part.php');
 	
 	// ** main menu
 ?>
-	<!-- Begin empty main menu -->
-	<div id="menu_wrapper">
-		<ul class="nav margin-left-40">
-			<li>
-				<a href="#" <?php if($_GET['p']=='2'){echo "class='active'";} ?> >
-					Sign up Property	
-				</a>
-			</li>
-			<li>
-				<a href="#" <?php if($_GET['p']=='7'){echo "class='active'";} ?> >
-					Create Admin user	
-				</a>
-			</li>
-		</ul>
-	</div>
-	<!-- End main menu -->
-
 	<br class="clear"/>
 
 	<!-- Begin content -->
