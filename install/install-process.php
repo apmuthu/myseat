@@ -169,7 +169,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
   `confirm_code` varchar(255) NOT NULL,
   `last_ip` varchar(40) CHARACTER SET utf8  NOT NULL,
   `last_login` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
-  `autofill` INT NOT NULL DEFAULT '',
+  `autofill` INT NOT NULL DEFAULT '0',
   `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`userID`),
