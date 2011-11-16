@@ -2,35 +2,39 @@
 // prevent dangerous input
 secureSuperGlobals();
 
+// init variables
+$_SESSION['token'] = (isset($_SESSION['token'])) ? $_SESSION['token'] : 0;
+$$form_action = (isset($form_action)) ? $_POST['action'] : '';
+
 // CSRF - Secure forms with token
 if (isset($_POST)){
  if ($_SESSION['token'] == $_POST['token']) {
 	// submitted forms storage
-	if ($_POST['action']=='save_res') {
+	if ($form_action=='save_res') {
 		// Out of order; see ajax/process_reservation.php
 		//$resultQuery = writeForm('reservations');
-	}else if ($_POST['action']=='save_book' &&  (int)$_POST['verify'] == 4) {
+	}else if ($form_action=='save_book' &&  (int)$_POST['verify'] == 4) {
 		$resultQuery = writeForm('reservations');
-	}else if ($_POST['action']=='save_out') {
+	}else if ($form_action=='save_out') {
 		$resultQuery = writeForm('outlets');
-	}else if ($_POST['action']=='save_maitre') {
+	}else if ($form_action=='save_maitre') {
 		$resultQuery = writeForm('maitre');
-	}else if ($_POST['action']=='save_set') {
+	}else if ($form_action=='save_set') {
 		$resultQuery = writeForm('settings');
-	}else if ($_POST['action']=='save_evnt') {
+	}else if ($form_action=='save_evnt') {
 		$resultQuery = writeForm('events');
-	}else if ($_POST['action']=='save_ldgr') {
+	}else if ($form_action=='save_ldgr') {
 		if (($_POST['type'] == 'credit' && $_POST['amount'] > 0) || ($_POST['type'] == 'debit' && $_POST['amount'] < 0)) {
 			$_POST['amount'] = $_POST['amount'] * -1;
 		}else if ($_POST['type'] == 'debit' && $_POST['amount'] < 0) {
 			$_POST['amount'] = $_POST['amount'] * -1;
 		}
 		$resultQuery = writeForm('ledger');
-	}else if ($_POST['action']=='save_prpty') {
+	}else if ($form_action=='save_prpty') {
 		$resultQuery = writeForm('properties');
 		$_SESSION['property'] = $resultQuery;
 		$_SESSION['propertyID'] = $resultQuery;
-	}else if ($_POST['action']=='save_usr') {
+	}else if ($form_action=='save_usr') {
 		// PHP check for a unique username
 		// secures the Javascript check
 		if(isSet($_POST['username'])){

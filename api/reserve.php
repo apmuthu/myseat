@@ -33,7 +33,7 @@ header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CN
 // ** SETTINGS **
 // Select the type of time selector:
 // 'radio': radio buttons; 'drop': select box 
-$time_selector = "radio";
+$time_selector = "drop";
 
 //link to terms&condition page
 // Your license
@@ -400,10 +400,12 @@ if($check_web_outlet==1){
 					<input type="checkbox" name="reservation_advertise" id="reservation_advertise" value="YES"/>
 					&nbsp;<strong><?php echo _reservation_advertise; ?></strong>
 					<br/>
-					<input type="checkbox" name="terms" class="required checkbox" id="terms" value="YES"/>
+					<!-- <div style="visibility:hidden;"> -->
+					<input type="checkbox" name="terms" class="required checkbox" id="terms" value="YES" checked="checked"/>
 					<a href="<?php echo $terms_link;?>" target="_blank" onclick="window.open(this.href, this.target, 'width=700,height=700'); return false;" class="checktext">
 						&nbsp;<?php echo _reservation_terms; ?>
 					</a>
+					<!-- </div> -->
 				</div> 
 				<br/>
 	</div> 

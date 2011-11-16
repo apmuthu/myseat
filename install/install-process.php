@@ -343,6 +343,34 @@ $sql = query("INSERT INTO `capabilities` (`id`, `capability`, `1`, `2`, `3`, `4`
 
 echo "<li>User Permissions have been set to default.</li>";
 
+
+// API ---------------------------------------------------
+
+$sql = query("CREATE TABLE IF NOT EXISTS `api_users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `token` varchar(60) DEFAULT NULL,
+  `name` varchar(40) DEFAULT NULL,
+  `website` varchar(60) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  `active` tinyint(1) NOT NULL DEFAULT '1',
+  `confirm_code` varchar(255) NOT NULL,
+  `request_count` int(10) unsigned DEFAULT NULL,
+  `last_ip` varchar(40) CHARACTER SET utf8  NOT NULL,
+  `last_login` date NOT NULL DEFAULT '0000-00-00',
+  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  KEY `token` (`token`),
+  KEY `name` (`name`),
+  KEY `request_count` (`request_count`),
+  KEY `last_login` (`last_login`),
+  KEY `modified` (`modified`),
+  FULLTEXT KEY `description` (`description`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;")
+ or die(mysql_error());
+
+echo "<li>The API key table has been created. </li>";
+
 // FINISH ---------------------------------------------------
 echo '<div id="login_info" class="alert_info" style="margin:auto;padding:auto;"><p style="margin-bottom:6px; text-align:center;"><img src="../web/images/icon_message.png" alt="success" class="middle"/>';
 echo '<strong>The Database has been created!</strong><div style="margin-left:36px; font-size:0.9em; line-height:1.2em; text-align:center;">Proceed with setting up property and admin user.</div><br /></p>';

@@ -1,8 +1,3 @@
-<!--
-First, be sure that your bookingpage ends with .php instead of .htm oder .html.
-Second, put a copy of the mobile_detect.php in the directory on your booking page.
-Third, copy the following PHP code on top of your page.
--->
 <?php
 session_start();
 	include("mobile_detect.php");
@@ -11,6 +6,11 @@ session_start();
 	   header('Location: reserve.php');
 	}
 ?>
+<!--
+First, be sure that your bookingpage ends with .php instead of .htm oder .html.
+Second, put a copy of the mobile_detect.php in the directory on your booking page.
+Third, copy the forgoing PHP code on top of your page.
+-->
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">

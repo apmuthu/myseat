@@ -22,14 +22,14 @@ $this_page = "property";
 
 
 		$cookie 				= $user->read_cookie();
-		$_SESSION['u_id'] 		= $user->userData[$user->tbFields['userID']];
-		$_SESSION['u_name'] 	= $user->userData[$user->tbFields['login']];
-		$_SESSION['u_email'] 	= $user->userData[$user->tbFields['email']];
-		$_SESSION['role'] 		= $user->userData['role'];
-		$_SESSION['role'] 		= ($_SESSION['role']) ? $_SESSION['role'] : 6;
-		$_SESSION['property'] 	= $user->userData['property_id'];
+		$_SESSION['u_id'] 		= (isset($user->userData[$user->tbFields['userID']]) ? $user->userData[$user->tbFields['userID']] : '';
+		$_SESSION['u_name'] 	= (isset($user->userData[$user->tbFields['login']])) ? $user->userData[$user->tbFields['login']] : '';
+		$_SESSION['u_email'] 	= (isset($user->userData[$user->tbFields['email']])) ? $user->userData[$user->tbFields['email']] : '';
+		$_SESSION['role'] 		= (isset($user->userData['role'])) ? $user->userData['role'] : '';
+		$_SESSION['role'] 		= (isset($_SESSION['role'])) ? $_SESSION['role'] : 6;
+		$_SESSION['property'] 	= (isset($user->userData['property_id'])) ? $user->userData['property_id'] : '';
 		$_SESSION['u_time'] 	= date("Y-m-d H:i:s", time());
-		$_SESSION['u_lang'] 	= $user->userData['lang_id'];
+		$_SESSION['u_lang'] 	= (isset($user->userData['lang_id'])) ? $user->userData['lang_id'] : '';
 		$_SESSION["valid_user"] = TRUE;
 
 // ** database functions

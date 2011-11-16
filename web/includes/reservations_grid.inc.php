@@ -98,7 +98,7 @@
 				}
 			echo "</td>";
 			if($_SESSION['wait'] == 0){
-				echo "<td class='big tb_nr'><div id='reservation_table-".$id."' class='inlineedit'>".$row->reservation_table."</div></td>";
+				echo "<td class='big tb_nr'><img src='images/icons/table_II.png' class='tipsy leftside noprint' title='"._table."' /><div id='reservation_table-".$id."' class='inlineedit'>".$row->reservation_table."</div></td>";
 			}
 			echo "<td><div class='noprint'>";
 				getStatusList($id, $row->reservation_status);

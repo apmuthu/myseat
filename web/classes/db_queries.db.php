@@ -183,18 +183,7 @@ function querySQL($statement){
 			return getRowListarray($result);
 		break;
 		case 'outlet_info':
-			$result = query("SELECT outlet_id, property_id, outlet_name, outlet_description, outlet_description_en,	 
-						cuisine_style, outlet_max_capacity, outlet_max_tables, outlet_open_time, 	 
-						outlet_close_time, outlet_closeday, saison_start, saison_end,  	  	 
-						saison_year, webform, limit_password, confirmation_email, passerby_max_pax, avg_duration,	 
-						1_open_time,1_close_time, 2_open_time,2_close_time, 	 
-						3_open_time,3_close_time, 4_open_time,4_close_time, 	 
-						5_open_time, 5_close_time, 6_open_time, 6_close_time, 	 
-						0_open_time, 0_close_time, 1_open_break, 1_close_break, 	 
-						2_open_break, 2_close_break, 3_open_break, 3_close_break, 	 
-						4_open_break, 4_close_break, 5_open_break, 5_close_break, 	 
-						6_open_break, 6_close_break, 0_open_break, 0_close_break 
-							FROM `outlets` 
+			$result = query("SELECT * FROM `outlets` 
 							LEFT JOIN `properties` on outlets.property_id = properties.id 
 							WHERE `outlet_id` ='%d'
 							AND `property_id` ='%d' 

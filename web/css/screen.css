@@ -684,7 +684,7 @@ a.menu:after,
                                             display: none;
                                             position: absolute;
                                             top: 40px;
-                                            z-index: 900;
+                                            z-index: 11000;
                                             min-width: 160px;
                                             max-width: 220px;
                                             _width: 160px;

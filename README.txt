@@ -3,7 +3,7 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.195                        =-= 
+=-= Version: 0.20                         =-= 
 =-= Date:    31.10.2011                   =-= 
 =-= Time:    12:11 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -16,18 +16,17 @@ Collaborate effortlessly on reservations.
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.195
+LATEST CHANGES in 0.20
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Layout changes, more modern touch
-- No more need to activate admin account on installation 
-- Login = Author function for Users
+- New API included
+- small bugfixes
 
-There is a database update necessary for 0.195 version!
+There is a database update necessary for 0.195 version and up!
 
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-SEE DOCUMENTATION FOR MORE DETAILS.
+SEE ONLINE DOCUMENTATION FOR MORE DETAILS: http://www.myseat.us/API 
 mySeat is easy to install.
 Under most circumstances installing mySeat is a very simple process
 and takes less than ten minutes to complete.

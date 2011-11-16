@@ -90,7 +90,7 @@ $i++;
 //echo "</pre>";
 
 
-// BEGIN UPDATE ------------------------------------------------
+// BEGIN UPDATE  FIELDS ----------------------------
 foreach ($table_updates as $table_update) {
 	// reset update variable
 	$update = 'NO';
@@ -118,10 +118,39 @@ foreach ($table_updates as $table_update) {
 	}
 	
 }
-		// update status
-		$errorMessage .= "<br/>Update completed.<br/>";
+
+
+// BEGIN UPDATE  TABLES ----------------------------
+	$query = "CREATE TABLE IF NOT EXISTS `api_users` (
+	  `id` bigint(20)  NOT NULL AUTO_INCREMENT,
+	  `token` varchar(60) DEFAULT NULL,
+	  `name` varchar(40) DEFAULT NULL,
+	  `website` varchar(60) DEFAULT NULL,
+	  `description` varchar(200) DEFAULT NULL,
+	  `active` tinyint(1) NOT NULL DEFAULT '1',
+	  `confirm_code` varchar(255) NOT NULL,
+	  `request_count` int(10) unsigned DEFAULT NULL,
+	  `last_ip` varchar(40) CHARACTER SET utf8  NOT NULL,
+	  `last_login` date NOT NULL DEFAULT '0000-00-00',
+	  `created` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+	  `modified` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	  PRIMARY KEY (`id`),
+	  KEY `token` (`token`),
+	  KEY `name` (`name`),
+	  KEY `request_count` (`request_count`),
+	  KEY `last_login` (`last_login`),
+	  KEY `modified` (`modified`),
+	  FULLTEXT KEY `description` (`description`)
+	  ) ENGINE=MyISAM DEFAULT CHARSET=utf8";
+	$sql = query($query);
+
+	$errorMessage .= "New table 'api users' has been successfully created.<br/>"; 
+
+	// update status
+	$errorMessage .= "<br/>Update completed.<br/>";
 
 ?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">

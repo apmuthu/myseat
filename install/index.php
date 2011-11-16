@@ -55,7 +55,7 @@ ini_set("display_errors", 1);
 				<div class="header">
 					<h2>Install process</h2>
 				</div>
-				
+				<br/><br/>
 				<div class="content">
 					<p style="font-size:1.2em;">
 						mySeat is well known for its ease of installation. Under most circumstances installing mySeat is a very simple process and takes less than five minutes to complete.<br/>
