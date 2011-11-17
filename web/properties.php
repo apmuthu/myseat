@@ -22,7 +22,7 @@ $this_page = "property";
 
 
 		$cookie 				= $user->read_cookie();
-		$_SESSION['u_id'] 		= (isset($user->userData[$user->tbFields['userID']]) ? $user->userData[$user->tbFields['userID']] : '';
+		$_SESSION['u_id'] 		= (isset($user->userData[$user->tbFields['userID']])) ? $user->userData[$user->tbFields['userID']] : '';
 		$_SESSION['u_name'] 	= (isset($user->userData[$user->tbFields['login']])) ? $user->userData[$user->tbFields['login']] : '';
 		$_SESSION['u_email'] 	= (isset($user->userData[$user->tbFields['email']])) ? $user->userData[$user->tbFields['email']] : '';
 		$_SESSION['role'] 		= (isset($user->userData['role'])) ? $user->userData['role'] : '';
