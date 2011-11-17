@@ -1,10 +1,9 @@
 <?php
 // prevent dangerous input
 secureSuperGlobals();
-
 // init variables
 $_SESSION['token'] = (isset($_SESSION['token'])) ? $_SESSION['token'] : 0;
-$$form_action = (isset($form_action)) ? $_POST['action'] : '';
+$form_action = (isset($_POST['action'])) ? $_POST['action'] : '';
 
 // CSRF - Secure forms with token
 if (isset($_POST)){
