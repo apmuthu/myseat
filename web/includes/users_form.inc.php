@@ -78,7 +78,7 @@ if ($_SESSION['page'] == 7){
 			}else{
 				// creating a new property and admin
 				echo "<span class='bold'>".$roles[2]."</span><input type='hidden' name='role' id='role' value='1'>";
-				echo "<input type='hidden' name='active' value='1'>";
+				echo "<input type='hidden' name='active' value='2'>";
 			}
 			?>		
 	</p>

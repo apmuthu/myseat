@@ -57,11 +57,11 @@
 			echo "<td";
 			// daylight coloring
 			if ($row->reservation_time > $daylight_evening){
-				echo " class='evening'";
+				echo " class='evening noprint'";
 			}else if ($row->reservation_time > $daylight_noon){
-				echo " class='afternoon'";
+				echo " class='afternoon noprint'";
 			}else if ($row->reservation_time < $daylight_noon){
-				echo " class='morning'";
+				echo " class='morning noprint'";
 			}
 			
 			echo " style='width:10px !important; padding:0px;'>&nbsp;</td>";
@@ -75,7 +75,7 @@
 			echo "<td><strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;";
 			printType($row->reservation_hotelguest_yn);
 				//echo "<img src='images/icons/user-silhouette.png' class='middle'/>";
-			echo "</td><td style='width:20%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
+			echo "</td><td style='width:30%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
@@ -90,7 +90,7 @@
 					 "' title='"._recurring."' class='tipsy' border='0' >";
 	        }
 	
-			echo"</td><td style='width:20%'>";
+			echo"</td><td style='width:10%'>";
 				if ($_SESSION['page'] == 1) {
 			 		echo $row->outlet_name;
 			 	}else{
@@ -133,13 +133,13 @@
 	</tbody>
 	<tfoot>
 		<tr style="border:1px #000;">
-			<td></td>
+			<td class=" noprint"></td><td></td>
 			<td colspan="2" class="bold"><?php echo $guestsum;?>&nbsp;&nbsp;<?php echo _guest_summary;?></td>
 			<td></td>
 			<td colspan="2" class="bold"><?php echo $tablesum;?>&nbsp;&nbsp;<?php echo _tables_summary;?></td>
 			<?php
 			if($_SESSION['wait'] == 0){
-				echo "<td></td>";
+				//echo "<td></td>";
 			}
 			?>
 		</tr>

@@ -20,11 +20,12 @@ if (isset($passbyTime) && $_SESSION['passerby_max_pax'] > 0) {
 	foreach ($passbyTime as $key => $value) {
 		if ( $_SESSION['passerby_max_pax']-$value <= 0 && $_SESSION['page'] == 2 ) {
 			if($i<=1){echo "<div class='alert_warning'><p>";}
-			echo "<img src='images/icon_warning.png' alt='error' class='middle'/>".formatTime($key,$general['timeformat']).": "._sentence_16."<br>";
-			if($i==count($passbyTime)){echo "</p></div>";}
+			echo "<img src='images/icon_warning.png' alt='error' class='middle'/>".formatTime($key,$general['timeformat']).": "._sentence_16." <br>";
 			$i++;
+			//if($i==count($passbyTime)){echo "</p></div>";}
 		}
 	}
+	if(count($passbyTime)>0){echo "</p></div>";}
 }
 
 // Messages
