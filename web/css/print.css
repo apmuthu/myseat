@@ -23,6 +23,25 @@ body {
 		  display:none;
 		 }
 
+#messageBox, .alert_ads {
+		  display:none;
+		 }
+#tb_time{
+	width:10% !important;	
+}
+#tb_pax{
+	width:10% !important;	
+}
+#tb_name{
+	width:30% !important;
+}
+#tb_note{
+	width:40% !important;
+}
+#tb_table{
+	width:10% !important;
+}
+
 #datetext {
 		  font-weight:bold;
                   font-size: 1.3em;
@@ -33,8 +52,9 @@ body {
 		color: black;
 		}
 		
-.onecolumn .header {
+.onecolumn, .onecolumn .header {
 		background: white;
+		border: 0px;
 		}
 		
 .date {

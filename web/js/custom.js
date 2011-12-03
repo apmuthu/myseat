@@ -3,6 +3,8 @@ $(function(){
 	$('#topbar').dropdown();
 	$('.tipsyold').tipsy({gravity: 'w'});
 	$('.tipsy').tipsy();
+    //$('#edit_outlet_form [title]').tipsy({trigger: 'focus', gravity: 'w'});
+
 	
 	$(document).click(function(){
 		$('.popup').css('display', 'none');
@@ -413,9 +415,8 @@ $(document).ready(function() {
 			}
 	});
 	
-		// check username
-
-		$("#username").change(function() {
+	// check username
+	$("#username").change(function() {
 		var usr = $("#username").val();
 		if(usr.length >= 3) {
 		  $("#status").html('<img align="absmiddle" src="images/ajax-loader.gif" />');

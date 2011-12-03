@@ -65,17 +65,17 @@
 			}
 			
 			echo " style='width:10px !important; padding:0px;'>&nbsp;</td>";
-			echo "<td";
+			echo "<td id='tb_time'";
 			// reservation after maitre message
 			if ($row->reservation_timestamp > $maitre['maitre_timestamp'] && $maitre['maitre_comment_day']!='') {
 				echo " class='tautologous' title='"._sentence_13."' ";
 			}
 			echo ">";
 			echo "<strong>".formatTime($row->reservation_time,$general['timeformat'])."</strong></td>";
-			echo "<td><strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;";
+			echo "<td id='tb_pax'><strong class='big'>".$row->reservation_pax."</strong>&nbsp;&nbsp;<span class='noprint'>";
 			printType($row->reservation_hotelguest_yn);
 				//echo "<img src='images/icons/user-silhouette.png' class='middle'/>";
-			echo "</td><td style='width:30%'>".printTitle($row->reservation_title)."<strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
+			echo "</span></td><td style='width:20%' id='tb_name'><span class='noprint'>".printTitle($row->reservation_title)."</span><strong> <a id='detlbuttontrigger' href='ajax/guest_detail.php?id=".$id."'"; 
 			// color guest name if tautologous
 			if($tautologous>1){echo" class='tautologous tipsy' title='"._tautologous_booking."'";}
 			echo ">".$row->reservation_guest_name."</a></strong>";
@@ -90,7 +90,7 @@
 					 "' title='"._recurring."' class='tipsy' border='0' >";
 	        }
 	
-			echo"</td><td style='width:10%'>";
+			echo"</td><td style='width:30%' id='tb_note'>";
 				if ($_SESSION['page'] == 1) {
 			 		echo $row->outlet_name;
 			 	}else{
@@ -98,12 +98,12 @@
 				}
 			echo "</td>";
 			if($_SESSION['wait'] == 0){
-				echo "<td class='big tb_nr'><img src='images/icons/table_II.png' class='tipsy leftside noprint' title='"._table."' /><div id='reservation_table-".$id."' class='inlineedit'>".$row->reservation_table."</div></td>";
+				echo "<td class='big tb_nr' style='width:85px;' id='tb_table'><img src='images/icons/table_II.png' class='tipsy leftside noprint' title='"._table."' /><div id='reservation_table-".$id."' class='inlineedit'>".$row->reservation_table."</div></td>";
 			}
-			echo "<td><div class='noprint'>";
+			echo "<td class='noprint'><div>";
 				getStatusList($id, $row->reservation_status);
 			echo "</div></td>";
-			echo "<td class='noprint' style='width:15%'>";
+			echo "<td class='noprint'>";
 			echo "<small>".$row->reservation_booker_name." | ".humanize($row->reservation_timestamp)."</small>";
 			echo "</td>";
 			echo "<td class='noprint'>";

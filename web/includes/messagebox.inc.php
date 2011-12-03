@@ -15,17 +15,21 @@ if (trim($maitre['maitre_comment_day']) != "" && $_SESSION['page'] == 2 ) {
 }
 
 // Max passerby warning
+$set = 0;
 if (isset($passbyTime) && $_SESSION['passerby_max_pax'] > 0) {
 	$i=1;
 	foreach ($passbyTime as $key => $value) {
 		if ( $_SESSION['passerby_max_pax']-$value <= 0 && $_SESSION['page'] == 2 ) {
-			if($i<=1){echo "<div class='alert_warning'><p>";}
+			if($i<=1){
+				echo "<div class='alert_warning'><p>";
+				$set = 1;
+			}
 			echo "<img src='images/icon_warning.png' alt='error' class='middle'/>".formatTime($key,$general['timeformat']).": "._sentence_16." <br>";
 			$i++;
 			//if($i==count($passbyTime)){echo "</p></div>";}
 		}
 	}
-	if(count($passbyTime)>0){echo "</p></div>";}
+	if($set == 1){echo "</p></div>";}
 }
 
 // Messages

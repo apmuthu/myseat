@@ -64,6 +64,7 @@ function translateSite($lang='en', $apx = ''){
 	GLOBAL $general;
 	$lang=($lang=='') ? 'en' : substr($lang,0,2);
 	include($apx.'lang/'.$lang.".php");
+	include($apx.'lang/man_text.php');
 	
 	//define custom guest type
 	if ($general['guest_type_text_HG']!="") {
