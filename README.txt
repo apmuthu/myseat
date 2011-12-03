@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.20                         =-= 
-=-= Date:    31.10.2011                   =-= 
-=-= Time:    12:11 GMT                    =-= 
+=-= Version: 0.205                        =-= 
+=-= Date:    03.12.2011                   =-= 
+=-= Time:    13:19 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,12 +16,14 @@ Collaborate effortlessly on reservations.
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.20
+LATEST CHANGES in 0.205
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 - New API included
+- description text in outlet form
 - small bugfixes
 
 There is a database update necessary for 0.195 version and up!
+(/install/update.php)
 
 
 INSTALLATION
