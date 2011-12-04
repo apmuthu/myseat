@@ -40,8 +40,8 @@ if (isset($_POST)){
 			$value = $_POST['username'];
 			$sql_check = querySQL('check_username');
 		}
+		$id = writeForm('plc_users');
 		if(mysql_num_rows($sql_check) < 1 ){
-			$id = writeForm('plc_users');
 			if($_POST['active']==0){
 				include('classes/confirmation.class.php');
 			}
