@@ -453,6 +453,30 @@ $(document).ready(function() {
 			'hideOnContentClick': true
 	});
 
+	 // Activate user checkbox
+	 $(".modalactivate").click(function () {
+	  var original_id = $(this).attr('id');
+	  var substr = original_id.split('-');
+	  var id = substr[1];
+	  var action = substr[0];
+				$.ajax({
+					url: 'ajax/activate_user.php',
+					data: 'cellid=' + id + '&action=' + action,
+					type: 'post',
+					cache: false,
+					dataType: 'html',
+					success: function(original_element){
+						if( action == 'disable'){
+							$("#disable-" + id).css('display', 'none');
+							$("#enable-" + id).css('display', 'block');
+						}else{
+							$("#disable-" + id).css('display', 'block');
+							$("#enable-" + id).css('display', 'none');	
+						}		
+					}
+				}); 
+	});
+
 	//wysiwyg css 100%
 	$('.wysiwyg').css('width', '100%');
 	
