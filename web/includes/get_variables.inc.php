@@ -3,10 +3,11 @@
 secureSuperGlobals();
 // init variables
 $_SESSION['token'] = (isset($_SESSION['token'])) ? $_SESSION['token'] : 0;
-$form_action = (isset($_POST['action'])) ? $_POST['action'] : '';
 
 // CSRF - Secure forms with token
 if (isset($_POST)){
+ $form_action = (isset($_POST['action'])) ? $_POST['action'] : '';
+
  if ($_SESSION['token'] == $_POST['token']) {
 	// submitted forms storage
 	if ($form_action=='save_res') {
@@ -49,6 +50,15 @@ if (isset($_POST)){
 	}
  }
 }
+
+if (isset($_GET)){
+	$form_action = (isset($_GET['action'])) ? $_GET['action'] : '';
+
+	if ($form_action=='plugins') {
+		include('ajax/modify_plugins.php');
+	}
+}
+
 // CSRF - Secure forms with token
 $token = md5(uniqid(rand(), true)); 
 $_SESSION['token'] = $token;

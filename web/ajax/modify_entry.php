@@ -7,6 +7,12 @@ include('../classes/database.class.php');
 include('../classes/connect.db.php');
 // ** all database queries
 include('../classes/db_queries.db.php');
+// ** php hooks class
+	include "../classes/phphooks.config.php";
+	include "../classes/phphooks.class.php";
+	//create instance of plugin class
+	$plugin_path = '../../plugins/';
+	include "../../config/plugins.init.php";
 
 // prevent dangerous input
 secureSuperGlobals();
@@ -32,16 +38,29 @@ if ($action=="DEL"){
 	if ($button == 'all'){
 		// ****** DELETE MULTI ******
 		$cmd_delete = querySQL('del_res_multi');
+		// ** plugin hook
+		if ($hook->hook_exist('after_del_res')) {
+			$hook->execute_hook('after_del_res');
+		}
 		$reservation_id=0;
+
 		return $cmd_delete;
 	}else if ($button == 'single'){	
 		// ****** DELETE SINGLE ******
 		$cmd_delete = querySQL('del_res_single');
+		// ** plugin hook
+		if ($hook->hook_exist('after_del_res')) {
+			$hook->execute_hook('after_del_res');
+		}
 		return $cmd_delete;
 	}
 }else if ($action=="ALW"){	
-		// ****** DELETE SINGLE ******
+		// ****** ALLOW SINGLE ******
 		$cmd_allow = querySQL('alw_res_single');
+		// ** plugin hook
+		if ($hook->hook_exist('after_alw_res')) {
+			$hook->execute_hook('after_alw_res');
+		}
 		return $cmd_allow;
 }
 ?>

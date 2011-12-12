@@ -809,7 +809,32 @@ function querySQL($statement){
 							);
 			return getRowList($result);
 		break;
-		
+		case 'active_plugins':
+			$plug = query("SELECT filename, action FROM `plugins` WHERE `action` = '1'");
+			return getRowList($plug);
+		break;
+		case 'update_plugins':
+			$result = query("UPDATE `plugins` SET `action` = '%d' WHERE `filename`='%s'",$value,$field);
+			return $result;
+		break;
+		case 'count_plugins':
+			$result = query("SELECT COUNT(*) FROM `plugins` WHERE `filename`='%s'",$field);
+			return getResult($result);
+		break;
+		case 'get_plugins':
+			$result = query("SELECT action FROM `plugins` WHERE `filename`='%s'",$field);
+			return getResult($result);
+		break;
+		case 'insert_plugins':
+			$result = query("INSERT INTO `plugins` (`filename`,`action`) VALUES ('%s','%d')",$field,$value);
+			return $result;
+		break;
+		case 'user_activate':
+			$result = query("UPDATE `plc_users` 
+							SET `active`='%d' 
+							WHERE `userID`='%d' LIMIT 1",$value,$id);
+			return $result;	
+		break;
 	}
 	
 }

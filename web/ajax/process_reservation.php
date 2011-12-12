@@ -1,5 +1,5 @@
 <?php session_start();
- 
+
 // ** set configuration
 include('../../config/config.general.php');
 // ** connect to database
@@ -16,8 +16,17 @@ include('../classes/business.class.php');
 include('../classes/db_queries.db.php');
 // ** set configuration
 include('../../config/config.inc.php');
+// ** php hooks class
+	include "../classes/phphooks.config.php";
+	include "../classes/phphooks.class.php";
+	//create instance of plugin class
+	$plugin_path = '../../plugins/';
+	include "../../config/plugins.init.php";
 // prevent dangerous input
 secureSuperGlobals();
+
+// Save form values in session for plugin system
+$_SESSION['form'] = $_POST;
 
 // +++ memorize selected outlet details; maybe moved reservation +++
 $rows = querySQL('db_outlet_info');
@@ -270,8 +279,10 @@ if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 			if ( $_POST['email_type'] != 'no' && $new_id != $_POST['reservation_id']) {
 				// ** PHPMailer class
 				require_once('../classes/phpmailer/class.phpmailer.php');
-				//send email confirmation
-				include('../classes/email.class.php');
+				// ** plugin hook
+				if ($hook->hook_exist('after_booking')) {
+					$hook->execute_hook('after_booking');
+				}
 			}
 }
 // CSRF - Secure forms with token
@@ -280,7 +291,5 @@ $_SESSION['token'] = $token;
 
 // after processing reservation, redirect to main page
 header("Location: ../main_page.php?p=2&selectedDate=".$_SESSION['reservation_date']."&tbl=".$tbl_occupancy[$startvalue]."&cap=".$tbl_capacity);
-
-exit;
 
 ?>

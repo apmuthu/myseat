@@ -20,8 +20,8 @@
 			if ( $today_date <= $_SESSION['selectedDate'] && $dayoff == 0 && current_user_can('Reservation-New') && $pos === false  ){
 				echo'<li>
 					<a href="main_page.php?q=2"';
-					if ($q == 2) { echo " class='active'";}
-					echo'class="active" >'._add_reservation.'</a></li>';
+					if ($q == 2) { echo " class='active'";}else{ echo " class='inactive'"; }
+					echo' >'._add_reservation.'</a></li>';
 			} 
 			?>
 		<?php if ($q != 4):?>

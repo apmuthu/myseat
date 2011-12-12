@@ -2,7 +2,7 @@
 ob_start();
 
 //ini_set('display_errors', 1);
-//ini_set('error_reporting', E_ALL);
+//ini_set('error_reporting', E_ALL ^ E_NOTICE);
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 //  Common database class
 // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -84,7 +84,7 @@ ob_start();
 		}
 		if ($result) {
 			$rows = array();
-			$rows = mysql_fetch_assoc($result);
+			$rows = mysql_fetch_array($result, MYSQL_ASSOC);
 			return $rows;
 		} else {
 			return false;
@@ -327,7 +327,7 @@ function writeForm($table =''){
 			if ($table == 'properties' && $_POST['new'] == 1) {
 			  include('register/standard_settings.inc.php');
 			}
-
+			
 			// -----
 			return $new_id;
 			

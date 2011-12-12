@@ -146,6 +146,21 @@ foreach ($table_updates as $table_update) {
 
 	$errorMessage .= "New table 'api users' has been successfully created.<br/>"; 
 
+	$query = "CREATE TABLE IF NOT EXISTS `plugins` (
+	    `filename` varchar(127) collate utf8_bin default NULL,
+	    `action` tinyint(1) default '0',
+	    PRIMARY KEY  (`filename`)
+	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;";
+	$sql = query($query);
+
+	$query = "INSERT INTO `plugins` (`filename`, `action`) VALUES
+	('email_send.plugin.php', 1),
+	('debug_session.plugin.php', 0);";
+	$sql = query($query);
+
+	$errorMessage .= "New table 'plugins' has been successfully created.<br/>"; 
+
+
 	// update status
 	$errorMessage .= "<br/>Update completed.<br/>";
 

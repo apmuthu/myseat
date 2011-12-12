@@ -49,6 +49,13 @@
 				</a>
 			</li>
 		<?php endif ?>
+		<?php if ( current_user_can( 'Settings-General' ) ): ?>
+			<li>
+				<a href="?p=6&q=7" <?php if ($q == 7) { echo " class='active'";}?> >
+					<img src='images/menu-icons/jar.png' class='nav-image'>Plugins
+				</a>
+			</li>
+		<?php endif ?>
 	</ul>	
 	<!-- End 1st level tab -->
 	
@@ -76,6 +83,8 @@
 					echo "<h3>"._sp_events."</h3>";
 				}else if ($q == 5 || q == 6) { 
 					echo "<h3>"._property." "._info."</h3>";
+				}else if ($q == 7) { 
+					echo "<h3>Plugins</h3>";
 				}
 				?>
 			</div>
@@ -245,6 +254,14 @@
 				if ( current_user_can( 'Property-New' ) ){
 					// property
 					include('register/detail.property.page.php');
+				}else{
+					redeclare_access();
+				}	
+				break;
+				case '7':
+				if ( current_user_can( 'Settings-General' ) ){
+					// property
+					include('includes/plugins.page.php');
 				}else{
 					redeclare_access();
 				}	

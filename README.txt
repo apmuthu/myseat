@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.205                        =-= 
-=-= Date:    03.12.2011                   =-= 
-=-= Time:    13:19 GMT                    =-= 
+=-= Version: 0.210                        =-= 
+=-= Date:    12.12.2011                   =-= 
+=-= Time:    21:19 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,19 +16,20 @@ Collaborate effortlessly on reservations.
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.205
+LATEST CHANGES in 0.210
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- New API included
-- description text in outlet form
-- small bugfixes
+- Introducing the plugin system
 
-There is a database update necessary for 0.195 version and up!
-(/install/update.php)
+There is a database update necessary for 0.210 version!
+(execute /install/update.php)
 
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-SEE ONLINE DOCUMENTATION FOR MORE DETAILS: http://www.myseat.us/API 
+SEE ONLINE DOCUMENTATION FOR MORE DETAILS: 
+
+http://dev.myseat.us 
+
 mySeat is easy to install.
 Under most circumstances installing mySeat is a very simple process
 and takes less than ten minutes to complete.

@@ -22,7 +22,7 @@ This file is part of mySeat.
 /** Login **/
 // ** set configuration
 	//Software version
-	$sw_version = 'v0.205';
+	$sw_version = 'v0.20';
 	
 	include('../config/config.general.php');
 	
@@ -60,6 +60,7 @@ This file is part of mySeat.
 
 	}
 
+// administrative includes
 // ** connect to database
 	include('classes/connect.db.php');
 // ** localization functions
@@ -76,6 +77,14 @@ This file is part of mySeat.
 	include('classes/db_queries.db.php');
 // ** set configuration
 	include('../config/config.inc.php');
+// ** php hooks class
+	include_once "classes/phphooks.config.php";
+	include_once "classes/phphooks.class.php";
+	//create instance of plugin class
+	$plugin_path = '../plugins/';
+	include "../config/plugins.init.php";
+
+// operative includes	
 // translate to selected language
 	translateSite(substr($_SESSION['language'],0,2));
 // ** get superglobal variables
@@ -84,17 +93,6 @@ This file is part of mySeat.
 	include('views/header.html.php');
 // ** set todays date
 $today_date = date('Y-m-d');
-
-// check outletID for security
-// prevent GET injection
-/*
-$security = querySQL('security_outlet');
-if ( $security < 1 ){
-	header("Location: ../PLC/index.php");
-	exit; //To ensure security
-}
-*/
-//echo "<pre>".print_r($_SESSION)."</pre>";
 
 // ** begin page content
 echo "<body>";
@@ -164,7 +162,12 @@ echo "<body>";
 	
 // ** modal messages
 include('ajax/modal.inc.php');
-	
+
+// ** plugin hook
+if ($hook->hook_exist( 'debug' )) {
+	$hook->execute_hook( 'debug');
+}
+
 // ** end layout
 include('views/footer.part.php');
 
