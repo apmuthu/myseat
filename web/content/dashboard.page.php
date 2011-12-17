@@ -30,43 +30,65 @@
 </div>
 <br class='cl' />
 			<?php
-			// ** print out the sparklines of all outlets **
+			// ** print out the overview **
 			// memorize actual selected outlet
 			$rem_outlet = $_SESSION['outletID'];
 			
 			echo"<div class='onecolumn'><div class='header'>\n";
-			echo"<div class='dategroup_name'>"._statistics." - "._occupancy_per_week."/"._pax."</div>
-			</div>\n";
 			
+			switch($q){
+				case '3':
+					echo"<div class='dategroup_name'>"._dashboard." "._statistics."/"._time."</div>";	
+				break;
+				case '2':
+					echo"<div class='dategroup_name'>"._occupancy_per_week."/"._pax."</div>";	
+				break;
+				case '1':
+					echo"<div class='dategroup_name'>"._occupancy_per_month."/"._pax."</div>";	
+				break;
+			}
+			?>
+						<!-- Begin 2nd level tab -->
+			<ul class="second_level_tab noprint">
+				<li class='disabled'>
+					<a href="main_page.php?p=1&q=3">
+						<img src='images/icons/bars.png'/>
+					</a>
+				</li>
+				<li>
+					<a href="main_page.php?p=1&q=2">
+						<img src='images/icons/calendar_week.png'/>
+					</a>
+				</li>
+				<li>
+					<a href="main_page.php?p=1&q=1">
+						<img src='images/icons/calendar_month.png'/>
+					</a>
+				</li>
+			</ul>
+			<!-- End 2nd level tab -->
+
+			</div>
+<?php		
 			//reset zebra containers
 			$c = 0;
 
-			//echo "<div class='center width-70'><br/> <table class='left-side-text width-70'>";
-			echo "<div class='center width-70'><br/> <table class='bordered-table'>";
-
-			$outlets = querySQL('db_outlets');
-			foreach($outlets as $row) {
-			 if ( ($row->saison_start<=$row->saison_end 
-				 && $_SESSION['selectedDate_saison']>=$row->saison_start 
-				 && $_SESSION['selectedDate_saison']<=$row->saison_end)
-				){
-					// outlet ID
-					$_SESSION['outletID'] = $row->outlet_id;
-					// outlet settings
-					$rows = querySQL('db_outlet_info');
-					if($rows){
-						foreach ($rows as $key => $value) {
-							$_SESSION['selOutlet'][$key] = $value;
-						}
-					}
-
-					// get outlet maximum capacity
-					//$maxC = maxCapacity();
-					include('includes/dash_week.inc.php');
-				}
-			}
-			echo"</table><br/></div></div><br class='clear' />";
+			// ** content of pages **
 			
+			switch($q){
+				case '3':
+					include('includes/dash_sparkline.inc.php');	
+				break;
+				case '2':
+					include('includes/dash_week.inc.php');	
+				break;
+				case '1':
+					include('includes/dash_month.inc.php');		
+				break;
+			}
+			
+			echo "</div><br class='clear' />";
+
 			// memorize actual selected outlet
 			$_SESSION['outletID'] = $rem_outlet;
 			// memorize selected outlet details

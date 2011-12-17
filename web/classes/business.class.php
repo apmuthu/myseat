@@ -300,7 +300,7 @@ function getOutletList($outlet_id = 0, $disabled = 'enabled',$tablename='outlet_
 	echo "</select>\n";
 }
 
-function outletList($outlet_id = '1', $disabled = 'enabled',$tablename='outlet_id'){
+function outletList($outlet_id = '1', $disabled = 'enabled',$tablename='outlet_id',$all='OFF'){
 	//set dayoff memory for error message
 	$mem_dayoff = 1;
 	//remember outlet ID
@@ -327,11 +327,14 @@ function outletList($outlet_id = '1', $disabled = 'enabled',$tablename='outlet_i
 					$mem_dayoff = ( $dayoff==0 ) ? 0 : 1;
 				}
 				
-				 echo "<option value='".$row->outlet_id."' ";
-				 echo ($outlet_id==$row->outlet_id && $dayoff==0) ? "selected='selected'" : "";
-				 echo ($dayoff > 0) ? "disabled='disabled'" : "";
-				 echo ">".$row->outlet_name."</option>\n";
-				 // echo ">".$dayoff." - ".$row->outlet_name."</option>\n";
+				echo "<option value='".$row->outlet_id."' ";
+				echo ($outlet_id==$row->outlet_id ) ? "selected='selected'" : "";
+				if ($dayoff > 0 && $all == 'OFF') {
+					echo "disabled='disabled'";
+				}else if($outlet_id==$row->outlet_id ){
+					echo "selected='selected'";
+				}				
+				echo ">".$row->outlet_name."</option>\n";
 				
 			}
 		}
@@ -887,6 +890,115 @@ function leftSpace($reservation_time, $occupancy){
          return $leftspace;
 	
 }
+
+function build_calendar($month,$year,$dateArray) {
+
+     $weekStartTime = strtotime('Monday this week');
+     for ($i=0; $i < 7; $i++) { 
+     	$daysOfWeek[] = date('D',$weekStartTime+($i*86400));
+     }
+     // Create array containing abbreviations of days of week.
+     //$daysOfWeek = array('S','M','T','W','T','F','S');
+
+     // What is the first day of the month in question?
+     $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
+
+     // How many days does this month contain?
+     $numberDays = date('t',$firstDayOfMonth);
+
+     // Retrieve some information about the first day of the
+     // month in question.
+     $dateComponents = getdate($firstDayOfMonth);
+
+     // What is the name of the month in question?
+     $monthName = $dateComponents['month'];
+
+     // What is the index value (0-6) of the first day of the
+     // month in question.
+     $dayOfWeek = $dateComponents['wday'];
+
+     // Create the table tag opener and day headers
+
+     $calendar = "<table class='bordered-table'>";
+     $calendar .= "<caption><h3>";
+     $calendar .= $monthName." ".$year."</h3></caption>";
+     $calendar .= "<tr class='grey'>";
+
+     // Create the calendar headers
+
+     foreach($daysOfWeek as $day) {
+          $calendar .= "<th>".$day."</th>";
+     } 
+
+     // Create the rest of the calendar
+
+     // Initiate the day counter, starting with the 1st.
+
+     $currentDay = 1;
+
+     $calendar .= "</tr><tr>";
+
+     // The variable $dayOfWeek is used to
+     // ensure that the calendar
+     // display consists of exactly 7 columns.
+
+     if ($dayOfWeek > 0) {
+        $calendar .= "<td colspan='".($dayOfWeek-1)."'>&nbsp;</td>";
+     }else if ($dayOfWeek == 0) {
+     	$calendar .= "<td colspan='6'>&nbsp;</td>";
+     }
+
+     $month = str_pad($month, 2, "0", STR_PAD_LEFT);
+
+     while ($currentDay <= $numberDays) {
+
+          // Seventh column (Saturday) reached. Start a new row.
+          if ($dayOfWeek == 7) {
+               $dayOfWeek = 0;
+          }
+		  if ($dayOfWeek == 1) {
+          	$calendar .= "</tr><tr>";
+ 		  }
+
+          $currentDayRel = str_pad($currentDay, 2, "0", STR_PAD_LEFT);
+          $date = "$year-$month-$currentDayRel";
+
+          // get occupancy from database
+          $_SESSION['statistic_week'] = $date;
+			
+			// noon
+			$value	= $daylight_evening;
+			$row = querySQL('statistic_week_def_noon');
+			$statistic_noon = ($row[0]->paxsum) ? $row[0]->paxsum : 0;
+			// evening
+			$row = querySQL('statistic_week_def_evening');
+			$statistic_evening = ($row[0]->paxsum) ? $row[0]->paxsum : 0;
+
+			$stat_occupancy = ($statistic_noon+$statistic_evening == 0 ) ? '&nbsp;' : "<img src='images/icons/user-silhouette.png' style='height:10px' class='middle'/>".($statistic_noon+$statistic_evening);
+
+          $calendar .= "<td rel='$date'><small>".$currentDay."</small>";
+          $calendar .= "<strong><a href='main_page.php?p=2&outletID=".$_SESSION['selOutlet']['outlet_id']."&selectedDate=".$_SESSION['statistic_week']."'>";
+          $calendar .= "<div class='center'>".$stat_occupancy."</div>";
+		  $calendar .= "</a><strong></td>";
+
+          // Increment counters
+          $currentDay++;
+          $dayOfWeek++;
+     }
+
+     // Complete the row of the last week in month, if necessary
+     if ($dayOfWeek != 1) { 
+          $remainingDays = 8 - $dayOfWeek;
+          $calendar .= "<td colspan='".$remainingDays."'>&nbsp;</td>"; 
+     }
+
+     $calendar .= "</tr>";
+     $calendar .= "</table>";
+
+     return $calendar;
+
+}
+
 // ++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++
 ?>

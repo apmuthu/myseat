@@ -34,7 +34,7 @@
 				</li>
 				<?php endif ?>
           </ul>
-			<form class="pull-right" action="main_page.php?p=2&q=1" id="search_form" name="search_form" method="post">
+			<form action="main_page.php?p=2&q=1" id="search_form" name="search_form" method="post">
 				<input type="text" id="searchquery" name="searchquery" title="<?php echo _search_guest; ?>"/>
 				<input type="hidden" name="action" value="search">
 			
