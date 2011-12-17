@@ -12,7 +12,7 @@ define ( 'MAN_1', 'Put in here a restaurant description text in local and englis
 // confirmation email
 define ( 'MAN_2', 'This email adress is geting a CC-mail when a guest is doing a reservation.' );
 // seats
-define ( 'MAN_3', 'The number of seats in your restaurant at the average/main seating layout.' );
+define ( 'MAN_3', 'The number of seats/covers in your restaurant at the average/main seating layout.' );
 // table
 define ( 'MAN_4', 'The number of tables in your restaurant at the average/main seating layout.' );
 // passerby

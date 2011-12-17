@@ -56,7 +56,7 @@
 				<a href="?selectedDate=<?php echo $_SESSION['selectedDate']; ?>">
 					<?php
 					echo $_SESSION['selOutlet']['outlet_name'].
-					" - ".strftime("%A",strtotime($_SESSION['selectedDate'])); 
+					" - ".strftime("%A",strtotime($_SESSION['selectedDate'])).", ".$_SESSION['selectedDate_user']; 
 					?>
 				</a>
 			</div>

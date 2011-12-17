@@ -1681,4 +1681,99 @@ label.error                             { margin-left: 6px; }
 						margin-left:11px; 
 						vertical-align:middle;
 					}
+
+/*
+ * Tables.less
+ * Tables for, you guessed it, tabular data
+ * ---------------------------------------- */
+.bordered-table {
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+  *border-collapse: collapse;
+  /* IE7, collapse table to remove spacing */
+
+  font-size: 13px;
+  border: 1px solid #ddd;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.bordered-table th, .bordered-table td {
+  padding: 10px 10px 9px;
+  line-height: 18px;
+  text-align: left;
+}
+.bordered-table th {
+  padding-top: 9px;
+  font-weight: bold;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+.bordered-table td {
+  vertical-align: top;
+}
+.bordered-table th + th, .bordered-table td + td {
+  border-left: 1px solid #ddd;
+}
+.bordered-table tr + tr td {
+  border-top: 1px solid #ddd;
+}
+.bordered-table tbody tr:first-child td:first-child {
+  -webkit-border-radius: 4px 0 0 0;
+  -moz-border-radius: 4px 0 0 0;
+  border-radius: 4px 0 0 0;
+}
+.bordered-table tbody tr:first-child td:last-child {
+  -webkit-border-radius: 0 4px 0 0;
+  -moz-border-radius: 0 4px 0 0;
+  border-radius: 0 4px 0 0;
+}
+.bordered-table tbody tr:last-child td:first-child {
+  -webkit-border-radius: 0 0 0 4px;
+  -moz-border-radius: 0 0 0 4px;
+  border-radius: 0 0 0 4px;
+}
+.bordered-table tbody tr:last-child td:last-child {
+  -webkit-border-radius: 0 0 4px 0;
+  -moz-border-radius: 0 0 4px 0;
+  border-radius: 0 0 4px 0;
+}
+table .blue {
+  color: #049cdb;
+  border-bottom-color: #049cdb;
+  background-color: #ade6fe;
+}
+table .green {
+  color: #46a546;
+  border-bottom-color: #46a546;
+  background-color: #cdeacd;
+}
+table .red {
+  color: #9d261d;
+  border-bottom-color: #9d261d;
+  background-color: #f4c8c5;
+}
+table .yellow {
+  color: #ffc40d;
+  border-bottom-color: #ffc40d;
+  background-color: #fff6d9;
+}
+table .orange {
+  color: #f89406;
+  border-bottom-color: #f89406;
+  background-color: #fee9cc;
+}
+table .purple {
+  color: #7a43b6;
+  border-bottom-color: #7a43b6;
+  background-color: #e2d5f0;
+}
+table .grey {
+  color: #666;
+  border-bottom-color: #666;
+  background-color: #F1F2F2;
+}
 									

@@ -1,3 +1,8 @@
+<?php
+	echo ($c++%2==1) ? '' : '<tr>' ;
+	echo "<td>";
+?>
+
 <ul class="sparklist">
   <li>
     <span class="sparkline">
@@ -101,3 +106,7 @@ $close_break  		= mktime($h4+0,$m4+0,0,date("m"),$day,date("Y"));
   ?>
  </li>
 </ul>
+<?php
+	echo "</td>";
+	echo ($c%2==1) ?  '' : '</tr>' ;
+?>

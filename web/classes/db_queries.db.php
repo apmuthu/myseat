@@ -567,6 +567,24 @@ function querySQL($statement){
 							$_SESSION['outletID'], $_SESSION['statistic_week']);
 			return getRowList($result);
 		break;
+		case 'statistic_week_def_noon':
+			$result = query("SELECT SUM(reservation_pax) AS paxsum FROM `reservations` 
+							WHERE `reservation_wait` = 0 AND `reservation_hidden` = 0 
+							AND `reservation_outlet_id` ='%d' 
+							AND `reservation_date` = '%s'
+							AND `reservation_time` < '%s'",
+							$_SESSION['outletID'], $_SESSION['statistic_week'],$value);
+			return getRowList($result);
+		break;
+		case 'statistic_week_def_evening':
+			$result = query("SELECT SUM(reservation_pax) AS paxsum FROM `reservations` 
+							WHERE `reservation_wait` = 0 AND `reservation_hidden` = 0 
+							AND `reservation_outlet_id` ='%d' 
+							AND `reservation_date` = '%s'
+							AND `reservation_time` >= '%s'",
+							$_SESSION['outletID'], $_SESSION['statistic_week'],$value);
+			return getRowList($result);
+		break;
 		case 'statistic_type':
 			$result = query("SELECT reservation_hotelguest_yn, SUM(reservation_pax) AS paxsum FROM `reservations`
 							WHERE `reservation_wait`= 0 AND `reservation_hidden`= 0 

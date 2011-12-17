@@ -35,14 +35,15 @@
 			$rem_outlet = $_SESSION['outletID'];
 			
 			echo"<div class='onecolumn'><div class='header'>\n";
-			echo"<div class='dategroup_name'>"._statistics."</div>
+			echo"<div class='dategroup_name'>"._statistics." - "._occupancy_per_week."/"._pax."</div>
 			</div>\n";
 			
 			//reset zebra containers
 			$c = 0;
-			echo"<div class='center width-70'><br/> <table class='left-side-text width-70'>";
-			
-			
+
+			//echo "<div class='center width-70'><br/> <table class='left-side-text width-70'>";
+			echo "<div class='center width-70'><br/> <table class='bordered-table'>";
+
 			$outlets = querySQL('db_outlets');
 			foreach($outlets as $row) {
 			 if ( ($row->saison_start<=$row->saison_end 
@@ -59,14 +60,9 @@
 						}
 					}
 
-					echo ($c++%2==1) ? '' : '<tr>' ;
 					// get outlet maximum capacity
-					$maxC = maxCapacity();
-					echo "<td>";
-					include('includes/sparkline.inc.php');
-					echo "</td>";
-					//echo"<br/>\n</div>";
-					echo ($c%2==1) ?  '' : '</tr>' ;
+					//$maxC = maxCapacity();
+					include('includes/dash_week.inc.php');
 				}
 			}
 			echo"</table><br/></div></div><br class='clear' />";
@@ -83,7 +79,7 @@
 			
 			// ** print out all reservations **
 			echo"<div class='onecolumn'><div class='header'>\n";
-			echo"<div class='dategroup_name'>"._confirmed_reservations."</div>
+			echo"<div class='dategroup_name'>".$_SESSION['selectedDate_user'].", "._confirmed_reservations."</div>
 			</div>\n
 			<div class='content'>\n";
 			
