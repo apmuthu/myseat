@@ -4,8 +4,8 @@
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 =-= Version: 0.210                        =-= 
-=-= Date:    12.12.2011                   =-= 
-=-= Time:    21:19 GMT                    =-= 
+=-= Date:    23.12.2011                   =-= 
+=-= Time:    07:41 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,11 +16,11 @@ Collaborate effortlessly on reservations.
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.210
+LATEST CHANGES in 0.211
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Introducing the plugin system
+- Introducing the new Dashboard
 
-There is a database update necessary for 0.210 version!
+There is still a database update necessary for 0.210 version!
 (execute /install/update.php)
 
 
