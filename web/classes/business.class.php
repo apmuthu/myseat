@@ -892,13 +892,16 @@ function leftSpace($reservation_time, $occupancy){
 }
 
 function build_calendar($month,$year,$dateArray) {
-
+	 // get monday
      $weekStartTime = strtotime('Monday this week');
-     for ($i=0; $i < 7; $i++) { 
-     	$daysOfWeek[] = date('D',$weekStartTime+($i*86400));
-     }
+     // get today's date
+     $today_date = date("d");
+	 $today_date = ltrim($today_date, '0');
+
      // Create array containing abbreviations of days of week.
-     //$daysOfWeek = array('S','M','T','W','T','F','S');
+     for ($i=0; $i < 7; $i++) { 
+     	$daysOfWeek[] = strftime('%a',$weekStartTime+($i*86400));
+     }
 
      // What is the first day of the month in question?
      $firstDayOfMonth = mktime(0,0,0,$month,1,$year);
@@ -976,7 +979,11 @@ function build_calendar($month,$year,$dateArray) {
 
 			$stat_occupancy = ($statistic_noon+$statistic_evening == 0 ) ? '&nbsp;' : "<img src='images/icons/user-silhouette.png' style='height:10px' class='middle'/>".($statistic_noon+$statistic_evening);
 
-          $calendar .= "<td rel='$date'><small>".$currentDay."</small>";
+		  if($currentDayRel == $today_date ){
+          	$calendar .= "<td rel='$date' class='grey'><small>".$currentDay."</small>";
+	      }else{
+	      	$calendar .= "<td rel='$date'><small>".$currentDay."</small>";
+	      }
           $calendar .= "<strong><a href='main_page.php?p=2&outletID=".$_SESSION['selOutlet']['outlet_id']."&selectedDate=".$_SESSION['statistic_week']."'>";
           $calendar .= "<div class='center'>".$stat_occupancy."</div>";
 		  $calendar .= "</a><strong></td>";

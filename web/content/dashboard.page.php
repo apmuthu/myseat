@@ -40,10 +40,10 @@
 				case '3':
 					echo"<div class='dategroup_name'>"._dashboard." "._statistics."/"._time."</div>";	
 				break;
-				case '2':
+				case '1':
 					echo"<div class='dategroup_name'>"._occupancy_per_week."/"._pax."</div>";	
 				break;
-				case '1':
+				case '2':
 					echo"<div class='dategroup_name'>"._occupancy_per_month."/"._pax."</div>";	
 				break;
 			}
@@ -56,12 +56,12 @@
 					</a>
 				</li>
 				<li>
-					<a href="main_page.php?p=1&q=2">
+					<a href="main_page.php?p=1&q=1">
 						<img src='images/icons/calendar_week.png'/>
 					</a>
 				</li>
 				<li>
-					<a href="main_page.php?p=1&q=1">
+					<a href="main_page.php?p=1&q=2">
 						<img src='images/icons/calendar_month.png'/>
 					</a>
 				</li>
@@ -79,10 +79,10 @@
 				case '3':
 					include('includes/dash_sparkline.inc.php');	
 				break;
-				case '2':
+				case '1':
 					include('includes/dash_week.inc.php');	
 				break;
-				case '1':
+				case '2':
 					include('includes/dash_month.inc.php');		
 				break;
 			}

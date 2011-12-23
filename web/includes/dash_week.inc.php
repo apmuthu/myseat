@@ -21,7 +21,7 @@ foreach($outlets as $row) {
 		if ($done != 1) {
 			echo "<thead class='grey'><tr><th></th>";
 			for ($i=0; $i < 7; $i++) { 
-					$labeldate=date('D, d.m.',mktime(0,0,0,$sm,$sd+$i,$sy));
+					$labeldate=strftime('%a, %d.%m.',mktime(0,0,0,$sm,$sd+$i,$sy));
 					echo "<th>".$labeldate."</th>";
 			}
 			echo "</tr></thead><tbody>";
