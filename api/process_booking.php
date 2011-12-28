@@ -26,6 +26,11 @@ $_SESSION['language'] = 'en_EN';
 	translateSite($_POST['email_type'],'../web/');
 // ** get superglobal variables
 	include('../web/includes/get_variables.inc.php');
+// ** php hooks class
+	include_once "../web/classes/phphooks.config.php";
+	include_once "../web/classes/phphooks.class.php";
+	//create instance of plugin class
+	include "../config/plugins.init.php";
 // ** get property info for logo path
 $prp_info = querySQL('property_info');
 
@@ -107,13 +112,21 @@ $prp_info = querySQL('property_info');
 
 			      // CSRF - Secure forms with token
 			      if ($_SESSION['barrier'] == $_POST['barrier']) {
-					// check if no neccessary field is empty
+					
+					// get day off days 
+					// (returns '0' = open OR '1' = dayoff)
+					$dayoff = getDayoff();
+
+					// double check if no neccessary field is empty
 					if (isset($_POST['dbdate']) &&
-					isset($_POST['reservation_pax']) &&
-					isset($_POST['reservation_time']) &&
-					isset($_POST['reservation_guest_name']) &&
-					isset($_POST['reservation_guest_email']) &&
-					$_POST['terms'] == 'YES' ) {
+						isset($_POST['reservation_pax']) &&
+						isset($_POST['reservation_time']) &&
+						isset($_POST['reservation_guest_name']) &&
+						isset($_POST['reservation_guest_email']) &&
+						// the terms at the reservation form must have been aceppted
+						$_POST['terms'] == 'YES' &&
+						$dayoff == 0
+					) {
 						// <Do booking>
 						$waitlist = processBooking();
 					}else{
