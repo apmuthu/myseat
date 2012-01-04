@@ -3,9 +3,9 @@
 =-=           mySeat README               =-=
 =-=                                       =-=
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-=-= Version: 0.210                        =-= 
-=-= Date:    23.12.2011                   =-= 
-=-= Time:    07:41 GMT                    =-= 
+=-= Version: 0.212                        =-= 
+=-= Date:    04.01.2012                   =-= 
+=-= Time:    12:11 GMT                    =-= 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
 
@@ -16,20 +16,17 @@ Collaborate effortlessly on reservations.
 mySeat will help you keep track of your reservations with ease.
 
 
-LATEST CHANGES in 0.211
+LATEST CHANGES in 0.212
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-- Introducing the new Dashboard
+- Dutch language file improvements
+- small bugfixes
 
-There is still a database update necessary for 0.210 version!
-(execute /install/update.php)
+There is a database update necessary for 0.195 version and up!
 
 
 INSTALLATION
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
-SEE ONLINE DOCUMENTATION FOR MORE DETAILS: 
-
-http://dev.myseat.us 
-
+SEE ONLINE DOCUMENTATION FOR MORE DETAILS: http://www.myseat.us/API 
 mySeat is easy to install.
 Under most circumstances installing mySeat is a very simple process
 and takes less than ten minutes to complete.
@@ -71,6 +68,10 @@ GNU General Public License as published by the Free Software Foundation, either 
 mySeat is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 You should have received a copy of the GNU General Public License along with mySeat? 
+If not, see <http://www.gnu.org/licenses/>.
+
+
+mySeat? 
 If not, see <http://www.gnu.org/licenses/>.
 
 

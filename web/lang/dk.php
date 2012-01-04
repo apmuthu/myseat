@@ -15,7 +15,7 @@ define ( '_till', 'til' );
 define ( '_oclock', 'klokken' );
 
 //original text: "Tautologous with"
-define ( '_tautologous', 'Tautologous with' );
+define ( '_tautologous', 'Samme som' );
 
 //original text: "Day comment"
 define ( '_day_comment', 'Dagens besked' );
@@ -81,13 +81,13 @@ define ( '_users', 'Bruger' );
 define ( '_reservations', 'Reservationer' );
 
 //original text: "Confirmed reservations"
-define ( '_confirmed_reservations', 'Bekr&aelig;ftet reservationer' );
+define ( '_confirmed_reservations', 'Bekræftede reservationer' );
 
 //original text: "Canceled reservations"
-define ( '_canceled_reservations', 'Annulleret reservationer' );
+define ( '_canceled_reservations', 'Annullerede reservationer' );
 
 //original text: "Wait list"
-define ( '_wait_list', 'Vente listet' );
+define ( '_wait_list', 'Vente liste' );
 
 //original text: "Search Guest"
 define ( '_search_guest', 'S&oslash;g g&aelig;st' );
@@ -129,7 +129,7 @@ define ( '_status', 'Status' );
 define ( '_booked_', 'reserveret ' );
 
 //original text: "people "
-define ( '_people_', 'mennesker ' );
+define ( '_people_', 'personer ' );
 
 //original text: "for "
 define ( '_for_', 'for ' );
@@ -153,7 +153,7 @@ define ( '_visits', 'Bes&oslash;g' );
 define ( '_last_visit', 'Sidste bes&oslash;g' );
 
 //original text: "Do not book any more passants!"
-define ( '_sentence_16', 'Reservere ikke flere g&aelig;ster!' );
+define ( '_sentence_16', 'Reservér ikke flere gæster!' );
 
 //original text: "Existing outlets"
 define ( '_existing_outlets', 'Eksisterende restauranter' );
@@ -174,7 +174,7 @@ define ( '_description', 'Beskrivelse' );
 define ( '_seats', 'Pladser' );
 
 //original text: "Tables"
-define ( '_tables', 'Border' );
+define ( '_tables', 'Borde' );
 
 //original text: "Open time"
 define ( '_open_time', '&Aring;bningstid' );
@@ -351,7 +351,7 @@ define ( '_sentence_13', 'Reservation var gennemf&oslash;rt efter maitre besked.
 define ( '_sorry', 'Beklager, noget gik galt!' );
 
 //original text: "General"
-define ( '_general', 'Generalt' );
+define ( '_general', 'Generelt' );
 
 //original text: "Fill out for sending a confirmation."
 define ( '_fill_out', 'Udfyld for at sende en bekr&aelig;ftelse.' );
@@ -402,7 +402,7 @@ define ( '_retype', 'Skriv' );
 define ( '_cuisine_style', 'K&oslash;kken stil' );
 
 //original text: "Special Event"
-define ( '_sp_events', 'Special Event' );
+define ( '_sp_events', 'Særarrangement' );
 
 //original text: "Subject"
 define ( '_subject', 'Emne' );
@@ -417,10 +417,10 @@ define ( '_contact', 'Kontakt' );
 define ( '_advertise_start', 'Start reklamering' );
 
 //original text: "Days"
-define ( '_days', 'Days' );
+define ( '_days', 'dage' );
 
 //original text: "Reservation confirmation for"
-define ( '_email_subject', 'Reservation bekr&aelig;ftelse for' );
+define ( '_email_subject', 'Bekræftelse af reservation for' );
 
 //original text: "Dear Mr."
 define ( '_dear_mr', 'K&aelig;re Hr.' );
@@ -435,7 +435,7 @@ define ( '_dear_sirs_and_madams', 'K&aelig;re Fru & Hr' );
 define ( '_dear_family', 'K&aelig;re Familien' );
 
 //original text: "Property"
-define ( '_property', 'Fysisk Restaurant' );
+define ( '_property', 'Ejendom' );
 
 //original text: "Mr."
 define ( '_M_', 'Hr.' );
@@ -456,7 +456,7 @@ define ( '_mail', 'Faktura' );
 define ( '_room', 'V&aelig;relse' );
 
 //original text: "Inhouse Guest"
-define ( '_HG', 'Husets g&aelig;st' );
+define ( '_HG', 'Gæst i huset' );
 
 //original text: "Passer by"
 define ( '_PASS', 'Forbi kommende' );
@@ -495,7 +495,7 @@ define ( '_no_', 'Nr' );
 define ( '_yes_', 'OK' );
 
 //original text: "NYA,Arrived,Seated,Parked,Departed,No Show"
-define ( '_statuslist', 'endnu ankommet,Ankommet,Siddende,Parkeret,G&aring;et,Udblev' );
+define ( '_statuslist', 'Ikke ankommet,Ankommet,Siddende,Parkeret,Gået,Udblev' );
 
 //original text: "delete series"
 define ( '_delete_all_entries', 'Batch slet' );
@@ -504,7 +504,7 @@ define ( '_delete_all_entries', 'Batch slet' );
 define ( '_settings', 'Indstillinger' );
 
 //original text: "Hello"
-define ( '_hello', 'Hallo' );
+define ( '_hello', 'Hej' );
 
 //original text: "City"
 define ( '_city', 'By' );
@@ -513,7 +513,7 @@ define ( '_city', 'By' );
 define ( '_phone', 'Telefon' );
 
 //original text: "Facsimile"
-define ( '_fax', 'Facsimile' );
+define ( '_fax', 'Fax' );
 
 //original text: "Country"
 define ( '_country', 'Land' );
