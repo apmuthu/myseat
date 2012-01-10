@@ -8,17 +8,7 @@
  */
 
 class config {
-	#config function interfase:
-	#-config
-	#-setFile
-	#-getError
-	#-getLastError
-	#-delete
-	#-insert
-	#-update
-	#-openFile
-	#-closeFile
-	#
+
 	private $IsFile;
 	private $FileNew;
 	private $Error;
@@ -35,7 +25,7 @@ class config {
 		$this->LastError = null;
 		$this->ArrayVars = array ();
 		$this->prefix = null;
-	} #end function
+	} 
 	
 
 	/**
@@ -43,14 +33,14 @@ class config {
 	 */
 	function setFile($file) {
 		$this->IsFile = $file;
-	} #end function
+	} 
 	
 	/**
 	 * @return $this->Error
 	 */
 	function getError() {
 		return $this->Error;
-	} #end function
+	} 
 	
 
 	/**
@@ -58,7 +48,7 @@ class config {
 	 */
 	function getLastError() {
 		return $this->LastError;
-	} #end function
+	} 
 	
 
 	/**
@@ -70,7 +60,7 @@ class config {
 			$var = $this->prefix . $var;
 		unset($this->ArrayVars[$var]);
 		return true;
-	} #end function
+	} 
 	
 
 	/**
@@ -84,7 +74,7 @@ class config {
 			$var = $this->prefix . $var;
 		$this->ArrayVars[$var] = $value;
 		return true;
-	} #end function
+	} 
 	
 
 	/**
@@ -98,7 +88,7 @@ class config {
 			$var = $this->prefix . $var;
 		if (array_key_exists($var,$this->ArrayVars))$this->ArrayVars[$var]= $value;
 		return true;
-	} #end function
+	} 
 	
 
 	/**
@@ -121,23 +111,23 @@ class config {
 					$exp = explode ( "=", $c [$s1] );
 					$exp = array_map ( trim, $exp );
 					$c1 [$exp [0]] = $exp [1];
-				} #end if
+				} //end if
 				$s1 ++;
-			} #end while
+			} //end while
 			$this->ArrayVars = $c1;
 		}
 		return true;
-	} #end function
+	} 
 	
 	/**
 	 * closefile
 	 */
 	function closeFile() {
-		#prepare string
+		//prepare string
 		$string = null;
-		#add init php file	
+		//add init php file	
 		$string = $string . "<?php\n";
-		#add comments
+		//add comments
 		
 		foreach ($this->ArrayVars as $field=>$value) {
 			if (is_string($value)) $value ='"'.$value.'"'; 
@@ -146,13 +136,13 @@ class config {
 		$string = $string . "?>\n";
 		if (! $handle = fopen ( $this->IsFile, 'w' )) {
 			return false;
-		} #end if
+		} //end if
 		// Write $somecontent to our opened file.
 		if (fwrite ( $handle, $string ) === FALSE) {
 			return false;
-		} #end if
+		} //end if
 		fclose ( $handle );
 		return true;
-	} #end function
-} #end class
+	} 
+} //end class
 ?>
