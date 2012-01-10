@@ -387,6 +387,20 @@ $sql = query("CREATE TABLE IF NOT EXISTS `api_users` (
 
 echo "<li>The API key table has been created. </li>";
 
+$query = "CREATE TABLE IF NOT EXISTS `plugins` (
+      `filename` varchar(127) collate utf8_bin default NULL,
+      `action` tinyint(1) default '0',
+      PRIMARY KEY  (`filename`)
+      ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;";
+  $sql = query($query);
+
+  $query = "INSERT INTO `plugins` (`filename`, `action`) VALUES
+  ('email_send.plugin.php', 1),
+  ('debug_session.plugin.php', 0);";
+  $sql = query($query);
+
+echo "<li>The Plugins table has been created. </li>";
+
 // FINISH ---------------------------------------------------
 echo '<div id="login_info" class="alert_info" style="margin:auto;padding:auto;"><p style="margin-bottom:6px; text-align:center;"><img src="../web/images/icon_message.png" alt="success" class="middle"/>';
 echo '<strong>The Database has been created!</strong><div style="margin-left:36px; font-size:0.9em; line-height:1.2em; text-align:center;">Proceed with setting up property and admin user.</div><br /></p>';
