@@ -157,22 +157,6 @@ echo "<li>The PLC-Sessions table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `plugins` (
-    `filename` varchar(127) collate utf8_bin default NULL,
-    `action` tinyint(1) default '0',
-    PRIMARY KEY  (`filename`)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;")
- or die(mysql_error());
- 
-  $query = "INSERT INTO `plugins` (`filename`, `action`) VALUES
-  ('email_send.plugin.php', 1),
-  ('debug_session.plugin.php', 0);";
-  $sql = query($query); 
-
-echo "<li>The Plugins table has been created. </li>";
-
-// --------------------------------------------------------
-
 $sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
   `userID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL DEFAULT '',
@@ -386,6 +370,9 @@ $sql = query("CREATE TABLE IF NOT EXISTS `api_users` (
  or die(mysql_error());
 
 echo "<li>The API key table has been created. </li>";
+
+
+// Plugins -------------------------------------------------
 
 $query = "CREATE TABLE IF NOT EXISTS `plugins` (
       `filename` varchar(127) collate utf8_bin default NULL,
