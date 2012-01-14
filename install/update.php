@@ -22,65 +22,65 @@ ini_set("display_errors", 1);
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "reservations";
 $table_updates[$i]['field'] = "reservation_referer";
-$table_updates[$i]['query'] = "ALTER TABLE `reservations` ADD `reservation_referer` TEXT NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `reservations` ADD `reservation_referer` TEXT DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.1782 to > XT 0.179 */
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "properties";
 $table_updates[$i]['field'] = "website";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `website` VARCHAR( 200 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `website` VARCHAR( 200 ) DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.179 to > XT 0.1795 */
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "outlets";
 $table_updates[$i]['field'] = "outlet_description_en";
-$table_updates[$i]['query'] = "ALTER TABLE `outlets` ADD `outlet_description_en` TEXT NOT NULL AFTER `outlet_description`";
+$table_updates[$i]['query'] = "ALTER TABLE `outlets` ADD `outlet_description_en` TEXT DEFAULT NULL AFTER `outlet_description`";
 $i++;
 
 /* Update the database from XT 0.1795 to > XT 0.1798 */
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "properties";
 $table_updates[$i]['field'] = "social_fb";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_fb` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_fb` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
 $table_updates[$i]['table'] = "properties";
 $table_updates[$i]['field'] = "social_tw";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.1790 to > XT 0.180 */
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "outlets";
 $table_updates[$i]['field'] = "limit_password";
-$table_updates[$i]['query'] = "ALTER TABLE  `outlets` ADD `limit_password` VARCHAR( 255 ) NOT NULL AFTER `avg_duration`";
+$table_updates[$i]['query'] = "ALTER TABLE  `outlets` ADD `limit_password` VARCHAR( 255 ) DEFAULT NULL AFTER `avg_duration`";
 $i++;
 
 /* Update the database from XT 0.180 to > XT 0.195 */
 /* ------------------------------------------------- */
 $table_updates[$i]['table'] = "plc_users";
 $table_updates[$i]['field'] = "realname";
-$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `realname` VARCHAR( 255 ) NOT NULL AFTER `username`";
+$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `realname` VARCHAR( 255 ) DEFAULT NULL AFTER `username`";
 $i++;
 
 $table_updates[$i]['table'] = "plc_users";
 $table_updates[$i]['field'] = "autofill";
-$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `autofill` INT NOT NULL AFTER `last_login`";
+$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `autofill` INT DEFAULT NULL AFTER `last_login`";
 $i++;
 
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_HG";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_HG` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_HG` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_PASS";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_PASS` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_PASS` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 $table_updates[$i]['table'] = "settings";
 $table_updates[$i]['field'] = "guest_type_text_WALK";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_WALK` VARCHAR( 255 ) NOT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_WALK` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
 // ------------------------------------------------
@@ -128,7 +128,7 @@ foreach ($table_updates as $table_update) {
 	  `website` varchar(60) DEFAULT NULL,
 	  `description` varchar(200) DEFAULT NULL,
 	  `active` tinyint(1) NOT NULL DEFAULT '1',
-	  `confirm_code` varchar(255) NOT NULL,
+	  `confirm_code` varchar(255) DEFAULT NULL,
 	  `request_count` int(10) unsigned DEFAULT NULL,
 	  `last_ip` varchar(40) CHARACTER SET utf8  NOT NULL,
 	  `last_login` date NOT NULL DEFAULT '0000-00-00',
@@ -147,7 +147,7 @@ foreach ($table_updates as $table_update) {
 	$errorMessage .= "New table 'api users' has been successfully created.<br/>"; 
 
 	$query = "CREATE TABLE IF NOT EXISTS `plugins` (
-	    `filename` varchar(127) collate utf8_bin default NULL,
+	    `filename` varchar(127) collate utf8_bin DEFAULT NULL,
 	    `action` tinyint(1) default '0',
 	    PRIMARY KEY  (`filename`)
 	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;";
