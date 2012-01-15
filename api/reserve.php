@@ -63,7 +63,12 @@ $_SESSION['resID'] = 0;
 	include('../web/classes/connect.db.php');
 // ** all database queries
 	include('../web/classes/db_queries.db.php');
-		
+// ** php hooks class
+	include_once "../web/classes/phphooks.config.php";
+	include_once "../web/classes/phphooks.class.php";
+	//create instance of plugin class
+	include "../config/plugins.init.php";
+			
 // get and define referer
 	$ref = getHost($_SERVER['HTTP_REFERER']);
 	$_SESSION['referer'] = ($_SESSION['referer']!='') ? $_SESSION['referer'] : $ref;
@@ -76,7 +81,7 @@ $_SESSION['resID'] = 0;
 	}
 
 // outlet ID
-	if ($_GET['outletID']) {
+	if (isset($_GET['outletID'])) {
 		$_SESSION['outletID'] = (int)$_GET['outletID'];
 		$_SESSION['property'] = querySQL('property_id_outlet');
 	}
@@ -96,7 +101,7 @@ $_SESSION['resID'] = 0;
 	
 
 // selected time	
-	if ($_GET['times']) {
+	if (isset($_GET['times'])) {
 		// set selected time
 		$time = $_GET['times'].":00";	
 	}
@@ -357,7 +362,7 @@ if($check_web_outlet==1){
 	<br/>
 			<?php
 				$title = '';
-				 if ($me) {
+				 if (isset($me)) {
 				 	if ( $me['gender']=='male' ) {
 						$title = 'M';
 				 	}else if ( $me['gender']=='female' ) {
@@ -369,12 +374,12 @@ if($check_web_outlet==1){
 		    <br/>
 		    <div>
 			<label><?php echo _name; ?></label><br/>
-               <input type="text" name="reservation_guest_name" class="required" id="reservation_guest_name" value="<?php if($me['last_name']){echo $me['last_name'].", ".$me['first_name'];} ?>" />
+               <input type="text" name="reservation_guest_name" class="required" id="reservation_guest_name" value="<?php if(isset($me['last_name'])){echo $me['last_name'].", ".$me['first_name'];} ?>" />
                     </div>
 		    <br/>
             <div>
 			   <label><?php echo _email; ?></label><br/>
-               <input type="text" name="reservation_guest_email" class="required email" id="reservation_guest_email" value="<?php echo $me['email']; ?>" />
+               <input type="text" name="reservation_guest_email" class="required email" id="reservation_guest_email" value="<?php if(isset($me['last_name'])){echo $me['email'];} ?>" />
             </div>
 		    <br/>
 		    <div>
@@ -420,7 +425,12 @@ if($check_web_outlet==1){
 			
 </div><!-- page container end -->
 </div><!-- main close -->
-
+<?php
+// ** plugin hook
+if ($hook->hook_exist( 'debug_online' )) {
+	$hook->execute_hook( 'debug_online' );
+}
+?>
   <!-- Javascript at the bottom for fast page loading --> 
 <script>
 	/* utility functions */
