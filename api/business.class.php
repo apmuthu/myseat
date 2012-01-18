@@ -484,7 +484,12 @@ function processBooking(){
 	 		$resID = mysql_insert_id();
 		
 			// *** send confirmation email
-			include('../web/classes/email.class.php');
+				// ** PHPMailer class
+				require_once('../classes/phpmailer/class.phpmailer.php');
+				// ** plugin hook
+				if ($hook->hook_exist('after_booking')) {
+					$hook->execute_hook('after_booking');
+				}
 			
 			// store new reservation in history
 			$result = query("INSERT INTO `res_history` (reservation_id,author) VALUES ('%d','%s')",$resID,$_SESSION['author']);
