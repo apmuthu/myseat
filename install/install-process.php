@@ -48,7 +48,7 @@ echo "<li>The Events table has been created. </li>";
 
 $sql = query("CREATE TABLE IF NOT EXISTS `maitre` (
   `maitre_id` int(11) NOT NULL AUTO_INCREMENT,
-  `maitre_outlet_id` int(11) DEFAULT NOT NULL,
+  `maitre_outlet_id` int(11) NOT NULL,
   `maitre_date` date DEFAULT NULL,
   `maitre_comment_day` varchar(255) DEFAULT NULL,
   `maitre_comment_day_timestamp` datetime DEFAULT NULL,
