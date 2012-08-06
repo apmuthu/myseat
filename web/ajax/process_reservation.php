@@ -43,9 +43,6 @@ $maxC = maxCapacity();
 // ** check booking rules
 include('../classes/bookingrules.class.php');
 
-// set sql table
-$table = 'reservations';
-
 // initiate variables
 $_SESSION['reservation_pax'] = 0;
 
@@ -82,7 +79,8 @@ if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 					  'dbName' => $settings['dbName'],
 					  'dbUser' => $settings['dbUser'],
 					  'dbPass' => $settings['dbPass'],
-					  'dbPort' => $settings['dbPort']
+					  'dbPort' => $settings['dbPort'],
+					  'dbTablePrefix' => $settings['dbTablePrefix']
 					 );
 					$insert = new flexibleAccess('',$dbAccess);
 					$password = $insert->hash_password($value);
@@ -240,7 +238,7 @@ if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 			$max_keys = count($keys);
 			// enter into database
 			// -----
-			$query = "INSERT INTO `$table` (".implode(',', $keys).") VALUES (".implode(',', $values).") ON DUPLICATE KEY UPDATE ";
+			$query = "INSERT INTO `$dbTables->reservations` (".implode(',', $keys).") VALUES (".implode(',', $values).") ON DUPLICATE KEY UPDATE ";
 			// Build 'on duplicate' query
 			for ($i=1; $i <= $max_keys; $i++) {
 				if($keys[$i]!=''){
@@ -263,7 +261,7 @@ if ($_SESSION['token'] == $_POST['token'] && $compare_pass > 0 ) {
 				$history_id = $_POST['reservation_id'];
 			}
 			// store changes in history
-			$result = query("INSERT INTO `res_history` (reservation_id,author) VALUES ('%d','%s')",$history_id,$_POST['reservation_booker_name']);
+			$result = query("INSERT INTO `$dbTables->res_history` (reservation_id,author) VALUES ('%d','%s')",$history_id,$_POST['reservation_booker_name']);
 
 			// -----
 			// increase reservation date one day or week

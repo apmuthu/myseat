@@ -342,9 +342,7 @@ function defineOffDays(){
 
 function processBooking(){
 // rather than recursively calling query, insert all rows with one query
-	 GLOBAL $general, $global_basedir;
-	 // database table to store reservations
-	 $table ='reservations';
+	 GLOBAL $general, $global_basedir,$dbTables,$hook; 
 	 // reservation date
 	 $reservation_date = $_SESSION['selectedDate'];
 
@@ -466,7 +464,7 @@ function processBooking(){
 			$max_keys = count($keys);
 			// enter into database
 			// -----
-			$query = "INSERT INTO `$table` (".implode(',', $keys).") VALUES (".implode(',', $values).") ON DUPLICATE KEY UPDATE ";
+			$query = "INSERT INTO `$dbTables->reservations` (".implode(',', $keys).") VALUES (".implode(',', $values).") ON DUPLICATE KEY UPDATE ";
 			// Build 'on duplicate' query
 			for ($i=1; $i <= $max_keys; $i++) {
 				if($keys[$i]!=''){
@@ -485,14 +483,14 @@ function processBooking(){
 		
 			// *** send confirmation email
 				// ** PHPMailer class
-				require_once('../classes/phpmailer/class.phpmailer.php');
+				require_once('../web/classes/phpmailer/class.phpmailer.php');
 				// ** plugin hook
 				if ($hook->hook_exist('after_booking')) {
 					$hook->execute_hook('after_booking');
 				}
 			
 			// store new reservation in history
-			$result = query("INSERT INTO `res_history` (reservation_id,author) VALUES ('%d','%s')",$resID,$_SESSION['author']);
+			$result = query("INSERT INTO `$dbTables->res_history` (reservation_id,author) VALUES ('%d','%s')",$resID,$_SESSION['author']);
 			// Reservation was done
 			$waitlist = 2;
 		  }	

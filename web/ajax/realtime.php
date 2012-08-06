@@ -13,7 +13,7 @@ mysql_select_db($settings['dbName']) or die ("No Database");
 	/* get last id fo page */
 	$id = $_REQUEST['lastid']; // last ID
 	/* build sql query */
-	$sql = sprintf("SELECT count(*) as new FROM reservations 
+	$sql = sprintf("SELECT count(*) as new FROM $dbTables->reservations 
 						WHERE `reservation_id` > '%d'
 						AND `reservation_date`='%s' 
 						AND `reservation_outlet_id`='%d' 

@@ -135,9 +135,9 @@ function max_requests() {
 }
 
 function validate_requests($api_token='') {
-    GLOBAL $status;
+    GLOBAL $status, $dbTables;
 
-    $sql = "SELECT request_count, last_login FROM `api_users` WHERE `token` = '".$api_token."'";
+    $sql = "SELECT request_count, last_login FROM `$dbTables->api_users` WHERE `token` = '".$api_token."'";
     $select = query($sql);
     $login = getRowList($select);
 
@@ -145,11 +145,11 @@ function validate_requests($api_token='') {
         $now = date('Y-m-d');
         // count API requests per day
         if ($login->last_login == $now ) {
-            $sql = "UPDATE `api_users` SET 
+            $sql = "UPDATE `$dbTables->api_users` SET 
                 `request_count` = request_count+1,
                 WHERE `token` = '".$api_token."'";
         } else {
-            $sql = "UPDATE `api_users` SET 
+            $sql = "UPDATE `$dbTables->api_users` SET 
                 `request_count` = 1,  
                 `last_login` = CURDATE()
                 WHERE `token` = '".$api_token."'";

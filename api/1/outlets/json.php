@@ -46,7 +46,7 @@ $api_token                      = $_GET['token'];
 // check token
 if ($api_token!='') {
 
-    $sql = "SELECT request_count, last_login FROM `api_users` WHERE `token` = '".$api_token."'";
+    $sql = "SELECT request_count, last_login FROM `$dbTables->api_users` WHERE `token` = '".$api_token."'";
     $select = query($sql);
     $login = getRowList($select);
 

@@ -8,30 +8,30 @@ $_SESSION['token'] = (isset($_SESSION['token'])) ? $_SESSION['token'] : 0;
 if (isset($_POST)){
  $form_action = (isset($_POST['action'])) ? $_POST['action'] : '';
 
- if ($_SESSION['token'] == $_POST['token']) {
+ if (isset($_POST['token']) && $_SESSION['token'] == $_POST['token']) {
 	// submitted forms storage
 	if ($form_action=='save_res') {
 		// Out of order; see ajax/process_reservation.php
-		//$resultQuery = writeForm('reservations');
+		//$resultQuery = writeForm($dbTables->reservations);
 	}else if ($form_action=='save_book' &&  (int)$_POST['verify'] == 4) {
-		$resultQuery = writeForm('reservations');
+		$resultQuery = writeForm($dbTables->reservations);
 	}else if ($form_action=='save_out') {
-		$resultQuery = writeForm('outlets');
+		$resultQuery = writeForm($dbTables->outlets);
 	}else if ($form_action=='save_maitre') {
-		$resultQuery = writeForm('maitre');
+		$resultQuery = writeForm($dbTables->maitre);
 	}else if ($form_action=='save_set') {
-		$resultQuery = writeForm('settings');
+		$resultQuery = writeForm($dbTables->settings);
 	}else if ($form_action=='save_evnt') {
-		$resultQuery = writeForm('events');
+		$resultQuery = writeForm($dbTables->events);
 	}else if ($form_action=='save_ldgr') {
 		if (($_POST['type'] == 'credit' && $_POST['amount'] > 0) || ($_POST['type'] == 'debit' && $_POST['amount'] < 0)) {
 			$_POST['amount'] = $_POST['amount'] * -1;
 		}else if ($_POST['type'] == 'debit' && $_POST['amount'] < 0) {
 			$_POST['amount'] = $_POST['amount'] * -1;
 		}
-		$resultQuery = writeForm('ledger');
+		$resultQuery = writeForm($dbTables->ledger);
 	}else if ($form_action=='save_prpty') {
-		$resultQuery = writeForm('properties');
+		$resultQuery = writeForm($dbTables->properties);
 		$_SESSION['property'] = $resultQuery;
 		$_SESSION['propertyID'] = $resultQuery;
 	}else if ($form_action=='save_usr') {
@@ -41,7 +41,7 @@ if (isset($_POST)){
 			$value = $_POST['username'];
 			$sql_check = querySQL('check_username');
 		}
-		$id = writeForm('plc_users');
+		$id = writeForm($dbTables->plc_users);
 		if(mysql_num_rows($sql_check) < 1 ){
 			if($_POST['active']==0){
 				include('classes/confirmation.class.php');
@@ -133,7 +133,7 @@ if (isset($_GET['city'])) {
 }
 
 //prevent division by zero
-$_SESSION['selOutlet']['outlet_max_capacity'] = ($_SESSION['selOutlet']['outlet_max_capacity']) ? $_SESSION['selOutlet']['outlet_max_capacity'] : 1;
+$_SESSION['selOutlet']['outlet_max_capacity'] = (isset($_SESSION['selOutlet']['outlet_max_capacity'])) ? $_SESSION['selOutlet']['outlet_max_capacity'] : 1;
 
 // selected date
 if (empty($_SESSION['selectedDate'])) {
@@ -158,7 +158,10 @@ $_SESSION['selectedDate_year']	 = $sj;
 // +++ memorize selected outlet details +++
 // ++++++++++++++++++++++++++++++++++++++++
 // only load when outlet is changed
-if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet']['outlet_id'] ) {
+if (isset($_GET['outletID']) || (	isset($_SESSION['outletID'])
+								&&	isset($_SESSION['selOutlet']['outlet_id'])
+								&&	$_SESSION['outletID'] != $_SESSION['selOutlet']['outlet_id'] )
+	) {
 	$_SESSION['selOutlet'] = array();
 	$rows = querySQL('db_outlet_info');
 	if($rows){
@@ -172,8 +175,11 @@ if (isset($_GET['outletID']) || $_SESSION['outletID'] != $_SESSION['selOutlet'][
 }
 
 // Check if selected date is within open times of outlet
-if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start'] 
-	 && $_SESSION['selectedDate_saison']<=$_SESSION['selOutlet']['saison_end'])
+if (isset($_SESSION['selectedDate_saison'])
+	&& isset($_SESSION['selOutlet']['saison_start'])
+	&& isset($_SESSION['selOutlet']['saison_end'])
+		&& !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
+		&& $_SESSION['selectedDate_saison']<=$_SESSION['selOutlet']['saison_end'])
 	){
 		// if not, go to standard outlet
 		if(	$_SESSION['page'] == 2 || $_SESSION['page']=='' ){
@@ -198,8 +204,10 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 		}
 	}
 	// Set back original open times
-	$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['open_time'];
-	$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['close_time'];	
+	if (isset($_SESSION['open_time']) && isset($_SESSION['close_time'])) {
+		$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['open_time'];
+		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['close_time'];
+	}
 	
 	// Set daily outlet open/close time
 	// overwrite the standard times with the daily ones
@@ -209,15 +217,18 @@ if ( !($_SESSION['selectedDate_saison']>=$_SESSION['selOutlet']['saison_start']
 	$break_open = $weekday.'_open_break';
 	$break_close = $weekday.'_close_break';
 	//echo $_SESSION['selOutlet']['outlet_open_time']."//".$_SESSION['selOutlet']['outlet_close_time']."<br/>";
-	if ( $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' ) 
+	if (isset($_SESSION['selOutlet'][$field_open]) && isset($_SESSION['selOutlet'][$field_close])
+		&& $_SESSION['selOutlet'][$field_open] != '00:00:00' && $_SESSION['selOutlet'][$field_close] != '00:00:00' ) 
 	{	
 		$_SESSION['selOutlet']['outlet_open_time'] = $_SESSION['selOutlet'][$field_open];
 		$_SESSION['selOutlet']['outlet_close_time'] = $_SESSION['selOutlet'][$field_close];			
 	}
 	
 	// set break times
-	$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
-	$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
+	if (isset($_SESSION['selOutlet'][$break_open]) && isset($_SESSION['selOutlet'][$break_close])) {
+		$_SESSION['selOutlet']['outlet_open_break'] = $_SESSION['selOutlet'][$break_open];
+		$_SESSION['selOutlet']['outlet_close_break'] = $_SESSION['selOutlet'][$break_close];
+	}
 	//echo $_SESSION['selOutlet']['outlet_open_time']."//".$_SESSION['selOutlet']['outlet_close_time'];
 
 $rows = querySQL('maitre_info');
@@ -246,13 +257,13 @@ $q = (isset($_GET['q'])) ? (int)$_GET['q'] : 1;
 // selected reservations/storno
 // 0 = confirmed
 // 1 = canceled
-$_SESSION['storno'] = ($_GET['s']) ? (int)$_GET['s'] : 0;
+$_SESSION['storno'] = (isset($_GET['s'])) ? (int)$_GET['s'] : 0;
 
 // selected waitlist
 // 0 = reservation
 // 1 = waitlist
 // 2 = secondseating
-$_SESSION['wait'] = ($_GET['w']) ? (int)$_GET['w'] : 0;
+$_SESSION['wait'] = (isset($_GET['w'])) ? (int)$_GET['w'] : 0;
 
 // selected button
 if (isset($_GET['btn'])) {

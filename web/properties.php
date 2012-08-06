@@ -1,11 +1,13 @@
 <?php
+
 session_start();
 
 // ** set configuration
 	include('../config/config.general.php');
+
 // ** login class
 	require_once '../PLC/plc.class.php';
-	
+
 $this_page = "property";
 
 // ** LOGIN CLASS **/
@@ -15,7 +17,8 @@ $this_page = "property";
 	  'dbName' => $settings['dbName'],
 	  'dbUser' => $settings['dbUser'],
 	  'dbPass' => $settings['dbPass'],
-	  'dbPort' => $settings['dbPort']
+	  'dbPort' => $settings['dbPort'],
+	  'dbTablePrefix' => $settings['dbTablePrefix']
 	 );
 
 	$user = new flexibleAccess('',$dbAccess);
@@ -31,6 +34,8 @@ $this_page = "property";
 		$_SESSION['u_time'] 	= date("Y-m-d H:i:s", time());
 		$_SESSION['u_lang'] 	= (isset($user->userData['lang_id'])) ? $user->userData['lang_id'] : '';
 		$_SESSION["valid_user"] = TRUE;
+
+
 
 // ** database functions
 	include('classes/database.class.php');
@@ -59,7 +64,7 @@ $this_page = "property";
 	}
 
 // translate to selected language
-	$_SESSION['language'] = ($_SESSION['language']) ? $_SESSION['language'] : 'en_EN';
+	$_SESSION['language'] = (isset($_SESSION['language'])) ? $_SESSION['language'] : 'en_EN';
 	translateSite(substr($_SESSION['language'],0,2));
 // ** get superglobal variables
 	// special setup for properties

@@ -25,17 +25,17 @@ $prp_info = querySQL('property_info');
   if ($_POST['action']=='cncl_book'){
 
     // cancel reservation
-    $result = query("UPDATE `reservations` SET `reservation_hidden` = '1' WHERE `reservation_hidden` = '0' AND `reservation_bookingnumber` = '%s' AND `reservation_guest_email` = '%s'", $_POST['reservation_bookingnumber'], $_POST['reservation_guest_email']);
+    $result = query("UPDATE `$dbTables->reservations` SET `reservation_hidden` = '1' WHERE `reservation_hidden` = '0' AND `reservation_bookingnumber` = '%s' AND `reservation_guest_email` = '%s'", $_POST['reservation_bookingnumber'], $_POST['reservation_guest_email']);
     $cancel = $result;
 
     // get reservation id from booking number
     if($cancel>=1){
-      $result = query("SELECT `reservation_id` FROM `reservations` WHERE `reservation_bookingnumber` = '%s' LIMIT 1",$_POST['reservation_booking_number']);
+      $result = query("SELECT `reservation_id` FROM `$dbTables->reservations` WHERE `reservation_bookingnumber` = '%s' LIMIT 1",$_POST['reservation_booking_number']);
 	if ($row = mysql_fetch_row($result)) {
 		$reservation_id = $row[0];
 	}
       // store changes in history
-      $result = query("INSERT INTO `res_history` (reservation_id,author) VALUES ('%d','Online-Cancel')",$reservation_id);
+      $result = query("INSERT INTO `$dbTables->res_history` (reservation_id,author) VALUES ('%d','Online-Cancel')",$reservation_id);
     }
     
   }

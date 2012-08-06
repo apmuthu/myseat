@@ -13,6 +13,9 @@ if ($_SESSION['button']==2 || $_SESSION['button']==3) {
 if ($_SESSION['page'] == 7){
 	$link = "properties.php?p=8";
 }
+function inputValue($attr) {
+	return isset($row[$attr]) ? $row[$attr] : '';
+}
 ?>
 
 <form method="post" action="<?php echo $link; ?>" id="user_form">
@@ -23,7 +26,7 @@ if ($_SESSION['page'] == 7){
 		?>
 	</label>
 	<p>
-		<input type="text" name="username" id="username" class='required' minlength='3' maxlength='12' title=' ' value="<?php echo $row['username'];?>"/>
+		<input type="text" name="username" id="username" class='required' minlength='3' maxlength='12' title=' ' value="<?php echo inputValue('username');?>"/>
 		<div id="status"></div>
 	</p>
 	<label>
@@ -33,7 +36,7 @@ if ($_SESSION['page'] == 7){
 		?>
 	</label>
 	<p>
-		<input type="text" name="realname" id="realname" class='required' minlength='3' title=' ' value="<?php echo $row['realname'];?>"/>
+		<input type="text" name="realname" id="realname" class='required' minlength='3' title=' ' value="<?php echo inputValue('realname');?>"/>
 	</p>
 	<label>
 		<?php
@@ -42,17 +45,17 @@ if ($_SESSION['page'] == 7){
 		?>
 	</label>
 	<p>
-		<input type="password" name="password" id="password" class="required" minlength="6" maxlength='12' title=' ' value="<?php echo $row['password'];?>"/>
+		<input type="password" name="password" id="password" class="required" minlength="6" maxlength='12' title=' ' value="<?php echo inputValue('password');?>"/>
 	</p>
 	<label><?php echo _retype." "._password;?></label>
 	<p>
-		<input type="password" name="password2" id="password2" class="required" minlength="6" maxlength='12' title=' ' value="<?php echo $row['password'];?>"/>
+		<input type="password" name="password2" id="password2" class="required" minlength="6" maxlength='12' title=' ' value="<?php echo inputValue('password');?>"/>
 	</p>
 	<label><?php echo _email;?></label>
 	<p>
-		<input type="text" name="email" id="email" class="required email" title=' ' value="<?php echo $row['email'];?>"/>
+		<input type="text" name="email" id="email" class="required email" title=' ' value="<?php echo inputValue('email');?>"/>
 	</p>
-	<label><?php echo printOnOff($row['autofill'],'autofill','');?> <?php echo _users." = "._author;?></label>
+	<label><?php echo printOnOff(inputValue('autofill'),'autofill','');?> <?php echo _users." = "._author;?></label>
 	<p></p>
 	<label><?php echo _type;?></label>
 	<p>
@@ -90,8 +93,8 @@ if ($_SESSION['page'] == 7){
 				?>
 
 			<input type="hidden" name="created" value="<?php echo date('Y-m-d H:i:s');?>">
-			<input type="hidden" name="userID" value="<?php echo ($row['userID']) ? $row['userID'] : 0 ;?>">
-			<input type="hidden" name="property_id" value="<?php echo ($_SESSION['property']) ? $_SESSION['property'] : 1 ;?>">
+			<input type="hidden" name="userID" value="<?php echo (isset($row['userID'])) ? $row['userID'] : 0 ;?>">
+			<input type="hidden" name="property_id" value="<?php echo (isset($_SESSION['property'])) ? $_SESSION['property'] : 1 ;?>">
 			<input type="hidden" name="token" value="<?php echo $token; ?>" />
 			<input type="hidden" name="action" value="save_usr">
 	<br/>

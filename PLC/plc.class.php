@@ -65,6 +65,11 @@ class flexibleAccess{
   */
  var $dbPass = 'root';
  /**
+  * The table prefix
+  * var string
+  */
+ var $dbTablePrefix = '';
+ /**
   * The session variable ($_SESSION[$sessionVariable]) which will hold the data while the user is logged on
   * var string
   */
@@ -90,18 +95,18 @@ class flexibleAccess{
   * var array
   */
  var $tbFields = array(
- 	'userID' => 'userID',
-	'group' => 'group_id',
- 	'login'  => 'username',
- 	'pass'   => 'password',
- 	'email'  => 'email',
-	'last_ip'  => 'last_ip',
-	'last_login'  => 'last_login',
- 	'active' => 'active',
-  	'forgot' => 'forgotten_password_code',
-  	'lang' => 'lang_id',
-	'role' => 'role',
-	'hotel' => 'hotel_id'
+		'userID'     => 'userID',
+		'group'      => 'group_id',
+		'login'      => 'username',
+		'pass'       => 'password',
+		'email'      => 'email',
+		'last_ip'    => 'last_ip',
+		'last_login' => 'last_login',
+		'active'     => 'active',
+		'forgot'     => 'forgotten_password_code',
+		'lang'       => 'lang_id',
+		'role'       => 'role',
+		'hotel'      => 'hotel_id'
  );
  /**
   * Those are the fields that our cookie session table uses in order to fetch the needed data. 
@@ -109,11 +114,11 @@ class flexibleAccess{
   * var array
   */
 var $tbSessions = array(
-	'key_id' => 'key_id',
-  	'user_id' => 'user_id',
-  	'user_agent' => 'user_agent',
-  	'last_ip' => 'last_ip',
-  	'last_login' => 'last_login'
+		'key_id'     => 'key_id',
+		'user_id'    => 'user_id',
+		'user_agent' => 'user_agent',
+		'last_ip'    => 'last_ip',
+		'last_login' => 'last_login'
 );
  /**
   * Those are the fields that our login session table uses in order to fetch the needed data. 
@@ -121,9 +126,9 @@ var $tbSessions = array(
   * var array
   */
 var $tbLogin = array(
-	'id' => 'session_id',
-  	'login' => 'login_attempts',
-  	'activity' => 'last_activity'
+		'id'       => 'session_id',
+		'login'    => 'login_attempts',
+		'activity' => 'last_activity'
 );
  /**
   * The database table that holds all sessions
@@ -131,11 +136,11 @@ var $tbLogin = array(
   */
 var $dbTrans  = 'plc_trans';
 var $tbTrans = array(
-	'id' => 'id',
-  	'field' => 'type',
-  	'app' => 'app',
-  	'old_id' => 'old_id',
-  	'new_id' => 'new_id'
+		'id'     => 'id',
+		'field'  => 'type',
+		'app'    => 'app',
+		'old_id' => 'old_id',
+		'new_id' => 'new_id'
 );
 /**
   * When user wants the system to remember him/her, how much time to keep the cookie? (seconds)
@@ -191,12 +196,12 @@ var $tbTrans = array(
   * var array
   */
  var $roles = array(
- 	'1' => 'superadmin',
-	'2' => 'admin',
- 	'3'  => 'manager',
- 	'4'  => 'supervisor',
- 	'5'   => 'user',
- 	'6'   => 'guest'
+		'1' => 'superadmin',
+		'2' => 'admin',
+		'3' => 'manager',
+		'4' => 'supervisor',
+		'5' => 'user',
+		'6' => 'guest'
  );
 
  /*Do not edit after this line*/
@@ -228,6 +233,10 @@ var $tbTrans = array(
 			    $this->{$k} = $v;
 		}
     }
+	// Adding table prefix
+	$this->dbTable    = $this->dbTablePrefix.$this->dbTable;
+	$this->dbSession  = $this->dbTablePrefix.$this->dbSession;
+	$this->dbAttempts = $this->dbTablePrefix.$this->dbAttempts;
 
     $this->remCookieDomain = $_SERVER['HTTP_HOST'];
     $this->dbConn = ($dbConn=='')? mysql_connect($this->dbHost.':'.$this->dbPort, $this->dbUser, $this->dbPass):$dbConn;
@@ -298,11 +307,11 @@ function login($uname,$password,$newpassword)
 			$this->userData = mysql_fetch_array($res);
 			$this->userID = $this->userData[$this->tbFields['userID']];
 			$this->loadUser($this->userID);
-			
+				
 			//store IP & datetime in DB
 			$time_now = date('Y-m-d H:i:s', time() );
 	  		$sql = "UPDATE `{$this->dbTable}` 
-					SET `{$this->tbFields['last_ip']}` = '".$_SERVER[REMOTE_ADDR]."', 
+					SET `{$this->tbFields['last_ip']}` = '".$_SERVER['REMOTE_ADDR']."', 
 						`{$this->tbFields['last_login']}` = '".$time_now."' 
 					WHERE `{$this->tbFields['userID']}` = '".$this->userID."'";
 			$res = $this->query($sql,__LINE__);

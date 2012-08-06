@@ -33,12 +33,13 @@ This file is part of mySeat.
 	  'dbName' => $settings['dbName'],
 	  'dbUser' => $settings['dbUser'],
 	  'dbPass' => $settings['dbPass'],
-	  'dbPort' => $settings['dbPort']
+	  'dbPort' => $settings['dbPort'],
+	  'dbTablePrefix' => $settings['dbTablePrefix']
 	 );
 
 	$user = new flexibleAccess('',$dbAccess);
 
-	if ( $_GET['logout'] == 1 ){
+	if ( isset($_GET['logout']) && $_GET['logout'] == 1 ){
 		$user->logout();
 	}
 	if ( !$user->autologin()){
@@ -55,7 +56,7 @@ This file is part of mySeat.
 		$_SESSION['property'] 	= $user->userData['property_id'];
 		$_SESSION['propertyID'] = $user->userData['property_id'];
 		$_SESSION['u_time'] 	= date("Y-m-d H:i:s", time());
-		$_SESSION['u_lang'] 	= $user->userData['lang_id'];
+		$_SESSION['u_lang'] 	= (isset($user->userData['lang_id'])) ? $user->userData['lang_id'] : '';
 		$_SESSION["valid_user"] = TRUE;
 
 	}

@@ -1,5 +1,5 @@
 <?php
-if ($_POST['action']=='save_res') {	
+if (isset($_POST['action']) && $_POST['action'] =='save_res') {	
 	// group reservation needs a common menu?
 	if ( (int)$_POST['reservation_pax'] >= $general['max_menu']){ 
 		$_SESSION['messages'][] = _sentence_8." ".$general['max_menu']." "._sentence_9 ;

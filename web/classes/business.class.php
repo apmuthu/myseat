@@ -712,6 +712,7 @@ function reservationsByTime($kind='pax') {
 	//return values
 	if( $kind=='pax' ){
 		$availability =	querySQL('availability');
+		$pax_by_time = array();
 		if ($availability) {
 			foreach($availability as $row) {
 				$pax_by_time[$row->reservation_time] = $row->pax_total;
@@ -721,6 +722,7 @@ function reservationsByTime($kind='pax') {
 	    return $pax_by_time;
 	}else if( $kind=='tbl' ){
 		$availability =	querySQL('availability');
+		$tbl_by_time = array();
 		if ($availability) {
 			foreach($availability as $row) {
 				$pax_by_time[$row->reservation_time] = $row->pax_total;
@@ -730,6 +732,7 @@ function reservationsByTime($kind='pax') {
 	    return $tbl_by_time;
 	}else if( $kind=='pass' ){
 		$pass_availability = querySQL('passerby_availability');
+		$pass_by_time = array();
 		if ($pass_availability) {
 			foreach($pass_availability as $row) {
 				$pass_by_time[$row->reservation_time] = $row->passerby_total;
