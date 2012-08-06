@@ -86,7 +86,8 @@ $prp_info = querySQL('property_info');
 
 	<!-- CSS - Setup -->
 	<link href="style/style.css" rel="stylesheet" type="text/css" />
-	
+	<link href="style/personal.css" rel="stylesheet" type="text/css" />
+
     <!-- jQuery Library-->
     <script src="js/jQuery.min.js"></script>
     <script type="text/javascript" src="js/jquery-ui.js"></script> 
@@ -140,7 +141,7 @@ $prp_info = querySQL('property_info');
 			      if($waitlist == 2){
 					echo "<div class='alert_success'><p><img src='../web/images/icons/icon_accept.png' alt='success' class='middle'/>&nbsp;&nbsp;";
 				    echo _email_subject." ".$outlet_name.", ".buildDate($general['dateformat'],$sd,$sm,$sy)." ".$bookingtime."<br/>";
-					echo _contact_form_success." <strong>".$_SESSION['booking_number']."</strong><br/>";
+					/*echo _contact_form_success." <strong>".$_SESSION['booking_number']."</strong><br/>";*/
 					echo "</p></div>";
 			      }else{
 					echo "<div class='alert_error'><p><img src='../web/images/icon_error.png' alt='error' class='middle'/>&nbsp;&nbsp;";

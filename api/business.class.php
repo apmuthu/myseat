@@ -342,10 +342,9 @@ function defineOffDays(){
 
 function processBooking(){
 // rather than recursively calling query, insert all rows with one query
-	 GLOBAL $general, $global_basedir,$dbTables,$hook; 
+	 GLOBAL $general, $global_basedir,$dbTables,$hook;
 	 // reservation date
 	 $reservation_date = $_SESSION['selectedDate'];
-
 	// prepare POST data for storage in database:
 	// $keys
 	// $values 
@@ -473,7 +472,7 @@ function processBooking(){
 					$max_keys++;
 				}
 			}
-			// run sql query 				
+			// run sql query
 			$query = substr($query,0,-1);				   
 			$result = query($query);
 			$_SESSION['result'] = $result;
@@ -485,10 +484,9 @@ function processBooking(){
 				// ** PHPMailer class
 				require_once('../web/classes/phpmailer/class.phpmailer.php');
 				// ** plugin hook
-				if ($hook->hook_exist('after_booking')) {
+				if (isset($hook) && $hook->hook_exist('after_booking')) {
 					$hook->execute_hook('after_booking');
-				}
-			
+				}				
 			// store new reservation in history
 			$result = query("INSERT INTO `$dbTables->res_history` (reservation_id,author) VALUES ('%d','%s')",$resID,$_SESSION['author']);
 			// Reservation was done

@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Local Email confirmation
 Plugin URI: http://www.myseat.us
@@ -36,7 +35,7 @@ function my_email_send_conf() {
 	global $global_basedir, $general, $settings;
 
 	// ** PHPMailer class
-	require_once('../classes/phpmailer/class.phpmailer.php');
+	require_once('../web/classes/phpmailer/class.phpmailer.php');
 
 	// *** send confirmation email
 				// Prepare basedir

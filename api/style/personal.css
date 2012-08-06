@@ -1,0 +1,102 @@
+body {
+	background: url('../../../../paco/images/main-bg.png') repeat-x;
+	background-position-y: -150px;
+	min-height: 480px;
+}
+
+::selection {
+	background: none !important;
+	color: white;
+}
+
+.error {
+	background: #d12e14 !important;
+}
+
+.number {
+	color: #49443D !important;
+}
+
+#page-content {
+	width: 100% !important;
+	color: #49443D !important; /*#FFA568 */
+}
+
+h2 {
+	padding-top: 15px;
+}
+
+#result {
+	font-size: 15px;
+	width: 466px;
+	display: block;
+}
+
+#page-content h1 {
+	display: none !important;
+}
+
+#reservation_title {
+	display: none !important;
+}
+
+.register > label {
+	display: none !important;
+}
+
+.tl {
+	display: none !important;	
+}
+
+.tc {
+	margin-top: -86px;
+	margin-left: 247px;
+	width: 256px;
+}
+
+.button {
+	transition: background-color 0.4s, text-shadow 0.4s;
+	-webkit-transition: background-color 0.4s, text-shadow 0.4s;
+}
+
+.button:hover {
+	background-color: #FFA568 !important;
+	text-shadow: 0 0px 0 white;
+}
+
+.register {
+	float: right !important;
+	margin-top: -178px !important;
+	margin-right: 10px;
+}
+
+.data3 {
+	width: 196px !important;
+}
+
+.langnav {
+	display:none !important;;
+}
+
+form {
+	margin-left: 10px !important;
+}
+
+#pacoImg {
+	margin-left: 10px;
+	border: 4px solid #9F988F;
+	width: 494px;
+}
+
+.register input, .register textarea {
+	width: 412px !important;
+}
+
+[class^="data"] {
+	background-color: #9F988F !important;
+	-webkit-transition: background-color 0.4s;	
+}
+
+[class^="data"]:hover {
+	background-color: #FFA568 !important;
+}

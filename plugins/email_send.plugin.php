@@ -1,5 +1,4 @@
 <?php
-
 /*
 Plugin Name: Email confirmation
 Plugin URI: http://www.myseat.us
@@ -33,9 +32,8 @@ register_plugin($plugin_id, $data);
 // the main function
 function email_send_conf() {
 	global $global_basedir, $general, $settings;
-
 	// ** PHPMailer class
-	require_once('../classes/phpmailer/class.phpmailer.php');
+	require_once('../web/classes/phpmailer/class.phpmailer.php');
 
 	// *** send confirmation email
 				// Prepare basedir
@@ -291,9 +289,8 @@ function email_send_conf() {
 				$mail->SMTPAuth      = true;                   // enable SMTP authentication
 				$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
 				$mail->CharSet  	 = 'utf-8'; 			   // sets Encoding
-				//$mail->SMTPSecure	 = 'ssl'; 				   //  Used instead of TLS when only POP mail is selected
-				
-
+				if (isset($settings['SMTPSecure']))
+					$mail->SMTPSecure = $settings['SMTPSecure'];		 //  TLS or SSL
 				$mail->Host          = $settings['emailHost']; // sets the SMTP server
 				$mail->Port          = $settings['emailPort']; // set the SMTP port
 				$mail->Username      = $settings['emailUser']; // SMTP account username
@@ -310,6 +307,7 @@ function email_send_conf() {
 				  if(!$mail->Send()) {
 				    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
 				  }
+				  
 				  // Clear all addresses and attachments for next loop
 				  $mail->ClearAddresses();
 				
@@ -319,12 +317,12 @@ function email_send_conf() {
 				 $mail->Subject = $subject;
 				 $mail->Body 	= $notification_text;
 				 $mail->AddAddress($to_admin, _reservations);
-				  
+				  /*
 				 if(!$mail->Send()) {
 				    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
-				 }
+				 }*/
 				 // Clear all addresses and attachments for next loop
-				 $mail->ClearAddress();	
+				 $mail->ClearAddresses();
 				
 			} else {
 				//PHP native mail sending
@@ -361,5 +359,5 @@ function email_send_conf() {
 add_hook('after_booking','email_send_conf');
 
 //code to execute when loading plugin
-// echo "<p>Plugin LOADED!</p>";
+//echo "<p>Plugin LOADED!</p>";
 ?>

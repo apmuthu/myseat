@@ -4,6 +4,11 @@
 // Language: en_EN
 // Translator: Bernd Orttenburger <beo@myseat.us>
 
+//original text: "optional"
+define ( '_optional', 'optional' );
+
+//original text: "Make a reservation"
+define ( '_make_reservation', 'Make a reservation' );
 
 //original text: "Open:"
 define ( '_open', 'Open:' );

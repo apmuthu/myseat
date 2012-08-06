@@ -4,7 +4,6 @@
   credit is left where credit is due.
 */
 
-
 /* 
   html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
   v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
@@ -347,7 +346,7 @@ form p {
 }
 form label {
 	float:left;
-	width:140px;
+	width: 256px;
 	margin-top:5px;
 }
 form input, form textarea {   

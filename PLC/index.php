@@ -39,7 +39,7 @@ $forwardPage = "../web/main_page.php?p=1";
 		$username = $_POST['user'];
 		
 		// ** Validate username and password
-		if( strlen($username) <4 ) {
+		if( strlen($username) <3 ) {
 			$message = "Username is required.";
 			$validate = false;
 			

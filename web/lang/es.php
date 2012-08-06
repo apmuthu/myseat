@@ -6,6 +6,12 @@
 //              Estevania Varo <e.varo@myseat.us>
 //              Raul Colon <raul.colon@myseat.us>
 
+//original text: "optional"
+define ( '_optional', 'opcional' );
+
+//original text: "Make a reservation"
+define ( '_make_reservation', 'Reservar' );
+
 //original text: "Open:"
 define ( '_open', 'Abrir:' );
 

@@ -4,6 +4,11 @@
 // Language: fr_FR
 // Translator: Cynthia Bouti <c.bouti@myseat.us>
 
+//original text: "optional"
+define ( '_optional', 'optionnel' );
+
+//original text: "Make a reservation"
+define ( '_make_reservation', 'Reserver' );
 
 //original text: "Open:"
 define ( '_open', 'Ouvert: de' );

@@ -66,6 +66,7 @@ $_SESSION['resID'] = 0;
 // ** php hooks class
 	include_once "../web/classes/phphooks.config.php";
 	include_once "../web/classes/phphooks.class.php";
+	$plugin_path = '../plugins/';
 	//create instance of plugin class
 	include "../config/plugins.init.php";
 			
@@ -87,8 +88,8 @@ $_SESSION['resID'] = 0;
 	}
 
 	// prevent injection with false outlet id's
+	$_SESSION['selectedDate_year'] = date('Y');
 	$check_web_outlet = querySQL('check_web_outlet');
-
 // property ID
    if ($_GET['propertyID']) {
        $_SESSION['property'] = (int)$_GET['propertyID'];
@@ -169,21 +170,8 @@ if($check_web_outlet==1){
 	$max_passerby = ($_SESSION['passerby_max_pax'] <= 0) ? $max_pax : $_SESSION['passerby_max_pax'];
 }
   // translate to selected language
-	$language = $general['language'];
-	$set_lang = substr($language,0,2);
-	$browser_lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-
-	if( isset($_GET['lang']) ){
-		$language = $_GET['lang'];
-		$_SESSION['lang'] = $language;
-	}else if ( isset($browser_lang) && $_SESSION['lang'] == '' && ($browser_lang=="en" || $browser_lang == $set_lang) ){
-		$language = $browser_lang;
-	}
-	if( $_SESSION['lang'] == ''){
-		$_SESSION['lang'] = $language;
-	}
-	//$_SESSION['lang'] = 'en';
-	$lang = substr($_SESSION['lang'],0,2);
+	$language = $_SESSION['hl_HL'];
+	$lang = substr($_SESSION['hl_HL'], 0, 2);
 	translateSite($lang,'../web/');
 ?>
 
@@ -219,6 +207,7 @@ if($check_web_outlet==1){
 			echo '<link href="style/mobile.css" rel="stylesheet" type="text/css" />';
 		}else{
 			echo '<link href="style/style.css" rel="stylesheet" type="text/css" />';
+			echo '<link href="style/personal.css" rel="stylesheet" type="text/css" />';
 		}
 	?>
 
@@ -227,7 +216,7 @@ if($check_web_outlet==1){
     <script src="js/jquery.easing.1.3.js" type="text/javascript"></script>
     <script src="js/jquery-ui.js" type="text/javascript"></script> 
     <script src="js/functions.js" type="text/javascript"></script>
-	<script src="../web/lang/jquery.ui.datepicker-<?php echo substr($_SESSION['language'],0,2);?>.js" type="text/javascript"></script>	
+	<script src="../web/lang/jquery.ui.datepicker-<?php echo $lang;?>.js" type="text/javascript"></script>	
 
 <!-- Uncomment to define your own color scheme for the booking form -->
 <!-- The example here is from the Monmarthe DEMO page at myseat.us -->
@@ -272,11 +261,11 @@ if($check_web_outlet==1){
 <?php
 	if( $check_web_outlet<1 ){
 		echo "<div class='tc'><div class='alert_error'><p><img src='../web/images/icon_error.png' alt='error' class='middle'/>&nbsp;&nbsp;";
-		echo _sorry."<br></p></div><br/></div>";
+		echo _sorry."</p></div><br/></div>";
 		exit; //stop script
 	}
 ?>
-<?php language_navigation($set_lang);?>
+<?php language_navigation($lang);?>
 <form action="process_booking.php" method="post" name="contactForm" id="contactForm">
 	<?php	
 				// outlets dropdown
@@ -355,7 +344,7 @@ if($check_web_outlet==1){
 			//end special events
 		?>
 </div>
-<div class="register">	
+<div class="data4 register">	
 	<div class="number"><?php echo $order+4;?></div>
 	<h3><?php echo _detail;?></h3>
 	<label><?php echo _title; ?></label><br/>
@@ -378,8 +367,8 @@ if($check_web_outlet==1){
                     </div>
 		    <br/>
             <div>
-			   <label><?php echo _email; ?></label><br/>
-               <input type="text" name="reservation_guest_email" class="required email" id="reservation_guest_email" value="<?php if(isset($me['last_name'])){echo $me['email'];} ?>" />
+			   <label><?php echo _email; echo '('._optional.')'; ?></label><br/>
+               <input type="text" name="reservation_guest_email" class="email" id="reservation_guest_email" value="<?php if(isset($me['last_name'])){echo $me['email'];} ?>" />
             </div>
 		    <br/>
 		    <div>
@@ -388,9 +377,11 @@ if($check_web_outlet==1){
             </div>
 			<br/>
 			<div>
-				<label><?php echo _form_notes; ?></label><br/>
+				<label><?php echo _form_notes; echo '('._optional.')'; ?></label><br/>
 				<textarea cols="50" rows="5" name="reservation_notes" id="reservation_notes" ></textarea>
 			</div>
+		    <br/>
+		    <br/>
 		    <br/>
 
 				<input type="hidden" name="action" id="action" value="submit"/>
@@ -417,10 +408,11 @@ if($check_web_outlet==1){
 	
 				<br/>
 				<div class="tc">
-					<input class='button' type='submit' value='<?php echo _create; ?>' /></div>
+					<input class='button' type='submit' value='<?php echo _make_reservation; ?>' /></div>
                 </div>
 		</form>
-		<br/>		
+		<img id="pacoImg" src="../../../paco/images/paco2.jpg" />
+		<br/>
 		</div></div><!-- page content end -->
 			
 </div><!-- page container end -->
@@ -468,7 +460,7 @@ if ($hook->hook_exist( 'debug_online' )) {
 	      defaultDate: 0,
 		  beforeShowDay: unavailable,
 	      dateFormat: '<?php echo $general['datepickerformat'];?>',
-	      regional: '<?php echo substr($_SESSION['lang'],0,2);?>',
+	      regional: '<?php echo $lang;?>',
 	      onSelect: function(dateText, inst) { window.location.href="?selectedDate=" + $("#dbdate").val() }
       });
       // month is 0 based, hence for Feb. we use 1
@@ -500,7 +492,7 @@ if ($hook->hook_exist( 'debug_online' )) {
 				  }
 		        }
 		        $button.parent().find("input").val(newVal);
-				window.location.href='?pax=' + newVal;
+				//window.location.href='?pax=' + newVal;
 		});
 	
     });
