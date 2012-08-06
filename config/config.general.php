@@ -23,12 +23,19 @@
 
  // ** the SMTP host
  $settings['emailHost'] = 'smtp mailserver';
- // ** the database user
+ // ** the email to use when sending
  $settings['emailUser'] = 'account username';
- // ** the database password
+ // ** the password of the above email adress
  $settings['emailPass'] = 'account password';
- // ** the database port (standard: 25, gmail:26)
+ // ** the SMTP port (standard: 25) but see below for example with gmail or hotmail
  $settings['emailPort'] = 25;
+
+ // Example for gmail and hotmail with TLS
+ // $settings['SMTPSecure'] = 'tls';
+ // $settings['emailPort'] = 587;
+ // Example for gmail with SSL
+ // $settings['SMTPSecure'] = 'ssl';
+ // $settings['emailPort'] = 465;
 
 // ** Daylight settings
  // ** noon time

@@ -29,6 +29,7 @@ $_SESSION['language'] = 'en_EN';
 // ** php hooks class
 	include_once "../web/classes/phphooks.config.php";
 	include_once "../web/classes/phphooks.class.php";
+	$plugin_path = '../plugins/';
 	//create instance of plugin class
 	include "../config/plugins.init.php";
 // ** get property info for logo path
@@ -110,14 +111,11 @@ $prp_info = querySQL('property_info');
 			    // =-=-=-=-=-=-=-=-=-=-=
 			    //  Process the Booking
 			    // =-=-=-=-=-=-=-=-=-=-=
-
 			      // CSRF - Secure forms with token
 			      if ($_SESSION['barrier'] == $_POST['barrier']) {
-					
 					// get day off days 
 					// (returns '0' = open OR '1' = dayoff)
 					$dayoff = getDayoff();
-
 					// double check if no neccessary field is empty
 					if (isset($_POST['dbdate']) &&
 						isset($_POST['reservation_pax']) &&

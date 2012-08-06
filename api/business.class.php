@@ -484,7 +484,8 @@ function processBooking(){
 				// ** PHPMailer class
 				require_once('../web/classes/phpmailer/class.phpmailer.php');
 				// ** plugin hook
-				if (isset($hook) && $hook->hook_exist('after_booking')) {
+				if ($hook->hook_exist('after_booking')) {
+					$_SESSION['form'] = $_POST;
 					$hook->execute_hook('after_booking');
 				}				
 			// store new reservation in history
