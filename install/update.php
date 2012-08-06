@@ -20,67 +20,67 @@ ini_set("display_errors", 1);
 
 /* Update the database from XT 0.178 to > XT 0.1782 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "reservations";
+$table_updates[$i]['table'] = "$dbTables->reservations";
 $table_updates[$i]['field'] = "reservation_referer";
-$table_updates[$i]['query'] = "ALTER TABLE `reservations` ADD `reservation_referer` TEXT DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->reservations` ADD `reservation_referer` TEXT DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.1782 to > XT 0.179 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "properties";
+$table_updates[$i]['table'] = "$dbTables->properties";
 $table_updates[$i]['field'] = "website";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `website` VARCHAR( 200 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->properties` ADD `website` VARCHAR( 200 ) DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.179 to > XT 0.1795 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "outlets";
+$table_updates[$i]['table'] = "$dbTables->outlets";
 $table_updates[$i]['field'] = "outlet_description_en";
-$table_updates[$i]['query'] = "ALTER TABLE `outlets` ADD `outlet_description_en` TEXT DEFAULT NULL AFTER `outlet_description`";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->outlets` ADD `outlet_description_en` TEXT DEFAULT NULL AFTER `outlet_description`";
 $i++;
 
 /* Update the database from XT 0.1795 to > XT 0.1798 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "properties";
+$table_updates[$i]['table'] = "$dbTables->properties";
 $table_updates[$i]['field'] = "social_fb";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_fb` VARCHAR( 255 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->properties` ADD `social_fb` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
-$table_updates[$i]['table'] = "properties";
+$table_updates[$i]['table'] = "$dbTables->properties";
 $table_updates[$i]['field'] = "social_tw";
-$table_updates[$i]['query'] = "ALTER TABLE `properties` ADD `social_tw` VARCHAR( 255 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->properties` ADD `social_tw` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
 /* Update the database from XT 0.1790 to > XT 0.180 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "outlets";
+$table_updates[$i]['table'] = "$dbTables->outlets";
 $table_updates[$i]['field'] = "limit_password";
-$table_updates[$i]['query'] = "ALTER TABLE  `outlets` ADD `limit_password` VARCHAR( 255 ) DEFAULT NULL AFTER `avg_duration`";
+$table_updates[$i]['query'] = "ALTER TABLE  `$dbTables->outlets` ADD `limit_password` VARCHAR( 255 ) DEFAULT NULL AFTER `avg_duration`";
 $i++;
 
 /* Update the database from XT 0.180 to > XT 0.195 */
 /* ------------------------------------------------- */
-$table_updates[$i]['table'] = "plc_users";
+$table_updates[$i]['table'] = "$dbTables->plc_users";
 $table_updates[$i]['field'] = "realname";
-$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `realname` VARCHAR( 255 ) DEFAULT NULL AFTER `username`";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->plc_users` ADD `realname` VARCHAR( 255 ) DEFAULT NULL AFTER `username`";
 $i++;
 
-$table_updates[$i]['table'] = "plc_users";
+$table_updates[$i]['table'] = "$dbTables->plc_users";
 $table_updates[$i]['field'] = "autofill";
-$table_updates[$i]['query'] = "ALTER TABLE `plc_users` ADD `autofill` INT DEFAULT NULL AFTER `last_login`";
+$table_updates[$i]['query'] = "ALTER TABLE `$dbTables->plc_users` ADD `autofill` INT DEFAULT NULL AFTER `last_login`";
 $i++;
 
-$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['table'] = "$dbTables->settings";
 $table_updates[$i]['field'] = "guest_type_text_HG";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_HG` VARCHAR( 255 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `$dbTables->settings` ADD  `guest_type_text_HG` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
-$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['table'] = "$dbTables->settings";
 $table_updates[$i]['field'] = "guest_type_text_PASS";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_PASS` VARCHAR( 255 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `$dbTables->settings` ADD  `guest_type_text_PASS` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
-$table_updates[$i]['table'] = "settings";
+$table_updates[$i]['table'] = "$dbTables->settings";
 $table_updates[$i]['field'] = "guest_type_text_WALK";
-$table_updates[$i]['query'] = "ALTER TABLE  `settings` ADD  `guest_type_text_WALK` VARCHAR( 255 ) DEFAULT NULL";
+$table_updates[$i]['query'] = "ALTER TABLE  `$dbTables->settings` ADD  `guest_type_text_WALK` VARCHAR( 255 ) DEFAULT NULL";
 $i++;
 
 // ------------------------------------------------
@@ -121,7 +121,7 @@ foreach ($table_updates as $table_update) {
 
 
 // BEGIN UPDATE  TABLES ----------------------------
-	$query = "CREATE TABLE IF NOT EXISTS `api_users` (
+	$query = "CREATE TABLE IF NOT EXISTS `$dbTables->api_users` (
 	  `id` bigint(20)  NOT NULL AUTO_INCREMENT,
 	  `token` varchar(60) DEFAULT NULL,
 	  `name` varchar(40) DEFAULT NULL,
@@ -146,14 +146,14 @@ foreach ($table_updates as $table_update) {
 
 	$errorMessage .= "New table 'api users' has been successfully created.<br/>"; 
 
-	$query = "CREATE TABLE IF NOT EXISTS `plugins` (
+	$query = "CREATE TABLE IF NOT EXISTS `$dbTables->plugins` (
 	    `filename` varchar(127) collate utf8_bin DEFAULT NULL,
 	    `action` tinyint(1) default '0',
 	    PRIMARY KEY  (`filename`)
 	    ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;";
 	$sql = query($query);
 
-	$query = "INSERT INTO `plugins` (`filename`, `action`) VALUES
+	$query = "INSERT INTO `$dbTables->plugins` (`filename`, `action`) VALUES
 	('email_send.plugin.php', 1),
 	('debug_session.plugin.php', 0);";
 	$sql = query($query);
