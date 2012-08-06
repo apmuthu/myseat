@@ -24,7 +24,7 @@
 			}
 			?>
 			&nbsp;|&nbsp;
-			&copy; 2011 by mySeat <?php echo $sw_version;?> distributed under the terms of the GNU General Public License&nbsp;
+			&copy; <?php echo date('Y') ?> by mySeat <?php echo isset($sw_version) ? $sw_version : 'v1' ;?> distributed under the terms of the GNU General Public License&nbsp;
 		</div>
 	</div>
 

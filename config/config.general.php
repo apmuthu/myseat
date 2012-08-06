@@ -1,6 +1,5 @@
 <?php 
 // ** Database Details Settings
-
  // ** the database that we will use
  $settings['dbName'] = 'myseat';
  // ** the database host
@@ -12,11 +11,13 @@
  $settings['dbPass'] = 'root';
  // ** the database port (standard: 3306)
  $settings['dbPort'] = 3306;
+ // ** the prefix you would like to add to your tables (optional)
+ // ** Example: "MySeat_".
+ $settings['dbTablePrefix'] = '';
 
 // ** Email Settings
  // what type of email to use: 'LOCAL' or 'SMTP'
  $settings['emailSMTP'] = 'LOCAL';
- 
  // The next settings has only to be set 
  // if you have set $settings['emailSMTP'] to 'SMTP'
 
@@ -79,10 +80,10 @@ $settings['currency'] = "Euro";
 	$roles = array(
 	'1' => 'Superadmin',
 	'2' => 'Admin',
-	'3'  => 'Manager',
-	'4'  => 'Supervisor',
-	'5'   => 'User',
-	'6'   => 'Guest'
+	'3' => 'Manager',
+	'4' => 'Supervisor',
+	'5' => 'User',
+	'6' => 'Guest'
 	);
 	
 // Advertise start ranges
@@ -90,4 +91,46 @@ $settings['currency'] = "Euro";
 $adv_range = array( 0,3,7,14,30,60,90);
 
 $settings['googlemap_key'] = '';
+
+// Setting table name's
+class DBTables
+{
+	public $api_users     = 'api_users';
+	public $capabilities  = 'capabilities';
+	public $client_order  = 'client_order';
+	public $events        = 'events';
+	public $maitre        = 'maitre';
+	public $outlets       = 'outlets';
+	public $plc_autologin = 'plc_autologin';
+	public $plc_sessions  = 'plc_sessions';
+	public $plc_users     = 'plc_users';
+	public $plugins       = 'plugins';
+	public $properties    = 'properties';
+	public $reservations  = 'reservations';
+	public $res_history   = 'res_history';
+	public $res_repeat    = 'res_repeat';
+	public $settings      = 'settings';
+	public $ledger        = 'ledger';
+
+	function __construct($prefix) {
+     $this->api_users     = $prefix.$this->api_users;
+	 $this->capabilities  = $prefix.$this->capabilities;
+	 $this->client_order  = $prefix.$this->client_order;
+	 $this->events        = $prefix.$this->events;
+	 $this->maitre        = $prefix.$this->maitre;
+	 $this->outlets       = $prefix.$this->outlets;
+	 $this->plc_autologin = $prefix.$this->plc_autologin;
+	 $this->plc_sessions  = $prefix.$this->plc_sessions;
+	 $this->plc_users     = $prefix.$this->plc_users;
+	 $this->plugins       = $prefix.$this->plugins;
+	 $this->properties    = $prefix.$this->properties;
+	 $this->reservations  = $prefix.$this->reservations;
+	 $this->res_history   = $prefix.$this->res_history;
+	 $this->res_repeat    = $prefix.$this->res_repeat;
+	 $this->settings      = $prefix.$this->settings;
+	 $this->ledger        = $prefix.$this->ledger;
+   }
+}
+$dbTables = new DBTables($settings['dbTablePrefix']);
+
 ?>

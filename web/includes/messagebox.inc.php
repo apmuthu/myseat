@@ -5,7 +5,7 @@ $maxC = maxCapacity();
 $passbyTime = reservationsByTime('pax');
 
 // Maitre day comment
-if (trim($maitre['maitre_comment_day']) != "" && $_SESSION['page'] == 2 ) {
+if (isset($maitre) && trim($maitre['maitre_comment_day']) != "" && $_SESSION['page'] == 2 ) {
 	echo "<div class='alert_tip'>
 	<p class='center margin-bottom-10'><img src='images/icon_info.png' alt='error' class='middle'/>";
 		// maitre comment
@@ -33,7 +33,7 @@ if (isset($passbyTime) && $_SESSION['passerby_max_pax'] > 0) {
 }
 
 // Messages
-if (count($_SESSION['messages']) > 0) {
+if (isset($_SESSION['messages']) && count($_SESSION['messages']) > 0) {
 	echo "<div class='alert_error'>
 	<p><img src='images/icon_warning.png' alt='error' class='middle'/>";
 	foreach ($_SESSION['messages'] as $key => $value) {
@@ -55,7 +55,7 @@ if ( !empty($_SESSION['errors']) ) {
 	echo "</p></div></div>";
 	//Clear errors after printing
 	$_SESSION['errors'] = array();
-}else if ( $_SESSION['result'] ) {
+}else if (isset($_SESSION['result']) ) {
 	echo "<div id='messageBox'>";
 	echo "<div class='alert_success'><p><img src='images/icons/icon_accept.png' alt='success' class='middle'/>". _new_entry ."</p></div></div>";
 	$_SESSION['result'] = '';

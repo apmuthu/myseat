@@ -32,7 +32,7 @@
 				}else if ($_SESSION['page'] == 5) { 
 					echo "<h3>"._property." "._detail."</h3>";
 				}else if ($_SESSION['page'] == 7) { 
-					echo "<h3>"._create." ".Administrator."</h3>";
+					echo "<h3>"._create." Administrator</h3>";
 				}
 				?>
 			</div>

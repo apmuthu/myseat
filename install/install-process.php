@@ -4,7 +4,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 ini_set("display_errors", 1);
 // TABLES -------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `capabilities` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->capabilities` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `capability` varchar(255) NOT NULL,
   `1` tinyint(1) NOT NULL,
@@ -21,7 +21,7 @@ echo "<li>The Capabilities table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `events` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->events` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `outlet_id` int(255) NOT NULL,
   `property_id` int(11) NOT NULL,
@@ -46,7 +46,7 @@ echo "<li>The Events table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `maitre` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->maitre` (
   `maitre_id` int(11) NOT NULL AUTO_INCREMENT,
   `maitre_outlet_id` int(11) NOT NULL,
   `maitre_date` date DEFAULT NULL,
@@ -72,7 +72,7 @@ echo "<li>The Maitre table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `outlets` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->outlets` (
   `outlet_id` int(11) NOT NULL AUTO_INCREMENT,
   `outlet_name` varchar(50) DEFAULT NULL,
   `outlet_description` text,
@@ -130,7 +130,7 @@ echo "<li>The Outlets table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `plc_autologin` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->plc_autologin` (
   `key_id` char(32)  NOT NULL,
   `user_id` mediumint(8) NOT NULL DEFAULT '0',
   `user_agent` varchar(150)  DEFAULT NULL,
@@ -144,7 +144,7 @@ echo "<li>The PLC-Autologins table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `plc_sessions` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->plc_sessions` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `login_attempts` mediumint(1) unsigned NOT NULL DEFAULT '0',
@@ -157,7 +157,7 @@ echo "<li>The PLC-Sessions table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->plc_users` (
   `userID` mediumint(8) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(50) NOT NULL DEFAULT '',
   `realname` VARCHAR( 255 ) NOT NULL DEFAULT '',
@@ -183,7 +183,7 @@ $sql = query("CREATE TABLE IF NOT EXISTS `plc_users` (
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `properties` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->properties` (
   `id` tinyint(12) NOT NULL AUTO_INCREMENT,
   `name` varchar(255)  NOT NULL,
   `street` varchar(255) DEFAULT NULL,
@@ -209,7 +209,7 @@ echo "<li>The Properties table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `reservations` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->reservations` (
   `reservation_id` int(11) NOT NULL AUTO_INCREMENT,
   `reservation_bookingnumber` varchar(12) DEFAULT NULL,
   `reservation_outlet_id` int(11) NOT NULL DEFAULT '0',
@@ -252,7 +252,7 @@ echo "<li>The Reservations table has been created. </li>";
 // --------------------------------------------------------
 
 
-$sql = query("CREATE TABLE IF NOT EXISTS `res_history` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->res_history` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `reservation_id` int(255) NOT NULL,
   `author` varchar(255)  NOT NULL,
@@ -267,7 +267,7 @@ echo "<li>The Reservations History table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `res_repeat` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->res_repeat` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `start_date` date NOT NULL DEFAULT '0000-00-00',
   `end_date` date NOT NULL DEFAULT '0000-00-00',
@@ -281,7 +281,7 @@ echo "<li>The Repeat Reservations table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `settings` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->settings` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `property_id` int(255) NOT NULL,
   `language` varchar(8)  NOT NULL,
@@ -308,7 +308,7 @@ echo "<li>The Settings table has been created. </li>";
 
 // --------------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `client_order` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->client_order` (
   `id` int(12) NOT NULL AUTO_INCREMENT,
   `property_id` int(12) NOT NULL,
   `package_code` varchar(12)  NOT NULL,
@@ -324,7 +324,7 @@ echo "<li>The Client Order table has been created. </li>";
 
 // DATA ---------------------------------------------------
 
-$sql = query("INSERT INTO `capabilities` (`id`, `capability`, `1`, `2`, `3`, `4`, `5`, `6`) VALUES
+$sql = query("INSERT INTO `$dbTables->capabilities` (`id`, `capability`, `1`, `2`, `3`, `4`, `5`, `6`) VALUES
 (1, 'Settings-General', 1, 1, 0, 0, 0, 0),
 (2, 'Settings-Outlets', 1, 1, 1, 0, 0, 0),
 (3, 'Settings-Users', 1, 1, 0, 0, 0, 0),
@@ -346,7 +346,7 @@ echo "<li>User Permissions have been set to default.</li>";
 
 // API ---------------------------------------------------
 
-$sql = query("CREATE TABLE IF NOT EXISTS `api_users` (
+$sql = query("CREATE TABLE IF NOT EXISTS `$dbTables->api_users` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `token` varchar(60) DEFAULT NULL,
   `name` varchar(40) DEFAULT NULL,
@@ -374,14 +374,14 @@ echo "<li>The API key table has been created. </li>";
 
 // Plugins -------------------------------------------------
 
-$query = "CREATE TABLE IF NOT EXISTS `plugins` (
+$query = "CREATE TABLE IF NOT EXISTS `$dbTables->plugins` (
       `filename` varchar(127) collate utf8_bin DEFAULT NULL,
       `action` tinyint(1) default '0',
       PRIMARY KEY  (`filename`)
       ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1;";
   $sql = query($query);
 
-  $query = "INSERT INTO `plugins` (`filename`, `action`) VALUES
+  $query = "INSERT INTO `$dbTables->plugins` (`filename`, `action`) VALUES
   ('email_send.plugin.php', 1),
   ('debug_session.plugin.php', 0);";
   $sql = query($query);

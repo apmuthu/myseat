@@ -12,18 +12,19 @@ function GetFileDir($php_self){
 // General settings per resort from database
 $general = array();
 $general = querySQL('settings_inc');
+if ($general) {
+	if($_SESSION['valid_user']==TRUE){
+		$_SESSION['language'] = $general['language'];
+	}
 
-if($_SESSION['valid_user']==TRUE){
-	$_SESSION['language'] = $general['language'];
+	// Set default timezone in PHP 5.
+	if ( function_exists( 'date_default_timezone_set' ) ){
+		date_default_timezone_set( $general['timezone'] );
+	}
+
+	/* Set PHP local */
+	setlocale(LC_TIME, $general['language']);
 }
-
-// Set default timezone in PHP 5.
-if ( function_exists( 'date_default_timezone_set' ) ){
-	date_default_timezone_set( $general['timezone'] );
-}
-
-/* Set PHP local */
-setlocale(LC_TIME, $general['language']);
 
 /* Set global base path */
 $global_basedir = '';

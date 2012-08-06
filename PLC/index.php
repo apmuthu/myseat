@@ -1,4 +1,5 @@
 <?php
+
 session_start();
 //error_reporting(E_ALL & ~E_NOTICE);
 //ini_set("display_errors", 1);
@@ -16,11 +17,12 @@ $forwardPage = "../web/main_page.php?p=1";
 // ** init plc login class	
 	require_once '../PLC/plc.class.php';
 	$dbAccess = array(
-	  'dbHost' => $settings['dbHost'],
-	  'dbName' => $settings['dbName'],
-	  'dbUser' => $settings['dbUser'],
-	  'dbPass' => $settings['dbPass'],
-	  'dbPort' => $settings['dbPort']
+	  'dbHost'			=> $settings['dbHost'],
+	  'dbName'			=> $settings['dbName'],
+	  'dbUser'			=> $settings['dbUser'],
+	  'dbPass'			=> $settings['dbPass'],
+	  'dbPort'			=> $settings['dbPort'],
+	  'dbTablePrefix'	=> $settings['dbTablePrefix']
 	 );
 
 	$user = new flexibleAccess('',$dbAccess);

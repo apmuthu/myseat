@@ -54,7 +54,7 @@ if ($api_token!='') {
             $sql = "SELECT DISTINCT reservation_title,
                     reservation_guest_name, reservation_guest_adress, reservation_guest_city,
                     reservation_guest_email, reservation_guest_phone 
-                    FROM reservations WHERE reservation_guest_name = '".$_SESSION['reservation_guest_name']."' 
+                    FROM $dbTables->reservations WHERE reservation_guest_name = '".$_SESSION['reservation_guest_name']."' 
                     GROUP BY reservation_guest_name";
             $data = getRowList(query($sql));
 

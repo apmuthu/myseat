@@ -68,7 +68,7 @@ if ($api_token!='') {
 
             //DEFINE SQL QUERY
             $sql ="SELECT outlet_name, reservation_date, reservation_time, reservation_guest_name, reservation_pax, reservation_hotelguest_yn, reservation_notes, reservation_guest_adress, reservation_guest_city, reservation_guest_email,reservation_advertise, reservation_guest_phone 
-                FROM reservations INNER JOIN outlets ON (reservation_outlet_id = outlet_id) 
+                FROM $dbTables->reservations INNER JOIN $dbTables->outlets ON (reservation_outlet_id = outlet_id) 
                 WHERE reservation_date >= '".$start_date."' 
                 AND reservation_date <= '".$end_date."' 
                 AND reservation_hotelguest_yn LIKE '".$reservation_hotelguest_yn."' 

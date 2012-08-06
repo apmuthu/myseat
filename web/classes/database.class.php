@@ -123,7 +123,7 @@ ob_start();
 
 function writeForm($table =''){
 	// rather than recursively calling query, insert all rows with one query
-		GLOBAL $general,$global_basedir,$settings;
+		GLOBAL $general,$global_basedir,$settings,$dbTables;
 		$_SESSION['errors'] = array();
 	// prepare POST data for storage in database:
 	// $keys
@@ -134,7 +134,7 @@ function writeForm($table =''){
 		$i=1;
 
 			// prepare day offs
-			if ($table == 'outlets') {
+			if ($table == $dbTables->outlets) {
 				$dayoffs = '';
 				for ($i=1; $i <= 7; $i++) {
 					$field = "outlet_closeday_".$i;
@@ -165,11 +165,12 @@ function writeForm($table =''){
 				if($value != "EdituseR"){
 					$keys[$i] = $key;
 					$dbAccess = array(
-					  'dbHost' => $settings['dbHost'],
-					  'dbName' => $settings['dbName'],
-					  'dbUser' => $settings['dbUser'],
-					  'dbPass' => $settings['dbPass'],
-					  'dbPort' => $settings['dbPort']
+					  'dbHost'			=> $settings['dbHost'],
+					  'dbName'			=> $settings['dbName'],
+					  'dbUser'			=> $settings['dbUser'],
+					  'dbPass'			=> $settings['dbPass'],
+					  'dbPort'			=> $settings['dbPort'],
+					  'dbTablePrefix'	=> $settings['dbTablePrefix']
 					 );
 					$insert = new flexibleAccess('',$dbAccess);
 					$password = $insert->hash_password($value);
@@ -226,7 +227,7 @@ function writeForm($table =''){
 		} // END foreach $_POST
 		
 		// build webform field on outlets
-		if($table == 'outlets') {
+		if($table == $dbTables->outlets) {
 			$index = array_search('webform',$keys);
 			if(!$index){
 				$keys[] = 'webform';
@@ -236,7 +237,7 @@ function writeForm($table =''){
 		
 		
 		// build outofill field on users
-		if($table == 'plc_users') {
+		if($table == $dbTables->plc_users) {
 			$index = array_search('autofill',$keys);
 			if(!$index){
 				$keys[] = 'autofill';
@@ -324,7 +325,7 @@ function writeForm($table =''){
 			$new_id = mysql_insert_id();
 			
 			// Set STANDARD settings for new property
-			if ($table == 'properties' && $_POST['new'] == 1) {
+			if ($table == $dbTables->properties && $_POST['new'] == 1) {
 			  include('register/standard_settings.inc.php');
 			}
 			

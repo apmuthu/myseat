@@ -11,7 +11,7 @@ mysql_connect($settings['dbHost'], $settings['dbUser'], $settings['dbPass']);
 mysql_select_db($settings['dbName']) or die ("No Database");
 mysql_query("SET NAMES 'utf8'");
 
-$sql = "SELECT * FROM reservations WHERE reservation_guest_name LIKE '".$_GET['term']."%' GROUP BY reservation_guest_name ";
+$sql = "SELECT * FROM $dbTables->reservations WHERE reservation_guest_name LIKE '".$_GET['term']."%' GROUP BY reservation_guest_name ";
 $fetch = mysql_query($sql);
 
 	/* Retrieve and store in array the results of the query.*/

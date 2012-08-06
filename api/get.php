@@ -44,7 +44,7 @@ $api_token            		= $_GET['token'];
 // *** DATABASE queries ***
 
 // check token
-$sql = "SELECT request_count, last_login FROM `api_users` WHERE `token` = '".$api_token."'";
+$sql = "SELECT request_count, last_login FROM `$dbTables->api_users` WHERE `token` = '".$api_token."'";
 $result = query($sql);
 $login = getRowList($result);
 
@@ -52,11 +52,11 @@ if (!empty($login)) {
     $now = date('Y-m-d');
     // count API requests per day
     if ($login->last_login == $now ) {
-        $sql = "UPDATE `api_users` SET 
+        $sql = "UPDATE `$dbTables->api_users` SET 
             `request_count` = request_count+1,
             WHERE `token` = '".$api_token."'";
     } else {
-        $sql = "UPDATE `api_users` SET 
+        $sql = "UPDATE `$dbTables->api_users` SET 
             `request_count` = 1,  
             `last_login` = CURDATE()
             WHERE `token` = '".$api_token."'";

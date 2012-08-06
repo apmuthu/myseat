@@ -56,7 +56,7 @@ $message 	 = "";
 			$visitor_ip = $_SERVER[REMOTE_ADDR];
 			$now		= date('Y-m-d H:i:s');
 
-			$sql = "INSERT INTO `api_users` (
+			$sql = "INSERT INTO `$dbTables->api_users` (
 					`token`, `name`, `website`, `description`, `active`, `last_ip`, `created`)
 					VALUES ( '".$token."' , '".$name."' , '".$url."' , '".$description."' , '1' , '".$visitor_ip."' , '".$now."')";
 			$result = query($sql);

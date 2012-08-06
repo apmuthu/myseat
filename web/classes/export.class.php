@@ -27,7 +27,7 @@ $reservation_hotelguest_yn = $_POST['reservation_hotelguest_yn'];
 //you can use just about ANY kind of select statement you want - 
 //edit this to suit your needs!
 $sql ="SELECT outlet_name, reservation_date, reservation_time, reservation_guest_name, reservation_pax, reservation_hotelguest_yn, reservation_notes, reservation_guest_adress, reservation_guest_city, reservation_guest_email,reservation_advertise, reservation_guest_phone 
-FROM reservations INNER JOIN outlets ON (reservation_outlet_id = outlet_id) 
+FROM $dbTables->reservations INNER JOIN $dbTables->outlets ON (reservation_outlet_id = outlet_id) 
 WHERE reservation_date >= '".$start_date."' AND reservation_date <= '".$end_date."' ";
 if($reservation_hotelguest_yn!=''){
 $sql .="AND reservation_hotelguest_yn = '".$reservation_hotelguest_yn."' ";
