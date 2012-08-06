@@ -66,6 +66,7 @@ $_SESSION['resID'] = 0;
 // ** php hooks class
 	include_once "../web/classes/phphooks.config.php";
 	include_once "../web/classes/phphooks.class.php";
+	$plugin_path = '../plugins/';
 	//create instance of plugin class
 	include "../config/plugins.init.php";
 			

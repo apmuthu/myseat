@@ -342,7 +342,7 @@ function defineOffDays(){
 
 function processBooking(){
 // rather than recursively calling query, insert all rows with one query
-	 GLOBAL $general, $global_basedir;
+	 GLOBAL $general, $global_basedir,$hook;
 	 // database table to store reservations
 	 $table ='reservations';
 	 // reservation date
@@ -485,9 +485,10 @@ function processBooking(){
 		
 			// *** send confirmation email
 				// ** PHPMailer class
-				require_once('../classes/phpmailer/class.phpmailer.php');
+				require_once('../web/classes/phpmailer/class.phpmailer.php');
 				// ** plugin hook
 				if ($hook->hook_exist('after_booking')) {
+					$_SESSION['form'] = $_POST;
 					$hook->execute_hook('after_booking');
 				}
 			

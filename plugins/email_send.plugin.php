@@ -35,7 +35,7 @@ function email_send_conf() {
 	global $global_basedir, $general, $settings;
 
 	// ** PHPMailer class
-	require_once('../classes/phpmailer/class.phpmailer.php');
+	require_once('../web/classes/phpmailer/class.phpmailer.php');
 
 	// *** send confirmation email
 				// Prepare basedir
@@ -291,7 +291,8 @@ function email_send_conf() {
 				$mail->SMTPAuth      = true;                   // enable SMTP authentication
 				$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
 				$mail->CharSet  	 = 'utf-8'; 			   // sets Encoding
-				//$mail->SMTPSecure	 = 'ssl'; 				   //  Used instead of TLS when only POP mail is selected
+				if (isset($settings['SMTPSecure']))
+					$mail->SMTPSecure	 = $settings['SMTPSecure']; //  tls or ssl
 				
 
 				$mail->Host          = $settings['emailHost']; // sets the SMTP server
@@ -324,7 +325,7 @@ function email_send_conf() {
 				    echo "Mailer Error (" . str_replace("@", "&#64;", $row["email"]) . ') ' . $mail->ErrorInfo . '<br />';
 				 }
 				 // Clear all addresses and attachments for next loop
-				 $mail->ClearAddress();	
+				 $mail->ClearAddresses();
 				
 			} else {
 				//PHP native mail sending
