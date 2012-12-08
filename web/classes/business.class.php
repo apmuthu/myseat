@@ -272,14 +272,15 @@ function printType($type=''){
 }
 
 function getOutletList($outlet_id = 0, $disabled = 'enabled',$tablename='outlet_id'){
+	global $title;
 	echo"<select name='".$tablename."' id='".$tablename."' size='1' $disabled>\n";
 		
 		// Empty
-		if (condition) {
+//		if (condition) {
 			echo "<option value='' ";
 			echo ($title=="") ? "selected='selected'" : "";
 			echo ">"._general."</option>\n";
-		}
+//		}
 
 		$outlets = querySQL('db_outlets');
 		
@@ -693,13 +694,13 @@ function randomString()
 function maxCapacity(){
 	$capacity =	querySQL('maxcapacity');
 		
-	$_SESSION['outlet_max_capacity'] = 0;
-	$_SESSION['outlet_max_tables'] = 0;	
-	$_SESSION['passerby_max_pax'] = 0;
+	$_SESSION['outlet_max_capacity'] = $capacity['outlet_max_capacity'];
+	$_SESSION['outlet_max_tables']   = $capacity['outlet_max_tables'];	
+	$_SESSION['passerby_max_pax']    = $capacity['passerby_max_pax'];
 	
-	$_SESSION['outlet_max_capacity'] = $capacity['outlet_max_capacity'] + $capacity['outlet_child_capacity'];
-	$_SESSION['outlet_max_tables'] = $capacity['outlet_max_tables'] + $capacity['outlet_child_tables'];
-	$_SESSION['passerby_max_pax'] = ($capacity['outlet_child_passer_max_pax'] > 0 ) ?  $capacity['outlet_child_passer_max_pax'] : $capacity['passerby_max_pax'];
+	$_SESSION['outlet_max_capacity'] += (isset($capacity['outlet_child_capacity'])       ? $capacity['outlet_child_capacity']       : 0);
+	$_SESSION['outlet_max_tables']   += (isset($capacity['outlet_child_tables'])         ? $capacity['outlet_child_tables']         : 0);
+	$_SESSION['passerby_max_pax']    += (isset($capacity['outlet_child_passer_max_pax']) ? $capacity['outlet_child_passer_max_pax'] : 0);
 	return TRUE;
 }
 
@@ -849,10 +850,12 @@ function getDayoff() {
 			}
 		}
 	}
-	if ($maitre_dayoff == 'ON') {
-		$day_off = 1;
-	}else if ($maitre_dayoff == 'OFF') {
-		$day_off = 0;
+	if (isset($maitre_dayoff)) {
+		if ($maitre_dayoff == 'ON') {
+			$day_off = 1;
+		}else if ($maitre_dayoff == 'OFF') {
+			$day_off = 0;
+		}
 	}
 	return $day_off;
 }
@@ -895,6 +898,7 @@ function leftSpace($reservation_time, $occupancy){
 }
 
 function build_calendar($month,$year,$dateArray) {
+	 global $daylight_evening;
 	 // get monday
      $weekStartTime = strtotime('Monday this week');
      // get today's date

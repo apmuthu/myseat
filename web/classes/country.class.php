@@ -249,7 +249,7 @@ $countries = array(
 
 function countryDropdown($countries,$default){
 // Set default value
-$selected_key = (strlen($default)<2) ? 'DE' : $default;
+$selected_key = (strlen($default)<2) ? 'SG' : $default;
 
     $select = '<select name="country" id="country">'."\n";
 
