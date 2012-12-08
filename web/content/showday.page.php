@@ -15,7 +15,7 @@
 			<?php 
 			// disable "New reservation" when maitre comment is "Rücksprache"
 			$findme = "cksprache";
-			$pos = strpos($maitre['maitre_comment_day'],$findme);
+			$pos = (isset($maitre['maitre_comment_day']) ? strpos($maitre['maitre_comment_day'],$findme) : false);
 
 			if ( $today_date <= $_SESSION['selectedDate'] && $dayoff == 0 && current_user_can('Reservation-New') && $pos === false  ){
 				echo'<li>
