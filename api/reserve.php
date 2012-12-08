@@ -438,7 +438,8 @@ if ($hook->hook_exist( 'debug_online' )) {
 	var unavailableDates = [<?php defineOffDays(); ?>];
 
 	function unavailable(date) {
-		var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+		// var m = date.getMonth(), d = date.getDate(), y = date.getFullYear();
+		var m = date.getMonth(), d = dnz = date.getDate(), y = date.getFullYear();
 		m = m+1;
 		/* add leading zero */
 		if (d < 10) d = "0" + d;
@@ -447,9 +448,16 @@ if ($hook->hook_exist( 'debug_online' )) {
 	  if ($.inArray(ymd, unavailableDates) == -1) {
 	    return [true];
 	  } else {
-	    return [false];
+	    // return [false];
+		return [false,'','<?php echo $_SESSION['selOutlet']['outlet_name']._closed; ?>' + getOrdinal(dnz)];
 	  }
 	}
+	// Ref: http://myseat.cl0.vanillaforums.com/discussion/460/outlet-is-closed-tooltip-in-online-reservation-form-datepicker
+	function getOrdinal(n) {
+		var s=["th","st","nd","rd"],
+		v=n%100;
+		return n+(s[(v-20)%10]||s[v]||s[0]);
+	} 
 
  jQuery(document).ready(function($) {
       // Setup datepicker input at customer reservation form

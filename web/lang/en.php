@@ -4,6 +4,8 @@
 // Language: en_EN
 // Translator: Bernd Orttenburger <beo@myseat.us>
 
+//original text: " is closed on the "
+define ( '_closed', ' is closed on the ' );
 
 //original text: "Open:"
 define ( '_open', 'Open:' );
