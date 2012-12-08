@@ -463,7 +463,7 @@ if ($hook->hook_exist( 'debug_online' )) {
       // Setup datepicker input at customer reservation form
       $("#reservation_date").datepicker({
 		  minDate: '0',
-		  maxDate: '+6M',      
+		  maxDate: '+12M',      
 		  nextText: '&raquo;',
 	      prevText: '&laquo;',
 		  showOn: "button",

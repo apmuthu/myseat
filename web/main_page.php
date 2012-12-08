@@ -21,8 +21,8 @@ This file is part of mySeat.
 
 /** Login **/
 // ** set configuration
-	//Software version
-	$sw_version = 'v0.211';
+	//Software version - http://github.com/apmuthu/myseat
+	$sw_version = 'v0.2160';
 	
 	include('../config/config.general.php');
 	
