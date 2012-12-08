@@ -25,7 +25,7 @@
 		
 			echo"<td><span class='bold'><a href='?p=5&propertyID=".$row->id."'>".$row->name."</a></strong></td>
 			<td>".$row->street."</td>
-			<td>".$row->city."</td>
+			<td>".$row->zip . "-" . $row->city."</td>
 			<td>".$row->contactperson."</td>
 			<td>".$row->email."</td>
 			<td>".$row->phone."</td>
