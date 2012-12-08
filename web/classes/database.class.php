@@ -128,7 +128,7 @@ function writeForm($table =''){
 	// prepare POST data for storage in database:
 	// $keys
 	// $values 
-	if($table) {
+	if(!empty($table)) {
 		$keys = array();
 		$values = array();
 		$i=1;
@@ -152,14 +152,21 @@ function writeForm($table =''){
 					$i++;
 				
 			}
-		
+
+		if (isset($_POST['saison_start_month']) && isset($_POST['saison_start_day'])) {
+			$saison_start  = $_POST['saison_start_month'];
+			$saison_start .= $_POST['saison_start_day'];
+		}
+		if (isset($_POST['saison_end_month']) && isset($_POST['saison_end_day'])) {
+			$saison_end  = $_POST['saison_end_month'];
+			$saison_end .= $_POST['saison_end_day'];
+		}
+
 		// prepare arrays for database query
 		foreach($_POST as $key => $value) {
-			if ($key == 'saison_start_month' || $key == 'saison_start_day' || $key == 'saison_end_month' || $key == 'saison_end_day') {
-				
-				$saison_start = $_POST['saison_start_month'].$_POST['saison_start_day'];
-				$saison_end = $_POST['saison_end_month'].$_POST['saison_end_day'];
-			
+			if (in_array($key, Array('saison_start_month', 'saison_start_day', 'saison_end_month', 'saison_end_day'))) { 
+				// Do Nothing - Skip keys
+
 			}else if($key == 'password'){
 			
 				if($value != "EdituseR"){
@@ -236,7 +243,7 @@ function writeForm($table =''){
 		}
 		
 		
-		// build outofill field on users
+		// build autofill field on users
 		if($table == $dbTables->plc_users) {
 			$index = array_search('autofill',$keys);
 			if(!$index){
@@ -248,7 +255,8 @@ function writeForm($table =''){
 		// img & logo upload
 		// =-=-=-=-=-=
 		
-		// img upload
+		// img upload - no Image was entered if error = 4
+		  if ($_FILES['img']["error"][0] != 4) {
 			if ($_FILES['img']['error'][0] > 0){
 			  $_SESSION['errors'][] = _sorry;
 			}else{
@@ -267,7 +275,9 @@ function writeForm($table =''){
 					$values[] = "'".$imgName."'";
 				  }
 			}
-		// logo upload
+		  }
+		// logo upload - no Logo was entered if error = 4
+		  if ($_FILES['img']["error"][1] != 4) {
 			if ($_FILES['img']['error'][1] > 0){
 			  $_SESSION['errors'][] = _sorry;
 			}else{
@@ -286,12 +296,13 @@ function writeForm($table =''){
 					$values[] = "'".$imgName."'";
 				  }
 			}
+		  }
 			
-			$_SESSION['reservation_date'] = date('Y-m-d',$reservation_date);
-			$_SESSION['recurring_date'] = date('Y-m-d',$recurring_date);
+			if (isset($reservation_date)) $_SESSION['reservation_date'] = date('Y-m-d',$reservation_date);
+			if (isset($recurring_date))   $_SESSION['recurring_date']   = date('Y-m-d',$recurring_date);
 		
 		// outlets build start and enddate
-		if($saison_start!='' && $saison_end!=''){
+		if(isset($saison_start) && isset($saison_end) && $saison_start!='' && $saison_end!=''){
 			$keys[] = 'saison_start';
 	    	$values[] = "'".$saison_start."'";
 			$keys[] = 'saison_end';
@@ -300,19 +311,27 @@ function writeForm($table =''){
 
 		// =-=-=-=Store in database =-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		
-		  
+ 
 		  // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 		  // No reservation, everything else to store
 		  // enter into database
 		  // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+		  // Enable Property Creation
+			if ($table == $dbTables->properties && $_POST['new'] == "1") {
+				 // remove last key and value : $keys[$i] == 'id'
+				 $id_index = array_search('id',$keys);
+				 unset($keys[$id_index]);
+				 unset($values[$id_index]);
+			}
 
 			// number of database fields
 			$max_keys = count($keys);
 			$query = "INSERT INTO `$table` (".implode(',', $keys).") VALUES (".implode(',', $values).") ON DUPLICATE KEY UPDATE ";
 				// Build 'on duplicate' query
 				for ($i=1; $i <= $max_keys; $i++) {
-					if($keys[$i]!=''){
-				 		$query .= $keys[$i]."=".$values[$i].",";
+					if(isset($keys[$i]) && $keys[$i]!=''){
+						$query .= $keys[$i]."=".$values[$i].",";
 					}else{
 						$max_keys++;
 					}
@@ -320,7 +339,7 @@ function writeForm($table =''){
 			// run sql query 				
 			$query = substr($query,0,-1);
 			    //DEbugging
-			    //echo $query;				   
+			    //echo $query;	
 			$result = query($query);
 			$new_id = mysql_insert_id();
 			
