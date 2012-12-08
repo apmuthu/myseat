@@ -1,6 +1,7 @@
 <?php
 echo "<div class='center width-70'><br/> <table class='bordered-table'>";
 $outlets = querySQL('db_outlets');
+$done = 0;
 foreach($outlets as $row) {
  if ( ($row->saison_start<=$row->saison_end 
 	 && $_SESSION['selectedDate_saison']>=$row->saison_start 
