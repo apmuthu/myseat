@@ -8,13 +8,13 @@
 	<div id="footer">
 		<div class="detail">
 			<?php
-			if (!$_SESSION['prp_name']) {
+			if (!isset($_SESSION['prp_name'])) {
 				$_SESSION['prp_name'] = querySQL('db_property');
 			}
 			
 			$filename = substr(dirname(__FILE__),0,-9)."xt-admin";
 			
-			if($this_page != "property"){
+			if((!isset($this_page)) || ($this_page != "property")) {
 				echo "<img src='images/icon_user.png' alt='User:' class='middle'/><a href='";
 				if ($_SESSION['role']=='1' && file_exists($filename)) {
 					echo"../xt-admin/index.php";				

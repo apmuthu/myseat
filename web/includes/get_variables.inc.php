@@ -119,7 +119,7 @@ if (isset($_GET['countryID'])) {
 	$_SESSION['countryID'] = $_GET['countryID'];
 }else if (isset($_POST['countryID'])) {
 	$_SESSION['countryID'] = $_POST['countryID'];
-}else if($this_page != "detail"){
+}else if((!isset($this_page)) || ($this_page != "detail")) {
 	$_SESSION['countryID'] = '%';
 }
 
@@ -128,7 +128,7 @@ if (isset($_GET['city'])) {
 	$_SESSION['city'] = $_GET['city'];
 }else if (isset($_POST['city'])) {
 	$_SESSION['city'] = $_POST['city'];
-}else if($this_page != "detail"){
+}else if((!isset($this_page)) || ($this_page != "detail")) {
 	$_SESSION['city'] = '%';
 }
 
