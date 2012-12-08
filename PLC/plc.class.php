@@ -251,7 +251,7 @@ var $tbTrans = array(
   * page to redirect after login
   * var string
   */
-	if ($_SESSION['forwardPage'] =='') {
+	if ((!isset($_SESSION['forwardPage'])) || ($_SESSION['forwardPage'] =='')) {
 		$_SESSION['forwardPage'] = "../web/main_page.php?p=1";
 	}
 
