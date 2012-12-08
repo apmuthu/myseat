@@ -154,7 +154,8 @@ foreach ($table_updates as $table_update) {
 	$sql = query($query);
 
 	$query = "INSERT INTO `$dbTables->plugins` (`filename`, `action`) VALUES
-	('email_send.plugin.php', 1),
+	('local_email_send.plugin.php', 1),
+	('email_send.plugin.php', 0),
 	('debug_session.plugin.php', 0);";
 	$sql = query($query);
 
