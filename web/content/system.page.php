@@ -81,7 +81,7 @@
 					echo "<h3>"._general." "._settings."</h3>";
 				}else if ($q == 4 ) { 
 					echo "<h3>"._sp_events."</h3>";
-				}else if ($q == 5 || q == 6) { 
+				}else if ($q == 5 || $q == 6) { 
 					echo "<h3>"._property." "._info."</h3>";
 				}else if ($q == 7) { 
 					echo "<h3>Plugins</h3>";
@@ -122,7 +122,7 @@
 					</a>
 				</li>
 				<li>
-					<a href="?p=6&q=2&btn=2" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3 || $p == 6) { echo " class='active'";}?> >
+					<a href="?p=6&q=2&btn=2" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) { echo " class='active'";}?> >
 						<?php echo _create;?>
 					</a>
 				</li>
@@ -183,6 +183,18 @@
 						<?php echo _edit;?>
 					</a>
 				</li>
+					<?php if ( current_user_can( 'Property-Overview' ) ): ?>
+					<li>
+						<a href="properties.php?p=1" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) { echo " class='active'";}?> >
+							<?php echo _overview;?>
+						</a>
+					</li>
+					<li>
+						<a href="properties.php?p=2" <?php if ($_SESSION['button'] == 2 || $_SESSION['button'] == 3) { echo " class='active'";}?> >
+							<?php echo _create;?>
+						</a>
+					</li>
+					<?php endif ?>
 				<li>
 					<a href="?p=6&q=1&btn=1">
 						<?php echo _back;?>
