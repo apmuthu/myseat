@@ -205,6 +205,7 @@ class phphooks {
 	 * @return optional.
 	 */
 	function execute_hook($tag, $args = '') {
+		$result = false;
 		if (isset ( $this->hooks [$tag] )) {
 			$these_hooks = $this->hooks [$tag];
 			for($i = 0; $i <= 20; $i ++) {

@@ -8,6 +8,7 @@ if ((isset($p) && $p == 2) || $_SESSION['page'] == 2){
 }
 
 function inputValue($attr) {
+	global $row;
 	return isset($row[$attr]) ? $row[$attr] : '';
 }
 ?>

@@ -14,6 +14,7 @@ if ($_SESSION['page'] == 7){
 	$link = "properties.php?p=8";
 }
 function inputValue($attr) {
+	global $row;
 	return isset($row[$attr]) ? $row[$attr] : '';
 }
 ?>
