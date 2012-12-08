@@ -80,7 +80,7 @@
 			<input id="submit_btn" type="submit" class="button_dark" value="<?php echo _save;?>">
 			<br/>
 			<?php 
-				if($special_event_subject!=''){
+				if (isset($special_event_subject) && ($special_event_subject!='')) {
 					echo "<br/><p><strong>"._reservations." "._for_." ".$special_event_subject." !</strong></p>";
 				}
 			?>
@@ -116,9 +116,9 @@
 		<label><?php echo _payment; ?></label><br/>
 			<span class="width-250">
 			<?php echo _paid;?>
-			<input type="checkbox" class="margin-right-20" name="reservation_bill_paid" value="<?php if ($reservation_bill_paid!=""){echo $reservation_bill_paid;} else {echo date($general['dateformat']);} ?>" />
+			<input type="checkbox" class="margin-right-20" name="reservation_bill_paid" value="<?php if (isset($reservation_bill_paid) && ($reservation_bill_paid!="")) {echo $reservation_bill_paid;} else {echo date($general['dateformat']);} ?>" />
 			<?php echo _shipped;?>
-			<input type="checkbox" name="reservation_billet_sent" value="<?php if ($reservation_billet_sent!=""){echo $reservation_billet_sent;} else {echo date($general['dateformat']);} ?>" /> 
+			<input type="checkbox" name="reservation_billet_sent" value="<?php if (isset($reservation_billet_sent) && ($reservation_billet_sent!="")) {echo $reservation_billet_sent;} else {echo date($general['dateformat']);} ?>" /> 
 			</span>
 		</p>
 		<br/>

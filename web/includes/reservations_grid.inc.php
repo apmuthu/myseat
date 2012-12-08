@@ -1,32 +1,6 @@
 <!-- Begin reservation table data -->
 <br/>
 <table class="global resv-table-small" cellpadding="0" cellspacing="0">
-<!--
-	<thead>
-	    <tr <?php if($waitlist){echo"class='waitlist-header'";} ?>>
-	    	<th><?php echo _time; ?></th>
-			<th><?php echo _pax; ?></th>
-			<th style='width:20%'><?php echo _guest_name; ?></th>
-			<th style='width:20%'> 
-			<?php
-			 	if ($_SESSION['page'] == 1) {
-			 		echo _outlets;
-			 	}else{
-					echo _note;
-				} 
-			?>
-			</th>
-			<?php
-			if($_SESSION['wait'] == 0){
-				echo "<th>"._table."</th>";
-			}
-			?>
-	    	<th><?php echo _status; ?></th>
-			<th class='noprint'><?php echo _author; ?></th>
-			<th class='noprint'></th>
-	    </tr>
-	</thead>
--->	
 	<tbody>
 		<tr></tr>
 		<?php
@@ -39,11 +13,11 @@
 			$reservations =	querySQL('reservations');
 		}
 		
-		if ($reservations) {
+		// reset total counters
+		$tablesum = 0;
+		$guestsum = 0;
 			
-			// reset total counters
-			$tablesum = 0;
-			$guestsum = 0;
+		if ($reservations) {
 			
 			//start printing out reservation grid
 			foreach($reservations as $row) {

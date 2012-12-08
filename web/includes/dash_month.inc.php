@@ -5,6 +5,7 @@ echo "<div class='center width-70'><br/>";
 
     $dateComponents = getdate();
 	list($sy,$sm,$sd) = explode("-",$_SESSION['selectedDate']);
+	if(!isset($dateArray)) $dateArray = false;
     echo build_calendar($sm,$sy,$dateArray);
 
 echo"</div><br/>";
