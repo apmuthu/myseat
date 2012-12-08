@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!-- Begin one column box -->
 <div class="onecolumn">
 	<div class="header">
