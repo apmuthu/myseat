@@ -16,6 +16,8 @@
  $settings['dbTablePrefix'] = '';
 
 // ** Email Settings
+ // Choose encoding for emails like UTF-8, ISO-8859-1, etc
+ $settings['mailCharset'] = 'UTF-8';
  // what type of email to use: 'LOCAL' or 'SMTP'
  $settings['emailSMTP'] = 'LOCAL';
  // The next settings has only to be set 

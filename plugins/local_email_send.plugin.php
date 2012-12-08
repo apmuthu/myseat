@@ -34,7 +34,8 @@ register_plugin($plugin_id, $data);
 // the main function
 function my_email_send_conf() {
 	global $global_basedir, $general, $settings;
-
+	// degrade gracefully on absence
+	$mail_charset = (isset($settings['mailCharset']) ? $settings['mailCharset'] : 'UTF-8');
 	// ** PHPMailer class
 	require_once('../classes/phpmailer/class.phpmailer.php');
 
@@ -78,7 +79,7 @@ function my_email_send_conf() {
 			
 			// Additional header for admin mail
 			$header_admin  = 'MIME-Version: 1.0' . "\r\n";
-			$header_admin .= 'Content-type: text/plain; charset=ISO-8859-1' . "\r\n";
+			$header_admin .= "Content-type: text/plain; charset=$mail_charset" . "\r\n";
 			$header_admin = 'From: ' . $from . "\r\n";
 			
 			// Subject of email
@@ -148,7 +149,7 @@ function my_email_send_conf() {
 				<html>
 				<head>
 
-					<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+					<meta http-equiv="Content-Type" content="text/html; charset='.$mail_charset.'">
 					<title> '._confirmation_email.' </title>
 
 
@@ -298,7 +299,7 @@ function my_email_send_conf() {
 			    $mail->Host      	 = $settings['emailHost'];
 				$mail->SMTPAuth      = true;                   // enable SMTP authentication
 				$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
-				$mail->CharSet  	 = 'ISO-8859-1';			// sets Encoding
+				$mail->CharSet  	 = $mail_charset;		   // sets Encoding
 				//$mail->SMTPSecure	 = 'ssl'; 				   //  Used instead of TLS when only POP mail is selected
 				
 
@@ -349,11 +350,11 @@ function my_email_send_conf() {
 				    $message = "This is a MIME encoded message."; 
 				 
 				    $message .= "\r\n\r\n--" . $boundary . "\r\n";
-				    $message .= "Content-type: text/plain;charset=ISO-8859-1\r\n\r\n";
+				    $message .= "Content-type: text/plain;charset=$mail_charset\r\n\r\n";
 				    $message .= $plain_text;
 
 				    $message .= "\r\n\r\n--" . $boundary . "\r\n";
-				    $message .= "Content-type: text/html;charset=ISO-8859-1\r\n\r\n";
+				    $message .= "Content-type: text/html;charset=$mail_charset\r\n\r\n";
 				    $message .= $html_text;
 
 				    $message .= "\r\n\r\n--" . $boundary . "--";

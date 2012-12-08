@@ -33,7 +33,8 @@ register_plugin($plugin_id, $data);
 // the main function
 function email_send_conf() {
 	global $global_basedir, $general, $settings;
-
+	// degrade gracefully on absence
+	$mail_charset = (isset($settings['mailCharset']) ? $settings['mailCharset'] : 'UTF-8');
 	// ** PHPMailer class
 	require_once('../web/classes/phpmailer/class.phpmailer.php');
 
@@ -77,7 +78,7 @@ function email_send_conf() {
 			
 			// Additional header for admin mail
 			$header_admin  = 'MIME-Version: 1.0' . "\r\n";
-			$header_admin .= 'Content-type: text/plain; charset=UTF-8' . "\r\n";
+			$header_admin .= "Content-type: text/plain; charset=$mail_charset" . "\r\n";
 			$header_admin = 'From: ' . $from . "\r\n";
 			
 			// Subject of email
@@ -147,7 +148,7 @@ function email_send_conf() {
 				<html>
 				<head>
 
-					<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+					<meta http-equiv="Content-Type" content="text/html; charset='.$mail_charset.'">
 					<title> '._confirmation_email.' </title>
 
 
@@ -290,7 +291,7 @@ function email_send_conf() {
 				$mail->Host          = $settings['emailHost'];
 				$mail->SMTPAuth      = true;                   // enable SMTP authentication
 				$mail->SMTPKeepAlive = true;                   // SMTP connection will not close after each email sent
-				$mail->CharSet  	 = 'utf-8'; 			   // sets Encoding
+				$mail->CharSet  	 = $mail_charset; 		   // sets Encoding
 				if (isset($settings['SMTPSecure']))
 					$mail->SMTPSecure	 = $settings['SMTPSecure']; //  tls or ssl
 				
@@ -334,11 +335,11 @@ function email_send_conf() {
 				    $message = "This is a MIME encoded message."; 
 				 
 				    $message .= "\r\n\r\n--" . $boundary . "\r\n";
-				    $message .= "Content-type: text/plain;charset=utf-8\r\n\r\n";
+				    $message .= "Content-type: text/plain;charset=$mail_charset\r\n\r\n";
 				    $message .= $plain_text;
 
 				    $message .= "\r\n\r\n--" . $boundary . "\r\n";
-				    $message .= "Content-type: text/html;charset=utf-8\r\n\r\n";
+				    $message .= "Content-type: text/html;charset=$mail_charset\r\n\r\n";
 				    $message .= $html_text;
 
 				    $message .= "\r\n\r\n--" . $boundary . "--";
