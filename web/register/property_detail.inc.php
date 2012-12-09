@@ -40,18 +40,26 @@
 				<p><strong>		 	 	 	 	 	 	
 					<?php echo $row['phone'];?>
 				</p></strong>
+<?php if (!empty($row['fax'])) { ?>
 				<label><?php echo _fax;?></label>	
 				<p>	 	 	 	 	 	 	
 					<?php echo $row['fax'];?>
 				</p>
+<?php
+}
+if (!empty($row['social_fb'])) { ?>
 				<label>Facebook Link</label>	
 				<p>	 	 	 	 	 	 	
 					<?php echo $row['social_fb'];?>
 				</p>
+<?php
+}
+if (!empty($row['social_tw'])) { ?>
 				<label>Twitter Link</label>	
 				<p>	 	 	 	 	 	 	
 					<?php echo $row['social_tw'];?>
 				</p>
+<?php } ?>
 				<br/><br/>	 	 	 	 	 	 	 
 				<small>				
 					<?php if($row['created']){ echo _created." ".humanize($row['created']);}?>
