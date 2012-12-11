@@ -134,7 +134,9 @@ $forwardPage = "../web/main_page.php?p=1";
           	}	
 </style>
 
+<?php include_once "../web/includes/onscreenkbd.inc.php"; ?>
 
+</head>
 <body class="login">
 	
 	<!-- Begin control panel wrapper -->
@@ -172,12 +174,14 @@ $forwardPage = "../web/main_page.php?p=1";
 					<form name="loginform" id="loginform" style="margin-left:20px;" action="index.php" method="post">
 						<p>
 						<label>User</label><br/>
-							<input type="text" name="user" class="user" maxlength="20" style="width:300px" value="<?php echo $username;?>"/>
+							<input type="text" name="user" class="user qwerty" maxlength="20" style="width:300px" value="<?php echo $username;?>"/>
+							<?php echo $osk_img;?>
 						</p>
 						<br/>
 						<p>
 						<label>Password</label><br/>
-							<input type="password" name="token" class="pass" maxlength="12" style="width:300px" value=""/>
+							<input type="password" name="token" class="pass qwerty" maxlength="12" style="width:300px" value=""/>
+							<?php echo $osk_img;?>
 						</p>
 						<br/>
 						<div class="center">

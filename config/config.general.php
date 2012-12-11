@@ -39,6 +39,10 @@
  // $settings['SMTPSecure'] = 'ssl';
  // $settings['emailPort'] = 465;
 
+// ** User Interface Switches 
+ // On Screen Keyboard for Login - default false for backward compatibility
+ $settings['OnScreenKbd'] = false;
+
 // ** Daylight settings
  // ** noon time
  $daylight_noon = '14:00';
