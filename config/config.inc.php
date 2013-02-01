@@ -30,11 +30,13 @@ if ($general) {
 $global_basedir = '';
 if (isset($_SERVER['HTTPS'])) {
 	$global_basedir = 'https://';
+    $default_port = 443;
 }else{
 	$global_basedir = 'http://';
+    $default_port = 80;
 }
 
-$global_basedir .= $_SERVER['SERVER_NAME'].GetFileDir($_SERVER['PHP_SELF']);
+$global_basedir .= $_SERVER['SERVER_NAME'].(($_SERVER['SERVER_PORT'] != $default_port) ? ':'.$_SERVER['SERVER_PORT'] : '').GetFileDir($_SERVER['PHP_SELF']);
 
 ?>
 
